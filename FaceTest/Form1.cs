@@ -7,6 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using System.IO;
+
+using System.ServiceModel;
+
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+
 namespace FaceTest
 {
     public partial class Form1 : Form
@@ -14,6 +21,338 @@ namespace FaceTest
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StartService();
+        }
+        private ServiceHost serviceHost;
+        public void StartService()
+        {
+            try
+            {
+                if (serviceHost == null)
+                {
+                    serviceHost = new ServiceHost(typeof(FaceTest.Service1));
+                }
+                if ((serviceHost.State == CommunicationState.Closed) || (serviceHost.State == CommunicationState.Created))
+                    serviceHost.Open();
+
+                int count = serviceHost.BaseAddresses.Count;
+                for (int i = 0; i < count; i++)
+                {
+                }
+                count = serviceHost.Description.Endpoints.Count;
+                for (int j = 0; j < count; j++)
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+        private String FacePicPath = Application.StartupPath + @"\FacePicTest2\";
+        private void button2_Click(object sender, EventArgs e)
+        {
+            label1.Text = Application.StartupPath +String.Format(@"\{0}\",tb_Path);
+        }
+        private string Url = "";
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Url = tb_Url.Text;
+        }
+        private string Pass = "123";
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+        }
+        public string GetFileMd5(string filepath)
+        {
+            if (string.IsNullOrEmpty(filepath) || !File.Exists(filepath))
+            {
+                return "";
+            }
+            FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read);
+            try
+            {
+                return BytesToHexString(new System.Security.Cryptography.MD5CryptoServiceProvider().ComputeHash(fs));
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                }
+            }
+        }
+        public string BytesToHexString(byte[] bytes)
+        {
+            if (bytes == null || bytes.Length == 0)
+                return "";
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in bytes)
+            {
+                sb.Append(b.ToString("X2"));
+            }
+            return sb.ToString();
+        }
+        protected byte[] ImgToByt(Image img)
+        {
+            MemoryStream ms = new MemoryStream();
+            byte[] imagedata = null;
+            img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            imagedata = ms.GetBuffer();
+            return imagedata;
+        }
+
+        private byte[] createTxt(string fileName)
+        {
+            FileStream stream = new FileInfo(fileName).OpenRead();
+            byte[] buffer = new byte[stream.Length + 1];
+
+            stream.Read(buffer, 0, Convert.ToInt32(stream.Length));
+
+            return buffer;
+        }
+
+        protected string ImgToBase64String(string Imagefilename)
+        {
+            try
+            {
+                byte[] arr = System.IO.File.ReadAllBytes(Imagefilename);
+                showMsg("ImgToBase64String arr length:" + arr.Length);
+                return Convert.ToBase64String(arr,Base64FormattingOptions.InsertLineBreaks);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        //图片转为base64编码的字符串
+        protected string ImgToBase64String2(string Imagefilename)
+        {
+            try
+            {
+                Bitmap bmp = new Bitmap(Imagefilename);
+
+                MemoryStream ms = new MemoryStream();
+                bmp.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                byte[] arr = new byte[ms.Length];
+                ms.Position = 0;
+                ms.Read(arr, 0, (int)ms.Length);
+                ms.Close();
+                showMsg("ImgToBase64String2 arr length:" + arr.Length);
+                return Convert.ToBase64String(arr);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public static string UrlEncode(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            byte[] byStr = System.Text.Encoding.UTF8.GetBytes(str); //默认是System.Text.Encoding.Default.GetBytes(str)
+            for (int i = 0; i < byStr.Length; i++)
+            {
+                sb.Append(@"%" + Convert.ToString(byStr[i], 16));
+            }
+
+            return (sb.ToString());
+        }
+        private User GetUserByFileName(FileInfo file)
+        {
+            User u = new User();
+            //得到文件名。不包括扩展名
+            string fileName = file.Name.Substring(file.Name.LastIndexOf("\\") + 1, (file.Name.LastIndexOf(".") - file.Name.LastIndexOf("\\") - 1));
+
+            string[] fileNameList = fileName.Split('_');
+            if (fileNameList.Length == 1)
+            {
+                u.userId = fileNameList[0];
+                u.userName = fileNameList[0];
+                u.direct = 0;
+            }
+            if (fileNameList.Length == 2)
+            {
+                u.userId = fileNameList[0];
+                u.userName = fileNameList[1];
+                u.direct = 0;
+            }
+            if (fileNameList.Length == 3)
+            {
+                u.userId = fileNameList[0];
+                u.userName = fileNameList[1];
+                u.direct = Convert.ToInt32(fileNameList[2]);
+            }
+            
+            u.imageBase64 = ImgToBase64String(file.FullName);
+            showMsg("u.imageBase64 length:" + u.imageBase64.Length);
+
+            u.imageKey = GetFileMd5(file.FullName);
+            //u.imageId = fileNameList[0] + "_" + u.direct.ToString();
+            u.imageId = u.imageKey;
+            return u;
+            //string personId = aFile.Substring(aFile.LastIndexOf("\\") + 1, (aFile.LastIndexOf(".") - aFile.LastIndexOf("\\") - 1));
+        }
+        List<User> userList;
+        Dictionary<string, User> userDic;
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                stopwatch.Start();
+                DirectoryInfo di = new DirectoryInfo(FacePicPath);
+                FileInfo[] fis = di.GetFiles("*.jpg");
+                userList = new List<User>();
+                userDic = new Dictionary<string, User>();
+                //Parallel.ForEach(fis, b =>
+                foreach (FileInfo b in fis)
+                {
+                    stopwatchDetail.Reset();
+                    stopwatchDetail.Start();
+                    string aFile = b.Name;
+                    User u = GetUserByFileName(b);
+                    userList.Add(u);
+                    if (!userDic.ContainsKey(u.imageKey))
+                    {
+                        userDic.Add(u.imageKey, u);
+                    }
+                    stopwatchDetail.Stop();
+                    showMsg(string.Format("处理照片列表,FileName[{0}],用时[{1}],特征值[{2}]", b.Name, stopwatchDetail.ElapsedMilliseconds, u.imageKey));
+                }
+                //);
+                stopwatch.Stop();
+                showMsg(string.Format("处理总人数[{0}],用时[{1}]", fis.Length, stopwatch.ElapsedMilliseconds));
+            }catch(Exception ex)
+            {
+                showMsg(ex.ToString());
+            }
+        }
+
+
+        System.Diagnostics.Stopwatch stopwatchDetail = new System.Diagnostics.Stopwatch();
+        System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+
+        public delegate void dShowInfo(string str);
+        public void showMsg(string msg)
+        {
+            {
+                //在线程里以安全方式调用控件
+                if (receiveMsg.InvokeRequired)
+                {
+                    dShowInfo _myinvoke = new dShowInfo(showMsg);
+                    receiveMsg.Invoke(_myinvoke, new object[] { msg });
+                }
+                else
+                {
+                    string s = msg;
+                    if (!string.IsNullOrEmpty(msg))
+                    {
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("mm:ss"), msg);
+                    }
+                    else
+                    {
+                        s = "\r\n";
+                    }
+
+                    receiveMsg.AppendText(s);
+                    receiveMsg.Select(receiveMsg.Text.Length, 0);
+                    receiveMsg.ScrollToCaret();
+                }
+            }
+        }
+
+        private string GetImageKeyList()
+        {
+            string ret = "";
+            foreach(User us in userList)
+            {
+                ret += us.imageKey + ",";
+            }
+
+            return ret.ToString().TrimEnd(',');
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //删除imageKeyList之外的照片
+            string imageKeys = GetImageKeyList();
+            bool isDelete = true;
+            string postStr = string.Format("pass={0}&isDelete={1}&imageKeys={2}", Pass, isDelete.ToString().ToLower(),imageKeys);
+            //string urlOper = @"/person/createOrUpdate";
+            string urlOper=@"/user/findDifference";
+            string url = string.Format(@"{0}{1}", Url, urlOper);
+            ///person/createOrUpdate
+            showMsg("url:" + url);
+            showMsg("postStr:"+ postStr);
+
+           
+
+
+            string ReturnStr = "";
+            bool b=CHttpPost.Post(url, postStr, ref ReturnStr);
+            if (b)
+            {
+                showMsg(ReturnStr);
+                ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                if (res.success)
+                {
+                    //需要增加的
+                    List<string> imageKeyListAdd = JsonConvert.DeserializeObject<List<string>>(res.data);
+                    //需要删除的
+                    List<string> imageKeyListDelete = JsonConvert.DeserializeObject<List<string>>(res.msg);
+                    if (imageKeyListAdd == null)
+                    {
+                        imageKeyListAdd = new List<string>();
+                    }
+                    if (imageKeyListDelete == null)
+                    {
+                        imageKeyListDelete = new List<string>();
+                    }
+                    showMsg("需要增加的记录数：" + imageKeyListAdd.Count);
+                    showMsg("需要删除的记录数：" + imageKeyListDelete.Count);
+
+                    urlOper = @"/user/createOrUpdate";
+                    url = string.Format(@"{0}{1}", Url, urlOper);
+                    int i = 0;
+                    foreach (string key in imageKeyListAdd)
+                    {
+                        i++;
+                        ReturnStr = "";
+                        if (userDic.ContainsKey(key))
+                        {
+                            User u = userDic[key];
+                            postStr = string.Format("pass={0}&user={1}", Pass, JsonConvert.SerializeObject(u));
+                            CHttpPost.Post(url, postStr, ref ReturnStr);
+                            showMsg(string.Format("增加照片[{0}/{1}],FileName[{2}],特征值[{3}]，ReturnStr[{4}]", i, imageKeyListAdd.Count, u.userName, u.imageKey, ReturnStr));
+                        }
+
+                    }
+                }
+                else
+                {
+                    showMsg("有返回，但出错了：" + res.msg);
+                }
+            }
+            else
+            {
+                showMsg("通讯失败");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            receiveMsg.Clear();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            string testStr = "1234567890";
+            byte[] arr = System.Text.Encoding.Default.GetBytes(testStr);
+            showMsg("arr len:"+ arr.Length);
+            string s= Convert.ToBase64String(arr);
+            showMsg(s);
         }
     }
 }
