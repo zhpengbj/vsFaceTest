@@ -52,7 +52,16 @@ namespace FaceTest
             {
             }
         }
-        private String FacePicPath = Application.StartupPath + @"\FacePicTest2\";
+        private String FacePicPath = Application.StartupPath + @"\FacePicTest\";
+
+        /// <summary>
+        /// 照片文件对应的key,只在的文件目录
+        /// </summary>
+        private String FacePicDataPath = Application.StartupPath + @"\FacePicKey\";
+        /// <summary>
+        /// 出错文件 
+        /// </summary>
+        private String FacePicErrPath = Application.StartupPath + @"\FacePicErr\";
         private void button2_Click(object sender, EventArgs e)
         {
             label1.Text = Application.StartupPath +String.Format(@"\{0}\",tb_Path);
@@ -166,7 +175,8 @@ namespace FaceTest
             User u = new User();
             //得到文件名。不包括扩展名
             string fileName = file.Name.Substring(file.Name.LastIndexOf("\\") + 1, (file.Name.LastIndexOf(".") - file.Name.LastIndexOf("\\") - 1));
-
+            u.FileName = fileName;
+            u.FilePath = file.FullName;
             string[] fileNameList = fileName.Split('_');
             if (fileNameList.Length == 1)
             {
@@ -186,11 +196,19 @@ namespace FaceTest
                 u.userName = fileNameList[1];
                 u.direct = Convert.ToInt32(fileNameList[2]);
             }
-            
-            u.imageBase64 = ImgToBase64String(file.FullName);
+            string fileNameKey = FacePicDataPath + u.FileName + "_Key.dat";
+            string fileNameBase64 = FacePicDataPath + u.FileName + "_Base64.dat"; ;
+            if (!System.IO.File.Exists(fileNameKey))
+            {
+                u.imageBase64 = ImgToBase64String(file.FullName);
+                u.imageKey = GetFileMd5(file.FullName);
+            }
+            else
+            {
+                u.imageBase64 = System.IO.File.ReadAllText(fileNameBase64);
+                u.imageKey = System.IO.File.ReadAllText(fileNameKey);
+            }
             showMsg("u.imageBase64 length:" + u.imageBase64.Length);
-
-            u.imageKey = GetFileMd5(file.FullName);
             //u.imageId = fileNameList[0] + "_" + u.direct.ToString();
             u.imageId = u.imageKey;
             return u;
@@ -207,8 +225,8 @@ namespace FaceTest
                 FileInfo[] fis = di.GetFiles("*.jpg");
                 userList = new List<User>();
                 userDic = new Dictionary<string, User>();
-                //Parallel.ForEach(fis, b =>
-                foreach (FileInfo b in fis)
+                Parallel.ForEach(fis, b =>
+                //foreach (FileInfo b in fis)
                 {
                     stopwatchDetail.Reset();
                     stopwatchDetail.Start();
@@ -219,10 +237,15 @@ namespace FaceTest
                     {
                         userDic.Add(u.imageKey, u);
                     }
+                    if (cb_saveImageKey.Checked)
+                    {
+                        System.IO.File.WriteAllText(FacePicDataPath + u.FileName + "_Key.dat", u.imageKey);
+                        System.IO.File.WriteAllText(FacePicDataPath + u.FileName + "_Base64.dat", u.imageBase64);
+                    }
                     stopwatchDetail.Stop();
                     showMsg(string.Format("处理照片列表,FileName[{0}],用时[{1}],特征值[{2}]", b.Name, stopwatchDetail.ElapsedMilliseconds, u.imageKey));
                 }
-                //);
+                );
                 stopwatch.Stop();
                 showMsg(string.Format("处理总人数[{0}],用时[{1}]", fis.Length, stopwatch.ElapsedMilliseconds));
             }catch(Exception ex)
@@ -324,8 +347,26 @@ namespace FaceTest
                         {
                             User u = userDic[key];
                             postStr = string.Format("pass={0}&user={1}", Pass, JsonConvert.SerializeObject(u));
-                            CHttpPost.Post(url, postStr, ref ReturnStr);
+                            bool bcreateImage=CHttpPost.Post(url, postStr, ref ReturnStr);
                             showMsg(string.Format("增加照片[{0}/{1}],FileName[{2}],特征值[{3}]，ReturnStr[{4}]", i, imageKeyListAdd.Count, u.userName, u.imageKey, ReturnStr));
+                            if (bcreateImage)
+                            {
+                                res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                                if (res.success)
+                                {
+                                    showMsg("");
+                                }
+                                else
+                                {
+                                    showMsg(string.Format("有返回，但出错了[{0}]:{1}" ,res.msgtype, res.msg));
+                                    File.Copy(u.FilePath, res.msgtype+FacePicErrPath + u.FileName+".jpg");
+                                }
+                                        
+                            }
+                            else
+                            {
+                                showMsg("通讯失败");
+                            }
                         }
 
                     }

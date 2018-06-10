@@ -42,6 +42,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.cb_saveImageKey = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,7 +106,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(149, 36);
             this.button5.TabIndex = 5;
-            this.button5.Text = "得到照片数据";
+            this.button5.Text = "处理照片";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -173,11 +174,24 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // cb_saveImageKey
+            // 
+            this.cb_saveImageKey.AutoSize = true;
+            this.cb_saveImageKey.Checked = true;
+            this.cb_saveImageKey.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_saveImageKey.Location = new System.Drawing.Point(196, 209);
+            this.cb_saveImageKey.Name = "cb_saveImageKey";
+            this.cb_saveImageKey.Size = new System.Drawing.Size(119, 19);
+            this.cb_saveImageKey.TabIndex = 13;
+            this.cb_saveImageKey.Text = "保存照片特征";
+            this.cb_saveImageKey.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1183, 601);
+            this.Controls.Add(this.cb_saveImageKey);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -215,6 +229,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.CheckBox cb_saveImageKey;
     }
 }
 

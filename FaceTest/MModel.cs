@@ -15,6 +15,11 @@ namespace FaceTest
         public string imageBase64 { get; set; }
         public int direct { get; set; }
 
+        [Newtonsoft.Json.JsonIgnore]
+        public string FilePath { get; set; }
+        [Newtonsoft.Json.JsonIgnore]
+        public string FileName { get; set; }
+
     }
     public class ResultInfo
     {
