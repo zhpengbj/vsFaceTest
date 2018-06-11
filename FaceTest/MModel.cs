@@ -5,6 +5,9 @@ using System.Text;
 
 namespace FaceTest
 {
+    /// <summary>
+    /// 人员，照片类
+    /// </summary>
     public class User
     {
         public string userId { get; set; }
@@ -21,6 +24,9 @@ namespace FaceTest
         public string FileName { get; set; }
 
     }
+    /// <summary>
+    /// 结果 
+    /// </summary>
     public class ResultInfo
     {
         public bool success { get; set; }
@@ -28,5 +34,22 @@ namespace FaceTest
         public int msgtype { get; set; }
         public string msg { get; set; }
         public string data { get; set; }
+    }
+    /// <summary>
+    /// 接收到人脸验证记录
+    /// </summary>
+    public class Verify
+    {
+        public string deviceKey { get; set; }
+        public string userId { get; set; }
+        public string userName { get; set; }
+        public string type { get; set; }
+        public string base64 { get; set; }
+
+    }
+    public class VerifyReturn
+    {
+        public int result { get; set; }
+        public string success { get; set; }
     }
 }

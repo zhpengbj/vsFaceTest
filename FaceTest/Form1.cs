@@ -13,6 +13,8 @@ using System.ServiceModel;
 
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using System.IO.Pipes;
+using System.Threading;
 
 namespace FaceTest
 {
@@ -64,7 +66,8 @@ namespace FaceTest
         private String FacePicErrPath = Application.StartupPath + @"\FacePicErr\";
         private void button2_Click(object sender, EventArgs e)
         {
-            label1.Text = Application.StartupPath +String.Format(@"\{0}\",tb_Path);
+            FacePicPath = Application.StartupPath + String.Format(@"\{0}\", tb_Path.Text);
+            label1.Text = FacePicPath;
         }
         private string Url = "";
         private void button3_Click(object sender, EventArgs e)
@@ -75,6 +78,43 @@ namespace FaceTest
         private void button4_Click(object sender, EventArgs e)
         {
             Pass = tb_Pass.Text;
+            try
+            {
+                button4.Enabled = false;
+                string postStr = string.Format("oldPass={0}&newPass={1}", Pass, Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setPassWord";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setPassWord 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button4.Enabled = true;
+
+            }
         }
         public string GetFileMd5(string filepath)
         {
@@ -131,7 +171,7 @@ namespace FaceTest
             {
                 byte[] arr = System.IO.File.ReadAllBytes(Imagefilename);
                 showMsg("ImgToBase64String arr length:" + arr.Length);
-                return Convert.ToBase64String(arr,Base64FormattingOptions.InsertLineBreaks);
+                return Convert.ToBase64String(arr, Base64FormattingOptions.InsertLineBreaks);
             }
             catch (Exception ex)
             {
@@ -220,13 +260,14 @@ namespace FaceTest
         {
             try
             {
+                button5.Enabled = false;
                 stopwatch.Start();
                 DirectoryInfo di = new DirectoryInfo(FacePicPath);
                 FileInfo[] fis = di.GetFiles("*.jpg");
                 userList = new List<User>();
                 userDic = new Dictionary<string, User>();
-                Parallel.ForEach(fis, b =>
-                //foreach (FileInfo b in fis)
+                //Parallel.ForEach(fis, b =>
+                foreach (FileInfo b in fis)
                 {
                     stopwatchDetail.Reset();
                     stopwatchDetail.Start();
@@ -245,12 +286,17 @@ namespace FaceTest
                     stopwatchDetail.Stop();
                     showMsg(string.Format("处理照片列表,FileName[{0}],用时[{1}],特征值[{2}]", b.Name, stopwatchDetail.ElapsedMilliseconds, u.imageKey));
                 }
-                );
+                //);
                 stopwatch.Stop();
                 showMsg(string.Format("处理总人数[{0}],用时[{1}]", fis.Length, stopwatch.ElapsedMilliseconds));
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 showMsg(ex.ToString());
+            }
+            finally
+            {
+                button5.Enabled = true;
             }
         }
 
@@ -290,7 +336,7 @@ namespace FaceTest
         private string GetImageKeyList()
         {
             string ret = "";
-            foreach(User us in userList)
+            foreach (User us in userList)
             {
                 ret += us.imageKey + ",";
             }
@@ -299,86 +345,94 @@ namespace FaceTest
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            //删除imageKeyList之外的照片
-            string imageKeys = GetImageKeyList();
-            bool isDelete = true;
-            string postStr = string.Format("pass={0}&isDelete={1}&imageKeys={2}", Pass, isDelete.ToString().ToLower(),imageKeys);
-            //string urlOper = @"/person/createOrUpdate";
-            string urlOper=@"/user/findDifference";
-            string url = string.Format(@"{0}{1}", Url, urlOper);
-            ///person/createOrUpdate
-            showMsg("url:" + url);
-            showMsg("postStr:"+ postStr);
-
-           
-
-
-            string ReturnStr = "";
-            bool b=CHttpPost.Post(url, postStr, ref ReturnStr);
-            if (b)
+            try
             {
-                showMsg(ReturnStr);
-                ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                if (res.success)
-                {
-                    //需要增加的
-                    List<string> imageKeyListAdd = JsonConvert.DeserializeObject<List<string>>(res.data);
-                    //需要删除的
-                    List<string> imageKeyListDelete = JsonConvert.DeserializeObject<List<string>>(res.msg);
-                    if (imageKeyListAdd == null)
-                    {
-                        imageKeyListAdd = new List<string>();
-                    }
-                    if (imageKeyListDelete == null)
-                    {
-                        imageKeyListDelete = new List<string>();
-                    }
-                    showMsg("需要增加的记录数：" + imageKeyListAdd.Count);
-                    showMsg("需要删除的记录数：" + imageKeyListDelete.Count);
+                button6.Enabled = false;
+                //删除imageKeyList之外的照片
+                string imageKeys = GetImageKeyList();
+                bool isDelete = true;
+                string postStr = string.Format("pass={0}&isDelete={1}&imageKeys={2}", Pass, isDelete.ToString().ToLower(), imageKeys);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/user/findDifference";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
 
-                    urlOper = @"/user/createOrUpdate";
-                    url = string.Format(@"{0}{1}", Url, urlOper);
-                    int i = 0;
-                    foreach (string key in imageKeyListAdd)
+
+
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
                     {
-                        i++;
-                        ReturnStr = "";
-                        if (userDic.ContainsKey(key))
+                        //需要增加的
+                        List<string> imageKeyListAdd = JsonConvert.DeserializeObject<List<string>>(res.data);
+                        //需要删除的
+                        List<string> imageKeyListDelete = JsonConvert.DeserializeObject<List<string>>(res.msg);
+                        if (imageKeyListAdd == null)
                         {
-                            User u = userDic[key];
-                            postStr = string.Format("pass={0}&user={1}", Pass, JsonConvert.SerializeObject(u));
-                            bool bcreateImage=CHttpPost.Post(url, postStr, ref ReturnStr);
-                            showMsg(string.Format("增加照片[{0}/{1}],FileName[{2}],特征值[{3}]，ReturnStr[{4}]", i, imageKeyListAdd.Count, u.userName, u.imageKey, ReturnStr));
-                            if (bcreateImage)
+                            imageKeyListAdd = new List<string>();
+                        }
+                        if (imageKeyListDelete == null)
+                        {
+                            imageKeyListDelete = new List<string>();
+                        }
+                        showMsg("需要增加的记录数：" + imageKeyListAdd.Count);
+                        showMsg("需要删除的记录数：" + imageKeyListDelete.Count);
+
+                        urlOper = @"/user/createOrUpdate";
+                        url = string.Format(@"{0}{1}", Url, urlOper);
+                        int i = 0;
+                        foreach (string key in imageKeyListAdd)
+                        {
+                            i++;
+                            ReturnStr = "";
+                            if (userDic.ContainsKey(key))
                             {
-                                res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                                if (res.success)
+                                User u = userDic[key];
+                                postStr = string.Format("pass={0}&user={1}", Pass, JsonConvert.SerializeObject(u));
+                                bool bcreateImage = CHttpPost.Post(url, postStr, ref ReturnStr);
+                                showMsg(string.Format("增加照片[{0}/{1}],FileName[{2}],特征值[{3}]，ReturnStr[{4}]", i, imageKeyListAdd.Count, u.userName, u.imageKey, ReturnStr));
+                                if (bcreateImage)
                                 {
-                                    showMsg("");
+                                    res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                                    if (res.success)
+                                    {
+                                        showMsg("");
+                                    }
+                                    else
+                                    {
+                                        showMsg(string.Format("有返回，但出错了[{0}]:{1}", res.msgtype, res.msg));
+                                        File.Copy(u.FilePath, FacePicErrPath + "err" + res.msgtype + "_" + u.FileName + ".jpg", true);
+                                    }
+
                                 }
                                 else
                                 {
-                                    showMsg(string.Format("有返回，但出错了[{0}]:{1}" ,res.msgtype, res.msg));
-                                    File.Copy(u.FilePath, res.msgtype+FacePicErrPath + u.FileName+".jpg");
+                                    showMsg("通讯失败");
                                 }
-                                        
                             }
-                            else
-                            {
-                                showMsg("通讯失败");
-                            }
-                        }
 
+                        }
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
                     }
                 }
                 else
                 {
-                    showMsg("有返回，但出错了：" + res.msg);
+                    showMsg("通讯失败");
                 }
             }
-            else
+            finally
             {
-                showMsg("通讯失败");
+                button6.Enabled = true;
             }
         }
 
@@ -391,9 +445,169 @@ namespace FaceTest
         {
             string testStr = "1234567890";
             byte[] arr = System.Text.Encoding.Default.GetBytes(testStr);
-            showMsg("arr len:"+ arr.Length);
-            string s= Convert.ToBase64String(arr);
+            showMsg("arr len:" + arr.Length);
+            string s = Convert.ToBase64String(arr);
             showMsg(s);
+        }
+
+        NamedPipeServerStream pipeServer = new NamedPipeServerStream("FaceTestPip", PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                pipeServer.BeginWaitForConnection((o) =>
+                {
+                    NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;
+                    server.EndWaitForConnection(o);
+                    StreamReader sr = new StreamReader(server);
+                    StreamWriter sw = new StreamWriter(server);
+                    string result = null;
+                    string clientName = server.GetImpersonationUserName();
+                    while (true)
+                    {
+                        result = sr.ReadLine();
+                        if (result == null || result == "bye")
+                            break;
+                        try
+                        {
+                            Verify v = JsonConvert.DeserializeObject<Verify>(result);
+                            showMsg(result);
+                            lb_PersonId.Text = v.userId;
+                            lb_PersonName.Text = v.userName;
+                        }catch(Exception ex)
+                        {
+                            showMsg(ex.ToString());
+                        }
+                        //showMsg(string.Format("clientName:[{0}],result:[{1}]", clientName, result));
+                    }
+                }, pipeServer);
+            });
+        }
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button8.Enabled = false;
+                string postStr = string.Format("pass={0}&callbackUrl={1}", Pass, tb_CallBackUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setIdentifyCallBack";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setIdentifyCallBack 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button8.Enabled = true;
+
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            tb_MachineCode.Text = "";
+            try
+            {
+                button9.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getMachineCode";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        tb_MachineCode.Text = res.data;
+                        showMsg("setPassWord 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button9.Enabled = true;
+
+            }
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button10.Enabled = false;
+                string postStr = string.Format("pass={0}&key={1}", Pass, tb_AuthorizeCode.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setAuthorize";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setPassWord 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button10.Enabled = true;
+
+            }
         }
     }
 }
