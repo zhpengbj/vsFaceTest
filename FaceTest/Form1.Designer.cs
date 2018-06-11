@@ -30,7 +30,6 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -51,7 +50,6 @@
             this.button9 = new System.Windows.Forms.Button();
             this.tb_AuthorizeCode = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,11 +72,6 @@
             this.button2.Text = "设置照片路径 ";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // fileSystemWatcher1
-            // 
-            this.fileSystemWatcher1.EnableRaisingEvents = true;
-            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // label1
             // 
@@ -201,7 +194,7 @@
             this.tb_CallBackUrl.Name = "tb_CallBackUrl";
             this.tb_CallBackUrl.Size = new System.Drawing.Size(400, 25);
             this.tb_CallBackUrl.TabIndex = 15;
-            this.tb_CallBackUrl.Text = "http://192.168.1.117:8733/FaceTest/Service1/PostTest";
+            this.tb_CallBackUrl.Text = "http://192.168.1.117:8091";
             // 
             // pictureBox1
             // 
@@ -293,7 +286,6 @@
             this.Name = "Form1";
             this.Text = "xFace";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -304,7 +296,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;

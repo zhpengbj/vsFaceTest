@@ -9,12 +9,15 @@ using System.Windows.Forms;
 
 using System.IO;
 
-using System.ServiceModel;
 
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.IO.Pipes;
 using System.Threading;
+
+using System.Net;
+using CassiniDev;
+
 
 namespace FaceTest
 {
@@ -29,29 +32,21 @@ namespace FaceTest
         {
             StartService();
         }
-        private ServiceHost serviceHost;
+        private static CassiniDev.CassiniDevServer _HttpServer;//网页服务器
+
         public void StartService()
         {
+            _HttpServer = new CassiniDevServer();
+            string path = Application.StartupPath + "\\Home";
+            int port = 8091;
             try
             {
-                if (serviceHost == null)
-                {
-                    serviceHost = new ServiceHost(typeof(FaceTest.Service1));
-                }
-                if ((serviceHost.State == CommunicationState.Closed) || (serviceHost.State == CommunicationState.Created))
-                    serviceHost.Open();
-
-                int count = serviceHost.BaseAddresses.Count;
-                for (int i = 0; i < count; i++)
-                {
-                }
-                count = serviceHost.Description.Endpoints.Count;
-                for (int j = 0; j < count; j++)
-                {
-                }
+                _HttpServer.StartServer(path, IPAddress.Any, port, "/", "");
+                showMsg("启动完成");
             }
             catch (Exception ex)
             {
+                showMsg(ex.ToString());
             }
         }
         private String FacePicPath = Application.StartupPath + @"\FacePicTest\";
@@ -470,8 +465,9 @@ namespace FaceTest
                             break;
                         try
                         {
-                            Verify v = JsonConvert.DeserializeObject<Verify>(result);
                             showMsg(result);
+                            Verify v = JsonConvert.DeserializeObject<Verify>(result);
+                            
                             lb_PersonId.Text = v.userId;
                             lb_PersonName.Text = v.userName;
                         }catch(Exception ex)
