@@ -18,15 +18,89 @@ using System.Threading;
 using System.Net;
 using CassiniDev;
 
-
 namespace FaceTest
 {
     public partial class Form1 : Form
     {
+
+        //private NamedPipeServerStream pipeServer;
+
+        private const string PipeName = "testpipe";
+
+        private const int PipeInBufferSize = 65535;
+
+        private const int PipeOutBufferSize = 65535;
+
+        private Encoding encoding = Encoding.UTF8;
+
+
         public Form1()
         {
             InitializeComponent();
+            //pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+            //pipeServer = new NamedPipeServerStream
+            //  (
+            //      PipeName,
+            //      PipeDirection.InOut,
+            //      4,
+            //      PipeTransmissionMode.Message,
+            //      PipeOptions.Asynchronous | PipeOptions.WriteThrough
+            //     // PipeInBufferSize,
+            //     // PipeOutBufferSize
+            //   );
         }
+        NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ThreadPool.QueueUserWorkItem(delegate
+            {
+                AsyncCallback aa = null;
+                pipeServer.BeginWaitForConnection(aa=(o) =>
+                {
+                    NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;
+                    server.EndWaitForConnection(o);
+                    StreamReader sr = new StreamReader(server);
+                    StreamWriter sw = new StreamWriter(server);
+                    string result = null;
+                    string clientName = server.GetImpersonationUserName();
+                    showMsg(clientName + "连接");
+                    while (server.IsConnected)
+                    {
+                        result = sr.ReadLine();
+                        if (result == null || result == "bye")
+                            break;
+                        showMsg(result);
+                        ShowInfo(result);
+                        //this.Invoke((MethodInvoker)delegate {
+                        //    receiveMsg.Select(receiveMsg.Text.Length, 0);
+                        //    receiveMsg.ScrollToCaret();
+                        //});
+                    }
+                    showMsg(clientName + "断开连接，等待新的连接");
+                    //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
+                    server.Disconnect();//服务器断开，很重要！
+                    server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
+                }, pipeServer);
+
+            });
+        }
+        private void ShowInfo(string result)
+        {
+            //showMsg(result);
+            Verify v = JsonConvert.DeserializeObject<Verify>(result);
+            if (v != null)
+            {
+                lb_PersonId.Text = v.userId;
+                lb_PersonName.Text = v.userName;
+            }
+            else
+            {
+                lb_PersonId.Text = "";
+                lb_PersonName.Text = "";
+            }
+
+        } 
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -445,40 +519,7 @@ namespace FaceTest
             showMsg(s);
         }
 
-        NamedPipeServerStream pipeServer = new NamedPipeServerStream("FaceTestPip", PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                pipeServer.BeginWaitForConnection((o) =>
-                {
-                    NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;
-                    server.EndWaitForConnection(o);
-                    StreamReader sr = new StreamReader(server);
-                    StreamWriter sw = new StreamWriter(server);
-                    string result = null;
-                    string clientName = server.GetImpersonationUserName();
-                    while (true)
-                    {
-                        result = sr.ReadLine();
-                        if (result == null || result == "bye")
-                            break;
-                        try
-                        {
-                            showMsg(result);
-                            Verify v = JsonConvert.DeserializeObject<Verify>(result);
-                            
-                            lb_PersonId.Text = v.userId;
-                            lb_PersonName.Text = v.userName;
-                        }catch(Exception ex)
-                        {
-                            showMsg(ex.ToString());
-                        }
-                        //showMsg(string.Format("clientName:[{0}],result:[{1}]", clientName, result));
-                    }
-                }, pipeServer);
-            });
-        }
+
 
         private void button8_Click_1(object sender, EventArgs e)
         {

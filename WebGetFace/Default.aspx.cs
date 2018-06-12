@@ -13,17 +13,10 @@ using System.Collections.Specialized;
 
 public partial class _Default : System.Web.UI.Page
 {
-    NamedPipeClientStream pipeClient =
-            new NamedPipeClientStream("127.0.0.1", "FaceTestPip",
-                PipeDirection.InOut, PipeOptions.Asynchronous,
-                TokenImpersonationLevel.None);
-    StreamWriter sw = null;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        //连接pipi，准备发送消息
-        pipeClient.Connect();
-        sw = new StreamWriter(pipeClient);
-        sw.AutoFlush = true;
+
         VerifyReturn result = new VerifyReturn();
         try
         {
@@ -37,18 +30,20 @@ public partial class _Default : System.Web.UI.Page
                 Verify = nvc["verify"];
             }
 
-            //发送消息
-            sw.WriteLine(Verify);
+            // string Verify = Request.Form["verify"];
 
-            
+            if (!string.IsNullOrEmpty(Verify))
+            {
+                SendMessage.GetSendMessage().Send(Verify);
+            }
             result.result = 1;
-            result.success = Verify;
+            result.success = DateTime.Now.ToString()+Verify;
             ReturnPost(result);
         }
         catch (Exception ex)
         {
             result.result = 1;
-            result.success = "false";
+            result.success = "false"+ex.ToString();
             ReturnPost(result);
         }
     }
@@ -79,5 +74,33 @@ public partial class _Default : System.Web.UI.Page
     {
         public int result { get; set; }
         public string success { get; set; }
+    }
+
+    public class SendMessage{
+        private static SendMessage one =null;
+        public static SendMessage GetSendMessage()
+        {
+            if (one == null)
+            {
+                one = new SendMessage();
+                one.init();
+            }
+            return one;
+        }
+        private NamedPipeClientStream pipeClient;
+        private StreamWriter sw;
+        private void init()
+        {
+            pipeClient = new NamedPipeClientStream("127.0.0.1", "testpipe", PipeDirection.InOut, PipeOptions.Asynchronous, TokenImpersonationLevel.None);
+            //连接pipi，准备发送消息
+            pipeClient.Connect();
+            sw = new StreamWriter(pipeClient); 
+            
+            sw.AutoFlush = true;
+        }
+        public void Send(string message)
+        {
+            sw.WriteLine(message);
+        }
     }
 }

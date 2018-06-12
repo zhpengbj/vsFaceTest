@@ -118,7 +118,7 @@
             this.tb_Url.Name = "tb_Url";
             this.tb_Url.Size = new System.Drawing.Size(218, 25);
             this.tb_Url.TabIndex = 6;
-            this.tb_Url.Text = "http://192.168.1.107:8090";
+            this.tb_Url.Text = "http://192.168.1.112:8090";
             // 
             // tb_Pass
             // 
@@ -194,7 +194,7 @@
             this.tb_CallBackUrl.Name = "tb_CallBackUrl";
             this.tb_CallBackUrl.Size = new System.Drawing.Size(400, 25);
             this.tb_CallBackUrl.TabIndex = 15;
-            this.tb_CallBackUrl.Text = "http://192.168.1.117:8091";
+            this.tb_CallBackUrl.Text = "http://192.168.1.117:8091/Handler.ashx";
             // 
             // pictureBox1
             // 
