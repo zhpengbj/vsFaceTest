@@ -88,16 +88,21 @@ namespace FaceTest
         {
             //showMsg(result);
             Verify v = JsonConvert.DeserializeObject<Verify>(result);
-            if (v != null)
+            this.Invoke((MethodInvoker)delegate
             {
-                lb_PersonId.Text = v.userId;
-                lb_PersonName.Text = v.userName;
-            }
-            else
-            {
-                lb_PersonId.Text = "";
-                lb_PersonName.Text = "";
-            }
+                if (v != null)
+                {
+                    lb_PersonId.Text = v.userId;
+                    lb_PersonName.Text = v.userName;
+                    showMsg(v.base64!=null? v.base64.Length.ToString():"");
+                }
+                else
+                {
+                    lb_PersonId.Text = "";
+                    lb_PersonName.Text = "";
+                }
+            });
+        
 
         } 
 

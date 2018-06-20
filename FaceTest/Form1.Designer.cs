@@ -104,7 +104,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(13, 272);
+            this.button5.Location = new System.Drawing.Point(13, 154);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(149, 36);
             this.button5.TabIndex = 5;
@@ -148,7 +148,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(13, 318);
+            this.button6.Location = new System.Drawing.Point(13, 200);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(149, 36);
             this.button6.TabIndex = 10;
@@ -158,7 +158,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(168, 318);
+            this.button7.Location = new System.Drawing.Point(168, 200);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(149, 36);
             this.button7.TabIndex = 11;
@@ -171,7 +171,7 @@
             this.cb_saveImageKey.AutoSize = true;
             this.cb_saveImageKey.Checked = true;
             this.cb_saveImageKey.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_saveImageKey.Location = new System.Drawing.Point(182, 282);
+            this.cb_saveImageKey.Location = new System.Drawing.Point(182, 164);
             this.cb_saveImageKey.Name = "cb_saveImageKey";
             this.cb_saveImageKey.Size = new System.Drawing.Size(119, 19);
             this.cb_saveImageKey.TabIndex = 13;
@@ -224,14 +224,14 @@
             // 
             // tb_MachineCode
             // 
-            this.tb_MachineCode.Location = new System.Drawing.Point(168, 160);
+            this.tb_MachineCode.Location = new System.Drawing.Point(168, 288);
             this.tb_MachineCode.Name = "tb_MachineCode";
             this.tb_MachineCode.Size = new System.Drawing.Size(218, 25);
             this.tb_MachineCode.TabIndex = 20;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(12, 154);
+            this.button9.Location = new System.Drawing.Point(12, 282);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(149, 36);
             this.button9.TabIndex = 19;
@@ -241,14 +241,14 @@
             // 
             // tb_AuthorizeCode
             // 
-            this.tb_AuthorizeCode.Location = new System.Drawing.Point(168, 202);
+            this.tb_AuthorizeCode.Location = new System.Drawing.Point(168, 330);
             this.tb_AuthorizeCode.Name = "tb_AuthorizeCode";
             this.tb_AuthorizeCode.Size = new System.Drawing.Size(218, 25);
             this.tb_AuthorizeCode.TabIndex = 22;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(12, 196);
+            this.button10.Location = new System.Drawing.Point(12, 324);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(149, 36);
             this.button10.TabIndex = 21;
