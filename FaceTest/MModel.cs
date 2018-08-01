@@ -10,12 +10,33 @@ namespace FaceTest
     /// </summary>
     public class User
     {
+        /// <summary>
+        /// 用户ID，唯一标识
+        /// </summary>
         public string userId { get; set; }
+        /// <summary>
+        /// 用户名字
+        /// </summary>
         public string userName { get; set; }
+        /// <summary>
+        /// 用户特征值 
+        /// </summary>
         public string userKey { get; set; }
+        /// <summary>
+        /// 照片的ID
+        /// </summary>
         public string imageId { get; set; }
+        /// <summary>
+        /// 照片的特征值 
+        /// </summary>
         public string imageKey { get; set; }
+        /// <summary>
+        /// 照片的Base64数据
+        /// </summary>
         public string imageBase64 { get; set; }
+        /// <summary>
+        /// 照片的序号，默认为0
+        /// </summary>
         public int direct { get; set; }
 
         [Newtonsoft.Json.JsonIgnore]

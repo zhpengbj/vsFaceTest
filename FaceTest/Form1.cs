@@ -512,9 +512,31 @@ namespace FaceTest
 
         private void button7_Click(object sender, EventArgs e)
         {
+            //showMsg(GetTimeStamp());
+            //showMsg(ConvertDateTimeInt(DateTime.Now).ToString());
             receiveMsg.Clear();
         }
+        /// <summary>  
+        /// 获取时间戳  
+        /// </summary>  
+        /// <returns></returns>  
+        public static string GetTimeStamp()
+        {
+            return "1529743361";
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalSeconds).ToString();
+        }
 
+        /// <summary>
+        /// DateTime时间格式转换为Unix时间戳格式
+        /// </summary>
+        /// <param name="time"> DateTime时间格式</param>
+        /// <returns>Unix时间戳格式</returns>
+        public static int ConvertDateTimeInt(System.DateTime time)
+        {
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+            return (int)(time - startTime).TotalSeconds;
+        }
         private void button8_Click(object sender, EventArgs e)
         {
             string testStr = "1234567890";
@@ -532,9 +554,9 @@ namespace FaceTest
             try
             {
                 button8.Enabled = false;
-                string postStr = string.Format("pass={0}&callbackUrl={1}", Pass, tb_CallBackUrl.Text.Trim());
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=1", Pass, tb_CallBackUrl.Text.Trim());
                 //string urlOper = @"/person/createOrUpdate";
-                string urlOper = @"/setIdentifyCallBack";
+                string urlOper = @"/setUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
                 ///person/createOrUpdate
                 showMsg("url:" + url);
@@ -548,7 +570,7 @@ namespace FaceTest
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
-                        showMsg("setIdentifyCallBack 成功");
+                        showMsg("setUrl 成功");
                     }
                     else
                     {
@@ -648,6 +670,181 @@ namespace FaceTest
             finally
             {
                 button10.Enabled = true;
+
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button8.Enabled = false;
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=2", Pass, bt_GetApkVersion.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button8.Enabled = true;
+
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button8.Enabled = false;
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=3", Pass, tb_DownApkUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button8.Enabled = true;
+
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            tb_MachineCode.Text = "";
+            try
+            {
+                button9.Enabled = false;
+                string postStr = string.Format("pass={0}&timestamp={1}", Pass,GetTimeStamp());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setTime";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        tb_MachineCode.Text = res.data;
+                        showMsg("setTime 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button9.Enabled = true;
+
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button8.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=4", Pass, tb_CallBackUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button8.Enabled = true;
 
             }
         }

@@ -1,4 +1,4 @@
-﻿<%@ WebHandler Language="C#" Class="Handler" %>
+﻿<%@ WebHandler Language="C#" Class="VerifyHandler" %>
 
 using System;
 using System.Web;
@@ -9,36 +9,41 @@ using System.IO.Pipes;
 using System.Security.Principal;
 using System.Collections.Specialized;
 
-public class Handler : IHttpHandler {
+public class VerifyHandler : IHttpHandler {
 
+    private static int COSTCOUNT = 100;
+    private static int NowCost = COSTCOUNT;
     public void ProcessRequest(HttpContext context)
     {
+
         context.Response.ContentType = "text/plain";
 
         VerifyReturn result = new VerifyReturn();
         try
         {
             string Verify = context.Request["verify"];
-
+            Verify v = null;
             if (!string.IsNullOrEmpty(Verify))
             {
-                SendMessage.GetSendMessage().Send(Verify);
+                v = JsonConvert.DeserializeObject<Verify>(Verify);
+                //SendMessage.GetSendMessage().Send(Verify);
             }
             else
             {
 
                 Verify = "not find Verify";
             }
+            NowCost--;
             result.result = 1;
             result.success = true;
-            result.msg=DateTime.Now.ToString()+":" + Verify;
+            result.msg = string.Format("你好,{0}" + Environment.NewLine + "总次数[{1}],剩余[{2}]", v != null ? v.userName:"未知", COSTCOUNT,NowCost);
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
         catch (Exception ex)
         {
             result.result = 1;
-            result.success = "false" + ex.ToString();
+            result.success = false;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
     }
@@ -90,9 +95,10 @@ public class Handler : IHttpHandler {
     {
         public int result { get; set; }
         public bool success { get; set; }
-
         public int msgtype { get; set; }
         public string msg { get; set; }
+
+
     }
 
 }
