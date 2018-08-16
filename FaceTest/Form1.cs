@@ -903,8 +903,54 @@ namespace FaceTest
                 button15.Enabled = false;
                 PassTimes _PassTimes = GetNewPassTimes();
                 string postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
-                //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/passtime/createOrUpdate";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("Set passtime 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button15.Enabled = true;
+
+            }
+
+
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+
+            Pass = tb_Pass.Text;
+            try
+            {
+                button15.Enabled = false;
+                UserSetPassTime _UserSetPassTime = new UserSetPassTime();
+                _UserSetPassTime.userId = textBox2.Text.Trim();
+                _UserSetPassTime.passTimeName = textBox3.Text.Trim();
+                PassTimes _PassTimes = GetNewPassTimes();
+                string postStr = string.Format("pass={0}&usersetpasstime={1}", Pass, JsonConvert.SerializeObject(_UserSetPassTime));
+                string urlOper = @"/user/setpasstime";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
                 ///person/createOrUpdate
                 showMsg("url:" + url);
@@ -918,7 +964,7 @@ namespace FaceTest
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
-                        showMsg("passtime 成功");
+                        showMsg("set user passtime 成功");
                     }
                     else
                     {
@@ -966,5 +1012,17 @@ namespace FaceTest
     {
         public string Name { get; set; }
         public List<PassTime> passTimeList { get; set; }
+    }
+
+    public class UserSetPassTime
+    {
+        /// <summary>
+        /// 用户ID 
+        /// </summary>
+        public string userId { get; set; }
+        /// <summary>
+        /// 时段的名称
+        /// </summary>
+        public string passTimeName { get; set; }
     }
 }

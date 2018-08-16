@@ -59,12 +59,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(13, 368);
+            this.button1.Location = new System.Drawing.Point(403, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(202, 36);
             this.button1.TabIndex = 0;
@@ -148,10 +151,10 @@
             // receiveMsg
             // 
             this.receiveMsg.Dock = System.Windows.Forms.DockStyle.Right;
-            this.receiveMsg.Location = new System.Drawing.Point(434, 0);
-            this.receiveMsg.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.receiveMsg.Location = new System.Drawing.Point(798, 0);
+            this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg.Name = "receiveMsg";
-            this.receiveMsg.Size = new System.Drawing.Size(749, 766);
+            this.receiveMsg.Size = new System.Drawing.Size(706, 766);
             this.receiveMsg.TabIndex = 9;
             this.receiveMsg.Text = "";
             // 
@@ -189,7 +192,8 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(13, 522);
+            this.button8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button8.Location = new System.Drawing.Point(403, 166);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(202, 36);
             this.button8.TabIndex = 14;
@@ -199,15 +203,16 @@
             // 
             // tb_CallBackUrl
             // 
-            this.tb_CallBackUrl.Location = new System.Drawing.Point(13, 564);
+            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl.Location = new System.Drawing.Point(403, 208);
             this.tb_CallBackUrl.Name = "tb_CallBackUrl";
-            this.tb_CallBackUrl.Size = new System.Drawing.Size(400, 25);
+            this.tb_CallBackUrl.Size = new System.Drawing.Size(373, 25);
             this.tb_CallBackUrl.TabIndex = 15;
             this.tb_CallBackUrl.Text = "http://192.168.8.100:8091/Handler.ashx";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(302, 396);
+            this.pictureBox1.Location = new System.Drawing.Point(660, 645);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(126, 101);
             this.pictureBox1.TabIndex = 16;
@@ -216,7 +221,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(323, 352);
+            this.lb_PersonId.Location = new System.Drawing.Point(681, 601);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -225,7 +230,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(321, 377);
+            this.lb_PersonName.Location = new System.Drawing.Point(679, 626);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -233,14 +238,14 @@
             // 
             // tb_MachineCode
             // 
-            this.tb_MachineCode.Location = new System.Drawing.Point(169, 290);
+            this.tb_MachineCode.Location = new System.Drawing.Point(168, 431);
             this.tb_MachineCode.Name = "tb_MachineCode";
             this.tb_MachineCode.Size = new System.Drawing.Size(218, 25);
             this.tb_MachineCode.TabIndex = 20;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(13, 283);
+            this.button9.Location = new System.Drawing.Point(12, 424);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(149, 36);
             this.button9.TabIndex = 19;
@@ -250,14 +255,14 @@
             // 
             // tb_AuthorizeCode
             // 
-            this.tb_AuthorizeCode.Location = new System.Drawing.Point(169, 332);
+            this.tb_AuthorizeCode.Location = new System.Drawing.Point(168, 473);
             this.tb_AuthorizeCode.Name = "tb_AuthorizeCode";
             this.tb_AuthorizeCode.Size = new System.Drawing.Size(218, 25);
             this.tb_AuthorizeCode.TabIndex = 22;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(13, 326);
+            this.button10.Location = new System.Drawing.Point(12, 467);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(149, 36);
             this.button10.TabIndex = 21;
@@ -267,16 +272,18 @@
             // 
             // bt_GetApkVersion
             // 
-            this.bt_GetApkVersion.Location = new System.Drawing.Point(13, 637);
+            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_GetApkVersion.Location = new System.Drawing.Point(403, 281);
             this.bt_GetApkVersion.Name = "bt_GetApkVersion";
-            this.bt_GetApkVersion.Size = new System.Drawing.Size(400, 25);
+            this.bt_GetApkVersion.Size = new System.Drawing.Size(373, 25);
             this.bt_GetApkVersion.TabIndex = 24;
             this.bt_GetApkVersion.Text = "http://192.168.8.100:8091/GetUpdate.ashx";
             this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(13, 595);
+            this.button11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button11.Location = new System.Drawing.Point(403, 239);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(202, 36);
             this.button11.TabIndex = 23;
@@ -286,15 +293,17 @@
             // 
             // tb_DownApkUrl
             // 
-            this.tb_DownApkUrl.Location = new System.Drawing.Point(13, 710);
+            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_DownApkUrl.Location = new System.Drawing.Point(403, 354);
             this.tb_DownApkUrl.Name = "tb_DownApkUrl";
-            this.tb_DownApkUrl.Size = new System.Drawing.Size(400, 25);
+            this.tb_DownApkUrl.Size = new System.Drawing.Size(373, 25);
             this.tb_DownApkUrl.TabIndex = 26;
             this.tb_DownApkUrl.Text = "http://192.168.8.100:8091/update.apk";
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(13, 668);
+            this.button12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button12.Location = new System.Drawing.Point(403, 312);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(202, 36);
             this.button12.TabIndex = 25;
@@ -304,7 +313,7 @@
             // 
             // tb_time
             // 
-            this.tb_time.Location = new System.Drawing.Point(168, 410);
+            this.tb_time.Location = new System.Drawing.Point(558, 54);
             this.tb_time.Name = "tb_time";
             this.tb_time.Size = new System.Drawing.Size(218, 25);
             this.tb_time.TabIndex = 28;
@@ -312,7 +321,7 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(12, 404);
+            this.button13.Location = new System.Drawing.Point(403, 48);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(149, 36);
             this.button13.TabIndex = 27;
@@ -323,15 +332,17 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 490);
+            this.textBox1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(403, 134);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 25);
+            this.textBox1.Size = new System.Drawing.Size(373, 25);
             this.textBox1.TabIndex = 30;
             this.textBox1.Text = "http://192.168.8.100:8091/VerifyHandler.ashx";
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(13, 447);
+            this.button14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button14.Location = new System.Drawing.Point(403, 91);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(202, 36);
             this.button14.TabIndex = 29;
@@ -349,11 +360,40 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(13, 285);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(149, 36);
+            this.button16.TabIndex = 32;
+            this.button16.Text = "设置人员时段";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(168, 291);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(148, 25);
+            this.textBox2.TabIndex = 33;
+            this.textBox2.Text = "zhp";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(168, 322);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(148, 25);
+            this.textBox3.TabIndex = 34;
+            this.textBox3.Text = "住宿生";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1183, 766);
+            this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button14);
@@ -427,6 +467,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 
