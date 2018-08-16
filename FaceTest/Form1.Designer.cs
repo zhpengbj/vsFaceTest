@@ -215,7 +215,7 @@
             this.tb_CallBackUrl.Name = "tb_CallBackUrl";
             this.tb_CallBackUrl.Size = new System.Drawing.Size(450, 28);
             this.tb_CallBackUrl.TabIndex = 15;
-            this.tb_CallBackUrl.Text = "http://192.168.8.100:8091/VerifyHandler.ashx";
+            this.tb_CallBackUrl.Text = "http://192.168.8.100:8091/Handler.ashx";
             // 
             // pictureBox1
             // 
@@ -351,7 +351,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(450, 28);
             this.textBox1.TabIndex = 30;
-            this.textBox1.Text = "http://192.168.8.100:8091/Handler.ashx";
+            this.textBox1.Text = "http://192.168.8.100:8091/VerifyHandler.ashx";
             // 
             // button14
             // 

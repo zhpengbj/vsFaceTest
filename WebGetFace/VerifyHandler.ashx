@@ -36,7 +36,7 @@ public class VerifyHandler : IHttpHandler {
             NowCost--;
             result.result = 1;
             result.success = true;
-            result.msg = string.Format("你好,{0}" + Environment.NewLine + "总次数[{1}],剩余[{2}]", v != null ? v.userName:"未知", COSTCOUNT,NowCost);
+            result.msg = string.Format("你好,{0}" + Environment.NewLine + "总次数[{1}],剩余[{2}]", v != null ? v.userName:"未知用户", COSTCOUNT,NowCost);
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
@@ -44,6 +44,8 @@ public class VerifyHandler : IHttpHandler {
         {
             result.result = 1;
             result.success = false;
+            result.msgtype = -100;
+            result.msg = ex.Message;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
     }

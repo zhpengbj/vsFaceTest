@@ -38,7 +38,9 @@ public class Handler : IHttpHandler {
         catch (Exception ex)
         {
             result.result = 1;
-            result.success = "false" + ex.ToString();
+            result.success = false;
+            result.msgtype = -100;
+            result.msg = ex.Message;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
     }

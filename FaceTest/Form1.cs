@@ -811,9 +811,9 @@ namespace FaceTest
             Pass = tb_Pass.Text;
             try
             {
-                button8.Enabled = false;
+                button14.Enabled = false;
                 //验证URL为type=4
-                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=4", Pass, tb_CallBackUrl.Text.Trim());
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=4", Pass, textBox1.Text.Trim());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -844,7 +844,7 @@ namespace FaceTest
             }
             finally
             {
-                button8.Enabled = true;
+                button14.Enabled = true;
 
             }
         }
