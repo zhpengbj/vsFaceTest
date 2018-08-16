@@ -52,35 +52,37 @@ namespace FaceTest
         NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
         private void Form1_Load(object sender, EventArgs e)
         {
+            button2_Click(null, null);
+
             ThreadPool.QueueUserWorkItem(delegate
             {
                 AsyncCallback aa = null;
-                pipeServer.BeginWaitForConnection(aa=(o) =>
-                {
-                    NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;
-                    server.EndWaitForConnection(o);
-                    StreamReader sr = new StreamReader(server);
-                    StreamWriter sw = new StreamWriter(server);
-                    string result = null;
-                    string clientName = server.GetImpersonationUserName();
-                    showMsg(clientName + "连接");
-                    while (server.IsConnected)
-                    {
-                        result = sr.ReadLine();
-                        if (result == null || result == "bye")
-                            break;
-                        showMsg(result);
-                        ShowInfo(result);
-                        //this.Invoke((MethodInvoker)delegate {
-                        //    receiveMsg.Select(receiveMsg.Text.Length, 0);
-                        //    receiveMsg.ScrollToCaret();
-                        //});
-                    }
-                    showMsg(clientName + "断开连接，等待新的连接");
-                    //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
-                    server.Disconnect();//服务器断开，很重要！
-                    server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
-                }, pipeServer);
+                pipeServer.BeginWaitForConnection(aa = (o) =>
+                  {
+                      NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;
+                      server.EndWaitForConnection(o);
+                      StreamReader sr = new StreamReader(server);
+                      StreamWriter sw = new StreamWriter(server);
+                      string result = null;
+                      string clientName = server.GetImpersonationUserName();
+                      showMsg(clientName + "连接");
+                      while (server.IsConnected)
+                      {
+                          result = sr.ReadLine();
+                          if (result == null || result == "bye")
+                              break;
+                          showMsg(result);
+                          ShowInfo(result);
+                          //this.Invoke((MethodInvoker)delegate {
+                          //    receiveMsg.Select(receiveMsg.Text.Length, 0);
+                          //    receiveMsg.ScrollToCaret();
+                          //});
+                      }
+                      showMsg(clientName + "断开连接，等待新的连接");
+                      //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
+                      server.Disconnect();//服务器断开，很重要！
+                      server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
+                  }, pipeServer);
 
             });
         }
@@ -94,7 +96,7 @@ namespace FaceTest
                 {
                     lb_PersonId.Text = v.userId;
                     lb_PersonName.Text = v.userName;
-                    showMsg(v.base64!=null? v.base64.Length.ToString():"");
+                    showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
                 }
                 else
                 {
@@ -102,9 +104,9 @@ namespace FaceTest
                     lb_PersonName.Text = "";
                 }
             });
-        
 
-        } 
+
+        }
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -406,6 +408,7 @@ namespace FaceTest
                 }
             }
         }
+
 
         private string GetImageKeyList()
         {
@@ -769,7 +772,7 @@ namespace FaceTest
             try
             {
                 button9.Enabled = false;
-                string postStr = string.Format("pass={0}&timestamp={1}", Pass,GetTimeStamp());
+                string postStr = string.Format("pass={0}&timestamp={1}", Pass, GetTimeStamp());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setTime";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -848,5 +851,120 @@ namespace FaceTest
 
             }
         }
+
+        private PassTimes GetNewPassTimes()
+        {
+            PassTimes res = new PassTimes();
+
+            res.Name = "住宿生";
+            res.passTimeList = new List<PassTime>();
+            PassTime _PassTime = new PassTime();
+            _PassTime.WeekList = new List<string>();
+            _PassTime.PassTimeByWeekList = new List<PassTimeOne>();
+            //周5的中午，下午放学时间
+            //星期5
+            _PassTime.WeekList.Add("5");
+
+            //中午
+            PassTimeOne _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "12:00:00";
+            _PassTimeOne.Dt2 = "13:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //下午
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "17:00:00";
+            _PassTimeOne.Dt2 = "18:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //加入
+            res.passTimeList.Add(_PassTime);
+
+            //星期天的下午
+            _PassTime = new PassTime();
+            _PassTime.WeekList = new List<string>();
+            _PassTime.PassTimeByWeekList = new List<PassTimeOne>();
+            //星期7
+            _PassTime.WeekList.Add("7");
+
+            //下午
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "17:00:00";
+            _PassTimeOne.Dt2 = "18:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //加入
+            res.passTimeList.Add(_PassTime);
+
+            return res;
+        }
+        private void button15_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button15.Enabled = false;
+                PassTimes _PassTimes = GetNewPassTimes();
+                string postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/passtime/createOrUpdate";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("passtime 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button15.Enabled = true;
+
+            }
+        }
+    }
+
+    public class PassTimeOne
+    {
+        /// <summary>
+        /// 开始时间 hh:mi:ss
+        /// </summary>
+        public String Dt1;
+        /// <summary>
+        /// 结果时间 hh:mi:ss
+        /// </summary>
+        public String Dt2;
+    }
+    public class PassTime
+    {
+
+        /// <summary>
+        /// 星期列表 值在[1，7]
+        /// </summary>
+        public List<String> WeekList;
+        /// <summary>
+        /// 时间段列表，可以多个
+        /// </summary>
+        public List<PassTimeOne> PassTimeByWeekList;
+    }
+    public class PassTimes
+    {
+        public string Name { get; set; }
+        public List<PassTime> passTimeList { get; set; }
     }
 }
