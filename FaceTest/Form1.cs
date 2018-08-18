@@ -88,8 +88,9 @@ namespace FaceTest
         }
         private void ShowInfo(string result)
         {
-            //showMsg(result);
-            Verify v = JsonConvert.DeserializeObject<Verify>(result);
+            //通过data:截取、得到接收的对象
+            string dataStr = result.Substring(result.IndexOf("data:") + 5, result.Length - result.IndexOf("data:") - 5);
+            Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
             this.Invoke((MethodInvoker)delegate
             {
                 if (v != null)
