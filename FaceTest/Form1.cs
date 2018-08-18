@@ -17,6 +17,7 @@ using System.Threading;
 
 using System.Net;
 using CassiniDev;
+using FaceTest.Properties;
 
 namespace FaceTest
 {
@@ -50,8 +51,41 @@ namespace FaceTest
             //   );
         }
         NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+        private Settings settings = new Settings();
+        /// <summary>
+        /// 读取设置项
+        /// </summary>
+        private void LoasData()
+        {
+            this.tb_Path.Text = settings.tb_Path;
+            this.tb_Url.Text = settings.tb_Url;
+            this.tb_Pass.Text = settings.tb_Pass;
+            this.tb_CallBackVerifyUrl.Text = settings.tb_CallBackVerifyUrl;
+            this.tb_CallBackUrl.Text = settings.tb_CallBackUrl;
+            this.bt_GetApkVersion.Text = settings.bt_GetApkVersion;
+            this.tb_DownApkUrl.Text = settings.tb_DownApkUrl;
+            this.tb_SetPassTime_UserId.Text = settings.tb_SetPassTime_UserId;
+            this.tb_SetPassTime_PassTimeName.Text = settings.tb_SetPassTime_PassTimeName;
+        }
+        /// <summary>
+        /// 保存设置项
+        /// </summary>
+        private void SaveData()
+        {
+            settings.tb_Path = this.tb_Path.Text.Trim();
+            settings.tb_Url = this.tb_Url.Text.Trim();
+            settings.tb_Pass = this.tb_Pass.Text.Trim();
+            settings.tb_CallBackVerifyUrl = this.tb_CallBackVerifyUrl.Text.Trim();
+            settings.tb_CallBackUrl = this.tb_CallBackUrl.Text.Trim();
+            settings.bt_GetApkVersion = this.bt_GetApkVersion.Text.Trim();
+            settings.tb_DownApkUrl = this.tb_DownApkUrl.Text.Trim();
+            settings.tb_SetPassTime_UserId = this.tb_SetPassTime_UserId.Text.Trim();
+            settings.tb_SetPassTime_PassTimeName = this.tb_SetPassTime_PassTimeName.Text.Trim();
+            settings.Save();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            LoasData();
             button2_Click(null, null);
 
             ThreadPool.QueueUserWorkItem(delegate
@@ -817,7 +851,7 @@ namespace FaceTest
             {
                 button14.Enabled = false;
                 //验证URL为type=4
-                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=4", Pass, textBox1.Text.Trim());
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=4", Pass, tb_CallBackVerifyUrl.Text.Trim());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -947,8 +981,8 @@ namespace FaceTest
             {
                 button15.Enabled = false;
                 UserSetPassTime _UserSetPassTime = new UserSetPassTime();
-                _UserSetPassTime.userId = textBox2.Text.Trim();
-                _UserSetPassTime.passTimeName = textBox3.Text.Trim();
+                _UserSetPassTime.userId = tb_SetPassTime_UserId.Text.Trim();
+                _UserSetPassTime.passTimeName = tb_SetPassTime_PassTimeName.Text.Trim();
                 PassTimes _PassTimes = GetNewPassTimes();
                 string postStr = string.Format("pass={0}&usersetpasstime={1}", Pass, JsonConvert.SerializeObject(_UserSetPassTime));
                 string urlOper = @"/user/setpasstime";
@@ -983,6 +1017,11 @@ namespace FaceTest
                 button15.Enabled = true;
 
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveData();
         }
     }
 

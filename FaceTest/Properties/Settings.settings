@@ -1,7 +1,33 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="FaceTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="tb_Path" Type="System.String" Scope="User">
+      <Value Profile="(Default)">FacePicTest2</Value>
+    </Setting>
+    <Setting Name="tb_Url" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.101:8090</Value>
+    </Setting>
+    <Setting Name="tb_Pass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">123</Value>
+    </Setting>
+    <Setting Name="tb_CallBackVerifyUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/VerifyHandler.ashx</Value>
+    </Setting>
+    <Setting Name="tb_CallBackUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/Handler.ashx</Value>
+    </Setting>
+    <Setting Name="bt_GetApkVersion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/GetUpdate.ashx</Value>
+    </Setting>
+    <Setting Name="tb_DownApkUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/update.apk</Value>
+    </Setting>
+    <Setting Name="tb_SetPassTime_UserId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zhp</Value>
+    </Setting>
+    <Setting Name="tb_SetPassTime_PassTimeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">住宿生</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

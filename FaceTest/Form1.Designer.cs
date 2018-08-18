@@ -34,15 +34,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.tb_Url = new System.Windows.Forms.TextBox();
-            this.tb_Pass = new System.Windows.Forms.TextBox();
-            this.tb_Path = new System.Windows.Forms.TextBox();
             this.receiveMsg = new System.Windows.Forms.RichTextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.cb_saveImageKey = new System.Windows.Forms.CheckBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lb_PersonId = new System.Windows.Forms.Label();
             this.lb_PersonName = new System.Windows.Forms.Label();
@@ -50,18 +46,22 @@
             this.button9 = new System.Windows.Forms.Button();
             this.tb_AuthorizeCode = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
-            this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.tb_time = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
+            this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
+            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
+            this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
+            this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
+            this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
+            this.tb_Path = new System.Windows.Forms.TextBox();
+            this.tb_Pass = new System.Windows.Forms.TextBox();
+            this.tb_Url = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,30 +124,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // tb_Url
-            // 
-            this.tb_Url.Location = new System.Drawing.Point(169, 77);
-            this.tb_Url.Name = "tb_Url";
-            this.tb_Url.Size = new System.Drawing.Size(218, 25);
-            this.tb_Url.TabIndex = 6;
-            this.tb_Url.Text = "http://192.168.8.101:8090";
-            // 
-            // tb_Pass
-            // 
-            this.tb_Pass.Location = new System.Drawing.Point(169, 118);
-            this.tb_Pass.Name = "tb_Pass";
-            this.tb_Pass.Size = new System.Drawing.Size(218, 25);
-            this.tb_Pass.TabIndex = 7;
-            this.tb_Pass.Text = "123";
-            // 
-            // tb_Path
-            // 
-            this.tb_Path.Location = new System.Drawing.Point(168, 18);
-            this.tb_Path.Name = "tb_Path";
-            this.tb_Path.Size = new System.Drawing.Size(218, 25);
-            this.tb_Path.TabIndex = 8;
-            this.tb_Path.Text = "FacePicTest2";
-            // 
             // receiveMsg
             // 
             this.receiveMsg.Dock = System.Windows.Forms.DockStyle.Right;
@@ -200,15 +176,6 @@
             this.button8.Text = "设置识别回调URL";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click_1);
-            // 
-            // tb_CallBackUrl
-            // 
-            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl.Location = new System.Drawing.Point(403, 208);
-            this.tb_CallBackUrl.Name = "tb_CallBackUrl";
-            this.tb_CallBackUrl.Size = new System.Drawing.Size(373, 25);
-            this.tb_CallBackUrl.TabIndex = 15;
-            this.tb_CallBackUrl.Text = "http://192.168.8.100:8091/Handler.ashx";
             // 
             // pictureBox1
             // 
@@ -270,16 +237,6 @@
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // bt_GetApkVersion
-            // 
-            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_GetApkVersion.Location = new System.Drawing.Point(403, 281);
-            this.bt_GetApkVersion.Name = "bt_GetApkVersion";
-            this.bt_GetApkVersion.Size = new System.Drawing.Size(373, 25);
-            this.bt_GetApkVersion.TabIndex = 24;
-            this.bt_GetApkVersion.Text = "http://192.168.8.100:8091/GetUpdate.ashx";
-            this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -290,15 +247,6 @@
             this.button11.Text = "设置查看版本号URL";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // tb_DownApkUrl
-            // 
-            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_DownApkUrl.Location = new System.Drawing.Point(403, 354);
-            this.tb_DownApkUrl.Name = "tb_DownApkUrl";
-            this.tb_DownApkUrl.Size = new System.Drawing.Size(373, 25);
-            this.tb_DownApkUrl.TabIndex = 26;
-            this.tb_DownApkUrl.Text = "http://192.168.8.100:8091/update.apk";
             // 
             // button12
             // 
@@ -329,15 +277,6 @@
             this.button13.UseVisualStyleBackColor = true;
             this.button13.Visible = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox1.Location = new System.Drawing.Point(403, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(373, 25);
-            this.textBox1.TabIndex = 30;
-            this.textBox1.Text = "http://192.168.8.100:8091/VerifyHandler.ashx";
             // 
             // button14
             // 
@@ -370,32 +309,102 @@
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
-            // textBox2
+            // tb_SetPassTime_PassTimeName
             // 
-            this.textBox2.Location = new System.Drawing.Point(168, 291);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 25);
-            this.textBox2.TabIndex = 33;
-            this.textBox2.Text = "zhp";
+            this.tb_SetPassTime_PassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_PassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(168, 322);
+            this.tb_SetPassTime_PassTimeName.Name = "tb_SetPassTime_PassTimeName";
+            this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(148, 25);
+            this.tb_SetPassTime_PassTimeName.TabIndex = 34;
+            this.tb_SetPassTime_PassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_PassTimeName;
             // 
-            // textBox3
+            // tb_SetPassTime_UserId
             // 
-            this.textBox3.Location = new System.Drawing.Point(168, 322);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 25);
-            this.textBox3.TabIndex = 34;
-            this.textBox3.Text = "住宿生";
+            this.tb_SetPassTime_UserId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(168, 291);
+            this.tb_SetPassTime_UserId.Name = "tb_SetPassTime_UserId";
+            this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(148, 25);
+            this.tb_SetPassTime_UserId.TabIndex = 33;
+            this.tb_SetPassTime_UserId.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_UserId;
+            // 
+            // tb_CallBackVerifyUrl
+            // 
+            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackVerifyUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(403, 134);
+            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
+            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(373, 25);
+            this.tb_CallBackVerifyUrl.TabIndex = 30;
+            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackVerifyUrl;
+            // 
+            // tb_DownApkUrl
+            // 
+            this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_DownApkUrl.Location = new System.Drawing.Point(403, 354);
+            this.tb_DownApkUrl.Name = "tb_DownApkUrl";
+            this.tb_DownApkUrl.Size = new System.Drawing.Size(373, 25);
+            this.tb_DownApkUrl.TabIndex = 26;
+            this.tb_DownApkUrl.Text = global::FaceTest.Properties.Settings.Default.tb_DownApkUrl;
+            // 
+            // bt_GetApkVersion
+            // 
+            this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_GetApkVersion.Location = new System.Drawing.Point(403, 281);
+            this.bt_GetApkVersion.Name = "bt_GetApkVersion";
+            this.bt_GetApkVersion.Size = new System.Drawing.Size(373, 25);
+            this.bt_GetApkVersion.TabIndex = 24;
+            this.bt_GetApkVersion.Text = global::FaceTest.Properties.Settings.Default.bt_GetApkVersion;
+            this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // tb_CallBackUrl
+            // 
+            this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl.Location = new System.Drawing.Point(403, 208);
+            this.tb_CallBackUrl.Name = "tb_CallBackUrl";
+            this.tb_CallBackUrl.Size = new System.Drawing.Size(373, 25);
+            this.tb_CallBackUrl.TabIndex = 15;
+            this.tb_CallBackUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
+            // 
+            // tb_Path
+            // 
+            this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Path.Location = new System.Drawing.Point(168, 18);
+            this.tb_Path.Name = "tb_Path";
+            this.tb_Path.Size = new System.Drawing.Size(218, 25);
+            this.tb_Path.TabIndex = 8;
+            this.tb_Path.Text = global::FaceTest.Properties.Settings.Default.tb_Path;
+            // 
+            // tb_Pass
+            // 
+            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Pass.Location = new System.Drawing.Point(169, 118);
+            this.tb_Pass.Name = "tb_Pass";
+            this.tb_Pass.Size = new System.Drawing.Size(218, 25);
+            this.tb_Pass.TabIndex = 7;
+            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            // 
+            // tb_Url
+            // 
+            this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Url.Location = new System.Drawing.Point(169, 77);
+            this.tb_Url.Name = "tb_Url";
+            this.tb_Url.Size = new System.Drawing.Size(218, 25);
+            this.tb_Url.TabIndex = 6;
+            this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tb_SetPassTime_PassTimeName);
+            this.Controls.Add(this.tb_SetPassTime_UserId);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.button15);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_CallBackVerifyUrl);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.tb_time);
             this.Controls.Add(this.button13);
@@ -427,6 +436,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "xFace";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -464,12 +474,12 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TextBox tb_time;
         private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tb_CallBackVerifyUrl;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tb_SetPassTime_UserId;
+        private System.Windows.Forms.TextBox tb_SetPassTime_PassTimeName;
     }
 }
 

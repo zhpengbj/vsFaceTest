@@ -22,5 +22,113 @@ namespace FaceTest.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("FacePicTest2")]
+        public string tb_Path {
+            get {
+                return ((string)(this["tb_Path"]));
+            }
+            set {
+                this["tb_Path"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.101:8090")]
+        public string tb_Url {
+            get {
+                return ((string)(this["tb_Url"]));
+            }
+            set {
+                this["tb_Url"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("123")]
+        public string tb_Pass {
+            get {
+                return ((string)(this["tb_Pass"]));
+            }
+            set {
+                this["tb_Pass"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/VerifyHandler.ashx")]
+        public string tb_CallBackVerifyUrl {
+            get {
+                return ((string)(this["tb_CallBackVerifyUrl"]));
+            }
+            set {
+                this["tb_CallBackVerifyUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/Handler.ashx")]
+        public string tb_CallBackUrl {
+            get {
+                return ((string)(this["tb_CallBackUrl"]));
+            }
+            set {
+                this["tb_CallBackUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/GetUpdate.ashx")]
+        public string bt_GetApkVersion {
+            get {
+                return ((string)(this["bt_GetApkVersion"]));
+            }
+            set {
+                this["bt_GetApkVersion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/update.apk")]
+        public string tb_DownApkUrl {
+            get {
+                return ((string)(this["tb_DownApkUrl"]));
+            }
+            set {
+                this["tb_DownApkUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        public string tb_SetPassTime_UserId {
+            get {
+                return ((string)(this["tb_SetPassTime_UserId"]));
+            }
+            set {
+                this["tb_SetPassTime_UserId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("住宿生")]
+        public string tb_SetPassTime_PassTimeName {
+            get {
+                return ((string)(this["tb_SetPassTime_PassTimeName"]));
+            }
+            set {
+                this["tb_SetPassTime_PassTimeName"] = value;
+            }
+        }
     }
 }
