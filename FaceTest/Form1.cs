@@ -55,7 +55,7 @@ namespace FaceTest
         /// <summary>
         /// 读取设置项
         /// </summary>
-        private void LoasData()
+        private void LoadData()
         {
             this.tb_Path.Text = settings.tb_Path;
             this.tb_Url.Text = settings.tb_Url;
@@ -67,6 +67,7 @@ namespace FaceTest
             this.tb_SetPassTime_UserId.Text = settings.tb_SetPassTime_UserId;
             this.tb_SetPassTime_PassTimeName.Text = settings.tb_SetPassTime_PassTimeName;
             this.tb_HeartBeatUrl.Text = settings.tb_HeartBeatUrl;
+            this.tb_DeletePassTimeName.Text = settings.tb_DeletePassTimeName;
         }
         /// <summary>
         /// 保存设置项
@@ -83,12 +84,12 @@ namespace FaceTest
             settings.tb_SetPassTime_UserId = this.tb_SetPassTime_UserId.Text.Trim();
             settings.tb_SetPassTime_PassTimeName = this.tb_SetPassTime_PassTimeName.Text.Trim();
             settings.tb_HeartBeatUrl = this.tb_HeartBeatUrl.Text.Trim();
-            
+            settings.tb_DeletePassTimeName = this.tb_DeletePassTimeName.Text.Trim();
             settings.Save();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoasData();
+            LoadData();
             //设置照片路径
             button2_Click(null, null);
             //设置设备URL
@@ -1262,6 +1263,46 @@ namespace FaceTest
 
             }
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button18.Enabled = false;
+                string postStr = string.Format("pass={0}&passtimename={1}", Pass, tb_DeletePassTimeName.Text.Trim());
+                string urlOper = @"/passtime/delete";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg(string.Format("passtime delete[{0}] 成功", tb_DeletePassTimeName.Text.Trim()));
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+            }
+            finally
+            {
+                button18.Enabled = true;
+
+            }
+        }
+            
     }
 
     public class PassTimeOne

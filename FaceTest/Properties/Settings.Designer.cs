@@ -142,5 +142,17 @@ namespace FaceTest.Properties {
                 this["tb_HeartBeatUrl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("住宿生")]
+        public string tb_DeletePassTimeName {
+            get {
+                return ((string)(this["tb_DeletePassTimeName"]));
+            }
+            set {
+                this["tb_DeletePassTimeName"] = value;
+            }
+        }
     }
 }

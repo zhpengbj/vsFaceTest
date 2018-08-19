@@ -32,5 +32,8 @@
     <Setting Name="tb_HeartBeatUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.8.100:8091/HeartBeat.ashx</Value>
     </Setting>
+    <Setting Name="tb_DeletePassTimeName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">住宿生</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
