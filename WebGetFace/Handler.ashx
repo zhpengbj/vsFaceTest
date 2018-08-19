@@ -10,6 +10,9 @@ using System.Security.Principal;
 using System.Collections.Specialized;
 
 
+/// <summary>
+/// 人脸识别回调
+/// </summary>
 public class Handler : IHttpHandler {
 
     public void ProcessRequest(HttpContext context)
@@ -19,21 +22,21 @@ public class Handler : IHttpHandler {
         VerifyReturn result = new VerifyReturn();
         try
         {
-            string Verify = context.Request["verify"];
+            string rStr = context.Request["verify"];
 
-            if (!string.IsNullOrEmpty(Verify))
+            if (!string.IsNullOrEmpty(rStr))
             {
-                SendMessage.GetSendMessage().Send("Handler receive data:"+Verify);
+                SendMessage.GetSendMessage().Send("Handler receive data:"+rStr);
                 //SendMessage.GetSendMessage().Send(Verify);
             }
             else
             {
 
-                Verify = "not find Verify";
+                rStr = "not find Verify";
             }
             result.result = 1;
             result.success = true;
-            result.msg=DateTime.Now.ToString()+":" + Verify;
+            result.msg=DateTime.Now.ToString()+":" + rStr;
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }

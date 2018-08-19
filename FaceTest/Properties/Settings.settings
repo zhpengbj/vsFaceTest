@@ -21,13 +21,16 @@
       <Value Profile="(Default)">http://192.168.8.100:8091/GetUpdate.ashx</Value>
     </Setting>
     <Setting Name="tb_DownApkUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/update.apk</Value>
+      <Value Profile="(Default)">http://192.168.8.100:8091/HeartBeat.ashx</Value>
     </Setting>
     <Setting Name="tb_SetPassTime_UserId" Type="System.String" Scope="User">
       <Value Profile="(Default)">zhp</Value>
     </Setting>
     <Setting Name="tb_SetPassTime_PassTimeName" Type="System.String" Scope="User">
       <Value Profile="(Default)">住宿生</Value>
+    </Setting>
+    <Setting Name="tb_HeartBeatUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/HeartBeat.ashx</Value>
     </Setting>
   </Settings>
 </SettingsFile>

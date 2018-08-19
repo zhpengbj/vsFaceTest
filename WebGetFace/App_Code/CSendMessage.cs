@@ -55,3 +55,13 @@ public class VerifyReturn
     public int msgtype { get; set; }
     public string msg { get; set; }
 }
+
+public class DevicesHeartBeat
+{
+    public String deviceKey { get; set; }
+    public String time { get; set; }
+    public String ip { get; set; }
+    public int personCount { get; set; }
+    public int faceCount { get; set; }
+    public String version { get; set; }
+}

@@ -53,6 +53,8 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
+            this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
             this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
             this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
             this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
@@ -62,6 +64,8 @@
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tb_Url = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +104,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 36);
             this.button3.TabIndex = 3;
-            this.button3.Text = "设置Url ";
+            this.button3.Text = "设置人脸接口Url ";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -146,9 +150,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(168, 200);
+            this.button7.Location = new System.Drawing.Point(403, 536);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(149, 36);
+            this.button7.Size = new System.Drawing.Size(202, 36);
             this.button7.TabIndex = 11;
             this.button7.Text = "清空日志";
             this.button7.UseVisualStyleBackColor = true;
@@ -301,7 +305,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(13, 285);
+            this.button16.Location = new System.Drawing.Point(12, 312);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(149, 36);
             this.button16.TabIndex = 32;
@@ -309,21 +313,42 @@
             this.button16.UseVisualStyleBackColor = true;
             this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
+            // button17
+            // 
+            this.button17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button17.Location = new System.Drawing.Point(403, 385);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(202, 36);
+            this.button17.TabIndex = 35;
+            this.button17.Text = "设置心跳包URL";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // tb_HeartBeatUrl
+            // 
+            this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(403, 427);
+            this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
+            this.tb_HeartBeatUrl.Size = new System.Drawing.Size(373, 25);
+            this.tb_HeartBeatUrl.TabIndex = 36;
+            this.tb_HeartBeatUrl.Text = global::FaceTest.Properties.Settings.Default.tb_HeartBeatUrl;
+            // 
             // tb_SetPassTime_PassTimeName
             // 
             this.tb_SetPassTime_PassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_PassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(168, 322);
+            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(237, 354);
             this.tb_SetPassTime_PassTimeName.Name = "tb_SetPassTime_PassTimeName";
-            this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(148, 25);
+            this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(149, 25);
             this.tb_SetPassTime_PassTimeName.TabIndex = 34;
             this.tb_SetPassTime_PassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_PassTimeName;
             // 
             // tb_SetPassTime_UserId
             // 
             this.tb_SetPassTime_UserId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(168, 291);
+            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(68, 354);
             this.tb_SetPassTime_UserId.Name = "tb_SetPassTime_UserId";
-            this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(148, 25);
+            this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(91, 25);
             this.tb_SetPassTime_UserId.TabIndex = 33;
             this.tb_SetPassTime_UserId.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_UserId;
             // 
@@ -395,11 +420,33 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 359);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 15);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "人员ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(165, 359);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "时段名称";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tb_HeartBeatUrl);
+            this.Controls.Add(this.button17);
             this.Controls.Add(this.tb_SetPassTime_PassTimeName);
             this.Controls.Add(this.tb_SetPassTime_UserId);
             this.Controls.Add(this.button16);
@@ -480,6 +527,10 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.TextBox tb_SetPassTime_UserId;
         private System.Windows.Forms.TextBox tb_SetPassTime_PassTimeName;
+        private System.Windows.Forms.TextBox tb_HeartBeatUrl;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

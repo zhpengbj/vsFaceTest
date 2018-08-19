@@ -1,4 +1,4 @@
-﻿<%@ WebHandler Language="C#" Class="VerifyHandler" %>
+﻿<%@ WebHandler Language="C#" Class="HeartBeat" %>
 
 using System;
 using System.Web;
@@ -10,12 +10,11 @@ using System.Security.Principal;
 using System.Collections.Specialized;
 
 /// <summary>
-/// 平台验证
+/// 心跳包
 /// </summary>
-public class VerifyHandler : IHttpHandler {
+public class HeartBeat : IHttpHandler {
 
-    private static int COSTCOUNT = 100;
-    private static int NowCost = COSTCOUNT;
+    private static int HeartBeatCount = 0;
     public void ProcessRequest(HttpContext context)
     {
 
@@ -24,23 +23,26 @@ public class VerifyHandler : IHttpHandler {
         VerifyReturn result = new VerifyReturn();
         try
         {
-            string rStr = context.Request["verify"];
-            Verify v = null;
+            //接收到的数据
+            string rStr = context.Request["info"];
+            DevicesHeartBeat v = null;
             if (!string.IsNullOrEmpty(rStr))
             {
-                v = JsonConvert.DeserializeObject<Verify>(rStr);
-                SendMessage.GetSendMessage().Send("VerifyHandler receive data:"+rStr);
+
+                HeartBeatCount++;
+                v = JsonConvert.DeserializeObject<DevicesHeartBeat>(rStr);
+                SendMessage.GetSendMessage().Send(string.Format("HeartBeat receive[{0}] data:{1}",HeartBeatCount,rStr));
                 //SendMessage.GetSendMessage().Send(Verify);
             }
             else
             {
 
-                rStr = "not find Verify";
+                rStr = "not find info";
             }
-            NowCost--;
+            
             result.result = 1;
             result.success = true;
-            result.msg = string.Format("你好,{0}" + Environment.NewLine + "总次数[{1}],剩余[{2}]", v != null ? v.userName:"未知用户", COSTCOUNT,NowCost);
+            result.msg = rStr;
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }

@@ -66,6 +66,7 @@ namespace FaceTest
             this.tb_DownApkUrl.Text = settings.tb_DownApkUrl;
             this.tb_SetPassTime_UserId.Text = settings.tb_SetPassTime_UserId;
             this.tb_SetPassTime_PassTimeName.Text = settings.tb_SetPassTime_PassTimeName;
+            this.tb_HeartBeatUrl.Text = settings.tb_HeartBeatUrl;
         }
         /// <summary>
         /// 保存设置项
@@ -81,12 +82,17 @@ namespace FaceTest
             settings.tb_DownApkUrl = this.tb_DownApkUrl.Text.Trim();
             settings.tb_SetPassTime_UserId = this.tb_SetPassTime_UserId.Text.Trim();
             settings.tb_SetPassTime_PassTimeName = this.tb_SetPassTime_PassTimeName.Text.Trim();
+            settings.tb_HeartBeatUrl = this.tb_HeartBeatUrl.Text.Trim();
+            
             settings.Save();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             LoasData();
+            //设置照片路径
             button2_Click(null, null);
+            //设置设备URL
+            button3_Click(null, null);
 
             ThreadPool.QueueUserWorkItem(delegate
             {
@@ -120,8 +126,17 @@ namespace FaceTest
 
             });
         }
+        /// <summary>
+        /// 显示人员信息
+        /// </summary>
+        /// <param name="result"></param>
         private void ShowInfo(string result)
         {
+            if (result.IndexOf("HeartBeat receive") == -1)
+            {
+                //如果是心跳包数据，则退出
+                return;
+            }
             //通过data:截取、得到接收的对象
             string dataStr = result.Substring(result.IndexOf("data:") + 5, result.Length - result.IndexOf("data:") - 5);
             Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
@@ -455,6 +470,48 @@ namespace FaceTest
 
             return ret.ToString().TrimEnd(',');
         }
+        private void SendDevRefreshData()
+        {
+            tb_MachineCode.Text = "";
+            try
+            {
+                button9.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/refresh";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        tb_MachineCode.Text = res.data;
+                        showMsg("refresh 成功:"+res.msg);
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button9.Enabled = true;
+
+            }
+        }
         private void button6_Click(object sender, EventArgs e)
         {
             try
@@ -531,6 +588,8 @@ namespace FaceTest
                             }
 
                         }
+                        //处理完成后，发消息给设备更新数据
+                        SendDevRefreshData();
                     }
                     else
                     {
@@ -651,7 +710,7 @@ namespace FaceTest
                     if (res.success)
                     {
                         tb_MachineCode.Text = res.data;
-                        showMsg("setPassWord 成功");
+                        showMsg("getMachineCode 成功");
                     }
                     else
                     {
@@ -887,7 +946,14 @@ namespace FaceTest
             }
         }
 
-        private PassTimes GetNewPassTimes()
+        /// <summary>
+        /// 住宿生的时段数据
+        /// 有2组
+        /// 1（出校时间）:周5，时段:12:00:00-13:00:00,17:00:00-18:00:00
+        /// 2（回校时间）:周7，时段:17:00:00-18:00:00
+        /// </summary>
+        /// <returns></returns>
+        private PassTimes GetNewPassTimes1()
         {
             PassTimes res = new PassTimes();
 
@@ -930,13 +996,83 @@ namespace FaceTest
 
             return res;
         }
+        /// <summary>
+        /// 营业的时段数据
+        /// 周1-7
+        /// 时段:08:00:00-23:00:00
+        /// </summary>
+        /// <returns></returns>
+        private PassTimes GetNewPassTimes2()
+        {
+            PassTimes res = new PassTimes();
+
+            res.Name = "正常营业";
+            res.passTimeList = new List<PassTime>();
+            PassTime _PassTime = new PassTime();
+            _PassTime.WeekList = new List<string>();
+            _PassTime.PassTimeByWeekList = new List<PassTimeOne>();
+            _PassTime.WeekList.Add("1");
+            _PassTime.WeekList.Add("2");
+            _PassTime.WeekList.Add("3");
+            _PassTime.WeekList.Add("4");
+            _PassTime.WeekList.Add("5");
+            _PassTime.WeekList.Add("6");
+            _PassTime.WeekList.Add("7");
+
+            //时段
+            PassTimeOne _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "08:00:00";
+            _PassTimeOne.Dt2 = "23:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //加入
+            res.passTimeList.Add(_PassTime);
+            return res;
+        }
+        /// <summary>
+        /// 上下班(学)的时段数据
+        /// 周1-5
+        /// 时段:07:00:00-08:00:00,11:00:00-13:00:00,16:00:00-18:00:00,
+        /// </summary>
+        /// <returns></returns>
+        private PassTimes GetNewPassTimes3()
+        {
+            PassTimes res = new PassTimes();
+
+            res.Name = "上下班(学)";
+            res.passTimeList = new List<PassTime>();
+            PassTime _PassTime = new PassTime();
+            _PassTime.WeekList = new List<string>();
+            _PassTime.PassTimeByWeekList = new List<PassTimeOne>();
+            _PassTime.WeekList.Add("1");
+            _PassTime.WeekList.Add("2");
+            _PassTime.WeekList.Add("3");
+            _PassTime.WeekList.Add("4");
+            _PassTime.WeekList.Add("5");
+
+            //时段
+            PassTimeOne _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "07:00:00";
+            _PassTimeOne.Dt2 = "08:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "11:00:00";
+            _PassTimeOne.Dt2 = "13:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "16:00:00";
+            _PassTimeOne.Dt2 = "18:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //加入
+            res.passTimeList.Add(_PassTime);
+            return res;
+        }
         private void button15_Click(object sender, EventArgs e)
         {
             Pass = tb_Pass.Text;
             try
             {
                 button15.Enabled = false;
-                PassTimes _PassTimes = GetNewPassTimes();
+                PassTimes _PassTimes = GetNewPassTimes1();
                 string postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
                 string urlOper = @"/passtime/createOrUpdate";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -951,7 +1087,63 @@ namespace FaceTest
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
-                        showMsg("Set passtime 成功");
+                        showMsg(string.Format("Set passtime[{0}] 成功",_PassTimes.Name));
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+                //2
+                _PassTimes = GetNewPassTimes2();
+                postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
+                urlOper = @"/passtime/createOrUpdate";
+                url = string.Format(@"{0}{1}", Url, urlOper);
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                ReturnStr = "";
+                b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+                //3
+                _PassTimes = GetNewPassTimes3();
+                postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
+                urlOper = @"/passtime/createOrUpdate";
+                url = string.Format(@"{0}{1}", Url, urlOper);
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                ReturnStr = "";
+                b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
                     }
                     else
                     {
@@ -983,7 +1175,6 @@ namespace FaceTest
                 UserSetPassTime _UserSetPassTime = new UserSetPassTime();
                 _UserSetPassTime.userId = tb_SetPassTime_UserId.Text.Trim();
                 _UserSetPassTime.passTimeName = tb_SetPassTime_PassTimeName.Text.Trim();
-                PassTimes _PassTimes = GetNewPassTimes();
                 string postStr = string.Format("pass={0}&usersetpasstime={1}", Pass, JsonConvert.SerializeObject(_UserSetPassTime));
                 string urlOper = @"/user/setpasstime";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -1000,6 +1191,59 @@ namespace FaceTest
                     if (res.success)
                     {
                         showMsg("set user passtime 成功");
+
+                        //处理完成后，发消息给设备更新数据
+                        SendDevRefreshData();
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button15.Enabled = true;
+
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveData();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button17.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=5", Pass, tb_HeartBeatUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl 成功");
                     }
                     else
                     {
@@ -1014,14 +1258,9 @@ namespace FaceTest
             }
             finally
             {
-                button15.Enabled = true;
+                button17.Enabled = true;
 
             }
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveData();
         }
     }
 
