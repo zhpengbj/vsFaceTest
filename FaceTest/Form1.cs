@@ -133,7 +133,7 @@ namespace FaceTest
         /// <param name="result"></param>
         private void ShowInfo(string result)
         {
-            if (result.IndexOf("HeartBeat receive") == -1)
+            if (result.IndexOf("HeartBeat receive") == 0)
             {
                 //如果是心跳包数据，则退出
                 return;
@@ -147,7 +147,12 @@ namespace FaceTest
                 {
                     lb_PersonId.Text = v.userId;
                     lb_PersonName.Text = v.userName;
-                    showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
+                    lb_Path.Text = v.path;
+                    if (!string.IsNullOrEmpty(v.path))
+                    {
+                        pictureBox1.LoadAsync(v.path);
+                    }
+                    //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
                 }
                 else
                 {

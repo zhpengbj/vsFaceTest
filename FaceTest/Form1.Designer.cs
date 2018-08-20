@@ -54,6 +54,10 @@
             this.button15 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button18 = new System.Windows.Forms.Button();
+            this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
             this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
             this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
             this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
@@ -64,10 +68,7 @@
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tb_Url = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button18 = new System.Windows.Forms.Button();
-            this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
+            this.lb_Path = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +84,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 12);
+            this.button2.Location = new System.Drawing.Point(12, 117);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 36);
             this.button2.TabIndex = 1;
@@ -94,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 51);
+            this.label1.Location = new System.Drawing.Point(12, 156);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
@@ -102,7 +103,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(13, 71);
+            this.button3.Location = new System.Drawing.Point(11, 14);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 36);
             this.button3.TabIndex = 3;
@@ -112,7 +113,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(13, 112);
+            this.button4.Location = new System.Drawing.Point(11, 53);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(149, 36);
             this.button4.TabIndex = 4;
@@ -122,7 +123,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(13, 154);
+            this.button5.Location = new System.Drawing.Point(13, 176);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(149, 36);
             this.button5.TabIndex = 5;
@@ -142,7 +143,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(13, 200);
+            this.button6.Location = new System.Drawing.Point(12, 218);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(149, 36);
             this.button6.TabIndex = 10;
@@ -165,7 +166,7 @@
             this.cb_saveImageKey.AutoSize = true;
             this.cb_saveImageKey.Checked = true;
             this.cb_saveImageKey.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_saveImageKey.Location = new System.Drawing.Point(182, 164);
+            this.cb_saveImageKey.Location = new System.Drawing.Point(182, 186);
             this.cb_saveImageKey.Name = "cb_saveImageKey";
             this.cb_saveImageKey.Size = new System.Drawing.Size(119, 19);
             this.cb_saveImageKey.TabIndex = 13;
@@ -185,16 +186,17 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(660, 645);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 638);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 101);
+            this.pictureBox1.Size = new System.Drawing.Size(126, 116);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(681, 601);
+            this.lb_PersonId.Location = new System.Drawing.Point(15, 589);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -203,7 +205,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(679, 626);
+            this.lb_PersonName.Location = new System.Drawing.Point(164, 589);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -297,7 +299,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(13, 241);
+            this.button15.Location = new System.Drawing.Point(12, 299);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(149, 36);
             this.button15.TabIndex = 31;
@@ -307,7 +309,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(12, 323);
+            this.button16.Location = new System.Drawing.Point(11, 381);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(149, 36);
             this.button16.TabIndex = 32;
@@ -326,6 +328,43 @@
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 428);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 15);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "人员ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(164, 428);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "时段名称";
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(12, 341);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(149, 36);
+            this.button18.TabIndex = 39;
+            this.button18.Text = "删除时段权限";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // tb_DeletePassTimeName
+            // 
+            this.tb_DeletePassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeletePassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DeletePassTimeName.Location = new System.Drawing.Point(168, 349);
+            this.tb_DeletePassTimeName.Name = "tb_DeletePassTimeName";
+            this.tb_DeletePassTimeName.Size = new System.Drawing.Size(218, 25);
+            this.tb_DeletePassTimeName.TabIndex = 40;
+            this.tb_DeletePassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_DeletePassTimeName;
+            // 
             // tb_HeartBeatUrl
             // 
             this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -339,7 +378,7 @@
             // tb_SetPassTime_PassTimeName
             // 
             this.tb_SetPassTime_PassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_PassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(237, 365);
+            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(236, 423);
             this.tb_SetPassTime_PassTimeName.Name = "tb_SetPassTime_PassTimeName";
             this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(149, 25);
             this.tb_SetPassTime_PassTimeName.TabIndex = 34;
@@ -348,7 +387,7 @@
             // tb_SetPassTime_UserId
             // 
             this.tb_SetPassTime_UserId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(68, 365);
+            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(67, 423);
             this.tb_SetPassTime_UserId.Name = "tb_SetPassTime_UserId";
             this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(91, 25);
             this.tb_SetPassTime_UserId.TabIndex = 33;
@@ -398,7 +437,7 @@
             // tb_Path
             // 
             this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Path.Location = new System.Drawing.Point(168, 18);
+            this.tb_Path.Location = new System.Drawing.Point(168, 123);
             this.tb_Path.Name = "tb_Path";
             this.tb_Path.Size = new System.Drawing.Size(218, 25);
             this.tb_Path.TabIndex = 8;
@@ -407,7 +446,7 @@
             // tb_Pass
             // 
             this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Pass.Location = new System.Drawing.Point(169, 118);
+            this.tb_Pass.Location = new System.Drawing.Point(167, 59);
             this.tb_Pass.Name = "tb_Pass";
             this.tb_Pass.Size = new System.Drawing.Size(218, 25);
             this.tb_Pass.TabIndex = 7;
@@ -416,54 +455,27 @@
             // tb_Url
             // 
             this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Url.Location = new System.Drawing.Point(169, 77);
+            this.tb_Url.Location = new System.Drawing.Point(167, 20);
             this.tb_Url.Name = "tb_Url";
             this.tb_Url.Size = new System.Drawing.Size(218, 25);
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
-            // label2
+            // lb_Path
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 370);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 15);
-            this.label2.TabIndex = 37;
-            this.label2.Text = "人员ID";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(165, 370);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
-            this.label3.TabIndex = 38;
-            this.label3.Text = "时段名称";
-            // 
-            // button18
-            // 
-            this.button18.Location = new System.Drawing.Point(13, 283);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(149, 36);
-            this.button18.TabIndex = 39;
-            this.button18.Text = "删除时段权限";
-            this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.button18_Click);
-            // 
-            // tb_DeletePassTimeName
-            // 
-            this.tb_DeletePassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeletePassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_DeletePassTimeName.Location = new System.Drawing.Point(169, 291);
-            this.tb_DeletePassTimeName.Name = "tb_DeletePassTimeName";
-            this.tb_DeletePassTimeName.Size = new System.Drawing.Size(218, 25);
-            this.tb_DeletePassTimeName.TabIndex = 40;
-            this.tb_DeletePassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_DeletePassTimeName;
+            this.lb_Path.AutoSize = true;
+            this.lb_Path.Location = new System.Drawing.Point(15, 620);
+            this.lb_Path.Name = "lb_Path";
+            this.lb_Path.Size = new System.Drawing.Size(55, 15);
+            this.lb_Path.TabIndex = 41;
+            this.lb_Path.Text = "label4";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.lb_Path);
             this.Controls.Add(this.tb_DeletePassTimeName);
             this.Controls.Add(this.button18);
             this.Controls.Add(this.label3);
@@ -556,6 +568,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TextBox tb_DeletePassTimeName;
+        private System.Windows.Forms.Label lb_Path;
     }
 }
 

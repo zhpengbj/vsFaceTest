@@ -65,7 +65,7 @@ namespace FaceTest
         public string userId { get; set; }
         public string userName { get; set; }
         public string type { get; set; }
-        public string base64 { get; set; }
+        public string path { get; set; }
 
     }
     public class VerifyReturn
