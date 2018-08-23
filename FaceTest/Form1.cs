@@ -68,6 +68,13 @@ namespace FaceTest
             this.tb_SetPassTime_PassTimeName.Text = settings.tb_SetPassTime_PassTimeName;
             this.tb_HeartBeatUrl.Text = settings.tb_HeartBeatUrl;
             this.tb_DeletePassTimeName.Text = settings.tb_DeletePassTimeName;
+
+            this.tb_PersonAddOrUpdate_PersonId.Text = settings.tb_PersonAddOrUpdate_PersonId;
+            this.tb_PersonAddOrUpdate_PersonName.Text = settings.tb_PersonAddOrUpdate_PersonName;
+            this.tb_PersonDelete_PersonId.Text = settings.tb_PersonDelete_PersonId;
+            this.tb_PersonFind_PersonId.Text = settings.tb_PersonFind_PersonId;
+
+
         }
         /// <summary>
         /// 保存设置项
@@ -85,6 +92,11 @@ namespace FaceTest
             settings.tb_SetPassTime_PassTimeName = this.tb_SetPassTime_PassTimeName.Text.Trim();
             settings.tb_HeartBeatUrl = this.tb_HeartBeatUrl.Text.Trim();
             settings.tb_DeletePassTimeName = this.tb_DeletePassTimeName.Text.Trim();
+
+            settings.tb_PersonAddOrUpdate_PersonId = this.tb_PersonAddOrUpdate_PersonId.Text.Trim();
+            settings.tb_PersonAddOrUpdate_PersonName = this.tb_PersonAddOrUpdate_PersonName.Text.Trim();
+            settings.tb_PersonDelete_PersonId = this.tb_PersonDelete_PersonId.Text.Trim();
+            settings.tb_PersonFind_PersonId = this.tb_PersonFind_PersonId.Text.Trim();
             settings.Save();
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -123,6 +135,9 @@ namespace FaceTest
                       //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
                       server.Disconnect();//服务器断开，很重要！
                       server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
+                      Thread.Sleep(1000);
+                      //如果web服务异常停止，则重新启动
+                      StartService();
                   }, pipeServer);
 
             });
@@ -145,9 +160,9 @@ namespace FaceTest
             {
                 if (v != null)
                 {
-                    lb_PersonId.Text = v.userId;
-                    lb_PersonName.Text = v.userName;
-                    lb_Path.Text = v.path;
+                    lb_PersonId.Text = "用户ID:"+v.userId;
+                    lb_PersonName.Text = "用户姓名:" + v.userName;
+                    lb_Path.Text = "照片路径:" + v.path;
                     if (!string.IsNullOrEmpty(v.path))
                     {
                         pictureBox1.LoadAsync(v.path);
@@ -1307,9 +1322,180 @@ namespace FaceTest
 
             }
         }
-            
-    }
 
+        private void button19_Click(object sender, EventArgs e)
+        {
+
+            Pass = tb_Pass.Text;
+            try
+            {
+                button19.Enabled = false;
+                Person  person = new Person();
+                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                string postStr = string.Format("pass={0}&person={1}", Pass, JsonConvert.SerializeObject(person));
+                string urlOper = @"/person/createOrUpdate";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("person createOrUpdate 成功");
+
+                        //处理完成后，发消息给设备更新数据
+                        SendDevRefreshData();
+                    }
+                    else
+                    {
+                        //-1:参数异常:person传入为空
+                        //-2:参数异常:传入的person字符串转化成对象出错
+                        //-3:参数异常:传入的ID格式非法，格式：[A-Za-z0-9]{0,32}
+                        //-4:参数异常:系统异常
+
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button19.Enabled = true;
+
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+
+            Pass = tb_Pass.Text;
+            try
+            {
+                
+                button20.Enabled = false;
+                //id如果传入-1,则会把人员和照片全部删除
+                //id可以传入多个，按','分隔，
+                string postStr = string.Format("pass={0}&id={1}", Pass, tb_PersonDelete_PersonId.Text.Trim());
+                string urlOper = @"/person/delete";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("person delete 成功");
+
+                        //处理完成后，发消息给设备更新数据
+                        SendDevRefreshData();
+                    }
+                    else
+                    {
+                        //-1:参数异常:id传入为空
+                        //-2:参数异常:按','转化成string[]出错
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button20.Enabled = true;
+
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+
+            Pass = tb_Pass.Text;
+            try
+            {
+
+                button21.Enabled = false;
+                //id如果传入-1,则会返回所有人员信息
+                string postStr = string.Format("pass={0}&id={1}", Pass, tb_PersonFind_PersonId.Text.Trim());
+                string urlOper = @"/person/find";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("person find 成功");
+                        List<Person> list = JsonConvert.DeserializeObject<List<Person>>(res.data);
+                        
+                        if (list != null)
+                        {
+                            int personid = 0;
+                            foreach (Person one in list)
+                            {
+                                personid++;
+                                showMsg(string.Format("person[{0}]:{1}", personid, one.ToString()));
+                            }
+                        }
+                        else
+                        {
+                            showMsg("无数据");
+                        }
+
+                    }
+                    else
+                    {
+                        //-1:参数异常:id传入为空
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button21.Enabled = true;
+
+            }
+        }
+    }
+    /// <summary>
+    /// 时段段对象
+    /// </summary>
     public class PassTimeOne
     {
         /// <summary>
@@ -1321,6 +1507,9 @@ namespace FaceTest
         /// </summary>
         public String Dt2;
     }
+    /// <summary>
+    /// 时段，有星期列表和时间段列表
+    /// </summary>
     public class PassTime
     {
 
@@ -1335,7 +1524,13 @@ namespace FaceTest
     }
     public class PassTimes
     {
+        /// <summary>
+        /// 时段名称
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// 时段列表
+        /// </summary>
         public List<PassTime> passTimeList { get; set; }
     }
 
@@ -1350,4 +1545,24 @@ namespace FaceTest
         /// </summary>
         public string passTimeName { get; set; }
     }
+
+    public class Person
+    {
+        /// <summary>
+        /// ID 
+        /// 如果传入，格式：[A-Za-z0-9]{0,32}
+        /// 可以为空，系统会自动生成ID，并在返回数据中体现
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string name { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("id:[{0}],name:[{1}]",id,name);
+        }
+    }
+
 }

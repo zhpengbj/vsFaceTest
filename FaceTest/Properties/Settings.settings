@@ -35,5 +35,17 @@
     <Setting Name="tb_DeletePassTimeName" Type="System.String" Scope="User">
       <Value Profile="(Default)">住宿生</Value>
     </Setting>
+    <Setting Name="tb_PersonAddOrUpdate_PersonId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zhp</Value>
+    </Setting>
+    <Setting Name="tb_PersonAddOrUpdate_PersonName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">张洪鹏</Value>
+    </Setting>
+    <Setting Name="tb_PersonDelete_PersonId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zhp</Value>
+    </Setting>
+    <Setting Name="tb_PersonFind_PersonId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zhp</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

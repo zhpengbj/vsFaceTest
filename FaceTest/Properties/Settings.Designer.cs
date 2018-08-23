@@ -154,5 +154,53 @@ namespace FaceTest.Properties {
                 this["tb_DeletePassTimeName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        public string tb_PersonAddOrUpdate_PersonId {
+            get {
+                return ((string)(this["tb_PersonAddOrUpdate_PersonId"]));
+            }
+            set {
+                this["tb_PersonAddOrUpdate_PersonId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("张洪鹏")]
+        public string tb_PersonAddOrUpdate_PersonName {
+            get {
+                return ((string)(this["tb_PersonAddOrUpdate_PersonName"]));
+            }
+            set {
+                this["tb_PersonAddOrUpdate_PersonName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        public string tb_PersonDelete_PersonId {
+            get {
+                return ((string)(this["tb_PersonDelete_PersonId"]));
+            }
+            set {
+                this["tb_PersonDelete_PersonId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        public string tb_PersonFind_PersonId {
+            get {
+                return ((string)(this["tb_PersonFind_PersonId"]));
+            }
+            set {
+                this["tb_PersonFind_PersonId"] = value;
+            }
+        }
     }
 }
