@@ -45,7 +45,19 @@
       <Value Profile="(Default)">zhp</Value>
     </Setting>
     <Setting Name="tb_PersonFind_PersonId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1_1_0</Value>
+    </Setting>
+    <Setting Name="tb_FaceDelete_FaceId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1_1_0</Value>
+    </Setting>
+    <Setting Name="tb_FaceAddOrUpdate_PersonId" Type="System.String" Scope="User">
       <Value Profile="(Default)">zhp</Value>
+    </Setting>
+    <Setting Name="tb_FaceAddOrUpdate_PersonName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">zhp</Value>
+    </Setting>
+    <Setting Name="tb_FaceFind_FaceId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1_1_0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

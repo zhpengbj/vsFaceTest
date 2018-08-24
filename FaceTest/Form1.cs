@@ -1492,6 +1492,211 @@ namespace FaceTest
 
             }
         }
+        private string FaceImageFileName = "";
+        private void button22_Click(object sender, EventArgs e)
+        {
+
+            Pass = tb_Pass.Text;
+            try
+            {
+                button22.Enabled = false;
+                Face face = new Face();
+                face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
+                face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
+                face.direct = 0;
+                face.imageId = string.Format("{0}_{1}_{2}",face.userId,face.userName,face.direct);
+                //face.faceImageFileName = FaceImageFileName;// pictureBox2.ImageLocation;
+                face.imageBase64 = ImgToBase64String(pictureBox2.ImageLocation);
+                face.imageKey = GetFileMd5(pictureBox2.ImageLocation);
+                string postStr = string.Format("pass={0}&face={1}", Pass, JsonConvert.SerializeObject(face));
+                string urlOper = @"/face/createOrUpdate";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("face createOrUpdate 成功");
+
+                        //处理完成后，发消息给设备更新数据
+                        SendDevRefreshData();
+                    }
+                    else
+                    {
+                        //-1:参数异常:person传入为空
+                        //-2:参数异常:传入的person字符串转化成对象出错
+                        //-3:参数异常:传入的ID格式非法，格式：[A-Za-z0-9]{0,32}
+                        //-4:参数异常:系统异常
+
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button22.Enabled = true;
+
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fdlg = new OpenFileDialog();
+            fdlg.Title = "C# Corner Open File Dialog";
+            //fdlg.InitialDirectory = @"c:\";   //@是取消转义字符的意思
+            fdlg.Filter = "图片文件(*.jpg)|*.jpg|*.gif|*.bmp";
+            //fdlg.Filter = "All files（*.*）|*.*|All files(**)|*.* ";
+            /*
+             * FilterIndex 属性用于选择了何种文件类型,缺省设置为0,系统取Filter属性设置第一项
+             * ,相当于FilterIndex 属性设置为1.如果你编了3个文件类型，当FilterIndex ＝2时是指第2个.
+             */
+            fdlg.FilterIndex = 1;
+            /*
+             *如果值为false，那么下一次选择文件的初始目录是上一次你选择的那个目录，
+             *不固定；如果值为true，每次打开这个对话框初始目录不随你的选择而改变，是固定的  
+             */
+            fdlg.RestoreDirectory = true;
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox2.ImageLocation = fdlg.FileName;
+                FaceImageFileName = fdlg.SafeFileName;
+                //textBox1.Text = System.IO.Path.GetFileNameWithoutExtension(fdlg.FileName);
+
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+
+            Pass = tb_Pass.Text;
+            try
+            {
+
+                button23.Enabled = false;
+                //id如果传入-1,则会把人员和照片全部删除
+                //id可以传入多个，按','分隔，
+                string postStr = string.Format("pass={0}&faceId={1}", Pass, tb_FaceDelete_FaceId.Text.Trim());
+                string urlOper = @"/face/delete";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("face delete 成功");
+
+                        //处理完成后，发消息给设备更新数据
+                        SendDevRefreshData();
+                    }
+                    else
+                    {
+                        //-1:参数异常:id传入为空
+                        //-2:参数异常:按','转化成string[]出错
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button23.Enabled = true;
+
+            }
+        }
+
+        private void tb_FaceAddOrUpdate_PersonId_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+
+                button24.Enabled = false;
+                //id如果传入-1,则会返回所有人员信息
+                string postStr = string.Format("pass={0}&id={1}", Pass, tb_FaceFind_FaceId.Text.Trim());
+                string urlOper = @"/face/find";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("face find 成功");
+                        List<FaceFind> list = JsonConvert.DeserializeObject<List<FaceFind>>(res.data);
+
+                        if (list != null)
+                        {
+                            int personid = 0;
+                            foreach (FaceFind one in list)
+                            {
+                                personid++;
+                                showMsg(string.Format("face[{0}]:{1}", personid, one.ToString()));
+                            }
+                        }
+                        else
+                        {
+                            showMsg("无数据");
+                        }
+
+                    }
+                    else
+                    {
+                        //-1:参数异常:id传入为空
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+
+
+            }
+            finally
+            {
+                button24.Enabled = true;
+
+            }
+        }
     }
     /// <summary>
     /// 时段段对象
@@ -1563,6 +1768,37 @@ namespace FaceTest
         {
             return string.Format("id:[{0}],name:[{1}]",id,name);
         }
+    }
+
+    public class Face
+    {
+        public string userId { get; set; }
+        /// <summary>
+        /// 人员姓名，不更新人员数据
+        /// 只是根据此数据生成设备注册照片名
+        /// </summary>
+        public string userName { get; set; }
+        //public string faceId { get; set; }
+
+        public int direct { get; set; }
+        public string imageId { get; set; }
+        //public string faceImageFileName { get; set; }
+        public string imageKey { get; set; }
+        public string imageBase64 { get; set; }
+    }
+    public class FaceFind
+    {
+        public string faceId { get; set; }
+        public string personId { get; set; }
+        public int direct { get; set; }
+        public string faceImageFaileName { get; set; }
+        public string faceImageKey { get; set; }
+        public override string ToString()
+        {
+            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageFaileName:[{3}],faceImageKey:[{4}]",
+                faceId, personId, direct, faceImageFaileName, faceImageKey);
+        }
+
     }
 
 }

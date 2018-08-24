@@ -193,13 +193,61 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1_1_0")]
         public string tb_PersonFind_PersonId {
             get {
                 return ((string)(this["tb_PersonFind_PersonId"]));
             }
             set {
                 this["tb_PersonFind_PersonId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1_1_0")]
+        public string tb_FaceDelete_FaceId {
+            get {
+                return ((string)(this["tb_FaceDelete_FaceId"]));
+            }
+            set {
+                this["tb_FaceDelete_FaceId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        public string tb_FaceAddOrUpdate_PersonId {
+            get {
+                return ((string)(this["tb_FaceAddOrUpdate_PersonId"]));
+            }
+            set {
+                this["tb_FaceAddOrUpdate_PersonId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zhp")]
+        public string tb_FaceAddOrUpdate_PersonName {
+            get {
+                return ((string)(this["tb_FaceAddOrUpdate_PersonName"]));
+            }
+            set {
+                this["tb_FaceAddOrUpdate_PersonName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1_1_0")]
+        public string tb_FaceFind_FaceId {
+            get {
+                return ((string)(this["tb_FaceFind_FaceId"]));
+            }
+            set {
+                this["tb_FaceFind_FaceId"] = value;
             }
         }
     }
