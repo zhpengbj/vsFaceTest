@@ -74,6 +74,11 @@ namespace FaceTest
             this.tb_PersonDelete_PersonId.Text = settings.tb_PersonDelete_PersonId;
             this.tb_PersonFind_PersonId.Text = settings.tb_PersonFind_PersonId;
 
+            this.tb_FaceAddOrUpdate_PersonId.Text = settings.tb_FaceAddOrUpdate_PersonId;
+            this.tb_FaceAddOrUpdate_PersonName.Text = settings.tb_FaceAddOrUpdate_PersonName;
+            this.tb_FaceDelete_FaceId.Text = settings.tb_FaceDelete_FaceId;
+            this.tb_FaceFind_FaceId.Text = settings.tb_FaceFind_FaceId;
+
 
         }
         /// <summary>
@@ -97,6 +102,12 @@ namespace FaceTest
             settings.tb_PersonAddOrUpdate_PersonName = this.tb_PersonAddOrUpdate_PersonName.Text.Trim();
             settings.tb_PersonDelete_PersonId = this.tb_PersonDelete_PersonId.Text.Trim();
             settings.tb_PersonFind_PersonId = this.tb_PersonFind_PersonId.Text.Trim();
+
+            settings.tb_FaceAddOrUpdate_PersonId = this.tb_FaceAddOrUpdate_PersonId.Text.Trim();
+            settings.tb_FaceAddOrUpdate_PersonName = this.tb_FaceAddOrUpdate_PersonName.Text.Trim();
+            settings.tb_FaceDelete_FaceId = this.tb_FaceDelete_FaceId.Text.Trim();
+            settings.tb_FaceFind_FaceId = this.tb_FaceFind_FaceId.Text.Trim();
+
             settings.Save();
         }
         private void Form1_Load(object sender, EventArgs e)
