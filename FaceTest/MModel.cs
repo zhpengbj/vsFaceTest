@@ -64,6 +64,15 @@ namespace FaceTest
         public string deviceKey { get; set; }
         public string userId { get; set; }
         public string userName { get; set; }
+        /// <summary>
+        /// 识别结果
+        /// 1，识别正常，mes=姓名,矩形框为绿色
+        /// 2，活检未通过，mes=提示信息，矩形框为黄
+        /// 3，未注册，mes=提示信息，矩形框为红色  
+        /// 4，找到人员，后台验证无反应 蓝色       
+        /// 5，找到人员，后台验证失败 蓝色         
+        /// 6，找到人员，未授权不能通过（通过时段判断） 蓝色
+        /// </summary>
         public string type { get; set; }
         public string path { get; set; }
 

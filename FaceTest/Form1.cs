@@ -1762,6 +1762,9 @@ namespace FaceTest
         public string passTimeName { get; set; }
     }
 
+    /// <summary>
+    /// 人员对象
+    /// </summary>
     public class Person
     {
         /// <summary>
@@ -1783,6 +1786,9 @@ namespace FaceTest
 
     public class Face
     {
+        /// <summary>
+        /// 人员id
+        /// </summary>
         public string userId { get; set; }
         /// <summary>
         /// 人员姓名，不更新人员数据
@@ -1790,11 +1796,22 @@ namespace FaceTest
         /// </summary>
         public string userName { get; set; }
         //public string faceId { get; set; }
-
+        /// <summary>
+        /// 人员照片的序号
+        /// </summary>
         public int direct { get; set; }
+        /// <summary>
+        /// 照片ID，唯一
+        /// </summary>
         public string imageId { get; set; }
+        /// <summary>
+        /// 照片key,可用照片的md5值
+        /// </summary>
         //public string faceImageFileName { get; set; }
         public string imageKey { get; set; }
+        /// <summary>
+        /// 照片base64
+        /// </summary>
         public string imageBase64 { get; set; }
     }
     public class FaceFind

@@ -526,7 +526,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 15);
             this.label11.TabIndex = 64;
-            this.label11.Text = "人员ID";
+            this.label11.Text = "照片ID";
             // 
             // button24
             // 
