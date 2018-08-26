@@ -74,6 +74,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button24 = new System.Windows.Forms.Button();
+            this.button25 = new System.Windows.Forms.Button();
+            this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
             this.tb_FaceFind_FaceId = new System.Windows.Forms.TextBox();
             this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
             this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
@@ -178,7 +180,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(381, 706);
+            this.button7.Location = new System.Drawing.Point(381, 720);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(149, 36);
             this.button7.TabIndex = 11;
@@ -201,7 +203,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.Location = new System.Drawing.Point(381, 154);
+            this.button8.Location = new System.Drawing.Point(381, 141);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(202, 36);
             this.button8.TabIndex = 14;
@@ -211,7 +213,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(381, 505);
+            this.pictureBox1.Location = new System.Drawing.Point(381, 526);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(126, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -221,7 +223,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(378, 456);
+            this.lb_PersonId.Location = new System.Drawing.Point(378, 486);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -230,7 +232,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(527, 456);
+            this.lb_PersonName.Location = new System.Drawing.Point(527, 486);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -238,14 +240,14 @@
             // 
             // tb_MachineCode
             // 
-            this.tb_MachineCode.Location = new System.Drawing.Point(537, 633);
+            this.tb_MachineCode.Location = new System.Drawing.Point(537, 653);
             this.tb_MachineCode.Name = "tb_MachineCode";
             this.tb_MachineCode.Size = new System.Drawing.Size(182, 25);
             this.tb_MachineCode.TabIndex = 20;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(381, 626);
+            this.button9.Location = new System.Drawing.Point(381, 646);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(149, 36);
             this.button9.TabIndex = 19;
@@ -255,14 +257,14 @@
             // 
             // tb_AuthorizeCode
             // 
-            this.tb_AuthorizeCode.Location = new System.Drawing.Point(537, 675);
+            this.tb_AuthorizeCode.Location = new System.Drawing.Point(537, 689);
             this.tb_AuthorizeCode.Name = "tb_AuthorizeCode";
             this.tb_AuthorizeCode.Size = new System.Drawing.Size(182, 25);
             this.tb_AuthorizeCode.TabIndex = 22;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(381, 669);
+            this.button10.Location = new System.Drawing.Point(381, 683);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(149, 36);
             this.button10.TabIndex = 21;
@@ -273,7 +275,7 @@
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button11.Location = new System.Drawing.Point(381, 227);
+            this.button11.Location = new System.Drawing.Point(381, 277);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(202, 36);
             this.button11.TabIndex = 23;
@@ -284,7 +286,7 @@
             // button12
             // 
             this.button12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button12.Location = new System.Drawing.Point(381, 300);
+            this.button12.Location = new System.Drawing.Point(381, 342);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(202, 36);
             this.button12.TabIndex = 25;
@@ -314,7 +316,7 @@
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.Location = new System.Drawing.Point(381, 79);
+            this.button14.Location = new System.Drawing.Point(381, 71);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(202, 36);
             this.button14.TabIndex = 29;
@@ -345,7 +347,7 @@
             // button17
             // 
             this.button17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button17.Location = new System.Drawing.Point(381, 373);
+            this.button17.Location = new System.Drawing.Point(381, 414);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(202, 36);
             this.button17.TabIndex = 35;
@@ -384,7 +386,7 @@
             // lb_Path
             // 
             this.lb_Path.AutoSize = true;
-            this.lb_Path.Location = new System.Drawing.Point(378, 487);
+            this.lb_Path.Location = new System.Drawing.Point(378, 508);
             this.lb_Path.Name = "lb_Path";
             this.lb_Path.Size = new System.Drawing.Size(55, 15);
             this.lb_Path.TabIndex = 41;
@@ -538,6 +540,27 @@
             this.button24.UseVisualStyleBackColor = true;
             this.button24.Click += new System.EventHandler(this.button24_Click);
             // 
+            // button25
+            // 
+            this.button25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button25.Location = new System.Drawing.Point(381, 211);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(202, 36);
+            this.button25.TabIndex = 65;
+            this.button25.Text = "设置识别回调_历史URL";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
+            // 
+            // tb_CallBackUrl_His
+            // 
+            this.tb_CallBackUrl_His.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl_His", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackUrl_His.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(381, 250);
+            this.tb_CallBackUrl_His.Name = "tb_CallBackUrl_His";
+            this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackUrl_His.TabIndex = 66;
+            this.tb_CallBackUrl_His.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl_His;
+            // 
             // tb_FaceFind_FaceId
             // 
             this.tb_FaceFind_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceFind_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -624,7 +647,7 @@
             // 
             this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(381, 415);
+            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(381, 455);
             this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
             this.tb_HeartBeatUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_HeartBeatUrl.TabIndex = 36;
@@ -652,7 +675,7 @@
             // 
             this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackVerifyUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(381, 122);
+            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(381, 111);
             this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
             this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_CallBackVerifyUrl.TabIndex = 30;
@@ -662,7 +685,7 @@
             // 
             this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_DownApkUrl.Location = new System.Drawing.Point(381, 342);
+            this.tb_DownApkUrl.Location = new System.Drawing.Point(381, 384);
             this.tb_DownApkUrl.Name = "tb_DownApkUrl";
             this.tb_DownApkUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_DownApkUrl.TabIndex = 26;
@@ -672,7 +695,7 @@
             // 
             this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_GetApkVersion.Location = new System.Drawing.Point(381, 269);
+            this.bt_GetApkVersion.Location = new System.Drawing.Point(381, 316);
             this.bt_GetApkVersion.Name = "bt_GetApkVersion";
             this.bt_GetApkVersion.Size = new System.Drawing.Size(338, 25);
             this.bt_GetApkVersion.TabIndex = 24;
@@ -683,7 +706,7 @@
             // 
             this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl.Location = new System.Drawing.Point(381, 196);
+            this.tb_CallBackUrl.Location = new System.Drawing.Point(381, 183);
             this.tb_CallBackUrl.Name = "tb_CallBackUrl";
             this.tb_CallBackUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_CallBackUrl.TabIndex = 15;
@@ -721,6 +744,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.tb_CallBackUrl_His);
+            this.Controls.Add(this.button25);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.tb_FaceFind_FaceId);
             this.Controls.Add(this.button24);
@@ -863,6 +888,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox tb_FaceFind_FaceId;
         private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.TextBox tb_CallBackUrl_His;
+        private System.Windows.Forms.Button button25;
     }
 }
 

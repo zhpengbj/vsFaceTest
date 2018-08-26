@@ -79,6 +79,7 @@ namespace FaceTest
             this.tb_FaceDelete_FaceId.Text = settings.tb_FaceDelete_FaceId;
             this.tb_FaceFind_FaceId.Text = settings.tb_FaceFind_FaceId;
 
+            this.tb_CallBackUrl_His.Text = settings.tb_CallBackUrl_His;
 
         }
         /// <summary>
@@ -107,7 +108,7 @@ namespace FaceTest
             settings.tb_FaceAddOrUpdate_PersonName = this.tb_FaceAddOrUpdate_PersonName.Text.Trim();
             settings.tb_FaceDelete_FaceId = this.tb_FaceDelete_FaceId.Text.Trim();
             settings.tb_FaceFind_FaceId = this.tb_FaceFind_FaceId.Text.Trim();
-
+            settings.tb_CallBackUrl_His = this.tb_CallBackUrl_His.Text.Trim();
             settings.Save();
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -1705,6 +1706,48 @@ namespace FaceTest
             finally
             {
                 button24.Enabled = true;
+
+            }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button25.Enabled = false;
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=6", Pass, tb_CallBackUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button25.Enabled = true;
 
             }
         }

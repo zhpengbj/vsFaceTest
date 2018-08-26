@@ -59,5 +59,8 @@
     <Setting Name="tb_FaceFind_FaceId" Type="System.String" Scope="User">
       <Value Profile="(Default)">1_1_0</Value>
     </Setting>
+    <Setting Name="tb_CallBackUrl_His" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/Handler_His.ashx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
