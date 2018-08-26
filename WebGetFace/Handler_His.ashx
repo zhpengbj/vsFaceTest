@@ -1,4 +1,4 @@
-﻿<%@ WebHandler Language="C#" Class="Handle_His" %>
+﻿<%@ WebHandler Language="C#" Class="Handler_His" %>
 
 using System;
 using System.Web;
@@ -13,7 +13,7 @@ using System.Collections.Specialized;
 /// <summary>
 /// 人脸识别回调，历史记录
 /// </summary>
-public class Handle_His : IHttpHandler {
+public class Handler_His : IHttpHandler {
 
     public void ProcessRequest(HttpContext context)
     {

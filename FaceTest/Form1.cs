@@ -1716,7 +1716,7 @@ namespace FaceTest
             try
             {
                 button25.Enabled = false;
-                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=6", Pass, tb_CallBackUrl.Text.Trim());
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=6", Pass, tb_CallBackUrl_His.Text.Trim());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
