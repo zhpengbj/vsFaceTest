@@ -42,7 +42,7 @@ public class Handler : IHttpHandler {
         }
         catch (Exception ex)
         {
-            result.result = 1;
+            result.result = 0;
             result.success = false;
             result.msgtype = -100;
             result.msg = ex.Message;

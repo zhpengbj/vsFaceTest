@@ -42,11 +42,13 @@ public class Handler_His : IHttpHandler {
         }
         catch (Exception ex)
         {
-            result.result = 1;
+            result.result = 0;
             result.success = false;
             result.msgtype = -100;
-            result.msg = ex.Message;
-            context.Response.Write(JsonConvert.SerializeObject(result));
+            result.msg = ex.ToString();
+            string returnStr = JsonConvert.SerializeObject(result);
+            context.Response.Write(returnStr);
+            SendMessage.GetSendMessage().Send("Handler_His return:"+returnStr);
         }
     }
 
@@ -56,8 +58,8 @@ public class Handler_His : IHttpHandler {
         }
     }
 
-    
+
 
 }
 
-    
+

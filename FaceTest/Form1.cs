@@ -160,33 +160,43 @@ namespace FaceTest
         /// <param name="result"></param>
         private void ShowInfo(string result)
         {
-            if (result.IndexOf("HeartBeat receive") == 0)
+            try
             {
-                //如果是心跳包数据，则退出
-                return;
-            }
-            //通过data:截取、得到接收的对象
-            string dataStr = result.Substring(result.IndexOf("data:") + 5, result.Length - result.IndexOf("data:") - 5);
-            Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
-            this.Invoke((MethodInvoker)delegate
-            {
-                if (v != null)
+                if (result.IndexOf("HeartBeat receive") == 0)
                 {
-                    lb_PersonId.Text = "用户ID:"+v.userId;
-                    lb_PersonName.Text = "用户姓名:" + v.userName;
-                    lb_Path.Text = "照片路径:" + v.path;
-                    if (!string.IsNullOrEmpty(v.path))
+                    //如果是心跳包数据，则退出
+                    return;
+                }
+                if (result.IndexOf("data:") < 0)
+                {
+                    return;
+                }
+                //通过data:截取、得到接收的对象
+                string dataStr = result.Substring(result.IndexOf("data:") + 5, result.Length - result.IndexOf("data:") - 5);
+                Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
+                this.Invoke((MethodInvoker)delegate
+                {
+                    if (v != null)
                     {
-                        pictureBox1.LoadAsync(v.path);
-                    }
+                        lb_PersonId.Text = "用户ID:" + v.userId;
+                        lb_PersonName.Text = "用户姓名:" + v.userName;
+                        lb_Path.Text = "照片路径:" + v.path;
+                        if (!string.IsNullOrEmpty(v.path))
+                        {
+                            pictureBox1.LoadAsync(v.path);
+                        }
                     //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
                 }
-                else
-                {
-                    lb_PersonId.Text = "";
-                    lb_PersonName.Text = "";
-                }
-            });
+                    else
+                    {
+                        lb_PersonId.Text = "";
+                        lb_PersonName.Text = "";
+                    }
+                });
+            }catch(Exception ex)
+            {
+                showMsg(ex.ToString());
+            }
 
 
         }
