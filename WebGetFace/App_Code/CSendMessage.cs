@@ -11,6 +11,7 @@ using System.Collections.Specialized;
 
 public class SendMessage
 {
+    private static object l = new object();
     private static SendMessage one = null;
     public static SendMessage GetSendMessage()
     {
@@ -34,7 +35,10 @@ public class SendMessage
     }
     public void Send(string message)
     {
-        sw.WriteLine(message);
+        lock (l)
+        {
+            sw.WriteLine(message);
+        }
     }
 }
 

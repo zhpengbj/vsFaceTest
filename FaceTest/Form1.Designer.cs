@@ -34,7 +34,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.receiveMsg = new System.Windows.Forms.RichTextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.cb_saveImageKey = new System.Windows.Forms.CheckBox();
@@ -95,8 +94,17 @@
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tb_Url = new System.Windows.Forms.TextBox();
+            this.button26 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.receiveMsg = new System.Windows.Forms.RichTextBox();
+            this.receiveMsg2 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -157,16 +165,6 @@
             this.button5.Text = "处理照片";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // receiveMsg
-            // 
-            this.receiveMsg.Dock = System.Windows.Forms.DockStyle.Right;
-            this.receiveMsg.Location = new System.Drawing.Point(726, 0);
-            this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
-            this.receiveMsg.Name = "receiveMsg";
-            this.receiveMsg.Size = new System.Drawing.Size(778, 766);
-            this.receiveMsg.TabIndex = 9;
-            this.receiveMsg.Text = "";
             // 
             // button6
             // 
@@ -739,11 +737,77 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
+            // button26
+            // 
+            this.button26.Location = new System.Drawing.Point(589, 2);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(130, 36);
+            this.button26.TabIndex = 67;
+            this.button26.Text = "停止web服务";
+            this.button26.UseVisualStyleBackColor = true;
+            this.button26.Visible = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tabControl1.Location = new System.Drawing.Point(749, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(755, 766);
+            this.tabControl1.TabIndex = 68;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.receiveMsg);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(747, 737);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "详细信息";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.receiveMsg2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(747, 737);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "接收识别记录";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // receiveMsg
+            // 
+            this.receiveMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receiveMsg.Location = new System.Drawing.Point(3, 3);
+            this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
+            this.receiveMsg.Name = "receiveMsg";
+            this.receiveMsg.Size = new System.Drawing.Size(741, 731);
+            this.receiveMsg.TabIndex = 10;
+            this.receiveMsg.Text = "";
+            // 
+            // receiveMsg2
+            // 
+            this.receiveMsg2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receiveMsg2.Location = new System.Drawing.Point(3, 3);
+            this.receiveMsg2.Margin = new System.Windows.Forms.Padding(4);
+            this.receiveMsg2.Name = "receiveMsg2";
+            this.receiveMsg2.Size = new System.Drawing.Size(741, 731);
+            this.receiveMsg2.TabIndex = 11;
+            this.receiveMsg2.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.button26);
             this.Controls.Add(this.tb_CallBackUrl_His);
             this.Controls.Add(this.button25);
             this.Controls.Add(this.label11);
@@ -800,7 +864,6 @@
             this.Controls.Add(this.cb_saveImageKey);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.receiveMsg);
             this.Controls.Add(this.tb_Path);
             this.Controls.Add(this.tb_Pass);
             this.Controls.Add(this.tb_Url);
@@ -816,6 +879,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -832,7 +898,6 @@
         private System.Windows.Forms.TextBox tb_Url;
         private System.Windows.Forms.TextBox tb_Path;
         private System.Windows.Forms.TextBox tb_Pass;
-        private System.Windows.Forms.RichTextBox receiveMsg;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.CheckBox cb_saveImageKey;
@@ -890,6 +955,12 @@
         private System.Windows.Forms.Button button24;
         private System.Windows.Forms.TextBox tb_CallBackUrl_His;
         private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.RichTextBox receiveMsg;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.RichTextBox receiveMsg2;
     }
 }
 

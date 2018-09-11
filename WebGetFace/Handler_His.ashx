@@ -20,13 +20,14 @@ public class Handler_His : IHttpHandler {
         context.Response.ContentType = "text/plain";
 
         VerifyReturn result = new VerifyReturn();
+        string rStr="";
         try
         {
-            string rStr = context.Request["verify"];
+            rStr = context.Request["verify"];
 
             if (!string.IsNullOrEmpty(rStr))
             {
-                SendMessage.GetSendMessage().Send("Handler_His receive data:"+rStr);
+                SendMessage.GetSendMessage().Send("Handler_His receive data:" + rStr);
                 //SendMessage.GetSendMessage().Send(Verify);
             }
             else
@@ -36,7 +37,7 @@ public class Handler_His : IHttpHandler {
             }
             result.result = 1;
             result.success = true;
-            result.msg=DateTime.Now.ToString()+":" + rStr;
+            result.msg = DateTime.Now.ToString() + ":" + rStr;
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
@@ -48,7 +49,7 @@ public class Handler_His : IHttpHandler {
             result.msg = ex.ToString();
             string returnStr = JsonConvert.SerializeObject(result);
             context.Response.Write(returnStr);
-            SendMessage.GetSendMessage().Send("Handler_His return:"+returnStr);
+            SendMessage.GetSendMessage().Send(string.Format("Handler_His return:[{0}],err receive[{1}]", returnStr, rStr));
         }
     }
 
@@ -57,9 +58,7 @@ public class Handler_His : IHttpHandler {
             return false;
         }
     }
-
-
-
 }
+
 
 

@@ -61,6 +61,7 @@ namespace FaceTest
     /// </summary>
     public class Verify
     {
+        public int id { get; set; }
         public string deviceKey { get; set; }
         public string userId { get; set; }
         public string userName { get; set; }
@@ -75,6 +76,10 @@ namespace FaceTest
         /// </summary>
         public string type { get; set; }
         public string path { get; set; }
+        public override string ToString()
+        {
+            return String.Format("id[{0}],type[{1}], userId[{2}],userName[{3}]"+Environment.NewLine+" path[{4}]",id,type,userId,userName,path);
+        }
 
     }
     public class VerifyReturn

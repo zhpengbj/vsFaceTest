@@ -147,9 +147,13 @@ namespace FaceTest
                       //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
                       server.Disconnect();//服务器断开，很重要！
                       server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
-                      Thread.Sleep(1000);
-                      //如果web服务异常停止，则重新启动
-                      StartService();
+                      if (runService)
+                      {
+                          Thread.Sleep(1000);
+                          //如果web服务异常停止，则重新启动
+
+                          StartService();
+                      }
                   }, pipeServer);
 
             });
@@ -185,6 +189,7 @@ namespace FaceTest
                         {
                             pictureBox1.LoadAsync(v.path);
                         }
+                        showMsg2(v.ToString());
                     //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
                 }
                     else
@@ -204,6 +209,7 @@ namespace FaceTest
 
         private void button1_Click(object sender, EventArgs e)
         {
+            runService = true;
             StartService();
         }
         private static CassiniDev.CassiniDevServer _HttpServer;//网页服务器
@@ -222,6 +228,10 @@ namespace FaceTest
             {
                 showMsg(ex.ToString());
             }
+        }
+        public void StopService()
+        {
+            _HttpServer.StopServer();
         }
         private String FacePicPath = Application.StartupPath + @"\FacePicTest\";
 
@@ -501,6 +511,34 @@ namespace FaceTest
                 }
             }
         }
+        public delegate void dShowInfo2(string str);
+        public void showMsg2(string msg)
+        {
+            {
+                //在线程里以安全方式调用控件
+                if (receiveMsg2.InvokeRequired)
+                {
+                    dShowInfo _myinvoke = new dShowInfo(showMsg);
+                    receiveMsg2.Invoke(_myinvoke, new object[] { msg });
+                }
+                else
+                {
+                    string s = msg;
+                    if (!string.IsNullOrEmpty(msg))
+                    {
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("mm:ss"), msg);
+                    }
+                    else
+                    {
+                        s = "\r\n";
+                    }
+
+                    receiveMsg2.AppendText(s+Environment.NewLine);
+                    receiveMsg2.Select(receiveMsg2.Text.Length, 0);
+                    receiveMsg2.ScrollToCaret();
+                }
+            }
+        }
 
 
         private string GetImageKeyList()
@@ -655,6 +693,7 @@ namespace FaceTest
             //showMsg(GetTimeStamp());
             //showMsg(ConvertDateTimeInt(DateTime.Now).ToString());
             receiveMsg.Clear();
+            receiveMsg2.Clear();
         }
         /// <summary>  
         /// 获取时间戳  
@@ -1760,6 +1799,12 @@ namespace FaceTest
                 button25.Enabled = true;
 
             }
+        }
+        private bool runService = false;
+        private void button26_Click(object sender, EventArgs e)
+        {
+            runService = false;
+            StopService();
         }
     }
     /// <summary>
