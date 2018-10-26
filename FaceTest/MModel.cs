@@ -76,9 +76,17 @@ namespace FaceTest
         /// </summary>
         public string type { get; set; }
         public string path { get; set; }
+
+        /// <summary>
+        /// 记录类型
+        /// 0：实时
+        /// 1：历史
+        /// </summary>
+        public int SendPassType { get; set; }
         public override string ToString()
         {
-            return String.Format("id[{0}],type[{1}], userId[{2}],userName[{3}]"+Environment.NewLine+" path[{4}]",id,type,userId,userName,path);
+            return String.Format("id[{0}],type[{1}], userId[{2}],userName[{3}],sendPassType[{5}]" + (!string.IsNullOrEmpty(path)?Environment.NewLine:"")+" path[{4}]",
+                id,type,userId,userName,path,SendPassType==0?"实时":"历史");
         }
 
     }

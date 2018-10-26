@@ -97,14 +97,19 @@
             this.button26 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.receiveMsg = new System.Windows.Forms.RichTextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.receiveMsg2 = new System.Windows.Forms.RichTextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button27 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -752,6 +757,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl1.Location = new System.Drawing.Point(749, 0);
             this.tabControl1.Name = "tabControl1";
@@ -770,6 +776,16 @@
             this.tabPage1.Text = "详细信息";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // receiveMsg
+            // 
+            this.receiveMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receiveMsg.Location = new System.Drawing.Point(3, 3);
+            this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
+            this.receiveMsg.Name = "receiveMsg";
+            this.receiveMsg.Size = new System.Drawing.Size(741, 731);
+            this.receiveMsg.TabIndex = 10;
+            this.receiveMsg.Text = "";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.receiveMsg2);
@@ -781,16 +797,6 @@
             this.tabPage2.Text = "接收识别记录";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // receiveMsg
-            // 
-            this.receiveMsg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.receiveMsg.Location = new System.Drawing.Point(3, 3);
-            this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
-            this.receiveMsg.Name = "receiveMsg";
-            this.receiveMsg.Size = new System.Drawing.Size(741, 731);
-            this.receiveMsg.TabIndex = 10;
-            this.receiveMsg.Text = "";
-            // 
             // receiveMsg2
             // 
             this.receiveMsg2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -801,11 +807,43 @@
             this.receiveMsg2.TabIndex = 11;
             this.receiveMsg2.Text = "";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(747, 737);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 27;
+            this.dataGridView1.Size = new System.Drawing.Size(741, 731);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(553, 526);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(149, 36);
+            this.button27.TabIndex = 69;
+            this.button27.Text = "得到机器码";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.button27);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button26);
             this.Controls.Add(this.tb_CallBackUrl_His);
@@ -882,6 +920,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -961,6 +1001,9 @@
         private System.Windows.Forms.RichTextBox receiveMsg;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RichTextBox receiveMsg2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button27;
     }
 }
 

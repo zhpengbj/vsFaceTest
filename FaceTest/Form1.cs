@@ -113,6 +113,10 @@ namespace FaceTest
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = receivePassList);
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
             LoadData();
             //设置照片路径
             button2_Click(null, null);
@@ -189,9 +193,11 @@ namespace FaceTest
                         {
                             pictureBox1.LoadAsync(v.path);
                         }
+                        showInfoForGrid(v);
                         showMsg2(v.ToString());
+
                     //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
-                }
+                    }
                     else
                     {
                         lb_PersonId.Text = "";
@@ -205,6 +211,7 @@ namespace FaceTest
 
 
         }
+        private List<Verify> receivePassList = new List<Verify>();
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -518,7 +525,7 @@ namespace FaceTest
                 //在线程里以安全方式调用控件
                 if (receiveMsg2.InvokeRequired)
                 {
-                    dShowInfo _myinvoke = new dShowInfo(showMsg);
+                    dShowInfo _myinvoke = new dShowInfo(showMsg2);
                     receiveMsg2.Invoke(_myinvoke, new object[] { msg });
                 }
                 else
@@ -539,7 +546,26 @@ namespace FaceTest
                 }
             }
         }
-
+        public delegate void dShowInfoForGrid(Verify v);
+        public void showInfoForGrid(Verify v)
+        {
+            {
+                //在线程里以安全方式调用控件
+                if (dataGridView1.InvokeRequired)
+                {
+                    dShowInfoForGrid _myinvoke = new dShowInfoForGrid(showInfoForGrid);
+                    dataGridView1.Invoke(_myinvoke, new object[] { v });
+                }
+                else
+                {
+                    receivePassList.Add(v);
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = receivePassList;
+                    //dataGridView1.DataSource = receivePassList;
+                    //dataGridView1.Refresh();
+                }
+            }
+        }
 
         private string GetImageKeyList()
         {
@@ -1148,6 +1174,31 @@ namespace FaceTest
             res.passTimeList.Add(_PassTime);
             return res;
         }
+
+        private PassTimes GetNewPassTimes4()
+        {
+            PassTimes res = new PassTimes();
+
+            res.Name = "3";
+            res.passTimeList = new List<PassTime>();
+            PassTime _PassTime = new PassTime();
+            _PassTime.WeekList = new List<string>();
+            _PassTime.PassTimeByWeekList = new List<PassTimeOne>();
+            //_PassTime.WeekList.Add("1");
+            //_PassTime.WeekList.Add("2");
+            //_PassTime.WeekList.Add("3");
+            //_PassTime.WeekList.Add("4");
+            _PassTime.WeekList.Add("5");
+
+            //时段
+            PassTimeOne _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Dt1 = "07:00:00";
+            _PassTimeOne.Dt2 = "23:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //加入
+            res.passTimeList.Add(_PassTime);
+            return res;
+        }
         private void button15_Click(object sender, EventArgs e)
         {
             Pass = tb_Pass.Text;
@@ -1210,7 +1261,7 @@ namespace FaceTest
                 }
 
                 //3
-                _PassTimes = GetNewPassTimes3();
+                _PassTimes = GetNewPassTimes4();
                 postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
                 urlOper = @"/passtime/createOrUpdate";
                 url = string.Format(@"{0}{1}", Url, urlOper);
@@ -1805,6 +1856,13 @@ namespace FaceTest
         {
             runService = false;
             StopService();
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = receivePassList;
+            //dataGridView1.Refresh();
         }
     }
     /// <summary>
