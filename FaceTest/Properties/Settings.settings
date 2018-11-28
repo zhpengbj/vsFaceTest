@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="tb_Path" Type="System.String" Scope="User">
-      <Value Profile="(Default)">FacePicTest2</Value>
+      <Value Profile="(Default)">_</Value>
     </Setting>
     <Setting Name="tb_Url" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.8.101:8090</Value>
@@ -61,6 +61,9 @@
     </Setting>
     <Setting Name="tb_CallBackUrl_His" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.8.100:8091/Handler_His.ashx</Value>
+    </Setting>
+    <Setting Name="tb_SplitChar" Type="System.String" Scope="User">
+      <Value Profile="(Default)">_</Value>
     </Setting>
   </Settings>
 </SettingsFile>

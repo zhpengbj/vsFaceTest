@@ -25,7 +25,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("FacePicTest2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("_")]
         public string tb_Path {
             get {
                 return ((string)(this["tb_Path"]));
@@ -260,6 +260,18 @@ namespace FaceTest.Properties {
             }
             set {
                 this["tb_CallBackUrl_His"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("_")]
+        public string tb_SplitChar {
+            get {
+                return ((string)(this["tb_SplitChar"]));
+            }
+            set {
+                this["tb_SplitChar"] = value;
             }
         }
     }

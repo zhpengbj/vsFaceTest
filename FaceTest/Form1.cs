@@ -80,6 +80,7 @@ namespace FaceTest
             this.tb_FaceFind_FaceId.Text = settings.tb_FaceFind_FaceId;
 
             this.tb_CallBackUrl_His.Text = settings.tb_CallBackUrl_His;
+            this.tb_SplitChar.Text = settings.tb_SplitChar;
 
         }
         /// <summary>
@@ -109,11 +110,12 @@ namespace FaceTest
             settings.tb_FaceDelete_FaceId = this.tb_FaceDelete_FaceId.Text.Trim();
             settings.tb_FaceFind_FaceId = this.tb_FaceFind_FaceId.Text.Trim();
             settings.tb_CallBackUrl_His = this.tb_CallBackUrl_His.Text.Trim();
+            settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
             settings.Save();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = receivePassList);
+            dataGridView1.DataSource = receivePassList;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
@@ -403,24 +405,35 @@ namespace FaceTest
             string fileName = file.Name.Substring(file.Name.LastIndexOf("\\") + 1, (file.Name.LastIndexOf(".") - file.Name.LastIndexOf("\\") - 1));
             u.FileName = fileName;
             u.FilePath = file.FullName;
-            string[] fileNameList = fileName.Split('_');
-            if (fileNameList.Length == 1)
+
+            if (!string.IsNullOrEmpty(tb_SplitChar.Text))
             {
-                u.userId = fileNameList[0];
-                u.userName = fileNameList[0];
-                u.direct = 0;
+                string[] fileNameList = fileName.Split(tb_SplitChar.Text.ToCharArray());
+                if (fileNameList.Length == 1)
+                {
+                    u.userId = fileNameList[0];
+                    u.userName = fileNameList[0];
+                    u.direct = 0;
+                }
+                if (fileNameList.Length == 2)
+                {
+                    u.userId = fileNameList[0];
+                    u.userName = fileNameList[1];
+                    u.direct = 0;
+                }
+                if (fileNameList.Length == 3)
+                {
+                    u.userId = fileNameList[0];
+                    u.userName = fileNameList[1];
+                    u.direct = Convert.ToInt32(fileNameList[2]);
+                }
             }
-            if (fileNameList.Length == 2)
+            else
             {
-                u.userId = fileNameList[0];
-                u.userName = fileNameList[1];
+                //未设置文件名分隔符号
+                u.userId = fileName;
+                u.userName = fileName;
                 u.direct = 0;
-            }
-            if (fileNameList.Length == 3)
-            {
-                u.userId = fileNameList[0];
-                u.userName = fileNameList[1];
-                u.direct = Convert.ToInt32(fileNameList[2]);
             }
             string fileNameKey = FacePicDataPath + u.FileName + "_Key.dat";
             string fileNameBase64 = FacePicDataPath + u.FileName + "_Base64.dat"; ;
@@ -566,7 +579,10 @@ namespace FaceTest
                 }
             }
         }
-
+        /// <summary>
+        /// 根据目录中的照片文件得到照片key列表的string，用','分隔
+        /// </summary>
+        /// <returns></returns>
         private string GetImageKeyList()
         {
             string ret = "";
@@ -577,12 +593,50 @@ namespace FaceTest
 
             return ret.ToString().TrimEnd(',');
         }
+
+        /// <summary>
+        /// 根据目录中的照片文件得到人员、照片对象列表
+        /// </summary>
+        /// <returns></returns>
+        private List<PersonAndFace> GetPersonAndFaces()
+        {
+            List<PersonAndFace> res = new List<PersonAndFace>();
+            foreach (User us in userList)
+            {
+                PersonAndFace personAndFace = new PersonAndFace();
+                personAndFace.person = new Person();
+                personAndFace.face = new Face();
+
+                //person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                //person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                personAndFace.person.id = us.FileName;
+                personAndFace.person.name = personAndFace.person.id ;
+
+                //face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
+                //face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
+                //face.direct = 0;
+                //face.imageId = string.Format("{0}_{1}_{2}", face.userId, face.userName, face.direct);
+                //face.imageBase64 = ImgToBase64String(pictureBox2.ImageLocation);
+                //face.imageKey = GetFileMd5(pictureBox2.ImageLocation);
+                personAndFace.face.userId = personAndFace.person.id;
+                personAndFace.face.userName = personAndFace.person.name;
+                personAndFace.face.direct = 0;
+                personAndFace.face.imageId = string.Format("{0}_{1}_{2}", personAndFace.face.userId, personAndFace.face.userName, personAndFace.face.direct);
+                personAndFace.face.imageBase64 = us.imageBase64;
+                personAndFace.face.imageKey = us.imageKey;
+                res.Add(personAndFace);
+
+            }
+
+            return res;
+
+        }
         private void SendDevRefreshData()
         {
             tb_MachineCode.Text = "";
             try
             {
-                button9.Enabled = false;
+               // button9.Enabled = false;
                 string postStr = string.Format("pass={0}", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/refresh";
@@ -600,7 +654,7 @@ namespace FaceTest
                     if (res.success)
                     {
                         tb_MachineCode.Text = res.data;
-                        showMsg("refresh 成功:"+res.msg);
+                        showMsg("refresh 成功:"+res.msg+"********************************");
                     }
                     else
                     {
@@ -615,7 +669,7 @@ namespace FaceTest
             }
             finally
             {
-                button9.Enabled = true;
+               // button9.Enabled = true;
 
             }
         }
@@ -1841,7 +1895,7 @@ namespace FaceTest
                 }
                 else
                 {
-                    showMsg("通讯失败");
+                    showMsg("通讯失败/");
                 }
 
             }
@@ -1863,6 +1917,155 @@ namespace FaceTest
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = receivePassList;
             //dataGridView1.Refresh();
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            //多少条记录后，通知设备更新一下
+            int RefreshDataCount = 20;
+            try
+            {
+                int _refreshDataCount = 0;
+                int _count = 0;
+                button28.Enabled = false;
+                //得到人员、照片列表
+                List<PersonAndFace> personAndFaces = GetPersonAndFaces();
+
+                foreach (PersonAndFace mPersonAndFace in personAndFaces)
+                {
+                    _count++;
+                    showMsg(string.Format("处理--[{0}]/[{1}]",_count,personAndFaces.Count));
+                    _refreshDataCount++;
+                    //如果对象为空，则跳过，执行下一个
+                    if (mPersonAndFace == null)
+                        continue;
+
+                    //操作人员
+                    #region 操作人员
+                    Person person = mPersonAndFace.person;
+                    if (person == null)
+                        continue;
+                    //person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                    //person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                    string postStr = string.Format("pass={0}&person={1}", Pass, JsonConvert.SerializeObject(person));
+                    string urlOper = @"/person/createOrUpdate";
+                    string url = string.Format(@"{0}{1}", Url, urlOper);
+                    showMsg("url:" + url);
+                    showMsg("postStr:" + postStr);
+
+                    string ReturnStr = "";
+                    bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                    if (b)
+                    {
+                        showMsg(ReturnStr);
+                        ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                        if (res.success)
+                        {
+                            showMsg("person createOrUpdate 成功");
+
+                            //处理完成后，发消息给设备更新数据
+                            //SendDevRefreshData();
+                        }
+                        else
+                        {
+                            //-1:参数异常:person传入为空
+                            //-2:参数异常:传入的person字符串转化成对象出错
+                            //-3:参数异常:传入的ID格式非法，格式：[A-Za-z0-9]{0,32}
+                            //-4:参数异常:系统异常
+
+                            showMsg("有返回，但出错了：" + res.msg);
+                            //跳出循环
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        showMsg("通讯失败");
+                        //跳出循环
+                        break;
+                    }
+                    #endregion
+
+                    #region 操作照片
+                    Face face = mPersonAndFace.face;
+                    if (face == null)
+                        continue;
+                    //face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
+                    //face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
+                    //face.direct = 0;
+                    //face.imageId = string.Format("{0}_{1}_{2}", face.userId, face.userName, face.direct);
+                    ////face.faceImageFileName = FaceImageFileName;// pictureBox2.ImageLocation;
+                    //face.imageBase64 = ImgToBase64String(pictureBox2.ImageLocation);
+                    //face.imageKey = GetFileMd5(pictureBox2.ImageLocation);
+                    postStr = string.Format("pass={0}&face={1}", Pass, JsonConvert.SerializeObject(face));
+                    urlOper = @"/face/createOrUpdate";
+                    url = string.Format(@"{0}{1}", Url, urlOper);
+                    ///person/createOrUpdate
+                    showMsg("url:" + url);
+                    showMsg("postStr:" + (postStr.Length > 100 ? postStr.Substring(0, 100)+"..." : postStr));
+
+                    ReturnStr = "";
+                    b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                    if (b)
+                    {
+                        showMsg(ReturnStr);
+                        ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                        if (res.success)
+                        {
+                            showMsg("face createOrUpdate 成功");
+
+                        }
+                        else
+                        {
+                            //-1:参数异常:person传入为空
+                            //-2:参数异常:传入的person字符串转化成对象出错
+                            //-3:参数异常:传入的ID格式非法，格式：[A-Za-z0-9]{0,32}
+                            //-4:参数异常:系统异常
+
+                            showMsg("有返回，但出错了：" + res.msg);
+                        }
+                    }
+                    else
+                    {
+                        showMsg("通讯失败");
+                    }
+                    #endregion
+
+                    showMsg("");
+
+                    //通知设备更新数据
+                    if (_refreshDataCount > RefreshDataCount)
+                    {
+                        _refreshDataCount = 0;
+                        SendDevRefreshData();
+                    }
+
+                }
+
+                //整体处理完成后，发消息给设备更新数据
+                SendDevRefreshData();
+
+
+            }
+            finally
+            {
+                button28.Enabled = true;
+            }
+        }
+
+        private void button27_Click_1(object sender, EventArgs e)
+        {
+            timer1.Interval = 5 * 60 * 1000;
+            timer1.Enabled = !timer1.Enabled;
+            if (timer1.Enabled)
+            {
+                button28_Click(sender, e);
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            button28_Click(sender, e);
         }
     }
     /// <summary>
@@ -1939,7 +2142,20 @@ namespace FaceTest
             return string.Format("id:[{0}],name:[{1}]",id,name);
         }
     }
-
+    /// <summary>
+    /// 人员带照片的对象
+    /// </summary>
+    public class PersonAndFace
+    {
+        /// <summary>
+        /// 人员信息
+        /// </summary>
+        public Person person { get; set; }
+        /// <summary>
+        /// 对应的照片的信息
+        /// </summary>
+        public Face face { get; set; }
+    }
     public class Face
     {
         /// <summary>
