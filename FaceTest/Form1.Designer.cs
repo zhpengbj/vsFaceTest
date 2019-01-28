@@ -108,6 +108,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button27 = new System.Windows.Forms.Button();
+            this.button29 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -875,11 +876,22 @@
             this.button27.UseVisualStyleBackColor = true;
             this.button27.Click += new System.EventHandler(this.button27_Click_1);
             // 
+            // button29
+            // 
+            this.button29.Location = new System.Drawing.Point(537, 720);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(149, 36);
+            this.button29.TabIndex = 74;
+            this.button29.Text = "广播";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.button29);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.tb_SplitChar);
@@ -1048,6 +1060,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button29;
     }
 }
 

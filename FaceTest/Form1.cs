@@ -18,6 +18,7 @@ using System.Threading;
 using System.Net;
 using CassiniDev;
 using FaceTest.Properties;
+using System.Net.Sockets;
 
 namespace FaceTest
 {
@@ -198,7 +199,7 @@ namespace FaceTest
                         showInfoForGrid(v);
                         showMsg2(v.ToString());
 
-                    //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
+                        //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
                     }
                     else
                     {
@@ -206,7 +207,8 @@ namespace FaceTest
                         lb_PersonName.Text = "";
                     }
                 });
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 showMsg(ex.ToString());
             }
@@ -553,7 +555,7 @@ namespace FaceTest
                         s = "\r\n";
                     }
 
-                    receiveMsg2.AppendText(s+Environment.NewLine);
+                    receiveMsg2.AppendText(s + Environment.NewLine);
                     receiveMsg2.Select(receiveMsg2.Text.Length, 0);
                     receiveMsg2.ScrollToCaret();
                 }
@@ -610,7 +612,7 @@ namespace FaceTest
                 //person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
                 //person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
                 personAndFace.person.id = us.FileName;
-                personAndFace.person.name = personAndFace.person.id ;
+                personAndFace.person.name = personAndFace.person.id;
 
                 //face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
                 //face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
@@ -636,7 +638,7 @@ namespace FaceTest
             tb_MachineCode.Text = "";
             try
             {
-               // button9.Enabled = false;
+                // button9.Enabled = false;
                 string postStr = string.Format("pass={0}", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/refresh";
@@ -654,7 +656,7 @@ namespace FaceTest
                     if (res.success)
                     {
                         tb_MachineCode.Text = res.data;
-                        showMsg("refresh 成功:"+res.msg+"********************************");
+                        showMsg("refresh 成功:" + res.msg + "********************************");
                     }
                     else
                     {
@@ -669,7 +671,7 @@ namespace FaceTest
             }
             finally
             {
-               // button9.Enabled = true;
+                // button9.Enabled = true;
 
             }
         }
@@ -1274,7 +1276,7 @@ namespace FaceTest
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
-                        showMsg(string.Format("Set passtime[{0}] 成功",_PassTimes.Name));
+                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
                     }
                     else
                     {
@@ -1496,7 +1498,7 @@ namespace FaceTest
             try
             {
                 button19.Enabled = false;
-                Person  person = new Person();
+                Person person = new Person();
                 person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
                 person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
                 string postStr = string.Format("pass={0}&person={1}", Pass, JsonConvert.SerializeObject(person));
@@ -1550,7 +1552,7 @@ namespace FaceTest
             Pass = tb_Pass.Text;
             try
             {
-                
+
                 button20.Enabled = false;
                 //id如果传入-1,则会把人员和照片全部删除
                 //id可以传入多个，按','分隔，
@@ -1622,7 +1624,7 @@ namespace FaceTest
                     {
                         showMsg("person find 成功");
                         List<Person> list = JsonConvert.DeserializeObject<List<Person>>(res.data);
-                        
+
                         if (list != null)
                         {
                             int personid = 0;
@@ -1670,7 +1672,7 @@ namespace FaceTest
                 face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
                 face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
                 face.direct = 0;
-                face.imageId = string.Format("{0}_{1}_{2}",face.userId,face.userName,face.direct);
+                face.imageId = string.Format("{0}_{1}_{2}", face.userId, face.userName, face.direct);
                 //face.faceImageFileName = FaceImageFileName;// pictureBox2.ImageLocation;
                 face.imageBase64 = ImgToBase64String(pictureBox2.ImageLocation);
                 face.imageKey = GetFileMd5(pictureBox2.ImageLocation);
@@ -1934,7 +1936,7 @@ namespace FaceTest
                 foreach (PersonAndFace mPersonAndFace in personAndFaces)
                 {
                     _count++;
-                    showMsg(string.Format("处理--[{0}]/[{1}]",_count,personAndFaces.Count));
+                    showMsg(string.Format("处理--[{0}]/[{1}]", _count, personAndFaces.Count));
                     _refreshDataCount++;
                     //如果对象为空，则跳过，执行下一个
                     if (mPersonAndFace == null)
@@ -2002,7 +2004,7 @@ namespace FaceTest
                     url = string.Format(@"{0}{1}", Url, urlOper);
                     ///person/createOrUpdate
                     showMsg("url:" + url);
-                    showMsg("postStr:" + (postStr.Length > 100 ? postStr.Substring(0, 100)+"..." : postStr));
+                    showMsg("postStr:" + (postStr.Length > 100 ? postStr.Substring(0, 100) + "..." : postStr));
 
                     ReturnStr = "";
                     b = CHttpPost.Post(url, postStr, ref ReturnStr);
@@ -2066,6 +2068,78 @@ namespace FaceTest
         private void timer1_Tick(object sender, EventArgs e)
         {
             button28_Click(sender, e);
+        }
+        private byte[] packData(byte mPackType)
+        {
+            //byte[] data = new byte[1024];
+            //int offset = 0;
+
+
+            //data[offset++] = mPackType;
+
+
+            //byte[] result = new byte[offset];
+            //Array.Copy(data, 0, result, 0, offset);
+            //return result;
+            byte[] result = new byte[1];
+            result[0] = mPackType;
+            return result;
+        }
+
+        private byte[] parsePack(byte[] pack)
+        {
+            byte PACKET_TYPE_FIND_DEVICE_RSP_11 = 0x11; // 搜索响应
+            if (pack == null || pack.Length == 0)
+            {
+                return null;
+            }
+
+            if (pack[0] != PACKET_TYPE_FIND_DEVICE_RSP_11)
+            {
+                return null;
+            }
+            byte[] result = new byte[pack.Length - 1];
+            Array.Copy(pack, 1, result, 0, pack.Length - 1);
+            return result;
+        }
+        private void button29_Click(object sender, EventArgs e)
+        {
+            byte PACKET_TYPE_FIND_DEVICE_REQ_10 = 0x10; // 搜索请求
+
+            UdpClient UDPsend = new UdpClient(new IPEndPoint(IPAddress.Any, 0));
+            IPEndPoint endpoint = new IPEndPoint(IPAddress.Broadcast, 9000);
+            //其实 IPAddress.Broadcast 就是 255.255.255.255
+            //下面代码与上面有相同的作用
+            //IPEndPoint endpoint = new IPEndPoint(IPAddress.Parse("255.255.255.255"), 8080);
+            byte[] buf = packData(PACKET_TYPE_FIND_DEVICE_REQ_10);//Encoding.Default.GetBytes("This is UDP broadcast" + DateTime.Now.ToString());
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    UDPsend.Send(buf, buf.Length, endpoint);
+                    try
+                    {
+                        int rspCount = 200;
+                        IPEndPoint endpointR = new IPEndPoint(IPAddress.Any, 0);
+                        while (rspCount-- > 0)
+                        {
+                            //recePack.setData(receData);
+                            byte[] receData = parsePack(UDPsend.Receive(ref endpointR));
+                            if (receData != null)
+                            {
+                                string msg = Encoding.Default.GetString(receData);
+                                showMsg(String.Format("设备[{0}]:[{1}]", endpointR.Address, msg));
+                            }
+                        }
+                    }
+                    catch (SocketException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+
+                    Thread.Sleep(1000);
+                }
+            });
         }
     }
     /// <summary>
