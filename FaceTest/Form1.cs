@@ -2129,6 +2129,7 @@ namespace FaceTest
                             {
                                 string msg = Encoding.Default.GetString(receData);
                                 showMsg(String.Format("设备[{0}]:[{1}]", endpointR.Address, msg));
+                                showDevInfo(msg);
                             }
                         }
                     }
@@ -2141,7 +2142,21 @@ namespace FaceTest
                 }
             });
         }
+        private void showDevInfo(string s)
+        {
+            DevicesHeartBeat device =JsonConvert.DeserializeObject<DevicesHeartBeat>(s);
+            showMsg(String.Format("解析,机器码[{0}]", device.deviceMachineCode));
+            showMsg(String.Format("解析,机器编号[{0}]", device.deviceKey));
+            showMsg(String.Format("解析,Ip[{0}]", device.ip));
+            showMsg(String.Format("解析,人员数[{0}]", device.personCount));
+            showMsg(String.Format("解析,照片数[{0}]", device.faceCount));
+            showMsg(String.Format("解析,运行时间[{0}]", device.runtime));
+            showMsg(String.Format("解析,版本号[{0}]", device.version));
+            showMsg(String.Format("解析,占有内存[{0}mb]", device.memory));
+            showMsg("");
+        }
     }
+    
     /// <summary>
     /// 时段段对象
     /// </summary>
@@ -2273,6 +2288,35 @@ namespace FaceTest
                 faceId, personId, direct, faceImageFaileName, faceImageKey);
         }
 
+    }
+    public class DevicesHeartBeat
+    {
+        /// <summary>
+        /// 设备编号，可用户自定义，如果没有自定义，则返回机器码。
+        /// </summary>
+        public String deviceKey { get; set; }
+        /// <summary>
+        /// 设备的机器码
+        /// </summary>
+        public String deviceMachineCode { get; set; }
+        /// <summary>
+        /// 运行时间
+        /// 格式：天d小时h分钟m
+        /// </summary>
+        public String runtime { get; set; }
+        /// <summary>
+        /// APP启动的时间
+        /// </summary>
+        public String starttime { get; set; }
+        /// <summary>
+        /// 当前系统时间
+        /// </summary>
+        public String time { get; set; }
+        public String ip { get; set; }
+        public int personCount { get; set; }
+        public int faceCount { get; set; }
+        public String version { get; set; }
+        public float memory { get; set; }
     }
 
 }
