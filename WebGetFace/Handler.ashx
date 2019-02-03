@@ -26,7 +26,8 @@ public class Handler : IHttpHandler {
 
             if (!string.IsNullOrEmpty(rStr))
             {
-                SendMessage.GetSendMessage().Send("Handler receive data:"+rStr);
+                SendMessage.GetSendMessage().Send("Handler receive data:");
+                SendMessage.GetSendMessage().Send(rStr);
                 //SendMessage.GetSendMessage().Send(Verify);
             }
             else
@@ -36,7 +37,7 @@ public class Handler : IHttpHandler {
             }
             result.result = 1;
             result.success = true;
-            result.msg=DateTime.Now.ToString()+":" + rStr;
+            result.msg = DateTime.Now.ToString() + ":" + rStr;
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
@@ -47,6 +48,7 @@ public class Handler : IHttpHandler {
             result.msgtype = -100;
             result.msg = ex.Message;
             context.Response.Write(JsonConvert.SerializeObject(result));
+            SendMessage.GetSendMessage().Send(ex.Message);
         }
     }
 
@@ -56,8 +58,8 @@ public class Handler : IHttpHandler {
         }
     }
 
-    
+
 
 }
 
-    
+
