@@ -109,6 +109,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button27 = new System.Windows.Forms.Button();
             this.button29 = new System.Windows.Forms.Button();
+            this.button30 = new System.Windows.Forms.Button();
+            this.button31 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -886,11 +889,41 @@
             this.button29.UseVisualStyleBackColor = true;
             this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
+            // button30
+            // 
+            this.button30.Location = new System.Drawing.Point(537, 525);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(149, 36);
+            this.button30.TabIndex = 75;
+            this.button30.Text = "得到运行参数";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
+            // button31
+            // 
+            this.button31.Location = new System.Drawing.Point(537, 598);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(149, 36);
+            this.button31.TabIndex = 76;
+            this.button31.Text = "设置运行参数";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(537, 567);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(182, 25);
+            this.textBox1.TabIndex = 77;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button31);
+            this.Controls.Add(this.button30);
             this.Controls.Add(this.button29);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.label12);
@@ -1061,6 +1094,9 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

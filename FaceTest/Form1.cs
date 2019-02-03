@@ -114,6 +114,66 @@ namespace FaceTest
             settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
             settings.Save();
         }
+        private void StartListeningPipes()
+        {
+            //if (!this.isServerRunning)
+            //{
+            //    return;
+            //}
+
+            var pipeClientConnection = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+
+            try
+            {
+                pipeClientConnection.BeginWaitForConnection(asyncResult =>
+                {
+                    // note that the body of the lambda is not part of the outer try... catch block!
+                    using (var conn = (NamedPipeServerStream)asyncResult.AsyncState)
+                    {
+                        try
+                        {
+                            conn.EndWaitForConnection(asyncResult);
+                            StreamReader sr = new StreamReader(conn);
+                            StreamWriter sw = new StreamWriter(conn);
+                            string result = null;
+                            string clientName = conn.GetHashCode().ToString();// server.GetImpersonationUserName();
+                            showMsg(clientName + "连接");
+                            while (conn.IsConnected)
+                            {
+                                result = sr.ReadLine();
+                                if (result == null)
+                                    continue;
+                                if (result == "bye")
+                                    break;
+                                showMsg(result);
+                                ShowInfo(result);
+                                //this.Invoke((MethodInvoker)delegate {
+                                //    receiveMsg.Select(receiveMsg.Text.Length, 0);
+                                //    receiveMsg.ScrollToCaret();
+                                //});
+                            }
+                            showMsg(clientName + "断开连接，等待新的连接");
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        // we have a connection established, time to wait for new ones while this thread does its business with the client
+                        // this may look like a recursive call, but it is not: remember, we're in a lambda expression
+                        // if this bothers you, just export the lambda into a named private method, like you did in your question
+                        StartListeningPipes();
+
+                        // do business with the client
+                        conn.WaitForPipeDrain();
+
+                    }
+                }, pipeClientConnection);
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = receivePassList;
@@ -125,45 +185,47 @@ namespace FaceTest
             button2_Click(null, null);
             //设置设备URL
             button3_Click(null, null);
+            StartListeningPipes();
+            //ThreadPool.QueueUserWorkItem(delegate
+            //{
+            //    pipeServer AsyncCallback aa = null;
+            //    pipeServer.BeginWaitForConnection(aa = (o) =>
+            //      {
+            //          NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;5
+            //          server.EndWaitForConnection(o);
+            //          StreamReader sr = new StreamReader(server);
+            //          StreamWriter sw = new StreamWriter(server);
+            //          string result = null;
+            //          string clientName = server.GetHashCode().ToString();// server.GetImpersonationUserName();
+            //          showMsg(clientName + "连接");
+            //          while (server.IsConnected)
+            //          {
+            //              result = sr.ReadLine();
+            //              if (result == null)
+            //                  continue;
+            //              if ( result == "bye")
+            //                  break;
+            //              showMsg(result);
+            //              ShowInfo(result);
+            //              //this.Invoke((MethodInvoker)delegate {
+            //              //    receiveMsg.Select(receiveMsg.Text.Length, 0);
+            //              //    receiveMsg.ScrollToCaret();
+            //              //});
+            //          }
+            //          showMsg(clientName + "断开连接，等待新的连接");
+            //          //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
+            //          server.Disconnect();//服务器断开，很重要！
+            //          server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
+            //          //if (runService)
+            //          //{
+            //          //    Thread.Sleep(1000);
+            //          //    //如果web服务异常停止，则重新启动
 
-            ThreadPool.QueueUserWorkItem(delegate
-            {
-                AsyncCallback aa = null;
-                pipeServer.BeginWaitForConnection(aa = (o) =>
-                  {
-                      NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;
-                      server.EndWaitForConnection(o);
-                      StreamReader sr = new StreamReader(server);
-                      StreamWriter sw = new StreamWriter(server);
-                      string result = null;
-                      string clientName = server.GetImpersonationUserName();
-                      showMsg(clientName + "连接");
-                      while (server.IsConnected)
-                      {
-                          result = sr.ReadLine();
-                          if (result == null || result == "bye")
-                              break;
-                          showMsg(result);
-                          ShowInfo(result);
-                          //this.Invoke((MethodInvoker)delegate {
-                          //    receiveMsg.Select(receiveMsg.Text.Length, 0);
-                          //    receiveMsg.ScrollToCaret();
-                          //});
-                      }
-                      showMsg(clientName + "断开连接，等待新的连接");
-                      //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
-                      server.Disconnect();//服务器断开，很重要！
-                      server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
-                      if (runService)
-                      {
-                          Thread.Sleep(1000);
-                          //如果web服务异常停止，则重新启动
+            //          //    StartService();
+            //          //}
+            //      }, pipeServer);
 
-                          StartService();
-                      }
-                  }, pipeServer);
-
-            });
+            //});
         }
         /// <summary>
         /// 显示人员信息
@@ -464,7 +526,8 @@ namespace FaceTest
                 button5.Enabled = false;
                 stopwatch.Start();
                 DirectoryInfo di = new DirectoryInfo(FacePicPath);
-                FileInfo[] fis = di.GetFiles("*.jpg");
+                //FileInfo[] fis = di.GetFiles("*.jpg");
+                List< FileInfo> fis = di.GetFiles("*.*", SearchOption.AllDirectories).Where(s => s.Name.EndsWith(".png") || s.Name.EndsWith(".jpg")).ToList<FileInfo>();
                 userList = new List<User>();
                 userDic = new Dictionary<string, User>();
                 //Parallel.ForEach(fis, b =>
@@ -489,7 +552,7 @@ namespace FaceTest
                 }
                 //);
                 stopwatch.Stop();
-                showMsg(string.Format("处理总人数[{0}],用时[{1}]", fis.Length, stopwatch.ElapsedMilliseconds));
+                showMsg(string.Format("处理总人数[{0}],用时[{1}]", fis.Count, stopwatch.ElapsedMilliseconds));
             }
             catch (Exception ex)
             {
@@ -2127,7 +2190,7 @@ namespace FaceTest
                             byte[] receData = parsePack(UDPsend.Receive(ref endpointR));
                             if (receData != null)
                             {
-                                string msg = Encoding.Default.GetString(receData);
+                                string msg = Encoding.UTF8.GetString(receData);
                                 showMsg(String.Format("设备[{0}]:[{1}]", endpointR.Address, msg));
                                 showDevInfo(msg);
                             }
@@ -2152,11 +2215,98 @@ namespace FaceTest
             showMsg(String.Format("解析,照片数[{0}]", device.faceCount));
             showMsg(String.Format("解析,运行时间[{0}]", device.runtime));
             showMsg(String.Format("解析,版本号[{0}]", device.version));
-            showMsg(String.Format("解析,占有内存[{0}mb]", device.memory));
+            showMsg(String.Format("解析,App占用内存[{0}mb]-[{1:F}%]", device.memory, device.memory/ device.totalMem*100.00));
+            showMsg(String.Format("解析,系统运行占用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
+            showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));
             showMsg("");
         }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            try
+            {
+                button30.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getAppConfig";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        textBox1.Text = res.data;
+                        showMsg("getAppConfig 成功");
+                        showMsg(res.data);
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button30.Enabled = true;
+
+            }
+        }
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button31.Enabled = false;
+                string postStr = string.Format("pass={0}&appconfig={1}", Pass, textBox1.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setAppConfig";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setAppConfig 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button31.Enabled = true;
+
+            }
+        }
     }
-    
+
     /// <summary>
     /// 时段段对象
     /// </summary>
@@ -2316,7 +2466,18 @@ namespace FaceTest
         public int personCount { get; set; }
         public int faceCount { get; set; }
         public String version { get; set; }
+        /// <summary>
+        /// APP占用内存
+        /// </summary>
         public float memory { get; set; }
+        /// <summary>
+        /// 系统运行占用内存
+        /// </summary>
+        public float availMem { get; set; }
+        /// <summary>
+        /// 系统总内存
+        /// </summary>
+        public float totalMem { get; set; }
     }
 
 }
