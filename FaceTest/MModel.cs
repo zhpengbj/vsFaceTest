@@ -77,6 +77,8 @@ namespace FaceTest
         public string type { get; set; }
         public string path { get; set; }
 
+        public string base64 { get; set; }
+
         /// <summary>
         /// 记录类型
         /// 0：实时
