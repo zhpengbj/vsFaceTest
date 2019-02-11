@@ -2312,7 +2312,7 @@ namespace FaceTest
             try
             {
                 button32.Enabled = false;
-                string postStr = string.Format("pass={0}", Pass);
+                string postStr = string.Format("pass={0}&delete={1}", Pass, checkBox1.Checked.ToString());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/reset";
                 string url = string.Format(@"{0}{1}", Url, urlOper);

@@ -113,6 +113,7 @@
             this.button31 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button32 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -614,7 +615,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(747, 737);
+            this.tabPage2.Size = new System.Drawing.Size(747, 791);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "接收识别记录";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -625,7 +626,7 @@
             this.receiveMsg2.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg2.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg2.Name = "receiveMsg2";
-            this.receiveMsg2.Size = new System.Drawing.Size(741, 731);
+            this.receiveMsg2.Size = new System.Drawing.Size(741, 785);
             this.receiveMsg2.TabIndex = 11;
             this.receiveMsg2.Text = "";
             // 
@@ -635,7 +636,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(747, 737);
+            this.tabPage3.Size = new System.Drawing.Size(747, 791);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -647,7 +648,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(741, 731);
+            this.dataGridView1.Size = new System.Drawing.Size(741, 785);
             this.dataGridView1.TabIndex = 0;
             // 
             // button28
@@ -927,11 +928,22 @@
             this.button32.UseVisualStyleBackColor = true;
             this.button32.Click += new System.EventHandler(this.button32_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(381, 772);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(89, 19);
+            this.checkBox1.TabIndex = 79;
+            this.checkBox1.Text = "清空参数";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 820);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button32);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button31);
@@ -1110,6 +1122,7 @@
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
