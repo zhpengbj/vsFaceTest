@@ -44,6 +44,7 @@ public class SendMessage
 
 public class Verify
 {
+    public int id { get; set; }
     public string deviceKey { get; set; }
     public string userId { get; set; }
     public string userName { get; set; }

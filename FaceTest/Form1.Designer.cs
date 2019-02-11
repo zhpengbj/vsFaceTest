@@ -112,6 +112,7 @@
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button32 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -583,7 +584,7 @@
             this.tabControl1.Location = new System.Drawing.Point(749, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(755, 766);
+            this.tabControl1.Size = new System.Drawing.Size(755, 820);
             this.tabControl1.TabIndex = 68;
             // 
             // tabPage1
@@ -592,7 +593,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(747, 737);
+            this.tabPage1.Size = new System.Drawing.Size(747, 791);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "详细信息";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -603,7 +604,7 @@
             this.receiveMsg.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg.Name = "receiveMsg";
-            this.receiveMsg.Size = new System.Drawing.Size(741, 731);
+            this.receiveMsg.Size = new System.Drawing.Size(741, 785);
             this.receiveMsg.TabIndex = 10;
             this.receiveMsg.Text = "";
             // 
@@ -916,11 +917,22 @@
             this.textBox1.Size = new System.Drawing.Size(182, 25);
             this.textBox1.TabIndex = 77;
             // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(537, 762);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(149, 36);
+            this.button32.TabIndex = 78;
+            this.button32.Text = "初始化设备";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1504, 766);
+            this.ClientSize = new System.Drawing.Size(1504, 820);
+            this.Controls.Add(this.button32);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button31);
             this.Controls.Add(this.button30);
@@ -1097,6 +1109,7 @@
         private System.Windows.Forms.Button button30;
         private System.Windows.Forms.Button button31;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button32;
     }
 }
 

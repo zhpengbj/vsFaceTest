@@ -20,26 +20,53 @@ public class Handler_His : IHttpHandler {
         context.Response.ContentType = "text/plain";
 
         VerifyReturn result = new VerifyReturn();
-        string rStr="";
+        string rStr = "";
         try
         {
             rStr = context.Request["verify"];
+            bool check = false;
+            Verify v = null;
+
 
             if (!string.IsNullOrEmpty(rStr))
             {
-                SendMessage.GetSendMessage().Send("Handler_His receive data:" + rStr);
-                //SendMessage.GetSendMessage().Send(Verify);
+                try
+                {
+                    v = JsonConvert.DeserializeObject<Verify>(rStr);
+                    check = true;
+                }
+                catch
+                {
+                    check = false;
+                }
             }
             else
             {
+                check = false;
+            }
+
+            if (check)
+            {
+                SendMessage.GetSendMessage().Send("Handler_His receive data:" + rStr);
+                result.result = 1;
+                result.success = true;
+                result.msg = v == null ? "0" : v.id.ToString();
+                result.msgtype = 0;
+                //context.Response.Write(JsonConvert.SerializeObject(result));
+            }
+            else
+            {
+                //SendMessage.GetSendMessage().Send(Verify);
 
                 rStr = "not find Verify";
+                result.result = 1;
+                result.success = false;
+                result.msg = rStr;
+                result.msgtype = 0;
             }
-            result.result = 1;
-            result.success = true;
-            result.msg = DateTime.Now.ToString() + ":" + rStr;
-            result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
+
+
         }
         catch (Exception ex)
         {

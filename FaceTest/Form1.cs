@@ -2305,6 +2305,50 @@ namespace FaceTest
 
             }
         }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            try
+            {
+                button32.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/reset";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        textBox1.Text = res.data;
+                        showMsg("reset 成功,需要重启设备");
+                        showMsg(res.data);
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button32.Enabled = true;
+
+            }
+        }
     }
 
     /// <summary>
