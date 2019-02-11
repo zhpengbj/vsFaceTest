@@ -2314,7 +2314,7 @@ namespace FaceTest
                 button32.Enabled = false;
                 string postStr = string.Format("pass={0}&delete={1}", Pass, checkBox1.Checked.ToString());
                 //string urlOper = @"/person/createOrUpdate";
-                string urlOper = @"/reset";
+                string urlOper = @"/device/reset";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
                 ///person/createOrUpdate
                 showMsg("url:" + url);
@@ -2329,8 +2329,9 @@ namespace FaceTest
                     if (res.success)
                     {
                         textBox1.Text = res.data;
-                        showMsg("reset 成功,需要重启设备");
+                        showMsg("reset 成功,App重启！");
                         showMsg(res.data);
+                        //SendDevRefreshData();
                     }
                     else
                     {
