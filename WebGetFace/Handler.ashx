@@ -37,7 +37,7 @@ public class Handler : IHttpHandler {
             }
             result.result = 1;
             result.success = true;
-            result.msg = DateTime.Now.ToString() + ":" + rStr;
+            result.msg = "";
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
