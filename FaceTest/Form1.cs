@@ -51,7 +51,7 @@ namespace FaceTest
             //     // PipeOutBufferSize
             //   );
         }
-        NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+        
         private Settings settings = new Settings();
         /// <summary>
         /// 读取设置项
@@ -113,6 +113,52 @@ namespace FaceTest
             settings.tb_CallBackUrl_His = this.tb_CallBackUrl_His.Text.Trim();
             settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
             settings.Save();
+        }
+        private void StartListeningPipes2()
+        {
+            NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
+
+        ThreadPool.QueueUserWorkItem(delegate
+            {
+                
+                AsyncCallback aa = null;
+                pipeServer.BeginWaitForConnection(aa = (o) =>
+                  {
+                      NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState; 
+                      server.EndWaitForConnection(o);
+                      StreamReader sr = new StreamReader(server);
+                      StreamWriter sw = new StreamWriter(server);
+                      string result = null;
+                      string clientName = server.GetHashCode().ToString();// server.GetImpersonationUserName();
+                      //showMsg(clientName + "连接");
+                      while (server.IsConnected)
+                      {
+                          result = sr.ReadLine();
+                          if (result == null)
+                              continue;
+                          if (result == "bye")
+                              break;
+                          showMsg(result);
+                          ShowInfo(result);
+                          //this.Invoke((MethodInvoker)delegate {
+                          //    receiveMsg.Select(receiveMsg.Text.Length, 0);
+                          //    receiveMsg.ScrollToCaret();
+                          //});
+                      }
+                      //showMsg(clientName + "断开连接，等待新的连接");
+                      //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
+                      server.Disconnect();//服务器断开，很重要！
+                      server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
+                      //if (runService)
+                      //{
+                      //    Thread.Sleep(1000);
+                      //    //如果web服务异常停止，则重新启动
+
+                      //    StartService();
+                      //}
+                  }, pipeServer);
+
+            });
         }
         private void StartListeningPipes()
         {
@@ -185,7 +231,7 @@ namespace FaceTest
             button2_Click(null, null);
             //设置设备URL
             button3_Click(null, null);
-            StartListeningPipes();
+            StartListeningPipes2();
             //ThreadPool.QueueUserWorkItem(delegate
             //{
             //    pipeServer AsyncCallback aa = null;

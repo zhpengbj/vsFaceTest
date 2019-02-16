@@ -33,11 +33,11 @@ public class Handler : IHttpHandler {
             else
             {
 
-                rStr = "not find Verify";
+                result.msg = "not find Verify";
             }
             result.result = 1;
             result.success = true;
-            result.msg = "";
+            //result.msg = "";
             result.msgtype = 0;
             context.Response.Write(JsonConvert.SerializeObject(result));
         }
