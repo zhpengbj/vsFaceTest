@@ -26,7 +26,15 @@ public class Handler : IHttpHandler {
 
             if (!string.IsNullOrEmpty(rStr))
             {
-                SendMessage.GetSendMessage().Send("Handler receive data:"+rStr);
+                if (rStr == "test")
+                {
+                    SendMessage.GetSendMessage().Send("Handler receive test!");
+                }
+                else
+                {
+                    SendMessage.GetSendMessage().Send("Handler receive data:" + rStr);
+                }
+                result.msg = "";
                 //SendMessage.GetSendMessage().Send(rStr);
                 //SendMessage.GetSendMessage().Send(Verify);
             }

@@ -126,6 +126,7 @@
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
             this.button43 = new System.Windows.Forms.Button();
+            this.button44 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -579,7 +580,7 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(589, 2);
+            this.button26.Location = new System.Drawing.Point(778, 39);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(130, 36);
             this.button26.TabIndex = 67;
@@ -1053,6 +1054,7 @@
             this.button41.TabIndex = 89;
             this.button41.Text = "设置推送参数";
             this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
             // 
             // button42
             // 
@@ -1074,11 +1076,22 @@
             this.button43.UseVisualStyleBackColor = true;
             this.button43.Click += new System.EventHandler(this.button43_Click);
             // 
+            // button44
+            // 
+            this.button44.Location = new System.Drawing.Point(594, 2);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(92, 36);
+            this.button44.TabIndex = 92;
+            this.button44.Text = "打开web";
+            this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1708, 820);
+            this.Controls.Add(this.button44);
             this.Controls.Add(this.button43);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button41);
@@ -1283,6 +1296,7 @@
         private System.Windows.Forms.Button button41;
         private System.Windows.Forms.Button button42;
         private System.Windows.Forms.Button button43;
+        private System.Windows.Forms.Button button44;
     }
 }
 

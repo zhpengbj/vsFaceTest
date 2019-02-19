@@ -19,6 +19,7 @@ using System.Net;
 using CassiniDev;
 using FaceTest.Properties;
 using System.Net.Sockets;
+using System.Diagnostics;
 
 namespace FaceTest
 {
@@ -183,7 +184,7 @@ namespace FaceTest
                             StreamWriter sw = new StreamWriter(conn);
                             string result = null;
                             string clientName = conn.GetHashCode().ToString();// server.GetImpersonationUserName();
-                            showMsg(clientName + "连接");
+                            //showMsg(clientName + "连接");
                             while (conn.IsConnected)
                             {
                                 result = sr.ReadLine();
@@ -198,7 +199,7 @@ namespace FaceTest
                                 //    receiveMsg.ScrollToCaret();
                                 //});
                             }
-                            showMsg(clientName + "断开连接，等待新的连接");
+                            //showMsg(clientName + "断开连接，等待新的连接");
                         }
                         catch (Exception ex)
                         {
@@ -210,7 +211,7 @@ namespace FaceTest
                         StartListeningPipes();
 
                         // do business with the client
-                        conn.WaitForPipeDrain();
+                        //conn.WaitForPipeDrain();
 
                     }
                 }, pipeClientConnection);
@@ -2790,7 +2791,7 @@ namespace FaceTest
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
-                        textBox1.Text = res.data;
+                        textBox2.Text = res.data;
                         showMsg("getSendConfig 成功");
                         showMsg(res.data);
                     }
@@ -2859,6 +2860,53 @@ namespace FaceTest
                 button43.Enabled = true;
 
             }
+        }
+
+        private void button41_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button41.Enabled = false;
+                string postStr = string.Format("pass={0}&sendconfig={1}", Pass, textBox2.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setSendConfig";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setSendConfig 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button41.Enabled = true;
+
+            }
+        }
+
+        private void button44_Click(object sender, EventArgs e)
+        {
+            string Url = string.Format("http://{0}:{1}", "127.0.0.1", 8091);
+            Process.Start(Url);
         }
     }
 
