@@ -58,7 +58,7 @@ public class Handler_His : IHttpHandler {
             {
                 //SendMessage.GetSendMessage().Send(Verify);
 
-                rStr = "not find Verify";
+                rStr = "Verify data is err";
                 result.result = 1;
                 result.success = false;
                 result.msg = rStr;

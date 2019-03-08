@@ -90,6 +90,9 @@ namespace FaceTest
             return String.Format("id[{0}],type[{1}], userId[{2}],userName[{3}],sendPassType[{5}]" + (!string.IsNullOrEmpty(path)?Environment.NewLine:"")+" path[{4}]",
                 id,type,userId,userName,path,SendPassType==0?"实时":"历史");
         }
+        public string IP { get; set; }
+
+        public string time { get; set; }
 
     }
     public class VerifyReturn
