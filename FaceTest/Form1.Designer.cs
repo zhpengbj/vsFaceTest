@@ -1069,9 +1069,9 @@
             // 
             // button43
             // 
-            this.button43.Location = new System.Drawing.Point(537, 546);
+            this.button43.Location = new System.Drawing.Point(594, 546);
             this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(149, 36);
+            this.button43.Size = new System.Drawing.Size(92, 36);
             this.button43.TabIndex = 91;
             this.button43.Text = "重启App";
             this.button43.UseVisualStyleBackColor = true;
@@ -1089,11 +1089,11 @@
             // 
             // button45
             // 
-            this.button45.Location = new System.Drawing.Point(780, 392);
+            this.button45.Location = new System.Drawing.Point(380, 546);
             this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(149, 36);
+            this.button45.Size = new System.Drawing.Size(203, 36);
             this.button45.TabIndex = 93;
-            this.button45.Text = "重启App";
+            this.button45.Text = "得到当天的识别情况";
             this.button45.UseVisualStyleBackColor = true;
             this.button45.Click += new System.EventHandler(this.button45_Click);
             // 

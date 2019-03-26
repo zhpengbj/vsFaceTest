@@ -64,7 +64,10 @@ public class Handler_His : IHttpHandler {
                 result.msg = rStr;
                 result.msgtype = 0;
             }
-            context.Response.Write(JsonConvert.SerializeObject(result));
+
+            String Ret = "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+            context.Response.Write(Ret);
+            //context.Response.Write(JsonConvert.SerializeObject(result));
 
 
         }

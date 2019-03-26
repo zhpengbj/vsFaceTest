@@ -636,7 +636,10 @@ namespace FaceTest
                     {
                         s = "\r\n";
                     }
-
+                    if (receiveMsg.Lines.Length>200)
+                    {
+                        receiveMsg.Clear();
+                    }
                     receiveMsg.AppendText(s);
                     receiveMsg.Select(receiveMsg.Text.Length, 0);
                     receiveMsg.ScrollToCaret();
@@ -2263,7 +2266,7 @@ namespace FaceTest
             showMsg(String.Format("解析,运行时间[{0}]", device.runtime));
             showMsg(String.Format("解析,版本号[{0}]", device.version));
             showMsg(String.Format("解析,App占用内存[{0}mb]-[{1:F}%]", device.memory, device.memory / device.totalMem * 100.00));
-            showMsg(String.Format("解析,系统运行占用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
+            showMsg(String.Format("解析,系统可用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));
             showMsg("");
         }
@@ -2911,13 +2914,86 @@ namespace FaceTest
 
         private void button45_Click(object sender, EventArgs e)
         {
-            string info = @"%7B%22availMem%22%3A%221508.30%22%2C%22buildModel%22%3A%22WISLINK-V28%22%2C%22deviceKey%22%3A%22u02v2-225su-k925s-uk543-23yz5%22%2C%22deviceMachineCode%22%3A%22u02v2-225su-k925s-uk543-23yz5%22%2C%22deviceType%22%3A1%2C%22disk%22%3A1.7%2C%22diskInfo%22%3A%2258.62%25%5B%E5%8F%AF%E7%94%A81.7G%2C%E5%85%B12.9G%5D%22%2C%22faceCount%22%3A4%2C%22ip%22%3A%22192.168.1.123%22%2C%22isAuth%22%3A1%2C%22isInited%22%3A1%2C%22memory%22%3A%22141.50%22%2C%22personCount%22%3A4%2C%22runtime%22%3A%221%3A7%22%2C%22sendCount%22%3A136%2C%22starttime%22%3A%222019-02-26%2008%3A12%3A26%22%2C%22time%22%3A%222019-02-26%2009%3A19%3A43%22%2C%22totalDisk%22%3A2.9%2C%22totalMem%22%3A2013.5273%2C%22version%22%3A%22V1.0.6.317%22%7D";
-            string info2 = System.Web.HttpUtility.UrlDecode(info, System.Text.Encoding.UTF8);
-            MessageBox.Show(info2);
+            Pass = tb_Pass.Text;
+            try
+            {
+                button45.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getTodayRecord";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("getTodayRecord 成功");
+                        showTodayRecord(res.data);
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button45.Enabled = true;
+
+            }
+        }
+        private void showTodayRecord(string mes)
+        {
+            TodayRecord today = JsonConvert.DeserializeObject<TodayRecord>(mes);
+            showMsg(String.Format("解析,当天所有识别记录数[{0}]", today.All));
+            showMsg(String.Format("解析,当天实时推送记录数[{0}]", today.SendNow));
+            showMsg(String.Format("解析,当天历史推送记录数[{0}]", today.SendHis));
+            showMsg(String.Format("解析,当天未推送记录数[{0}]", today.NotSend));
+            showMsg(String.Format("解析,当天识别记录，但因为未设置回调URL，则不用回调[{0}]", today.NoCallUrl));
+            showMsg("");
         }
     }
+    /// <summary>
+    /// 当天识别的记录情况
+    /// </summary>
+    public class TodayRecord
+    {
+        /// <summary>
+        /// 当天所有识别记录数
+        /// </summary>
+        public int All;
+        /// <summary>
+        /// 当天实时推送记录数
+        /// </summary>
+        public int SendNow;
+        /// <summary>
+        /// 当天历史推送记录数
+        /// </summary>
+        public int SendHis;
+        /// <summary>
+        /// 当天未推送记录数
+        /// </summary>
+        public int NotSend;
+        /// <summary>
+        /// 当天识别记录，但因为未设置回调URL，则不用回调
+        /// </summary>
+        public int NoCallUrl;
 
 
+    }
     /// <summary>
     /// 时段段对象
     /// </summary>

@@ -2116,6 +2116,9 @@ namespace FaceTest
             string strFaceCount = "";
             string strIP = "";
             string strTime = "";
+
+
+
             dataStr = info.Substring(info.IndexOf("info=") + 5, info.Length - info.IndexOf("info=") - 5);
             JsonReader readerHead = new JsonTextReader(new StringReader(dataStr));
             string deviceMachineCode = "";
