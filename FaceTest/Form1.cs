@@ -3219,12 +3219,20 @@ namespace FaceTest
         }
 
     }
+    /// <summary>
+    /// 心跳包数据
+    /// </summary>
     public class DevicesHeartBeat
     {
         /// <summary>
         /// 设备编号，可用户自定义，如果没有自定义，则返回机器码。
         /// </summary>
         public String deviceKey { get; set; }
+        /// <summary>
+        /// 设备类型
+        /// 具体定义可咨询厂家
+        /// </summary>
+        public int deviceType { get; set; }
         /// <summary>
         /// 设备的机器码
         /// </summary>
@@ -3251,13 +3259,35 @@ namespace FaceTest
         /// </summary>
         public float memory { get; set; }
         /// <summary>
-        /// 系统运行占用内存
+        /// 系统可用内存
         /// </summary>
         public float availMem { get; set; }
         /// <summary>
         /// 系统总内存
         /// </summary>
         public float totalMem { get; set; }
+        /// <summary>
+        /// 硬盘大小
+        /// </summary>
+        public float totalDisk { get; set; }
+        /// <summary>
+        /// 设备的机器名
+        /// </summary>
+        public string buildModel { get; set; }
+        /// <summary>
+        /// 是否初始化
+        /// 如果通信密码非空，则认为是初始化完成。
+        /// 如果通信密码为空，则认为未初始化，不能操作设备
+        /// </summary>
+        public int isInited { get; set; }
+        /// <summary>
+        /// 是否授权
+        /// </summary>
+        public int isAuth { get; set; }
+        /// <summary>
+        /// 已使用的硬盘
+        /// </summary>
+        public float disk { get; set; }
     }
 
 
