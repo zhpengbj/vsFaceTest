@@ -71,7 +71,7 @@ namespace FaceTest
         /// </summary>
         public int id { get; set; }
         /// <summary>
-        /// 设备编号
+        /// 设备编号，用户可以自定义
         /// </summary>
         public string deviceKey { get; set; }
         /// <summary>
@@ -114,7 +114,7 @@ namespace FaceTest
         public override string ToString()
         {
             return String.Format("id[{0}],type[{1}], userId[{2}],userName[{3}],sendPassType[{5}],Score[{6}]" + (!string.IsNullOrEmpty(path) ? Environment.NewLine : "") + " path[{4}]",
-                id, type, userId, userName, path, SendPassType == 0 ? "实时" : "历史",score);
+                id, type, userId, userName, path, SendPassType == 0 ? "实时" : "历史", score);
         }
         /// <summary>
         /// 方向
@@ -152,4 +152,103 @@ namespace FaceTest
 
         public object data { get; set; }
     }
+
+
+    /// <summary>
+    /// 运行参数
+    /// </summary>
+    public class AppRunConfig
+    {
+        /// <summary>
+        /// 尝试次数
+        /// 可选：1,2,3,4,5
+        /// </summary>
+        public int attemptCount { get; set; }
+        /// <summary>
+        /// 变焦的比例
+        /// 可选：0，0.5，1,1.5，2
+        /// </summary>
+        public float cameraMaxZoom { get; set; }
+        /// <summary>
+        /// 保留空间的比例
+        /// </summary>
+        public int deleteFile_Disk { get; set; }
+        /// <summary>
+        /// 是arm系统 
+        /// </summary>
+        public bool isArm { get; set; }
+        /// <summary>
+        /// 启用灯光
+        /// </summary>
+        public bool isLigth { get; set; }
+        /// <summary>
+        /// 启用活检
+        /// </summary>
+        public bool isOpenHacker { get; set; }
+        /// <summary>
+        /// 启用播放语音
+        /// </summary>
+        public bool isPlaySound { get; set; }
+        /// <summary>
+        /// 启用识别二维码
+        /// </summary>
+        public bool isQR { get; set; }
+        /// <summary>
+        /// 保存识别照片
+        /// </summary>
+        public bool isSaveImage { get; set; }
+        /// <summary>
+        /// 启用平台验证
+        /// </summary>
+        public bool isThirdPlatform { get; set; }
+        /// <summary>
+        /// 启用写log
+        /// 调试问题时使用，工作状态正是不要启用。因为log文件会很大
+        /// </summary>
+        public bool isWriteLog { get; set; }
+        /// <summary>
+        /// 公司名称
+        /// </summary>
+        public string sCompanyName { get; set; }
+        /// <summary>
+        /// 停留时间
+        /// 单位：秒
+        /// </summary>
+        public int sameFaceNexeRecognizeDt { get; set; }
+        /// <summary>
+        /// 识别图片时的质量
+        /// 可选：0，0.5，1,1.5，2
+        /// </summary>
+        public float verifyScore { get; set; }
+        /// <summary>
+        /// 识别阀值
+        /// </summary>
+        public float verifyThreshold { get; set; }
+    }
+
+    /// <summary>
+    /// 推送参数
+    /// </summary>
+    public class AppSendConfig
+    {
+        public string SendPassConfigStr { get; set; }
+        public int SendPassType { get; set; }
+        /// <summary>
+        /// 设备ID
+        /// 用户自定义
+        /// </summary>
+        public string devId { get; set; }
+        /// <summary>
+        /// 设备方向
+        /// 1：进，2：出
+        /// </summary>
+        public string inOut { get; set; }
+        /// <summary>
+        /// 历史记录推送时间间隙
+        /// 单位：秒
+        /// </summary>
+        public int sendHisDataInterval { get; set; }
+    }
+
+
 }

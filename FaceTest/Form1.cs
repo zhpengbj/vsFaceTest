@@ -234,6 +234,7 @@ namespace FaceTest
             string dataStr = JsonString.Substring(JsonString.IndexOf("verify=") + 7, JsonString.Length - JsonString.IndexOf("verify=") - 7);
             try
             {
+                showMsg(dataStr);
                 Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
                 ShowInfo(v);
                 
@@ -2364,6 +2365,7 @@ namespace FaceTest
                         textBox1.Text = res.data;
                         showMsg("getAppConfig 成功");
                         showMsg(res.data);
+                        showAppRunConfig(res.data);
                     }
                     else
                     {
@@ -2382,7 +2384,22 @@ namespace FaceTest
 
             }
         }
-
+        private void showAppRunConfig(string mes)
+        {
+            AppRunConfig config = JsonConvert.DeserializeObject<AppRunConfig>(mes);
+            showMsg(String.Format("解析,尝试次数[{0}]", config.attemptCount));
+            showMsg(String.Format("解析,变焦的比例[{0}]", config.cameraMaxZoom));
+            showMsg(String.Format("解析,保留空间的比例[{0}]", config.deleteFile_Disk));
+            showMsg(String.Format("解析,启用灯光[{0}]", config.isLigth));
+            showMsg(String.Format("解析,启用活检[{0}]", config.isOpenHacker));
+            showMsg(String.Format("解析,启用播放语音[{0}]", config.isPlaySound));
+            showMsg(String.Format("解析,保存识别照片[{0}]", config.isSaveImage));
+            showMsg(String.Format("解析,公司名称[{0}]", config.sCompanyName));
+            showMsg(String.Format("解析,停留时间[{0}]", config.sameFaceNexeRecognizeDt));
+            showMsg(String.Format("解析,变识别图片时的质量焦的比例[{0}]", config.verifyScore));
+            showMsg(String.Format("解析,识别阀值[{0}]", config.verifyThreshold));
+            showMsg("");
+        }
         private void button31_Click(object sender, EventArgs e)
         {
             try
@@ -2865,6 +2882,7 @@ namespace FaceTest
                         textBox2.Text = res.data;
                         showMsg("getSendConfig 成功");
                         showMsg(res.data);
+                        showAppSendConfig(res.data);
                     }
                     else
                     {
@@ -2883,7 +2901,14 @@ namespace FaceTest
 
             }
         }
-
+        private void showAppSendConfig(string mes)
+        {
+            AppSendConfig config = JsonConvert.DeserializeObject<AppSendConfig>(mes);
+            showMsg(String.Format("解析,设备ID[{0}]", config.devId));
+            showMsg(String.Format("解析,设备方向[{0}]", config.inOut));
+            showMsg(String.Format("解析,历史记录推送时间间隙[{0}]", config.sendHisDataInterval));
+            showMsg("");
+        }
         private void button43_Click(object sender, EventArgs e)
         {
             textBox1.Text = "";
