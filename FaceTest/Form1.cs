@@ -16,23 +16,15 @@ using System.IO.Pipes;
 using System.Threading;
 
 using System.Net;
-using CassiniDev;
 using FaceTest.Properties;
 using System.Net.Sockets;
 using System.Diagnostics;
+using System.Web;
 
 namespace FaceTest
 {
     public partial class Form1 : Form
     {
-
-        //private NamedPipeServerStream pipeServer;
-
-        private const string PipeName = "testpipe";
-
-        private const int PipeInBufferSize = 65535;
-
-        private const int PipeOutBufferSize = 65535;
 
         private Encoding encoding = Encoding.UTF8;
 
@@ -40,18 +32,7 @@ namespace FaceTest
         public Form1()
         {
             InitializeComponent();
-            //pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-            //pipeServer = new NamedPipeServerStream
-            //  (
-            //      PipeName,
-            //      PipeDirection.InOut,
-            //      4,
-            //      PipeTransmissionMode.Message,
-            //      PipeOptions.Asynchronous | PipeOptions.WriteThrough
-            //     // PipeInBufferSize,
-            //     // PipeOutBufferSize
-            //   );
-        }
+         }
         
         private Settings settings = new Settings();
         /// <summary>
@@ -115,112 +96,230 @@ namespace FaceTest
             settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
             settings.Save();
         }
-        private void StartListeningPipes2()
+
+        #region httpWeb
+        private int HttpWebPor = 8091;
+        /// <summary>
+        /// init httpWeb
+        /// </summary>
+        private void InitHttpWeb()
         {
-            NamedPipeServerStream pipeServer = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-
-        ThreadPool.QueueUserWorkItem(delegate
-            {
-                
-                AsyncCallback aa = null;
-                pipeServer.BeginWaitForConnection(aa = (o) =>
-                  {
-                      NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState; 
-                      server.EndWaitForConnection(o);
-                      StreamReader sr = new StreamReader(server);
-                      StreamWriter sw = new StreamWriter(server);
-                      string result = null;
-                      string clientName = server.GetHashCode().ToString();// server.GetImpersonationUserName();
-                      //showMsg(clientName + "连接");
-                      while (server.IsConnected)
-                      {
-                          result = sr.ReadLine();
-                          if (result == null)
-                              continue;
-                          if (result == "bye")
-                              break;
-                          showMsg(result);
-                          ShowInfo(result);
-                          //this.Invoke((MethodInvoker)delegate {
-                          //    receiveMsg.Select(receiveMsg.Text.Length, 0);
-                          //    receiveMsg.ScrollToCaret();
-                          //});
-                      }
-                      //showMsg(clientName + "断开连接，等待新的连接");
-                      //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
-                      server.Disconnect();//服务器断开，很重要！
-                      server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
-                      //if (runService)
-                      //{
-                      //    Thread.Sleep(1000);
-                      //    //如果web服务异常停止，则重新启动
-
-                      //    StartService();
-                      //}
-                  }, pipeServer);
-
-            });
+            CHttpServiceHandler.InitHttpService(Result_Handler, HttpWebPor, showMsg);
         }
-        private void StartListeningPipes()
+        private void Result_Handler(HttpListenerContext context)
         {
-            //if (!this.isServerRunning)
-            //{
-            //    return;
-            //}
+            var guid = Guid.NewGuid().ToString();
+            string returnObj = null;//定义返回客户端的信息
 
-            var pipeClientConnection = new NamedPipeServerStream(PipeName, PipeDirection.InOut, 4, PipeTransmissionMode.Message, PipeOptions.Asynchronous);
-
+            var request = context.Request;
+            var response = context.Response;
+            ////如果是js的ajax请求，还可以设置跨域的ip地址与参数
+            //context.Response.AppendHeader("Access-Control-Allow-Origin", "*");//后台跨域请求，通常设置为配置文件
+            //context.Response.AppendHeader("Access-Control-Allow-Headers", "ID,PW");//后台跨域参数设置，通常设置为配置文件
+            //context.Response.AppendHeader("Access-Control-Allow-Method", "post");//后台跨域请求设置，通常设置为配置文件
+            context.Response.ContentType = "text/plain;charset=UTF-8";//告诉客户端返回的ContentType类型为纯文本格式，编码为UTF-8
+            context.Response.AddHeader("Content-type", "text/plain");//添加响应头信息
+            context.Response.ContentEncoding = Encoding.UTF8;
+            if (request.HttpMethod != "POST" || request.InputStream == null)
+            {
+                returnObj = "不是post请求或者传过来的数据为空";
+                showMsg(returnObj);
+                ResponseRetrun(returnObj, response);
+                return;
+            }
+            string requestJsonString = GetRequestJsonString(request);
+            showMsg(string.Format("接到请求,guid:[{0}],Ip:[{1}],Url:[{2}],JsonStringLen[{3}]",
+                guid, request.RemoteEndPoint.Address, request.RawUrl, requestJsonString.Length));
             try
             {
-                pipeClientConnection.BeginWaitForConnection(asyncResult =>
+                switch (request.RawUrl)
                 {
-                    // note that the body of the lambda is not part of the outer try... catch block!
-                    using (var conn = (NamedPipeServerStream)asyncResult.AsyncState)
-                    {
-                        try
-                        {
-                            conn.EndWaitForConnection(asyncResult);
-                            StreamReader sr = new StreamReader(conn);
-                            StreamWriter sw = new StreamWriter(conn);
-                            string result = null;
-                            string clientName = conn.GetHashCode().ToString();// server.GetImpersonationUserName();
-                            //showMsg(clientName + "连接");
-                            while (conn.IsConnected)
-                            {
-                                result = sr.ReadLine();
-                                if (result == null)
-                                    continue;
-                                if (result == "bye")
-                                    break;
-                                showMsg(result);
-                                ShowInfo(result);
-                                //this.Invoke((MethodInvoker)delegate {
-                                //    receiveMsg.Select(receiveMsg.Text.Length, 0);
-                                //    receiveMsg.ScrollToCaret();
-                                //});
-                            }
-                            //showMsg(clientName + "断开连接，等待新的连接");
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                    case @"/Handler.ashx":
+                    case @"/Handler_His.ashx":
+                        //识别记录
+                        DoResult_Record(requestJsonString);
+                        returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                        ResponseRetrun(returnObj, response);
+                        break;
 
-                        // we have a connection established, time to wait for new ones while this thread does its business with the client
-                        // this may look like a recursive call, but it is not: remember, we're in a lambda expression
-                        // if this bothers you, just export the lambda into a named private method, like you did in your question
-                        StartListeningPipes();
+                    case @"/HeartBeat.ashx":
+                        //心跳包
+                        DoResult_HeartBeat(requestJsonString);
+                        returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                        ResponseRetrun(returnObj, response);
+                        break;
+                    case @"/VerifyHandler.ashx":
+                        //后台请求
+                        returnObj = DoResult_VerifyHandler(requestJsonString);
+                        ResponseRetrun(returnObj, response);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                showMsg(ex.ToString());
+            }
 
-                        // do business with the client
-                        //conn.WaitForPipeDrain();
 
-                    }
-                }, pipeClientConnection);
+        }
+        /// <summary>
+        /// 返回结果 
+        /// </summary>
+        /// <returns></returns>
+        private string GetReurnString()
+        {
+            VerifyReturn result = new VerifyReturn();
+            result.result = 1;
+            result.success = true;
+            result.msg = "";
+            result.msgtype = 0;
+            return JsonConvert.SerializeObject(result);
+        }
+        /// <summary>
+        /// 请求返回
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="response"></param>
+        private void ResponseRetrun(string str, HttpListenerResponse response)
+        {
+            //返回
+            var returnByteArr = Encoding.UTF8.GetBytes(str);//设置客户端返回信息的编码
+            try
+            {
+                using (var stream = response.OutputStream)
+                {
+                    stream.Write(returnByteArr, 0, returnByteArr.Length);
+                }
+            }
+            catch (Exception ex)
+            {
+                showMsg(ex.ToString());
+            }
+        }
+        /// <summary>
+        /// 得到请求的字符串
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public string GetRequestJsonString(HttpListenerRequest request)
+        {
+            string data = null;
+            var byteList = new List<byte>();
+            var byteArr = new byte[222048];
+            int readLen = 0;
+            int len = 0;
+            //接收客户端传过来的数据并转成字符串类型
+            do
+            {
+                readLen = request.InputStream.Read(byteArr, 0, byteArr.Length);
+                len += readLen;
+                byteList.AddRange(byteArr);
+            } while (readLen != 0);
+            data = Encoding.UTF8.GetString(byteList.ToArray(), 0, len);
+            string info = HttpUtility.UrlDecode(data, Encoding.UTF8);
+            return info;
+        }
+
+
+        #endregion
+
+        #region 处理-接收识别记录
+        /// <summary>
+        /// 接收识别记录
+        /// </summary>
+        /// <param name="result"></param>
+        private void DoResult_Record(string JsonString)
+        {
+            //得到JSON字符串
+            string dataStr = JsonString.Substring(JsonString.IndexOf("verify=") + 7, JsonString.Length - JsonString.IndexOf("verify=") - 7);
+            try
+            {
+                Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
+                ShowInfo(v);
+                
+                //保存db
+                //this.Invoke((MethodInvoker)delegate
+                //{
+
+                //    SaveDb_VerifyRecord(v);
+                //});
             }
             catch (Exception ex)
             {
             }
         }
+        #endregion
 
+        #region 处理-心跳包
+        /// <summary>
+        /// 处理json串-心跳包
+        /// </summary>
+        /// <param name="JsonString"></param>
+        private void DoResult_HeartBeat(string JsonString)
+        {
+            //得到JSON字符串
+            string dataStr = JsonString.Substring(JsonString.IndexOf("info=") + 5, JsonString.Length - JsonString.IndexOf("info=") - 5);
+            showMsg(dataStr);
+            //处理相关流程
+
+        }
+        #endregion
+
+        #region 处理-后台验证
+        private static int COSTCOUNT = 100;
+        private static int NowCost = COSTCOUNT;
+        public enum EConsumeResult
+        {
+            /// <summary>
+            /// 成功 0
+            /// </summary>
+            [Description("成功")]
+            Ok = 0,
+            /// <summary>
+            /// 人员非法 5
+            /// </summary>
+            [Description("人员非法")]
+            NotFindPerson = 5,
+            /// <summary>
+            /// 不在工作时段 1
+            /// </summary>
+            [Description("不在工作时段")]
+            NotWork = 1,
+            /// <summary>
+            /// 已经使用 3
+            /// </summary>
+            [Description("已经使用")]
+            HaveUsed = 3,
+            /// <summary>
+            /// 其他错误 100
+            /// </summary>
+            [Description("其他错误")]
+            Other = 100
+
+        }
+        private EConsumeResult DoResult_VerifyHandlerByString(string JsonString, ref Verify v)
+        {
+            return EConsumeResult.Ok;
+        }
+        private string DoResult_VerifyHandler(string JsonString)
+        {
+            NowCost--;
+            Verify v = null;
+            EConsumeResult consumeResult = DoResult_VerifyHandlerByString(JsonString, ref v);
+            VerifyReturn result = new VerifyReturn();
+            result.result = 1;
+            result.success = consumeResult == EConsumeResult.Ok;
+            result.msg = string.Format("你好,{0}" + Environment.NewLine + "消费{1}【{2}】",
+                v != null ? v.userName : "未知用户",
+                result.success ? "成功" : "失败",
+                result.success ? NowCost.ToString() : consumeResult.GetDescription()
+                );
+            result.msgtype = (int)consumeResult;
+
+            return JsonConvert.SerializeObject(result);
+
+        }
+        #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
             dataGridView1.DataSource = receivePassList;
@@ -232,47 +331,7 @@ namespace FaceTest
             button2_Click(null, null);
             //设置设备URL
             button3_Click(null, null);
-            StartListeningPipes2();
-            //ThreadPool.QueueUserWorkItem(delegate
-            //{
-            //    pipeServer AsyncCallback aa = null;
-            //    pipeServer.BeginWaitForConnection(aa = (o) =>
-            //      {
-            //          NamedPipeServerStream server = (NamedPipeServerStream)o.AsyncState;5
-            //          server.EndWaitForConnection(o);
-            //          StreamReader sr = new StreamReader(server);
-            //          StreamWriter sw = new StreamWriter(server);
-            //          string result = null;
-            //          string clientName = server.GetHashCode().ToString();// server.GetImpersonationUserName();
-            //          showMsg(clientName + "连接");
-            //          while (server.IsConnected)
-            //          {
-            //              result = sr.ReadLine();
-            //              if (result == null)
-            //                  continue;
-            //              if ( result == "bye")
-            //                  break;
-            //              showMsg(result);
-            //              ShowInfo(result);
-            //              //this.Invoke((MethodInvoker)delegate {
-            //              //    receiveMsg.Select(receiveMsg.Text.Length, 0);
-            //              //    receiveMsg.ScrollToCaret();
-            //              //});
-            //          }
-            //          showMsg(clientName + "断开连接，等待新的连接");
-            //          //this.Invoke((MethodInvoker)delegate { lsbMsg.Items.Add(clientName + "断开连接，等待新的连接"); });
-            //          server.Disconnect();//服务器断开，很重要！
-            //          server.BeginWaitForConnection(aa, server);//再次等待连接，更重要！！
-            //          //if (runService)
-            //          //{
-            //          //    Thread.Sleep(1000);
-            //          //    //如果web服务异常停止，则重新启动
-
-            //          //    StartService();
-            //          //}
-            //      }, pipeServer);
-
-            //});
+          
         }
         /// <summary>
         /// 显示人员信息
@@ -324,34 +383,46 @@ namespace FaceTest
 
 
         }
-        private List<Verify> receivePassList = new List<Verify>();
-
-
-        private void button1_Click(object sender, EventArgs e)
+        private void ShowInfo(Verify v)
         {
-            runService = true;
-            StartService();
-        }
-        private static CassiniDev.CassiniDevServer _HttpServer;//网页服务器
-
-        public void StartService()
-        {
-            _HttpServer = new CassiniDevServer();
-            string path = Application.StartupPath + "\\Home";
-            int port = 8091;
             try
             {
-                _HttpServer.StartServer(path, IPAddress.Any, port, "/", "");
-                showMsg("启动完成");
+                this.Invoke((MethodInvoker)delegate
+                {
+                    if (v != null)
+                    {
+                        lb_PersonId.Text = "用户ID:" + v.userId;
+                        lb_PersonName.Text = "用户姓名:" + v.userName;
+                        lb_Path.Text = "照片路径:" + v.path;
+                        if (!string.IsNullOrEmpty(v.path))
+                        {
+                            pictureBox1.LoadAsync(v.path);
+                        }
+                        showInfoForGrid(v);
+                        showMsg2(v.ToString());
+
+                        //showMsg(v.base64 != null ? v.base64.Length.ToString() : "");
+                    }
+                    else
+                    {
+                        lb_PersonId.Text = "";
+                        lb_PersonName.Text = "";
+                    }
+                });
             }
             catch (Exception ex)
             {
                 showMsg(ex.ToString());
             }
+
+
         }
-        public void StopService()
+        private List<Verify> receivePassList = new List<Verify>();
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            _HttpServer.StopServer();
+            InitHttpWeb();
         }
         private String FacePicPath = Application.StartupPath + @"\FacePicTest\";
 
@@ -2020,11 +2091,8 @@ namespace FaceTest
 
             }
         }
-        private bool runService = false;
         private void button26_Click(object sender, EventArgs e)
         {
-            runService = false;
-            StopService();
         }
 
         private void button27_Click(object sender, EventArgs e)
