@@ -150,7 +150,8 @@ namespace FaceTest
                         break;
                     case @"/VerifyHandler.ashx":
                         //后台请求
-                        returnObj = DoResult_VerifyHandler(requestJsonString);
+                        returnObj = DoResult_VerifyHandler_PersonCheck(requestJsonString);
+                        showMsg(returnObj);
                         ResponseRetrun(returnObj, response);
                         break;
                 }
@@ -269,6 +270,9 @@ namespace FaceTest
         #region 处理-后台验证
         private static int COSTCOUNT = 100;
         private static int NowCost = COSTCOUNT;
+        /// <summary>
+        /// 在线消费结果 
+        /// </summary>
         public enum EConsumeResult
         {
             /// <summary>
@@ -298,15 +302,100 @@ namespace FaceTest
             Other = 100
 
         }
+        /// <summary>
+        /// 身份检验结果 
+        /// </summary>
+        public enum EPersonCheckResult
+        {
+            /// <summary>
+            /// 成功 0
+            /// </summary>
+            [Description("成功")]
+            Ok = 0,
+            /// <summary>
+            /// 其它，
+            /// </summary>
+            [Description("其它")]
+            Other = 1
+        }
+        /// <summary>
+        /// 得到消费结果 
+        /// </summary>
+        /// <param name="JsonString"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
         private EConsumeResult DoResult_VerifyHandlerByString(string JsonString, ref Verify v)
         {
+            string dataStr = JsonString.Substring(JsonString.IndexOf("verify=") + 7, JsonString.Length - JsonString.IndexOf("verify=") - 7);
+            v = JsonConvert.DeserializeObject<Verify>(dataStr);
+            showPicByBase64(v.base64);
             return EConsumeResult.Ok;
+        }
+        /// <summary>
+        /// 得到身份校验结果 
+        /// </summary>
+        /// <param name="JsonString"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
+        private EPersonCheckResult DoResult_VerifyHandlerByString2(string JsonString, ref Verify v)
+        {
+            string dataStr = JsonString.Substring(JsonString.IndexOf("verify=") + 7, JsonString.Length - JsonString.IndexOf("verify=") - 7);
+            v = JsonConvert.DeserializeObject<Verify>(dataStr);
+            showPicByBase64(v.base64);
+            return EPersonCheckResult.Ok;
+        }
+        
+        private void showPicByBase64 (string base64)
+        {
+            if (string.IsNullOrEmpty(base64))
+            {
+                return;
+            }
+            try
+            {
+                byte[] arr = Convert.FromBase64String(base64);
+
+                using (MemoryStream ms = new MemoryStream(arr, true))
+                {
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            pictureBox1.Image = Image.FromStream(ms);
+                        });
+
+                        
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                showMsg(ex.ToString());
+            }
+        }
+        private string DoResult_VerifyHandler_PersonCheck(string JsonString)
+        {
+            NowCost--;
+            Verify v = null;
+            EPersonCheckResult personCheckResult = DoResult_VerifyHandlerByString2(JsonString, ref v);
+            showMsg(string.Format("base64.length:[{0}]", v!=null?v.base64.Length:0));
+            VerifyReturn result = new VerifyReturn();
+            result.result = 1;
+            result.success = personCheckResult == EPersonCheckResult.Ok;
+            result.msg = string.Format("你好,{0}" + Environment.NewLine + "验证{1}【{2}】",
+                v != null ? v.userName : "未知用户",
+                result.success ? "成功" : "失败",
+                result.success ? personCheckResult.GetDescription() : ""
+                );
+            result.msgtype = (int)personCheckResult;
+            return JsonConvert.SerializeObject(result);
+
         }
         private string DoResult_VerifyHandler(string JsonString)
         {
             NowCost--;
             Verify v = null;
             EConsumeResult consumeResult = DoResult_VerifyHandlerByString(JsonString, ref v);
+            showMsg(string.Format("base64.length:[{0}]", v != null ? v.base64.Length : 0));
             VerifyReturn result = new VerifyReturn();
             result.result = 1;
             result.success = consumeResult == EConsumeResult.Ok;
@@ -316,7 +405,6 @@ namespace FaceTest
                 result.success ? NowCost.ToString() : consumeResult.GetDescription()
                 );
             result.msgtype = (int)consumeResult;
-
             return JsonConvert.SerializeObject(result);
 
         }
@@ -645,7 +733,7 @@ namespace FaceTest
                 button5.Enabled = false;
                 stopwatch.Start();
                 DirectoryInfo di = new DirectoryInfo(FacePicPath);
-                //FileInfo[] fis = di.GetFiles("*.jpg");
+              //  FileInfo[] fis = di.GetFiles("*.jpg");
                 List<FileInfo> fis = di.GetFiles("*.*", SearchOption.AllDirectories).Where(s => s.Name.EndsWith(".png") || s.Name.EndsWith(".jpg")).ToList<FileInfo>();
                 userList = new List<User>();
                 userDic = new Dictionary<string, User>();
@@ -3057,6 +3145,18 @@ namespace FaceTest
             showMsg(String.Format("解析,当天未推送记录数[{0}]", today.NotSend));
             showMsg(String.Format("解析,当天识别记录，但因为未设置回调URL，则不用回调[{0}]", today.NoCallUrl));
             showMsg("");
+        }
+
+        private void button46_Click(object sender, EventArgs e)
+        {
+            timer2.Enabled = true;
+        }
+        private int button29Client = 0;
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            button29_Click(sender, e);
+            button29Client++;
+            button46.Text = button29Client.ToString();
         }
     }
     /// <summary>

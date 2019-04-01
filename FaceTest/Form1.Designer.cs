@@ -128,6 +128,8 @@
             this.button43 = new System.Windows.Forms.Button();
             this.button44 = new System.Windows.Forms.Button();
             this.button45 = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.button46 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -897,9 +899,9 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(792, 706);
+            this.button29.Location = new System.Drawing.Point(796, 706);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(149, 36);
+            this.button29.Size = new System.Drawing.Size(49, 36);
             this.button29.TabIndex = 74;
             this.button29.Text = "广播";
             this.button29.UseVisualStyleBackColor = true;
@@ -1097,11 +1099,27 @@
             this.button45.UseVisualStyleBackColor = true;
             this.button45.Click += new System.EventHandler(this.button45_Click);
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 10000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // button46
+            // 
+            this.button46.Location = new System.Drawing.Point(851, 706);
+            this.button46.Name = "button46";
+            this.button46.Size = new System.Drawing.Size(96, 36);
+            this.button46.TabIndex = 94;
+            this.button46.Text = "循环";
+            this.button46.UseVisualStyleBackColor = true;
+            this.button46.Click += new System.EventHandler(this.button46_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1708, 820);
+            this.Controls.Add(this.button46);
             this.Controls.Add(this.button45);
             this.Controls.Add(this.button44);
             this.Controls.Add(this.button43);
@@ -1310,6 +1328,8 @@
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button button44;
         private System.Windows.Forms.Button button45;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button button46;
     }
 }
 
