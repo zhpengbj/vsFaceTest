@@ -20,6 +20,8 @@ using FaceTest.Properties;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.Web;
+using System.Runtime.InteropServices;
+using Iteedee.ApkReader;
 
 namespace FaceTest
 {
@@ -154,6 +156,12 @@ namespace FaceTest
                         showMsg(returnObj);
                         ResponseRetrun(returnObj, response);
                         break;
+                    case @"/GetUpdate.ashx":
+                        //得到更新版本号
+                        returnObj = DoResult_GetUpdate();
+                        showMsg(returnObj);
+                        ResponseRetrun(returnObj, response);
+                        break;
                 }
             }
             catch (Exception ex)
@@ -162,6 +170,110 @@ namespace FaceTest
             }
 
 
+        }
+
+        #region GetUpdate
+        /// <summary>
+        /// 得到APK信息
+        /// </summary>
+        /// <param name="apkPath"></param>
+        /// <returns></returns>
+        private string GetVersionByApkFile(string apkPath)
+        {
+            byte[] manifestData = null;
+            byte[] resourcesData = null;
+
+            using (ICSharpCode.SharpZipLib.Zip.ZipInputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(File.Open(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
+            {
+
+                using (var filestream = new FileStream(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
+
+                {
+
+                    using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(filestream))
+                    {
+
+                        ICSharpCode.SharpZipLib.Zip.ZipEntry item;
+                        string content = string.Empty;
+                        while ((item = zip.GetNextEntry()) != null)
+                        {
+                            if (item.Name.ToLower() == "androidmanifest.xml")
+                            {
+                                manifestData = new byte[50 * 1024];
+                                using (Stream strm = zipfile.GetInputStream(item))
+                                {
+                                    strm.Read(manifestData, 0, manifestData.Length);
+                                }
+
+                            }
+                            if (item.Name.ToLower() == "resources.arsc")
+                            {
+                                using (Stream strm = zipfile.GetInputStream(item))
+                                {
+                                    using (BinaryReader s = new BinaryReader(strm))
+                                    {
+                                        resourcesData = s.ReadBytes((int)item.Size);
+
+                                    }
+                                }
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            ApkReader apkReader = new ApkReader();
+            ApkInfo info = apkReader.extractInfo(manifestData, resourcesData);
+            //showMsg(JsonConvert.SerializeObject(info));
+            showAPkInfo(info);
+            return info.versionCode;
+        }
+        private void showAPkInfo(ApkInfo info)
+        {
+            showMsg(string.Format("Package Name: {0}", info.packageName));
+            showMsg(string.Format("Version Name: {0}", info.versionName));
+            showMsg(string.Format("Version Code: {0}", info.versionCode));
+
+            showMsg(string.Format("App Has Icon: {0}", info.hasIcon));
+            if (info.iconFileName.Count > 0)
+                showMsg(string.Format("App Icon: {0}", info.iconFileName[0]));
+            showMsg(string.Format("Min SDK Version: {0}", info.minSdkVersion));
+            showMsg(string.Format("Target SDK Version: {0}", info.targetSdkVersion));
+
+            if (info.Permissions != null && info.Permissions.Count > 0)
+            {
+                showMsg("Permissions:");
+                info.Permissions.ForEach(f =>
+                {
+                    showMsg(string.Format("   {0}", f));
+                });
+            }
+            else
+                showMsg("No Permissions Found");
+
+            showMsg(string.Format("Supports Any Density: {0}", info.supportAnyDensity));
+            showMsg(string.Format("Supports Large Screens: {0}", info.supportLargeScreens));
+            showMsg(string.Format("Supports Normal Screens: {0}", info.supportNormalScreens));
+            showMsg(string.Format("Supports Small Screens: {0}", info.supportSmallScreens));
+        }
+
+            private string  DoResult_GetUpdate()
+        {
+            return GetVersionByApkFile("update.apk");
+        }
+        #endregion
+
+        #region API函数声明
+        #endregion
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
         }
         /// <summary>
         /// 返回结果 
@@ -377,6 +489,7 @@ namespace FaceTest
             NowCost--;
             Verify v = null;
             EPersonCheckResult personCheckResult = DoResult_VerifyHandlerByString2(JsonString, ref v);
+            showMsg(string.Format("Guid:[{0}]", v != null ? v.guid : "")); 
             showMsg(string.Format("base64.length:[{0}]", v!=null?v.base64.Length:0));
             VerifyReturn result = new VerifyReturn();
             result.result = 1;
@@ -483,9 +596,27 @@ namespace FaceTest
                         lb_PersonId.Text = "用户ID:" + v.userId;
                         lb_PersonName.Text = "用户姓名:" + v.userName;
                         lb_Path.Text = "照片路径:" + v.path;
-                        if (!string.IsNullOrEmpty(v.path))
+                        if (!string.IsNullOrEmpty(v.base64))
                         {
-                            pictureBox1.LoadAsync(v.path);
+                            //判断是否传入base64
+                            byte[] arr = Convert.FromBase64String(v.base64);
+
+                            using (MemoryStream ms = new MemoryStream(arr, true))
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    pictureBox1.Image = Image.FromStream(ms);
+                                });
+
+
+                            }
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(v.path))
+                            {
+                                pictureBox1.LoadAsync(v.path);
+                            }
                         }
                         showInfoForGrid(v);
                         showMsg2(v.ToString());
@@ -734,7 +865,7 @@ namespace FaceTest
                 stopwatch.Start();
                 DirectoryInfo di = new DirectoryInfo(FacePicPath);
               //  FileInfo[] fis = di.GetFiles("*.jpg");
-                List<FileInfo> fis = di.GetFiles("*.*", SearchOption.AllDirectories).Where(s => s.Name.EndsWith(".png") || s.Name.EndsWith(".jpg")).ToList<FileInfo>();
+                List<FileInfo> fis = di.GetFiles("*.*", SearchOption.AllDirectories).Where(s => s.Name.ToLower().EndsWith(".png") || s.Name.ToLower().EndsWith(".jpg")).ToList<FileInfo>();
                 userList = new List<User>();
                 userDic = new Dictionary<string, User>();
                 //Parallel.ForEach(fis, b =>
@@ -2405,7 +2536,7 @@ namespace FaceTest
                     }
                     catch (SocketException ex)
                     {
-                        Console.WriteLine(ex.ToString());
+                        showMsg(ex.ToString());
                     }
 
                     Thread.Sleep(1000);
