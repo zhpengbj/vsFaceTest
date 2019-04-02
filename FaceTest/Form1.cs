@@ -122,63 +122,97 @@ namespace FaceTest
             context.Response.ContentType = "text/plain;charset=UTF-8";//告诉客户端返回的ContentType类型为纯文本格式，编码为UTF-8
             context.Response.AddHeader("Content-type", "text/plain");//添加响应头信息
             context.Response.ContentEncoding = Encoding.UTF8;
-            if (request.HttpMethod != "POST" || request.InputStream == null)
+            if (request.InputStream == null)
             {
-                returnObj = "不是post请求或者传过来的数据为空";
+                returnObj = "传过来的数据为空";
                 showMsg(returnObj);
                 ResponseRetrun(returnObj, response);
                 return;
             }
-            string requestJsonString = GetRequestJsonString(request);
-            showMsg(string.Format("接到请求,guid:[{0}],Ip:[{1}],Url:[{2}],JsonStringLen[{3}]",
-                guid, request.RemoteEndPoint.Address, request.RawUrl, requestJsonString.Length));
-            try
+            if (request.HttpMethod == "POST")
             {
-                switch (request.RawUrl)
-                {
-                    case @"/Handler.ashx":
-                    case @"/Handler_His.ashx":
-                        //识别记录
-                        DoResult_Record(requestJsonString);
-                        returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
-                        ResponseRetrun(returnObj, response);
-                        break;
 
-                    case @"/HeartBeat.ashx":
-                        //心跳包
-                        DoResult_HeartBeat(requestJsonString);
-                        returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
-                        ResponseRetrun(returnObj, response);
-                        break;
-                    case @"/VerifyHandler.ashx":
-                        //后台请求
-                        returnObj = DoResult_VerifyHandler_PersonCheck(requestJsonString);
-                        showMsg(returnObj);
-                        ResponseRetrun(returnObj, response);
-                        break;
-                    case @"/GetUpdate.ashx":
-                        //得到更新版本号
-                        returnObj = DoResult_GetUpdate();
-                        showMsg(returnObj);
-                        ResponseRetrun(returnObj, response);
-                        break;
+
+                string requestJsonString = GetRequestJsonString(request);
+                showMsg(string.Format("接到请求,guid:[{0}],Ip:[{1}],Url:[{2}],JsonStringLen[{3}]",
+                    guid, request.RemoteEndPoint.Address, request.RawUrl, requestJsonString.Length));
+                try
+                {
+                    switch (request.RawUrl)
+                    {
+                        case @"/Handler.ashx":
+                        case @"/Handler_His.ashx":
+                            //识别记录
+                            DoResult_Record(requestJsonString);
+                            returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            ResponseRetrun(returnObj, response);
+                            break;
+
+                        case @"/HeartBeat.ashx":
+                            //心跳包
+                            DoResult_HeartBeat(requestJsonString);
+                            returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            ResponseRetrun(returnObj, response);
+                            break;
+                        case @"/VerifyHandler.ashx":
+                            //后台请求
+                            returnObj = DoResult_VerifyHandler_PersonCheck(requestJsonString);
+                            showMsg(returnObj);
+                            ResponseRetrun(returnObj, response);
+                            break;
+                        case @"/GetUpdate.ashx":
+                            //得到更新版本号
+                            returnObj = DoResult_GetUpdate();
+                            showMsg(returnObj);
+                            ResponseRetrun(returnObj, response);
+                            break;
+                    }
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    showMsg(ex.ToString());
                 }
             }
-            catch (Exception ex)
+            if (request.HttpMethod == "GET")
             {
-                showMsg(ex.ToString());
+                if (request.RawUrl.Equals(@"/GetApkFile.ashx"))
+                {
+                    response.ContentType = "application/octet-stream";
+
+                    string fileName = APKFILENAME;
+                    showMsg(string.Format("GetApkFile:[{0}]", request.RemoteEndPoint.ToString()));
+                    response.AddHeader("Content-Disposition", "attachment;FileName=" + fileName);
+
+                    FileStream stream = new FileInfo(APKFILENAME).OpenRead();
+
+                    byte[] data = new Byte[stream.Length];
+                    //从流中读取字节块并将该数据写入给定缓冲区buffer中
+                    stream.Read(data, 0, Convert.ToInt32(stream.Length));
+                    response.ContentLength64 = data.Length;
+                    System.IO.Stream output = response.OutputStream;
+                    output.Write(data, 0, data.Length);
+                    output.Close();
+
+                    return;
+                }
+
             }
 
-
+            returnObj = "不是post请求或者传过来的数据为空";
+            showMsg(returnObj);
+            ResponseRetrun(returnObj, response);
+            return;
         }
+        private string APKFILENAME = "update.apk";
 
-        #region GetUpdate
-        /// <summary>
-        /// 得到APK信息
-        /// </summary>
-        /// <param name="apkPath"></param>
-        /// <returns></returns>
-        private string GetVersionByApkFile(string apkPath)
+            #region GetUpdate
+            /// <summary>
+            /// 得到APK信息
+            /// </summary>
+            /// <param name="apkPath"></param>
+            /// <returns></returns>
+            private string GetVersionByApkFile(string apkPath)
         {
             byte[] manifestData = null;
             byte[] resourcesData = null;
@@ -262,7 +296,7 @@ namespace FaceTest
 
             private string  DoResult_GetUpdate()
         {
-            return GetVersionByApkFile("update.apk");
+            return GetVersionByApkFile(APKFILENAME);
         }
         #endregion
 
@@ -295,6 +329,7 @@ namespace FaceTest
         /// <param name="response"></param>
         private void ResponseRetrun(string str, HttpListenerResponse response)
         {
+            
             //返回
             var returnByteArr = Encoding.UTF8.GetBytes(str);//设置客户端返回信息的编码
             try
