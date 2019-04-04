@@ -274,5 +274,17 @@ namespace FaceTest.Properties {
                 this["tb_SplitChar"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/DevRunLog.ashx")]
+        public string tb_devRunLogUrl {
+            get {
+                return ((string)(this["tb_devRunLogUrl"]));
+            }
+            set {
+                this["tb_devRunLogUrl"] = value;
+            }
+        }
     }
 }

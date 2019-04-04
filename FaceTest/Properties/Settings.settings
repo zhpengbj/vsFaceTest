@@ -65,5 +65,8 @@
     <Setting Name="tb_SplitChar" Type="System.String" Scope="User">
       <Value Profile="(Default)">_</Value>
     </Setting>
+    <Setting Name="tb_devRunLogUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.8.100:8091/DevRunLog.ashx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

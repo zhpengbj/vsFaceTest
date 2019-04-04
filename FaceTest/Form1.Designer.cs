@@ -84,27 +84,6 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button28 = new System.Windows.Forms.Button();
-            this.tb_SplitChar = new System.Windows.Forms.TextBox();
-            this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
-            this.tb_FaceFind_FaceId = new System.Windows.Forms.TextBox();
-            this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
-            this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
-            this.tb_FaceAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_PersonFind_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_PersonAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
-            this.tb_PersonAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
-            this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
-            this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
-            this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
-            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
-            this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
-            this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
-            this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
-            this.tb_Path = new System.Windows.Forms.TextBox();
-            this.tb_Pass = new System.Windows.Forms.TextBox();
-            this.tb_Url = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button27 = new System.Windows.Forms.Button();
@@ -130,6 +109,31 @@
             this.button45 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.button46 = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.receiveMsg3 = new System.Windows.Forms.RichTextBox();
+            this.tb_devRunLogUrl = new System.Windows.Forms.TextBox();
+            this.tb_SplitChar = new System.Windows.Forms.TextBox();
+            this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
+            this.tb_FaceFind_FaceId = new System.Windows.Forms.TextBox();
+            this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
+            this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
+            this.tb_FaceAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_PersonFind_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_PersonAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
+            this.tb_PersonAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
+            this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
+            this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
+            this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
+            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
+            this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
+            this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
+            this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
+            this.tb_Path = new System.Windows.Forms.TextBox();
+            this.tb_Pass = new System.Windows.Forms.TextBox();
+            this.tb_Url = new System.Windows.Forms.TextBox();
+            this.button47 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -137,6 +141,7 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -597,6 +602,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
             this.tabControl1.Location = new System.Drawing.Point(953, 0);
             this.tabControl1.Name = "tabControl1";
@@ -676,6 +682,277 @@
             this.button28.Text = "同步人员、照片[2]";
             this.button28.UseVisualStyleBackColor = true;
             this.button28.Click += new System.EventHandler(this.button28_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(238, 157);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(97, 15);
+            this.label12.TabIndex = 72;
+            this.label12.Text = "文件名分隔符";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button27
+            // 
+            this.button27.Location = new System.Drawing.Point(237, 385);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(137, 36);
+            this.button27.TabIndex = 73;
+            this.button27.Text = "循环";
+            this.button27.UseVisualStyleBackColor = true;
+            this.button27.Click += new System.EventHandler(this.button27_Click_1);
+            // 
+            // button29
+            // 
+            this.button29.Location = new System.Drawing.Point(796, 706);
+            this.button29.Name = "button29";
+            this.button29.Size = new System.Drawing.Size(49, 36);
+            this.button29.TabIndex = 74;
+            this.button29.Text = "广播";
+            this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.button29_Click);
+            // 
+            // button30
+            // 
+            this.button30.Location = new System.Drawing.Point(759, 71);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(149, 36);
+            this.button30.TabIndex = 75;
+            this.button30.Text = "读取运行参数";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
+            // 
+            // button31
+            // 
+            this.button31.Location = new System.Drawing.Point(759, 144);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(149, 36);
+            this.button31.TabIndex = 76;
+            this.button31.Text = "设置运行参数";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(759, 113);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(182, 25);
+            this.textBox1.TabIndex = 77;
+            // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(792, 748);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(149, 36);
+            this.button32.TabIndex = 78;
+            this.button32.Text = "初始化设备";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(697, 765);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(89, 19);
+            this.checkBox1.TabIndex = 79;
+            this.checkBox1.Text = "清空参数";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // button33
+            // 
+            this.button33.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button33.Location = new System.Drawing.Point(594, 73);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(92, 36);
+            this.button33.TabIndex = 80;
+            this.button33.Text = "读取";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // button34
+            // 
+            this.button34.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button34.Location = new System.Drawing.Point(594, 142);
+            this.button34.Name = "button34";
+            this.button34.Size = new System.Drawing.Size(92, 36);
+            this.button34.TabIndex = 81;
+            this.button34.Text = "读取";
+            this.button34.UseVisualStyleBackColor = true;
+            this.button34.Click += new System.EventHandler(this.button34_Click);
+            // 
+            // button35
+            // 
+            this.button35.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button35.Location = new System.Drawing.Point(594, 214);
+            this.button35.Name = "button35";
+            this.button35.Size = new System.Drawing.Size(92, 36);
+            this.button35.TabIndex = 82;
+            this.button35.Text = "读取";
+            this.button35.UseVisualStyleBackColor = true;
+            this.button35.Click += new System.EventHandler(this.button35_Click);
+            // 
+            // button36
+            // 
+            this.button36.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button36.Location = new System.Drawing.Point(594, 277);
+            this.button36.Name = "button36";
+            this.button36.Size = new System.Drawing.Size(92, 36);
+            this.button36.TabIndex = 83;
+            this.button36.Text = "读取";
+            this.button36.UseVisualStyleBackColor = true;
+            this.button36.Click += new System.EventHandler(this.button36_Click);
+            // 
+            // button37
+            // 
+            this.button37.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button37.Location = new System.Drawing.Point(594, 342);
+            this.button37.Name = "button37";
+            this.button37.Size = new System.Drawing.Size(92, 36);
+            this.button37.TabIndex = 84;
+            this.button37.Text = "读取";
+            this.button37.UseVisualStyleBackColor = true;
+            this.button37.Click += new System.EventHandler(this.button37_Click);
+            // 
+            // button38
+            // 
+            this.button38.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button38.Location = new System.Drawing.Point(594, 413);
+            this.button38.Name = "button38";
+            this.button38.Size = new System.Drawing.Size(92, 36);
+            this.button38.TabIndex = 85;
+            this.button38.Text = "读取";
+            this.button38.UseVisualStyleBackColor = true;
+            this.button38.Click += new System.EventHandler(this.button38_Click);
+            // 
+            // button39
+            // 
+            this.button39.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button39.Location = new System.Drawing.Point(382, 511);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(202, 36);
+            this.button39.TabIndex = 86;
+            this.button39.Text = "设置所有URL";
+            this.button39.UseVisualStyleBackColor = true;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
+            // button40
+            // 
+            this.button40.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button40.Location = new System.Drawing.Point(594, 511);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(92, 36);
+            this.button40.TabIndex = 87;
+            this.button40.Text = "读取所有";
+            this.button40.UseVisualStyleBackColor = true;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(759, 256);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(182, 25);
+            this.textBox2.TabIndex = 90;
+            // 
+            // button41
+            // 
+            this.button41.Location = new System.Drawing.Point(759, 287);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(149, 36);
+            this.button41.TabIndex = 89;
+            this.button41.Text = "设置推送参数";
+            this.button41.UseVisualStyleBackColor = true;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // button42
+            // 
+            this.button42.Location = new System.Drawing.Point(759, 214);
+            this.button42.Name = "button42";
+            this.button42.Size = new System.Drawing.Size(149, 36);
+            this.button42.TabIndex = 88;
+            this.button42.Text = "读取推送参数";
+            this.button42.UseVisualStyleBackColor = true;
+            this.button42.Click += new System.EventHandler(this.button42_Click);
+            // 
+            // button43
+            // 
+            this.button43.Location = new System.Drawing.Point(594, 551);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(92, 36);
+            this.button43.TabIndex = 91;
+            this.button43.Text = "重启App";
+            this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
+            // button44
+            // 
+            this.button44.Location = new System.Drawing.Point(594, 2);
+            this.button44.Name = "button44";
+            this.button44.Size = new System.Drawing.Size(92, 36);
+            this.button44.TabIndex = 92;
+            this.button44.Text = "打开web";
+            this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
+            // 
+            // button45
+            // 
+            this.button45.Location = new System.Drawing.Point(380, 551);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(203, 36);
+            this.button45.TabIndex = 93;
+            this.button45.Text = "得到当天的识别情况";
+            this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 10000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // button46
+            // 
+            this.button46.Location = new System.Drawing.Point(851, 706);
+            this.button46.Name = "button46";
+            this.button46.Size = new System.Drawing.Size(96, 36);
+            this.button46.TabIndex = 94;
+            this.button46.Text = "循环";
+            this.button46.UseVisualStyleBackColor = true;
+            this.button46.Click += new System.EventHandler(this.button46_Click);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.receiveMsg3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(747, 791);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "设备运行日志";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // receiveMsg3
+            // 
+            this.receiveMsg3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receiveMsg3.Location = new System.Drawing.Point(3, 3);
+            this.receiveMsg3.Margin = new System.Windows.Forms.Padding(4);
+            this.receiveMsg3.Name = "receiveMsg3";
+            this.receiveMsg3.Size = new System.Drawing.Size(741, 785);
+            this.receiveMsg3.TabIndex = 12;
+            this.receiveMsg3.Text = "";
+            // 
+            // tb_devRunLogUrl
+            // 
+            this.tb_devRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_devRunLogUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_devRunLogUrl.Location = new System.Drawing.Point(382, 486);
+            this.tb_devRunLogUrl.Name = "tb_devRunLogUrl";
+            this.tb_devRunLogUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_devRunLogUrl.TabIndex = 95;
+            this.tb_devRunLogUrl.Text = global::FaceTest.Properties.Settings.Default.tb_devRunLogUrl;
             // 
             // tb_SplitChar
             // 
@@ -874,251 +1151,23 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
-            // label12
+            // button47
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(238, 157);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(97, 15);
-            this.label12.TabIndex = 72;
-            this.label12.Text = "文件名分隔符";
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button27
-            // 
-            this.button27.Location = new System.Drawing.Point(237, 385);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(137, 36);
-            this.button27.TabIndex = 73;
-            this.button27.Text = "循环";
-            this.button27.UseVisualStyleBackColor = true;
-            this.button27.Click += new System.EventHandler(this.button27_Click_1);
-            // 
-            // button29
-            // 
-            this.button29.Location = new System.Drawing.Point(796, 706);
-            this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(49, 36);
-            this.button29.TabIndex = 74;
-            this.button29.Text = "广播";
-            this.button29.UseVisualStyleBackColor = true;
-            this.button29.Click += new System.EventHandler(this.button29_Click);
-            // 
-            // button30
-            // 
-            this.button30.Location = new System.Drawing.Point(759, 71);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(149, 36);
-            this.button30.TabIndex = 75;
-            this.button30.Text = "读取运行参数";
-            this.button30.UseVisualStyleBackColor = true;
-            this.button30.Click += new System.EventHandler(this.button30_Click);
-            // 
-            // button31
-            // 
-            this.button31.Location = new System.Drawing.Point(759, 144);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(149, 36);
-            this.button31.TabIndex = 76;
-            this.button31.Text = "设置运行参数";
-            this.button31.UseVisualStyleBackColor = true;
-            this.button31.Click += new System.EventHandler(this.button31_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(759, 113);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(182, 25);
-            this.textBox1.TabIndex = 77;
-            // 
-            // button32
-            // 
-            this.button32.Location = new System.Drawing.Point(792, 748);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(149, 36);
-            this.button32.TabIndex = 78;
-            this.button32.Text = "初始化设备";
-            this.button32.UseVisualStyleBackColor = true;
-            this.button32.Click += new System.EventHandler(this.button32_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(697, 765);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 19);
-            this.checkBox1.TabIndex = 79;
-            this.checkBox1.Text = "清空参数";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // button33
-            // 
-            this.button33.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button33.Location = new System.Drawing.Point(594, 73);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(92, 36);
-            this.button33.TabIndex = 80;
-            this.button33.Text = "读取";
-            this.button33.UseVisualStyleBackColor = true;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
-            // 
-            // button34
-            // 
-            this.button34.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button34.Location = new System.Drawing.Point(594, 142);
-            this.button34.Name = "button34";
-            this.button34.Size = new System.Drawing.Size(92, 36);
-            this.button34.TabIndex = 81;
-            this.button34.Text = "读取";
-            this.button34.UseVisualStyleBackColor = true;
-            this.button34.Click += new System.EventHandler(this.button34_Click);
-            // 
-            // button35
-            // 
-            this.button35.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button35.Location = new System.Drawing.Point(594, 214);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(92, 36);
-            this.button35.TabIndex = 82;
-            this.button35.Text = "读取";
-            this.button35.UseVisualStyleBackColor = true;
-            this.button35.Click += new System.EventHandler(this.button35_Click);
-            // 
-            // button36
-            // 
-            this.button36.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button36.Location = new System.Drawing.Point(594, 277);
-            this.button36.Name = "button36";
-            this.button36.Size = new System.Drawing.Size(92, 36);
-            this.button36.TabIndex = 83;
-            this.button36.Text = "读取";
-            this.button36.UseVisualStyleBackColor = true;
-            this.button36.Click += new System.EventHandler(this.button36_Click);
-            // 
-            // button37
-            // 
-            this.button37.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button37.Location = new System.Drawing.Point(594, 342);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(92, 36);
-            this.button37.TabIndex = 84;
-            this.button37.Text = "读取";
-            this.button37.UseVisualStyleBackColor = true;
-            this.button37.Click += new System.EventHandler(this.button37_Click);
-            // 
-            // button38
-            // 
-            this.button38.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button38.Location = new System.Drawing.Point(594, 413);
-            this.button38.Name = "button38";
-            this.button38.Size = new System.Drawing.Size(92, 36);
-            this.button38.TabIndex = 85;
-            this.button38.Text = "读取";
-            this.button38.UseVisualStyleBackColor = true;
-            this.button38.Click += new System.EventHandler(this.button38_Click);
-            // 
-            // button39
-            // 
-            this.button39.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button39.Location = new System.Drawing.Point(382, 495);
-            this.button39.Name = "button39";
-            this.button39.Size = new System.Drawing.Size(202, 36);
-            this.button39.TabIndex = 86;
-            this.button39.Text = "设置所有URL";
-            this.button39.UseVisualStyleBackColor = true;
-            this.button39.Click += new System.EventHandler(this.button39_Click);
-            // 
-            // button40
-            // 
-            this.button40.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button40.Location = new System.Drawing.Point(594, 495);
-            this.button40.Name = "button40";
-            this.button40.Size = new System.Drawing.Size(92, 36);
-            this.button40.TabIndex = 87;
-            this.button40.Text = "读取所有";
-            this.button40.UseVisualStyleBackColor = true;
-            this.button40.Click += new System.EventHandler(this.button40_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(759, 256);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(182, 25);
-            this.textBox2.TabIndex = 90;
-            // 
-            // button41
-            // 
-            this.button41.Location = new System.Drawing.Point(759, 287);
-            this.button41.Name = "button41";
-            this.button41.Size = new System.Drawing.Size(149, 36);
-            this.button41.TabIndex = 89;
-            this.button41.Text = "设置推送参数";
-            this.button41.UseVisualStyleBackColor = true;
-            this.button41.Click += new System.EventHandler(this.button41_Click);
-            // 
-            // button42
-            // 
-            this.button42.Location = new System.Drawing.Point(759, 214);
-            this.button42.Name = "button42";
-            this.button42.Size = new System.Drawing.Size(149, 36);
-            this.button42.TabIndex = 88;
-            this.button42.Text = "读取推送参数";
-            this.button42.UseVisualStyleBackColor = true;
-            this.button42.Click += new System.EventHandler(this.button42_Click);
-            // 
-            // button43
-            // 
-            this.button43.Location = new System.Drawing.Point(594, 546);
-            this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(92, 36);
-            this.button43.TabIndex = 91;
-            this.button43.Text = "重启App";
-            this.button43.UseVisualStyleBackColor = true;
-            this.button43.Click += new System.EventHandler(this.button43_Click);
-            // 
-            // button44
-            // 
-            this.button44.Location = new System.Drawing.Point(594, 2);
-            this.button44.Name = "button44";
-            this.button44.Size = new System.Drawing.Size(92, 36);
-            this.button44.TabIndex = 92;
-            this.button44.Text = "打开web";
-            this.button44.UseVisualStyleBackColor = true;
-            this.button44.Click += new System.EventHandler(this.button44_Click);
-            // 
-            // button45
-            // 
-            this.button45.Location = new System.Drawing.Point(380, 546);
-            this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(203, 36);
-            this.button45.TabIndex = 93;
-            this.button45.Text = "得到当天的识别情况";
-            this.button45.UseVisualStyleBackColor = true;
-            this.button45.Click += new System.EventHandler(this.button45_Click);
-            // 
-            // timer2
-            // 
-            this.timer2.Interval = 10000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // button46
-            // 
-            this.button46.Location = new System.Drawing.Point(851, 706);
-            this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(96, 36);
-            this.button46.TabIndex = 94;
-            this.button46.Text = "循环";
-            this.button46.UseVisualStyleBackColor = true;
-            this.button46.Click += new System.EventHandler(this.button46_Click);
+            this.button47.Location = new System.Drawing.Point(706, 551);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(92, 36);
+            this.button47.TabIndex = 96;
+            this.button47.Text = "重启设备";
+            this.button47.UseVisualStyleBackColor = true;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1708, 820);
+            this.Controls.Add(this.button47);
+            this.Controls.Add(this.tb_devRunLogUrl);
             this.Controls.Add(this.button46);
             this.Controls.Add(this.button45);
             this.Controls.Add(this.button44);
@@ -1222,6 +1271,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1330,6 +1380,10 @@
         private System.Windows.Forms.Button button45;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button button46;
+        private System.Windows.Forms.TextBox tb_devRunLogUrl;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.RichTextBox receiveMsg3;
+        private System.Windows.Forms.Button button47;
     }
 }
 

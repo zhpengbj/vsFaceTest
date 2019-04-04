@@ -52,6 +52,8 @@ namespace FaceTest
             this.tb_SetPassTime_UserId.Text = settings.tb_SetPassTime_UserId;
             this.tb_SetPassTime_PassTimeName.Text = settings.tb_SetPassTime_PassTimeName;
             this.tb_HeartBeatUrl.Text = settings.tb_HeartBeatUrl;
+            this.tb_devRunLogUrl.Text = settings.tb_devRunLogUrl;
+
             this.tb_DeletePassTimeName.Text = settings.tb_DeletePassTimeName;
 
             this.tb_PersonAddOrUpdate_PersonId.Text = settings.tb_PersonAddOrUpdate_PersonId;
@@ -166,6 +168,12 @@ namespace FaceTest
                             showMsg(returnObj);
                             ResponseRetrun(returnObj, response);
                             break;
+                        case @"/DevRunLog.ashx":
+                            //运行日志
+                            DoResult_DevRunLog(requestJsonString);
+                            //returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            //ResponseRetrun(returnObj, response);
+                            break;
                     }
                     return;
                 }
@@ -204,54 +212,80 @@ namespace FaceTest
             ResponseRetrun(returnObj, response);
             return;
         }
+        private String NewAppCersionCode = string.Empty;
         private string APKFILENAME = "update.apk";
 
-            #region GetUpdate
-            /// <summary>
-            /// 得到APK信息
-            /// </summary>
-            /// <param name="apkPath"></param>
-            /// <returns></returns>
-            private string GetVersionByApkFile(string apkPath)
+        #region 处理-设备运行日志
+        /// <summary>
+        /// 处理json串-设备运行日志
+        /// </summary>
+        /// <param name="JsonString"></param>
+        private void DoResult_DevRunLog(string JsonString)
         {
-            byte[] manifestData = null;
-            byte[] resourcesData = null;
+            //得到JSON字符串
+            string dataStr = JsonString.Substring(JsonString.IndexOf("info=") + 5, JsonString.Length - JsonString.IndexOf("info=") - 5);
+            MDevicesRunLog devicesRunLog=JsonConvert.DeserializeObject<MDevicesRunLog>(dataStr);
+            showMsg3(dataStr);
+            showDevicesRunLog(dataStr);
+            //处理相关流程
 
-            using (ICSharpCode.SharpZipLib.Zip.ZipInputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(File.Open(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
+        }
+        private void showDevicesRunLog(string s)
+        {
+            MDevicesRunLog devicesRunLog = JsonConvert.DeserializeObject<MDevicesRunLog>(s);
+            showMsg3(String.Format("解析,机器码[{0}]", devicesRunLog.deviceMachineCode));
+            showMsg3(String.Format("解析,机器编号[{0}]", devicesRunLog.deviceKey));
+            EDevOpLogType devOpLogType = (EDevOpLogType)devicesRunLog.devOpType;
+            showMsg3(String.Format("解析,Type[{0}],内容[{1}]", devicesRunLog.devOpType, devOpLogType.GetDescription()));
+            showMsg3(String.Format("解析,备注[{0}]", devicesRunLog.remark));
+            showMsg3("");
+        }
+        #endregion
+
+        #region GetUpdate
+        /// <summary>
+        /// 得到APK信息
+        /// </summary>
+        /// <param name="apkPath"></param>
+        /// <returns></returns>
+        private string GetVersionByApkFile(string apkPath)
+    {
+        byte[] manifestData = null;
+        byte[] resourcesData = null;
+
+        using (ICSharpCode.SharpZipLib.Zip.ZipInputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(File.Open(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
+        {
+
+            using (var filestream = new FileStream(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
+
             {
 
-                using (var filestream = new FileStream(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
-
+                using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(filestream))
                 {
 
-                    using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(filestream))
+                    ICSharpCode.SharpZipLib.Zip.ZipEntry item;
+                    string content = string.Empty;
+                    while ((item = zip.GetNextEntry()) != null)
                     {
-
-                        ICSharpCode.SharpZipLib.Zip.ZipEntry item;
-                        string content = string.Empty;
-                        while ((item = zip.GetNextEntry()) != null)
+                        if (item.Name.ToLower() == "androidmanifest.xml")
                         {
-                            if (item.Name.ToLower() == "androidmanifest.xml")
+                            manifestData = new byte[50 * 1024];
+                            using (Stream strm = zipfile.GetInputStream(item))
                             {
-                                manifestData = new byte[50 * 1024];
-                                using (Stream strm = zipfile.GetInputStream(item))
-                                {
-                                    strm.Read(manifestData, 0, manifestData.Length);
-                                }
-
-                            }
-                            if (item.Name.ToLower() == "resources.arsc")
-                            {
-                                using (Stream strm = zipfile.GetInputStream(item))
-                                {
-                                    using (BinaryReader s = new BinaryReader(strm))
-                                    {
-                                        resourcesData = s.ReadBytes((int)item.Size);
-
-                                    }
-                                }
+                                strm.Read(manifestData, 0, manifestData.Length);
                             }
 
+                        }
+                        if (item.Name.ToLower() == "resources.arsc")
+                        {
+                            using (Stream strm = zipfile.GetInputStream(item))
+                            {
+                                using (BinaryReader s = new BinaryReader(strm))
+                                {
+                                    resourcesData = s.ReadBytes((int)item.Size);
+
+                                }
+                            }
                         }
 
                     }
@@ -259,46 +293,53 @@ namespace FaceTest
                 }
 
             }
-            ApkReader apkReader = new ApkReader();
-            ApkInfo info = apkReader.extractInfo(manifestData, resourcesData);
-            //showMsg(JsonConvert.SerializeObject(info));
-            showAPkInfo(info);
-            return info.versionCode;
+
         }
-        private void showAPkInfo(ApkInfo info)
+        ApkReader apkReader = new ApkReader();
+        ApkInfo info = apkReader.extractInfo(manifestData, resourcesData);
+        //showMsg(JsonConvert.SerializeObject(info));
+        showAPkInfo(info);
+        return info.versionCode;
+    }
+    private void showAPkInfo(ApkInfo info)
+    {
+        showMsg(string.Format("Package Name: {0}", info.packageName));
+        showMsg(string.Format("Version Name: {0}", info.versionName));
+        showMsg(string.Format("Version Code: {0}", info.versionCode));
+
+        showMsg(string.Format("App Has Icon: {0}", info.hasIcon));
+        if (info.iconFileName.Count > 0)
+            showMsg(string.Format("App Icon: {0}", info.iconFileName[0]));
+        showMsg(string.Format("Min SDK Version: {0}", info.minSdkVersion));
+        showMsg(string.Format("Target SDK Version: {0}", info.targetSdkVersion));
+
+        if (info.Permissions != null && info.Permissions.Count > 0)
         {
-            showMsg(string.Format("Package Name: {0}", info.packageName));
-            showMsg(string.Format("Version Name: {0}", info.versionName));
-            showMsg(string.Format("Version Code: {0}", info.versionCode));
-
-            showMsg(string.Format("App Has Icon: {0}", info.hasIcon));
-            if (info.iconFileName.Count > 0)
-                showMsg(string.Format("App Icon: {0}", info.iconFileName[0]));
-            showMsg(string.Format("Min SDK Version: {0}", info.minSdkVersion));
-            showMsg(string.Format("Target SDK Version: {0}", info.targetSdkVersion));
-
-            if (info.Permissions != null && info.Permissions.Count > 0)
+            showMsg("Permissions:");
+            info.Permissions.ForEach(f =>
             {
-                showMsg("Permissions:");
-                info.Permissions.ForEach(f =>
-                {
-                    showMsg(string.Format("   {0}", f));
-                });
-            }
-            else
-                showMsg("No Permissions Found");
-
-            showMsg(string.Format("Supports Any Density: {0}", info.supportAnyDensity));
-            showMsg(string.Format("Supports Large Screens: {0}", info.supportLargeScreens));
-            showMsg(string.Format("Supports Normal Screens: {0}", info.supportNormalScreens));
-            showMsg(string.Format("Supports Small Screens: {0}", info.supportSmallScreens));
+                showMsg(string.Format("   {0}", f));
+            });
         }
+        else
+            showMsg("No Permissions Found");
 
-            private string  DoResult_GetUpdate()
+        showMsg(string.Format("Supports Any Density: {0}", info.supportAnyDensity));
+        showMsg(string.Format("Supports Large Screens: {0}", info.supportLargeScreens));
+        showMsg(string.Format("Supports Normal Screens: {0}", info.supportNormalScreens));
+        showMsg(string.Format("Supports Small Screens: {0}", info.supportSmallScreens));
+    }
+
+        private string  DoResult_GetUpdate()
+    {
+            
+        if (string.IsNullOrEmpty(NewAppCersionCode))
         {
-            return GetVersionByApkFile(APKFILENAME);
+            NewAppCersionCode = GetVersionByApkFile(APKFILENAME);
         }
-        #endregion
+        return NewAppCersionCode;
+    }
+    #endregion
 
         #region API函数声明
         #endregion
@@ -409,9 +450,11 @@ namespace FaceTest
             //得到JSON字符串
             string dataStr = JsonString.Substring(JsonString.IndexOf("info=") + 5, JsonString.Length - JsonString.IndexOf("info=") - 5);
             showMsg(dataStr);
+            showDevInfo(dataStr);
             //处理相关流程
 
         }
+
         #endregion
 
         #region 处理-后台验证
@@ -448,6 +491,49 @@ namespace FaceTest
             [Description("其他错误")]
             Other = 100
 
+        }
+        public enum EDevOpLogType
+        {
+            /// <summary>
+            /// App启动 1
+            /// 正常启动
+            /// </summary>
+            [Description("App启动")]
+            AppRun = 1,
+            /// <summary>
+            /// APP重启 2
+            /// 如果APP使用内存占用量过大，会自动重启
+            /// </summary>
+            [Description("APP重启")]
+            AppRestart = 2,
+            /// <summary>
+            /// 设备重启 3
+            /// 如果系统内存使用率不足，则系统会重启
+            /// </summary>
+            [Description("设备重启")]
+            DevRestart = 3
+
+
+        }
+        public class MDevicesRunLog
+        {
+            /// <summary>
+            /// 操作类型
+            /// EDevOpLogType
+            /// </summary>
+            public int devOpType { get; set; }
+            /// <summary>
+            /// 备注
+            /// </summary>
+            public string remark { get; set; }
+            /// <summary>
+            /// 机器码
+            /// </summary>
+            public string deviceKey { get; set; }
+            /// <summary>
+            /// 机器编码
+            /// </summary>
+            public string deviceMachineCode { get; set; }
         }
         /// <summary>
         /// 身份检验结果 
@@ -1000,6 +1086,36 @@ namespace FaceTest
                 }
             }
         }
+        public void showMsg3(string msg)
+        {
+            {
+                //在线程里以安全方式调用控件
+                if (receiveMsg3.InvokeRequired)
+                {
+                    dShowInfo _myinvoke = new dShowInfo(showMsg3);
+                    receiveMsg3.Invoke(_myinvoke, new object[] { msg });
+                }
+                else
+                {
+                    string s = msg;
+                    if (!string.IsNullOrEmpty(msg))
+                    {
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("mm:ss"), msg);
+                    }
+                    else
+                    {
+                        s = "\r\n";
+                    }
+                    if (receiveMsg3.Lines.Length > 200)
+                    {
+                        receiveMsg3.Clear();
+                    }
+                    receiveMsg3.AppendText(s);
+                    receiveMsg3.Select(receiveMsg3.Text.Length, 0);
+                    receiveMsg3.ScrollToCaret();
+                }
+            }
+        }
         public delegate void dShowInfoForGrid(Verify v);
         public void showInfoForGrid(Verify v)
         {
@@ -1215,6 +1331,7 @@ namespace FaceTest
             //showMsg(ConvertDateTimeInt(DateTime.Now).ToString());
             receiveMsg.Clear();
             receiveMsg2.Clear();
+            receiveMsg3.Clear();
         }
         /// <summary>  
         /// 获取时间戳  
@@ -3054,6 +3171,7 @@ namespace FaceTest
             showMsg(String.Format("解析,identifyCallBack[{0}]", urlPar.identifyCallBack));
             showMsg(String.Format("解析,identifyCallBack_His[{0}]", urlPar.identifyCallBack_His));
             showMsg(String.Format("解析,verifyCallBack[{0}]", urlPar.verifyCallBack));
+            showMsg(String.Format("解析,devRunLogUrl[{0}]", urlPar.devRunLogUrl));
             showMsg("");
         }
 
@@ -3066,6 +3184,7 @@ namespace FaceTest
             urlPar.getNewApkVersionUrl = bt_GetApkVersion.Text.Trim();
             urlPar.downNewApkUrl = tb_DownApkUrl.Text.Trim();
             urlPar.heartBeatUrl = tb_HeartBeatUrl.Text.Trim();
+            urlPar.devRunLogUrl = tb_devRunLogUrl.Text.Trim();
             return JsonConvert.SerializeObject(urlPar);
         }
         private void button39_Click(object sender, EventArgs e)
@@ -3165,7 +3284,6 @@ namespace FaceTest
         }
         private void button43_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
             try
             {
                 if (DialogResult.Cancel == MessageBox.Show("是否重启App?", "请确认", MessageBoxButtons.OKCancel))
@@ -3189,7 +3307,6 @@ namespace FaceTest
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
-                        textBox1.Text = res.data;
                         showMsg("restart 成功");
                         showMsg(res.data);
                         //SendDevRefreshData();
@@ -3323,6 +3440,53 @@ namespace FaceTest
             button29_Click(sender, e);
             button29Client++;
             button46.Text = button29Client.ToString();
+        }
+
+        private void button47_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DialogResult.Cancel == MessageBox.Show("是否重启设备?", "请确认", MessageBoxButtons.OKCancel))
+                {
+                    return;
+                }
+                button43.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/device/reboot";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("reboot 成功");
+                        showMsg(res.data);
+                        //SendDevRefreshData();
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button43.Enabled = true;
+
+            }
         }
     }
     /// <summary>
@@ -3568,6 +3732,11 @@ namespace FaceTest
         public string identifyCallBack { get; set; }
         public string identifyCallBack_His { get; set; }
         public string verifyCallBack { get; set; }
+        /// <summary>
+        /// 设备运行日志
+        /// 包括启动、App重启，设备重启和设备请求授权
+        /// </summary>
+        public string devRunLogUrl { get; set; }
     }
 
 
