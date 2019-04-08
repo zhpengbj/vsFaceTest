@@ -133,8 +133,6 @@ namespace FaceTest
             }
             if (request.HttpMethod == "POST")
             {
-
-
                 string requestJsonString = GetRequestJsonString(request);
                 showMsg(string.Format("接到请求,guid:[{0}],Ip:[{1}],Url:[{2}],JsonStringLen[{3}]",
                     guid, request.RemoteEndPoint.Address, request.RawUrl, requestJsonString.Length));

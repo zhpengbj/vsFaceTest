@@ -21,7 +21,7 @@
       <Value Profile="(Default)">http://192.168.8.100:8091/GetUpdate.ashx</Value>
     </Setting>
     <Setting Name="tb_DownApkUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/HeartBeat.ashx</Value>
+      <Value Profile="(Default)">http://192.168.8.100:8091/GetApkFile.ashx</Value>
     </Setting>
     <Setting Name="tb_SetPassTime_UserId" Type="System.String" Scope="User">
       <Value Profile="(Default)">zhp</Value>
