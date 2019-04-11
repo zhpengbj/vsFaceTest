@@ -44,6 +44,8 @@ namespace FaceTest
         [Newtonsoft.Json.JsonIgnore]
         public string FileName { get; set; }
 
+        public string cardNo { get; set; }
+
     }
     /// <summary>
     /// 结果 

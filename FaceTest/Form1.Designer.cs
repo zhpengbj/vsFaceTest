@@ -83,6 +83,8 @@
             this.receiveMsg2 = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.receiveMsg3 = new System.Windows.Forms.RichTextBox();
             this.button28 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -109,8 +111,10 @@
             this.button45 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.button46 = new System.Windows.Forms.Button();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.receiveMsg3 = new System.Windows.Forms.RichTextBox();
+            this.button47 = new System.Windows.Forms.Button();
+            this.button48 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
             this.tb_devRunLogUrl = new System.Windows.Forms.TextBox();
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
@@ -133,7 +137,6 @@
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tb_Url = new System.Windows.Forms.TextBox();
-            this.button47 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -331,21 +334,19 @@
             // 
             // tb_time
             // 
-            this.tb_time.Location = new System.Drawing.Point(536, 42);
+            this.tb_time.Location = new System.Drawing.Point(480, 42);
             this.tb_time.Name = "tb_time";
-            this.tb_time.Size = new System.Drawing.Size(183, 25);
+            this.tb_time.Size = new System.Drawing.Size(104, 25);
             this.tb_time.TabIndex = 28;
-            this.tb_time.Visible = false;
             // 
             // button13
             // 
             this.button13.Location = new System.Drawing.Point(381, 36);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(149, 36);
+            this.button13.Size = new System.Drawing.Size(93, 36);
             this.button13.TabIndex = 27;
             this.button13.Text = "设置时间";
             this.button13.UseVisualStyleBackColor = true;
-            this.button13.Visible = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button14
@@ -673,6 +674,27 @@
             this.dataGridView1.Size = new System.Drawing.Size(741, 785);
             this.dataGridView1.TabIndex = 0;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.receiveMsg3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(747, 791);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "设备运行日志";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // receiveMsg3
+            // 
+            this.receiveMsg3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.receiveMsg3.Location = new System.Drawing.Point(3, 3);
+            this.receiveMsg3.Margin = new System.Windows.Forms.Padding(4);
+            this.receiveMsg3.Name = "receiveMsg3";
+            this.receiveMsg3.Size = new System.Drawing.Size(741, 785);
+            this.receiveMsg3.TabIndex = 12;
+            this.receiveMsg3.Text = "";
+            // 
             // button28
             // 
             this.button28.Location = new System.Drawing.Point(17, 385);
@@ -890,7 +912,7 @@
             // 
             // button44
             // 
-            this.button44.Location = new System.Drawing.Point(594, 2);
+            this.button44.Location = new System.Drawing.Point(594, 0);
             this.button44.Name = "button44";
             this.button44.Size = new System.Drawing.Size(92, 36);
             this.button44.TabIndex = 92;
@@ -923,26 +945,43 @@
             this.button46.UseVisualStyleBackColor = true;
             this.button46.Click += new System.EventHandler(this.button46_Click);
             // 
-            // tabPage4
+            // button47
             // 
-            this.tabPage4.Controls.Add(this.receiveMsg3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(747, 791);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "设备运行日志";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.button47.Location = new System.Drawing.Point(706, 551);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(92, 36);
+            this.button47.TabIndex = 96;
+            this.button47.Text = "重启设备";
+            this.button47.UseVisualStyleBackColor = true;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
-            // receiveMsg3
+            // button48
             // 
-            this.receiveMsg3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.receiveMsg3.Location = new System.Drawing.Point(3, 3);
-            this.receiveMsg3.Margin = new System.Windows.Forms.Padding(4);
-            this.receiveMsg3.Name = "receiveMsg3";
-            this.receiveMsg3.Size = new System.Drawing.Size(741, 785);
-            this.receiveMsg3.TabIndex = 12;
-            this.receiveMsg3.Text = "";
+            this.button48.Location = new System.Drawing.Point(594, 36);
+            this.button48.Name = "button48";
+            this.button48.Size = new System.Drawing.Size(125, 36);
+            this.button48.TabIndex = 97;
+            this.button48.Text = "设置当前时间";
+            this.button48.UseVisualStyleBackColor = true;
+            this.button48.Click += new System.EventHandler(this.button48_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(192, 440);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(37, 15);
+            this.label13.TabIndex = 99;
+            this.label13.Text = "卡号";
+            // 
+            // tb_PersonAddOrUpdate_CardNo
+            // 
+            this.tb_PersonAddOrUpdate_CardNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_CardNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(237, 435);
+            this.tb_PersonAddOrUpdate_CardNo.Name = "tb_PersonAddOrUpdate_CardNo";
+            this.tb_PersonAddOrUpdate_CardNo.Size = new System.Drawing.Size(137, 25);
+            this.tb_PersonAddOrUpdate_CardNo.TabIndex = 98;
+            this.tb_PersonAddOrUpdate_CardNo.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_CardNo;
             // 
             // tb_devRunLogUrl
             // 
@@ -1151,21 +1190,14 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
-            // button47
-            // 
-            this.button47.Location = new System.Drawing.Point(706, 551);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(92, 36);
-            this.button47.TabIndex = 96;
-            this.button47.Text = "重启设备";
-            this.button47.UseVisualStyleBackColor = true;
-            this.button47.Click += new System.EventHandler(this.button47_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1708, 820);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
+            this.Controls.Add(this.button48);
             this.Controls.Add(this.button47);
             this.Controls.Add(this.tb_devRunLogUrl);
             this.Controls.Add(this.button46);
@@ -1384,6 +1416,9 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.RichTextBox receiveMsg3;
         private System.Windows.Forms.Button button47;
+        private System.Windows.Forms.Button button48;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tb_PersonAddOrUpdate_CardNo;
     }
 }
 

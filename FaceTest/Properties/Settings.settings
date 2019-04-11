@@ -68,5 +68,8 @@
     <Setting Name="tb_devRunLogUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.8.100:8091/DevRunLog.ashx</Value>
     </Setting>
+    <Setting Name="tb_PersonAddOrUpdate_CardNo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">12345678</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

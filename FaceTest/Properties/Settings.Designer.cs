@@ -286,5 +286,17 @@ namespace FaceTest.Properties {
                 this["tb_devRunLogUrl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("12345678")]
+        public string tb_PersonAddOrUpdate_CardNo {
+            get {
+                return ((string)(this["tb_PersonAddOrUpdate_CardNo"]));
+            }
+            set {
+                this["tb_PersonAddOrUpdate_CardNo"] = value;
+            }
+        }
     }
 }

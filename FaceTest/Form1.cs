@@ -934,19 +934,19 @@ namespace FaceTest
                 {
                     u.userId = fileNameList[0];
                     u.userName = fileNameList[0];
-                    u.direct = 0;
+                    u.cardNo = "";
                 }
                 if (fileNameList.Length == 2)
                 {
                     u.userId = fileNameList[0];
                     u.userName = fileNameList[1];
-                    u.direct = 0;
+                    u.cardNo = "";
                 }
                 if (fileNameList.Length == 3)
                 {
                     u.userId = fileNameList[0];
                     u.userName = fileNameList[1];
-                    u.direct = Convert.ToInt32(fileNameList[2]);
+                    u.cardNo = fileNameList[2];
                 }
             }
             else
@@ -1584,7 +1584,7 @@ namespace FaceTest
             try
             {
                 button9.Enabled = false;
-                string postStr = string.Format("pass={0}&timestamp={1}", Pass, GetTimeStamp());
+                string postStr = string.Format("pass={0}&time='{1}'", Pass, tb_time.Text.Trim());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setTime";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -2055,6 +2055,7 @@ namespace FaceTest
                 Person person = new Person();
                 person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
                 person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
                 string postStr = string.Format("pass={0}&person={1}", Pass, JsonConvert.SerializeObject(person));
                 string urlOper = @"/person/createOrUpdate";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -2699,6 +2700,7 @@ namespace FaceTest
             showMsg(String.Format("解析,机器码[{0}]", device.deviceMachineCode));
             showMsg(String.Format("解析,机器编号[{0}]", device.deviceKey));
             showMsg(String.Format("解析,Ip[{0}]", device.ip));
+            showMsg(String.Format("解析,系统时间[{0}]", device.time));
             showMsg(String.Format("解析,人员数[{0}]", device.personCount));
             showMsg(String.Format("解析,照片数[{0}]", device.faceCount));
             showMsg(String.Format("解析,运行时间[{0}]", device.runtime));
@@ -3486,6 +3488,12 @@ namespace FaceTest
 
             }
         }
+
+        private void button48_Click(object sender, EventArgs e)
+        {
+            tb_time.Text = DateTime.Now.ToString("yyyyMMdd.HHmmss");
+            button13_Click(sender, e);
+        }
     }
     /// <summary>
     /// 当天识别的记录情况
@@ -3588,6 +3596,10 @@ namespace FaceTest
         {
             return string.Format("id:[{0}],name:[{1}]", id, name);
         }
+        /// <summary>
+        /// 韦根卡号
+        /// </summary>
+        public string cardNo { get; set; }
     }
     /// <summary>
     /// 人员带照片的对象
