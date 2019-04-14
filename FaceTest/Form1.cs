@@ -359,7 +359,15 @@ namespace FaceTest
             result.success = true;
             result.msg = "";
             result.msgtype = 0;
+            result.data = GetHeartBeatReturnString();
             return JsonConvert.SerializeObject(result);
+        }
+        private string GetHeartBeatReturnString()
+        {
+            HeartBeatReturn heartBeatReturn = new HeartBeatReturn();
+            //返回服务器时间，用于校对时间
+            heartBeatReturn.Time = DateTime.Now.ToString("yyyyMMdd.HHmmss");
+            return JsonConvert.SerializeObject(heartBeatReturn);
         }
         /// <summary>
         /// 请求返回
@@ -3594,7 +3602,7 @@ namespace FaceTest
 
         public override string ToString()
         {
-            return string.Format("id:[{0}],name:[{1}]", id, name);
+            return string.Format("id:[{0}],name:[{1}],card:[{2}]", id, name,cardNo);
         }
         /// <summary>
         /// 韦根卡号

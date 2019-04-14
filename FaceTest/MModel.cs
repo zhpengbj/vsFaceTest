@@ -154,7 +154,13 @@ namespace FaceTest
 
         public object data { get; set; }
     }
-
+    public class HeartBeatReturn
+    {
+        /// <summary>
+        /// 系统时间，用于设备校对时间
+        /// </summary>
+        public string Time { get; set; }
+    }
 
     /// <summary>
     /// 运行参数
