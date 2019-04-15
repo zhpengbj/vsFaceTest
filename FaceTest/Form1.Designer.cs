@@ -137,6 +137,14 @@
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tb_Url = new System.Windows.Forms.TextBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lb_CardNo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -145,13 +153,19 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.tabControl2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(381, 0);
+            this.button1.Location = new System.Drawing.Point(478, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 36);
+            this.button1.Size = new System.Drawing.Size(149, 75);
             this.button1.TabIndex = 0;
             this.button1.Text = "启动web服务(回调服务)";
             this.button1.UseVisualStyleBackColor = true;
@@ -159,7 +173,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 86);
+            this.button2.Location = new System.Drawing.Point(16, 22);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(149, 36);
             this.button2.TabIndex = 1;
@@ -170,7 +184,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 121);
+            this.label1.Location = new System.Drawing.Point(20, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
@@ -188,7 +202,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(11, 41);
+            this.button4.Location = new System.Drawing.Point(14, 16);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(149, 36);
             this.button4.TabIndex = 4;
@@ -198,7 +212,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(13, 146);
+            this.button5.Location = new System.Drawing.Point(17, 82);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(95, 36);
             this.button5.TabIndex = 5;
@@ -208,7 +222,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(12, 183);
+            this.button6.Location = new System.Drawing.Point(16, 124);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(364, 36);
             this.button6.TabIndex = 10;
@@ -218,7 +232,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(613, 706);
+            this.button7.Location = new System.Drawing.Point(478, 580);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(149, 36);
             this.button7.TabIndex = 11;
@@ -231,7 +245,7 @@
             this.cb_saveImageKey.AutoSize = true;
             this.cb_saveImageKey.Checked = true;
             this.cb_saveImageKey.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_saveImageKey.Location = new System.Drawing.Point(114, 156);
+            this.cb_saveImageKey.Location = new System.Drawing.Point(118, 92);
             this.cb_saveImageKey.Name = "cb_saveImageKey";
             this.cb_saveImageKey.Size = new System.Drawing.Size(89, 19);
             this.cb_saveImageKey.TabIndex = 13;
@@ -241,7 +255,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button8.Location = new System.Drawing.Point(381, 141);
+            this.button8.Location = new System.Drawing.Point(10, 82);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(202, 36);
             this.button8.TabIndex = 14;
@@ -251,7 +265,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(382, 662);
+            this.pictureBox1.Location = new System.Drawing.Point(478, 457);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(126, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -261,7 +275,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(379, 605);
+            this.lb_PersonId.Location = new System.Drawing.Point(475, 346);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -270,7 +284,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(496, 605);
+            this.lb_PersonName.Location = new System.Drawing.Point(475, 375);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -278,14 +292,14 @@
             // 
             // tb_MachineCode
             // 
-            this.tb_MachineCode.Location = new System.Drawing.Point(769, 617);
+            this.tb_MachineCode.Location = new System.Drawing.Point(171, 118);
             this.tb_MachineCode.Name = "tb_MachineCode";
-            this.tb_MachineCode.Size = new System.Drawing.Size(182, 25);
+            this.tb_MachineCode.Size = new System.Drawing.Size(149, 25);
             this.tb_MachineCode.TabIndex = 20;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(613, 610);
+            this.button9.Location = new System.Drawing.Point(15, 111);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(149, 36);
             this.button9.TabIndex = 19;
@@ -295,14 +309,14 @@
             // 
             // tb_AuthorizeCode
             // 
-            this.tb_AuthorizeCode.Location = new System.Drawing.Point(769, 653);
+            this.tb_AuthorizeCode.Location = new System.Drawing.Point(171, 154);
             this.tb_AuthorizeCode.Name = "tb_AuthorizeCode";
-            this.tb_AuthorizeCode.Size = new System.Drawing.Size(182, 25);
+            this.tb_AuthorizeCode.Size = new System.Drawing.Size(149, 25);
             this.tb_AuthorizeCode.TabIndex = 22;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(613, 647);
+            this.button10.Location = new System.Drawing.Point(15, 148);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(149, 36);
             this.button10.TabIndex = 21;
@@ -313,7 +327,7 @@
             // button11
             // 
             this.button11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button11.Location = new System.Drawing.Point(381, 277);
+            this.button11.Location = new System.Drawing.Point(10, 218);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(202, 36);
             this.button11.TabIndex = 23;
@@ -324,7 +338,7 @@
             // button12
             // 
             this.button12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button12.Location = new System.Drawing.Point(381, 342);
+            this.button12.Location = new System.Drawing.Point(10, 283);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(202, 36);
             this.button12.TabIndex = 25;
@@ -334,16 +348,16 @@
             // 
             // tb_time
             // 
-            this.tb_time.Location = new System.Drawing.Point(480, 42);
+            this.tb_time.Location = new System.Drawing.Point(170, 297);
             this.tb_time.Name = "tb_time";
-            this.tb_time.Size = new System.Drawing.Size(104, 25);
+            this.tb_time.Size = new System.Drawing.Size(149, 25);
             this.tb_time.TabIndex = 28;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(381, 36);
+            this.button13.Location = new System.Drawing.Point(15, 291);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(93, 36);
+            this.button13.Size = new System.Drawing.Size(149, 36);
             this.button13.TabIndex = 27;
             this.button13.Text = "设置时间";
             this.button13.UseVisualStyleBackColor = true;
@@ -352,7 +366,7 @@
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.Location = new System.Drawing.Point(381, 71);
+            this.button14.Location = new System.Drawing.Point(10, 12);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(202, 36);
             this.button14.TabIndex = 29;
@@ -362,7 +376,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(12, 233);
+            this.button15.Location = new System.Drawing.Point(17, 6);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(149, 36);
             this.button15.TabIndex = 31;
@@ -372,7 +386,7 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(11, 310);
+            this.button16.Location = new System.Drawing.Point(16, 83);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(149, 36);
             this.button16.TabIndex = 32;
@@ -383,7 +397,7 @@
             // button17
             // 
             this.button17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button17.Location = new System.Drawing.Point(381, 414);
+            this.button17.Location = new System.Drawing.Point(10, 355);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(202, 36);
             this.button17.TabIndex = 35;
@@ -394,7 +408,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 353);
+            this.label2.Location = new System.Drawing.Point(19, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 15);
             this.label2.TabIndex = 37;
@@ -403,7 +417,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(164, 353);
+            this.label3.Location = new System.Drawing.Point(169, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 38;
@@ -411,7 +425,7 @@
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(12, 271);
+            this.button18.Location = new System.Drawing.Point(17, 44);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(149, 36);
             this.button18.TabIndex = 39;
@@ -422,7 +436,7 @@
             // lb_Path
             // 
             this.lb_Path.AutoSize = true;
-            this.lb_Path.Location = new System.Drawing.Point(379, 629);
+            this.lb_Path.Location = new System.Drawing.Point(475, 406);
             this.lb_Path.Name = "lb_Path";
             this.lb_Path.Size = new System.Drawing.Size(55, 15);
             this.lb_Path.TabIndex = 41;
@@ -430,7 +444,7 @@
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(17, 427);
+            this.button19.Location = new System.Drawing.Point(15, 210);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(149, 36);
             this.button19.TabIndex = 42;
@@ -440,7 +454,7 @@
             // 
             // button20
             // 
-            this.button20.Location = new System.Drawing.Point(17, 500);
+            this.button20.Location = new System.Drawing.Point(15, 283);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(149, 36);
             this.button20.TabIndex = 43;
@@ -451,7 +465,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(168, 511);
+            this.label4.Location = new System.Drawing.Point(166, 294);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 15);
             this.label4.TabIndex = 45;
@@ -460,7 +474,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(192, 475);
+            this.label5.Location = new System.Drawing.Point(190, 258);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 49;
@@ -469,7 +483,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 475);
+            this.label6.Location = new System.Drawing.Point(14, 258);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(53, 15);
             this.label6.TabIndex = 48;
@@ -478,7 +492,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(176, 546);
+            this.label7.Location = new System.Drawing.Point(174, 329);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 52;
@@ -486,7 +500,7 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(17, 535);
+            this.button21.Location = new System.Drawing.Point(15, 318);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(149, 36);
             this.button21.TabIndex = 50;
@@ -496,7 +510,7 @@
             // 
             // button22
             // 
-            this.button22.Location = new System.Drawing.Point(17, 584);
+            this.button22.Location = new System.Drawing.Point(15, 367);
             this.button22.Name = "button22";
             this.button22.Size = new System.Drawing.Size(149, 36);
             this.button22.TabIndex = 53;
@@ -507,7 +521,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 631);
+            this.label8.Location = new System.Drawing.Point(14, 414);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 15);
             this.label8.TabIndex = 56;
@@ -516,7 +530,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(237, 584);
+            this.pictureBox2.Location = new System.Drawing.Point(235, 367);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(105, 98);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -531,7 +545,7 @@
             // 
             // button23
             // 
-            this.button23.Location = new System.Drawing.Point(19, 686);
+            this.button23.Location = new System.Drawing.Point(17, 469);
             this.button23.Name = "button23";
             this.button23.Size = new System.Drawing.Size(149, 36);
             this.button23.TabIndex = 57;
@@ -542,7 +556,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(25, 662);
+            this.label9.Location = new System.Drawing.Point(23, 445);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 15);
             this.label9.TabIndex = 59;
@@ -551,7 +565,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(178, 693);
+            this.label10.Location = new System.Drawing.Point(176, 476);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 15);
             this.label10.TabIndex = 61;
@@ -560,7 +574,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(178, 736);
+            this.label11.Location = new System.Drawing.Point(176, 519);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 15);
             this.label11.TabIndex = 64;
@@ -568,7 +582,7 @@
             // 
             // button24
             // 
-            this.button24.Location = new System.Drawing.Point(19, 723);
+            this.button24.Location = new System.Drawing.Point(17, 506);
             this.button24.Name = "button24";
             this.button24.Size = new System.Drawing.Size(149, 36);
             this.button24.TabIndex = 62;
@@ -579,7 +593,7 @@
             // button25
             // 
             this.button25.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button25.Location = new System.Drawing.Point(381, 211);
+            this.button25.Location = new System.Drawing.Point(10, 152);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(202, 36);
             this.button25.TabIndex = 65;
@@ -589,9 +603,9 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(759, 2);
+            this.button26.Location = new System.Drawing.Point(478, 131);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(130, 36);
+            this.button26.Size = new System.Drawing.Size(149, 36);
             this.button26.TabIndex = 67;
             this.button26.Text = "停止web服务";
             this.button26.UseVisualStyleBackColor = true;
@@ -605,10 +619,10 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl1.Location = new System.Drawing.Point(953, 0);
+            this.tabControl1.Location = new System.Drawing.Point(652, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(755, 820);
+            this.tabControl1.Size = new System.Drawing.Size(494, 636);
             this.tabControl1.TabIndex = 68;
             // 
             // tabPage1
@@ -617,7 +631,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(747, 791);
+            this.tabPage1.Size = new System.Drawing.Size(486, 607);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "详细信息";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -628,7 +642,7 @@
             this.receiveMsg.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg.Name = "receiveMsg";
-            this.receiveMsg.Size = new System.Drawing.Size(741, 785);
+            this.receiveMsg.Size = new System.Drawing.Size(480, 601);
             this.receiveMsg.TabIndex = 10;
             this.receiveMsg.Text = "";
             // 
@@ -697,7 +711,7 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(17, 385);
+            this.button28.Location = new System.Drawing.Point(15, 168);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(214, 36);
             this.button28.TabIndex = 70;
@@ -708,7 +722,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(238, 157);
+            this.label12.Location = new System.Drawing.Point(242, 93);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(97, 15);
             this.label12.TabIndex = 72;
@@ -720,7 +734,7 @@
             // 
             // button27
             // 
-            this.button27.Location = new System.Drawing.Point(237, 385);
+            this.button27.Location = new System.Drawing.Point(235, 168);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(137, 36);
             this.button27.TabIndex = 73;
@@ -730,9 +744,9 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(796, 706);
+            this.button29.Location = new System.Drawing.Point(12, 404);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(49, 36);
+            this.button29.Size = new System.Drawing.Size(149, 36);
             this.button29.TabIndex = 74;
             this.button29.Text = "广播";
             this.button29.UseVisualStyleBackColor = true;
@@ -740,7 +754,7 @@
             // 
             // button30
             // 
-            this.button30.Location = new System.Drawing.Point(759, 71);
+            this.button30.Location = new System.Drawing.Point(19, 25);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(149, 36);
             this.button30.TabIndex = 75;
@@ -750,7 +764,7 @@
             // 
             // button31
             // 
-            this.button31.Location = new System.Drawing.Point(759, 144);
+            this.button31.Location = new System.Drawing.Point(19, 98);
             this.button31.Name = "button31";
             this.button31.Size = new System.Drawing.Size(149, 36);
             this.button31.TabIndex = 76;
@@ -760,14 +774,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(759, 113);
+            this.textBox1.Location = new System.Drawing.Point(19, 67);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(182, 25);
+            this.textBox1.Size = new System.Drawing.Size(394, 25);
             this.textBox1.TabIndex = 77;
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(792, 748);
+            this.button32.Location = new System.Drawing.Point(15, 241);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(149, 36);
             this.button32.TabIndex = 78;
@@ -778,17 +792,17 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(697, 765);
+            this.checkBox1.Location = new System.Drawing.Point(171, 246);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 19);
+            this.checkBox1.Size = new System.Drawing.Size(149, 19);
             this.checkBox1.TabIndex = 79;
-            this.checkBox1.Text = "清空参数";
+            this.checkBox1.Text = "初始化时清空参数";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button33
             // 
             this.button33.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button33.Location = new System.Drawing.Point(594, 73);
+            this.button33.Location = new System.Drawing.Point(223, 14);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(92, 36);
             this.button33.TabIndex = 80;
@@ -799,7 +813,7 @@
             // button34
             // 
             this.button34.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button34.Location = new System.Drawing.Point(594, 142);
+            this.button34.Location = new System.Drawing.Point(223, 83);
             this.button34.Name = "button34";
             this.button34.Size = new System.Drawing.Size(92, 36);
             this.button34.TabIndex = 81;
@@ -810,7 +824,7 @@
             // button35
             // 
             this.button35.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button35.Location = new System.Drawing.Point(594, 214);
+            this.button35.Location = new System.Drawing.Point(223, 155);
             this.button35.Name = "button35";
             this.button35.Size = new System.Drawing.Size(92, 36);
             this.button35.TabIndex = 82;
@@ -821,7 +835,7 @@
             // button36
             // 
             this.button36.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button36.Location = new System.Drawing.Point(594, 277);
+            this.button36.Location = new System.Drawing.Point(223, 218);
             this.button36.Name = "button36";
             this.button36.Size = new System.Drawing.Size(92, 36);
             this.button36.TabIndex = 83;
@@ -832,7 +846,7 @@
             // button37
             // 
             this.button37.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button37.Location = new System.Drawing.Point(594, 342);
+            this.button37.Location = new System.Drawing.Point(223, 283);
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(92, 36);
             this.button37.TabIndex = 84;
@@ -843,7 +857,7 @@
             // button38
             // 
             this.button38.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button38.Location = new System.Drawing.Point(594, 413);
+            this.button38.Location = new System.Drawing.Point(223, 354);
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(92, 36);
             this.button38.TabIndex = 85;
@@ -854,7 +868,7 @@
             // button39
             // 
             this.button39.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button39.Location = new System.Drawing.Point(382, 511);
+            this.button39.Location = new System.Drawing.Point(11, 503);
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(202, 36);
             this.button39.TabIndex = 86;
@@ -865,7 +879,7 @@
             // button40
             // 
             this.button40.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button40.Location = new System.Drawing.Point(594, 511);
+            this.button40.Location = new System.Drawing.Point(223, 503);
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(92, 36);
             this.button40.TabIndex = 87;
@@ -875,14 +889,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(759, 256);
+            this.textBox2.Location = new System.Drawing.Point(19, 210);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(182, 25);
+            this.textBox2.Size = new System.Drawing.Size(394, 25);
             this.textBox2.TabIndex = 90;
             // 
             // button41
             // 
-            this.button41.Location = new System.Drawing.Point(759, 287);
+            this.button41.Location = new System.Drawing.Point(19, 250);
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(149, 36);
             this.button41.TabIndex = 89;
@@ -892,7 +906,7 @@
             // 
             // button42
             // 
-            this.button42.Location = new System.Drawing.Point(759, 214);
+            this.button42.Location = new System.Drawing.Point(19, 168);
             this.button42.Name = "button42";
             this.button42.Size = new System.Drawing.Size(149, 36);
             this.button42.TabIndex = 88;
@@ -902,9 +916,9 @@
             // 
             // button43
             // 
-            this.button43.Location = new System.Drawing.Point(594, 551);
+            this.button43.Location = new System.Drawing.Point(12, 61);
             this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(92, 36);
+            this.button43.Size = new System.Drawing.Size(149, 36);
             this.button43.TabIndex = 91;
             this.button43.Text = "重启App";
             this.button43.UseVisualStyleBackColor = true;
@@ -912,9 +926,9 @@
             // 
             // button44
             // 
-            this.button44.Location = new System.Drawing.Point(594, 0);
+            this.button44.Location = new System.Drawing.Point(478, 89);
             this.button44.Name = "button44";
-            this.button44.Size = new System.Drawing.Size(92, 36);
+            this.button44.Size = new System.Drawing.Size(149, 36);
             this.button44.TabIndex = 92;
             this.button44.Text = "打开web";
             this.button44.UseVisualStyleBackColor = true;
@@ -922,9 +936,9 @@
             // 
             // button45
             // 
-            this.button45.Location = new System.Drawing.Point(380, 551);
+            this.button45.Location = new System.Drawing.Point(15, 448);
             this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(203, 36);
+            this.button45.Size = new System.Drawing.Size(304, 36);
             this.button45.TabIndex = 93;
             this.button45.Text = "得到当天的识别情况";
             this.button45.UseVisualStyleBackColor = true;
@@ -937,9 +951,9 @@
             // 
             // button46
             // 
-            this.button46.Location = new System.Drawing.Point(851, 706);
+            this.button46.Location = new System.Drawing.Point(170, 404);
             this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(96, 36);
+            this.button46.Size = new System.Drawing.Size(149, 36);
             this.button46.TabIndex = 94;
             this.button46.Text = "循环";
             this.button46.UseVisualStyleBackColor = true;
@@ -947,9 +961,9 @@
             // 
             // button47
             // 
-            this.button47.Location = new System.Drawing.Point(706, 551);
+            this.button47.Location = new System.Drawing.Point(171, 60);
             this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(92, 36);
+            this.button47.Size = new System.Drawing.Size(149, 36);
             this.button47.TabIndex = 96;
             this.button47.Text = "重启设备";
             this.button47.UseVisualStyleBackColor = true;
@@ -957,9 +971,9 @@
             // 
             // button48
             // 
-            this.button48.Location = new System.Drawing.Point(594, 36);
+            this.button48.Location = new System.Drawing.Point(15, 339);
             this.button48.Name = "button48";
-            this.button48.Size = new System.Drawing.Size(125, 36);
+            this.button48.Size = new System.Drawing.Size(149, 36);
             this.button48.TabIndex = 97;
             this.button48.Text = "设置当前时间";
             this.button48.UseVisualStyleBackColor = true;
@@ -968,7 +982,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(192, 440);
+            this.label13.Location = new System.Drawing.Point(190, 223);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(37, 15);
             this.label13.TabIndex = 99;
@@ -977,7 +991,7 @@
             // tb_PersonAddOrUpdate_CardNo
             // 
             this.tb_PersonAddOrUpdate_CardNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_CardNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(237, 435);
+            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(235, 218);
             this.tb_PersonAddOrUpdate_CardNo.Name = "tb_PersonAddOrUpdate_CardNo";
             this.tb_PersonAddOrUpdate_CardNo.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonAddOrUpdate_CardNo.TabIndex = 98;
@@ -987,7 +1001,7 @@
             // 
             this.tb_devRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_devRunLogUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_devRunLogUrl.Location = new System.Drawing.Point(382, 486);
+            this.tb_devRunLogUrl.Location = new System.Drawing.Point(10, 472);
             this.tb_devRunLogUrl.Name = "tb_devRunLogUrl";
             this.tb_devRunLogUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_devRunLogUrl.TabIndex = 95;
@@ -996,7 +1010,7 @@
             // tb_SplitChar
             // 
             this.tb_SplitChar.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SplitChar", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SplitChar.Location = new System.Drawing.Point(341, 152);
+            this.tb_SplitChar.Location = new System.Drawing.Point(345, 86);
             this.tb_SplitChar.Name = "tb_SplitChar";
             this.tb_SplitChar.Size = new System.Drawing.Size(33, 25);
             this.tb_SplitChar.TabIndex = 71;
@@ -1006,7 +1020,7 @@
             // 
             this.tb_CallBackUrl_His.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl_His", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_CallBackUrl_His.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(381, 250);
+            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(10, 191);
             this.tb_CallBackUrl_His.Name = "tb_CallBackUrl_His";
             this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
             this.tb_CallBackUrl_His.TabIndex = 66;
@@ -1015,7 +1029,7 @@
             // tb_FaceFind_FaceId
             // 
             this.tb_FaceFind_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceFind_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceFind_FaceId.Location = new System.Drawing.Point(239, 731);
+            this.tb_FaceFind_FaceId.Location = new System.Drawing.Point(237, 514);
             this.tb_FaceFind_FaceId.Name = "tb_FaceFind_FaceId";
             this.tb_FaceFind_FaceId.Size = new System.Drawing.Size(137, 25);
             this.tb_FaceFind_FaceId.TabIndex = 63;
@@ -1024,7 +1038,7 @@
             // tb_FaceDelete_FaceId
             // 
             this.tb_FaceDelete_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceDelete_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceDelete_FaceId.Location = new System.Drawing.Point(237, 688);
+            this.tb_FaceDelete_FaceId.Location = new System.Drawing.Point(235, 471);
             this.tb_FaceDelete_FaceId.Name = "tb_FaceDelete_FaceId";
             this.tb_FaceDelete_FaceId.Size = new System.Drawing.Size(137, 25);
             this.tb_FaceDelete_FaceId.TabIndex = 60;
@@ -1033,7 +1047,7 @@
             // tb_FaceAddOrUpdate_PersonName
             // 
             this.tb_FaceAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceAddOrUpdate_PersonName.Location = new System.Drawing.Point(75, 657);
+            this.tb_FaceAddOrUpdate_PersonName.Location = new System.Drawing.Point(73, 440);
             this.tb_FaceAddOrUpdate_PersonName.Name = "tb_FaceAddOrUpdate_PersonName";
             this.tb_FaceAddOrUpdate_PersonName.Size = new System.Drawing.Size(91, 25);
             this.tb_FaceAddOrUpdate_PersonName.TabIndex = 58;
@@ -1042,7 +1056,7 @@
             // tb_FaceAddOrUpdate_PersonId
             // 
             this.tb_FaceAddOrUpdate_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceAddOrUpdate_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceAddOrUpdate_PersonId.Location = new System.Drawing.Point(75, 626);
+            this.tb_FaceAddOrUpdate_PersonId.Location = new System.Drawing.Point(73, 409);
             this.tb_FaceAddOrUpdate_PersonId.Name = "tb_FaceAddOrUpdate_PersonId";
             this.tb_FaceAddOrUpdate_PersonId.Size = new System.Drawing.Size(91, 25);
             this.tb_FaceAddOrUpdate_PersonId.TabIndex = 55;
@@ -1052,7 +1066,7 @@
             // tb_PersonFind_PersonId
             // 
             this.tb_PersonFind_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonFind_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonFind_PersonId.Location = new System.Drawing.Point(237, 541);
+            this.tb_PersonFind_PersonId.Location = new System.Drawing.Point(235, 324);
             this.tb_PersonFind_PersonId.Name = "tb_PersonFind_PersonId";
             this.tb_PersonFind_PersonId.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonFind_PersonId.TabIndex = 51;
@@ -1061,7 +1075,7 @@
             // tb_PersonAddOrUpdate_PersonName
             // 
             this.tb_PersonAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_PersonName.Location = new System.Drawing.Point(237, 470);
+            this.tb_PersonAddOrUpdate_PersonName.Location = new System.Drawing.Point(235, 253);
             this.tb_PersonAddOrUpdate_PersonName.Name = "tb_PersonAddOrUpdate_PersonName";
             this.tb_PersonAddOrUpdate_PersonName.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonAddOrUpdate_PersonName.TabIndex = 47;
@@ -1070,7 +1084,7 @@
             // tb_PersonAddOrUpdate_PersonId
             // 
             this.tb_PersonAddOrUpdate_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_PersonId.Location = new System.Drawing.Point(75, 470);
+            this.tb_PersonAddOrUpdate_PersonId.Location = new System.Drawing.Point(73, 253);
             this.tb_PersonAddOrUpdate_PersonId.Name = "tb_PersonAddOrUpdate_PersonId";
             this.tb_PersonAddOrUpdate_PersonId.Size = new System.Drawing.Size(91, 25);
             this.tb_PersonAddOrUpdate_PersonId.TabIndex = 46;
@@ -1079,7 +1093,7 @@
             // tb_PersonDelete_PersonId
             // 
             this.tb_PersonDelete_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonDelete_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonDelete_PersonId.Location = new System.Drawing.Point(237, 506);
+            this.tb_PersonDelete_PersonId.Location = new System.Drawing.Point(235, 289);
             this.tb_PersonDelete_PersonId.Name = "tb_PersonDelete_PersonId";
             this.tb_PersonDelete_PersonId.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonDelete_PersonId.TabIndex = 44;
@@ -1088,7 +1102,7 @@
             // tb_DeletePassTimeName
             // 
             this.tb_DeletePassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeletePassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_DeletePassTimeName.Location = new System.Drawing.Point(168, 277);
+            this.tb_DeletePassTimeName.Location = new System.Drawing.Point(173, 50);
             this.tb_DeletePassTimeName.Name = "tb_DeletePassTimeName";
             this.tb_DeletePassTimeName.Size = new System.Drawing.Size(206, 25);
             this.tb_DeletePassTimeName.TabIndex = 40;
@@ -1098,7 +1112,7 @@
             // 
             this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(381, 455);
+            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(10, 396);
             this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
             this.tb_HeartBeatUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_HeartBeatUrl.TabIndex = 36;
@@ -1107,7 +1121,7 @@
             // tb_SetPassTime_PassTimeName
             // 
             this.tb_SetPassTime_PassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_PassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(237, 348);
+            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(242, 121);
             this.tb_SetPassTime_PassTimeName.Name = "tb_SetPassTime_PassTimeName";
             this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(137, 25);
             this.tb_SetPassTime_PassTimeName.TabIndex = 34;
@@ -1116,7 +1130,7 @@
             // tb_SetPassTime_UserId
             // 
             this.tb_SetPassTime_UserId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(70, 348);
+            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(75, 121);
             this.tb_SetPassTime_UserId.Name = "tb_SetPassTime_UserId";
             this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(91, 25);
             this.tb_SetPassTime_UserId.TabIndex = 33;
@@ -1126,7 +1140,7 @@
             // 
             this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackVerifyUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(381, 111);
+            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(10, 52);
             this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
             this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_CallBackVerifyUrl.TabIndex = 30;
@@ -1136,7 +1150,7 @@
             // 
             this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_DownApkUrl.Location = new System.Drawing.Point(381, 384);
+            this.tb_DownApkUrl.Location = new System.Drawing.Point(10, 325);
             this.tb_DownApkUrl.Name = "tb_DownApkUrl";
             this.tb_DownApkUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_DownApkUrl.TabIndex = 26;
@@ -1146,7 +1160,7 @@
             // 
             this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_GetApkVersion.Location = new System.Drawing.Point(381, 316);
+            this.bt_GetApkVersion.Location = new System.Drawing.Point(10, 257);
             this.bt_GetApkVersion.Name = "bt_GetApkVersion";
             this.bt_GetApkVersion.Size = new System.Drawing.Size(338, 25);
             this.bt_GetApkVersion.TabIndex = 24;
@@ -1157,7 +1171,7 @@
             // 
             this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl.Location = new System.Drawing.Point(381, 183);
+            this.tb_CallBackUrl.Location = new System.Drawing.Point(10, 124);
             this.tb_CallBackUrl.Name = "tb_CallBackUrl";
             this.tb_CallBackUrl.Size = new System.Drawing.Size(338, 25);
             this.tb_CallBackUrl.TabIndex = 15;
@@ -1166,7 +1180,7 @@
             // tb_Path
             // 
             this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Path.Location = new System.Drawing.Point(168, 92);
+            this.tb_Path.Location = new System.Drawing.Point(172, 28);
             this.tb_Path.Name = "tb_Path";
             this.tb_Path.Size = new System.Drawing.Size(206, 25);
             this.tb_Path.TabIndex = 8;
@@ -1175,9 +1189,9 @@
             // tb_Pass
             // 
             this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Pass.Location = new System.Drawing.Point(168, 47);
+            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
             this.tb_Pass.Name = "tb_Pass";
-            this.tb_Pass.Size = new System.Drawing.Size(206, 25);
+            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
             this.tb_Pass.TabIndex = 7;
             this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
             // 
@@ -1190,107 +1204,191 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage7);
+            this.tabControl2.Controls.Add(this.tabPage8);
+            this.tabControl2.Controls.Add(this.tabPage9);
+            this.tabControl2.Location = new System.Drawing.Point(12, 42);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(447, 584);
+            this.tabControl2.TabIndex = 100;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.tb_Pass);
+            this.tabPage5.Controls.Add(this.button4);
+            this.tabPage5.Controls.Add(this.button47);
+            this.tabPage5.Controls.Add(this.button48);
+            this.tabPage5.Controls.Add(this.button45);
+            this.tabPage5.Controls.Add(this.button43);
+            this.tabPage5.Controls.Add(this.tb_MachineCode);
+            this.tabPage5.Controls.Add(this.button46);
+            this.tabPage5.Controls.Add(this.button9);
+            this.tabPage5.Controls.Add(this.button10);
+            this.tabPage5.Controls.Add(this.tb_AuthorizeCode);
+            this.tabPage5.Controls.Add(this.button29);
+            this.tabPage5.Controls.Add(this.button32);
+            this.tabPage5.Controls.Add(this.checkBox1);
+            this.tabPage5.Controls.Add(this.button13);
+            this.tabPage5.Controls.Add(this.tb_time);
+            this.tabPage5.Location = new System.Drawing.Point(4, 25);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(439, 555);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "设备管理";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.label14);
+            this.tabPage6.Controls.Add(this.button33);
+            this.tabPage6.Controls.Add(this.button8);
+            this.tabPage6.Controls.Add(this.tb_CallBackUrl);
+            this.tabPage6.Controls.Add(this.tb_devRunLogUrl);
+            this.tabPage6.Controls.Add(this.button11);
+            this.tabPage6.Controls.Add(this.bt_GetApkVersion);
+            this.tabPage6.Controls.Add(this.button40);
+            this.tabPage6.Controls.Add(this.button12);
+            this.tabPage6.Controls.Add(this.button39);
+            this.tabPage6.Controls.Add(this.tb_DownApkUrl);
+            this.tabPage6.Controls.Add(this.button38);
+            this.tabPage6.Controls.Add(this.button14);
+            this.tabPage6.Controls.Add(this.button37);
+            this.tabPage6.Controls.Add(this.tb_CallBackVerifyUrl);
+            this.tabPage6.Controls.Add(this.button36);
+            this.tabPage6.Controls.Add(this.button17);
+            this.tabPage6.Controls.Add(this.button35);
+            this.tabPage6.Controls.Add(this.tb_HeartBeatUrl);
+            this.tabPage6.Controls.Add(this.button34);
+            this.tabPage6.Controls.Add(this.button25);
+            this.tabPage6.Controls.Add(this.tb_CallBackUrl_His);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(419, 555);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "回调设置";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.button30);
+            this.tabPage7.Controls.Add(this.button31);
+            this.tabPage7.Controls.Add(this.textBox1);
+            this.tabPage7.Controls.Add(this.button42);
+            this.tabPage7.Controls.Add(this.button41);
+            this.tabPage7.Controls.Add(this.textBox2);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(419, 555);
+            this.tabPage7.TabIndex = 2;
+            this.tabPage7.Text = "参数设置";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.button27);
+            this.tabPage8.Controls.Add(this.label13);
+            this.tabPage8.Controls.Add(this.button19);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
+            this.tabPage8.Controls.Add(this.button20);
+            this.tabPage8.Controls.Add(this.tb_PersonDelete_PersonId);
+            this.tabPage8.Controls.Add(this.label4);
+            this.tabPage8.Controls.Add(this.tb_DeletePassTimeName);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonId);
+            this.tabPage8.Controls.Add(this.button18);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonName);
+            this.tabPage8.Controls.Add(this.label3);
+            this.tabPage8.Controls.Add(this.button28);
+            this.tabPage8.Controls.Add(this.label2);
+            this.tabPage8.Controls.Add(this.label6);
+            this.tabPage8.Controls.Add(this.tb_SetPassTime_PassTimeName);
+            this.tabPage8.Controls.Add(this.label5);
+            this.tabPage8.Controls.Add(this.tb_SetPassTime_UserId);
+            this.tabPage8.Controls.Add(this.button21);
+            this.tabPage8.Controls.Add(this.button16);
+            this.tabPage8.Controls.Add(this.label11);
+            this.tabPage8.Controls.Add(this.button15);
+            this.tabPage8.Controls.Add(this.tb_PersonFind_PersonId);
+            this.tabPage8.Controls.Add(this.tb_FaceFind_FaceId);
+            this.tabPage8.Controls.Add(this.label7);
+            this.tabPage8.Controls.Add(this.button24);
+            this.tabPage8.Controls.Add(this.button22);
+            this.tabPage8.Controls.Add(this.label10);
+            this.tabPage8.Controls.Add(this.pictureBox2);
+            this.tabPage8.Controls.Add(this.tb_FaceDelete_FaceId);
+            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonId);
+            this.tabPage8.Controls.Add(this.label9);
+            this.tabPage8.Controls.Add(this.label8);
+            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonName);
+            this.tabPage8.Controls.Add(this.button23);
+            this.tabPage8.Location = new System.Drawing.Point(4, 25);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(419, 555);
+            this.tabPage8.TabIndex = 3;
+            this.tabPage8.Text = "同步数据";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.tb_Path);
+            this.tabPage9.Controls.Add(this.cb_saveImageKey);
+            this.tabPage9.Controls.Add(this.label12);
+            this.tabPage9.Controls.Add(this.button6);
+            this.tabPage9.Controls.Add(this.tb_SplitChar);
+            this.tabPage9.Controls.Add(this.button5);
+            this.tabPage9.Controls.Add(this.label1);
+            this.tabPage9.Controls.Add(this.button2);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(419, 555);
+            this.tabPage9.TabIndex = 4;
+            this.tabPage9.Text = "同步数据 -简易";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(8, 441);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(309, 15);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
+            // 
+            // lb_CardNo
+            // 
+            this.lb_CardNo.AutoSize = true;
+            this.lb_CardNo.Location = new System.Drawing.Point(475, 432);
+            this.lb_CardNo.Name = "lb_CardNo";
+            this.lb_CardNo.Size = new System.Drawing.Size(63, 15);
+            this.lb_CardNo.TabIndex = 101;
+            this.lb_CardNo.Text = "label15";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1708, 820);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
-            this.Controls.Add(this.button48);
-            this.Controls.Add(this.button47);
-            this.Controls.Add(this.tb_devRunLogUrl);
-            this.Controls.Add(this.button46);
-            this.Controls.Add(this.button45);
+            this.ClientSize = new System.Drawing.Size(1146, 636);
+            this.Controls.Add(this.lb_CardNo);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.button44);
-            this.Controls.Add(this.button43);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button41);
-            this.Controls.Add(this.button42);
-            this.Controls.Add(this.button40);
-            this.Controls.Add(this.button39);
-            this.Controls.Add(this.button38);
-            this.Controls.Add(this.button37);
-            this.Controls.Add(this.button36);
-            this.Controls.Add(this.button35);
-            this.Controls.Add(this.button34);
-            this.Controls.Add(this.button33);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.button32);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button31);
-            this.Controls.Add(this.button30);
-            this.Controls.Add(this.button29);
-            this.Controls.Add(this.button27);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.tb_SplitChar);
-            this.Controls.Add(this.button28);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button26);
-            this.Controls.Add(this.tb_CallBackUrl_His);
-            this.Controls.Add(this.button25);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.tb_FaceFind_FaceId);
-            this.Controls.Add(this.button24);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.tb_FaceDelete_FaceId);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.tb_FaceAddOrUpdate_PersonName);
-            this.Controls.Add(this.button23);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.tb_FaceAddOrUpdate_PersonId);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.button22);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.tb_PersonFind_PersonId);
-            this.Controls.Add(this.button21);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.tb_PersonAddOrUpdate_PersonName);
-            this.Controls.Add(this.tb_PersonAddOrUpdate_PersonId);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.tb_PersonDelete_PersonId);
-            this.Controls.Add(this.button20);
-            this.Controls.Add(this.button19);
             this.Controls.Add(this.lb_Path);
-            this.Controls.Add(this.tb_DeletePassTimeName);
-            this.Controls.Add(this.button18);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.tb_HeartBeatUrl);
-            this.Controls.Add(this.button17);
-            this.Controls.Add(this.tb_SetPassTime_PassTimeName);
-            this.Controls.Add(this.tb_SetPassTime_UserId);
-            this.Controls.Add(this.button16);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.tb_CallBackVerifyUrl);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.tb_time);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.tb_DownApkUrl);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.bt_GetApkVersion);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.tb_AuthorizeCode);
-            this.Controls.Add(this.button10);
-            this.Controls.Add(this.tb_MachineCode);
-            this.Controls.Add(this.button9);
             this.Controls.Add(this.lb_PersonName);
             this.Controls.Add(this.lb_PersonId);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.tb_CallBackUrl);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.cb_saveImageKey);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.tb_Path);
-            this.Controls.Add(this.tb_Pass);
             this.Controls.Add(this.tb_Url);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "xFace";
@@ -1304,6 +1402,17 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1419,6 +1528,14 @@
         private System.Windows.Forms.Button button48;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox tb_PersonAddOrUpdate_CardNo;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.Label lb_CardNo;
     }
 }
 

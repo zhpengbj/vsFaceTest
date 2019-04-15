@@ -820,6 +820,7 @@ namespace FaceTest
         private void button3_Click(object sender, EventArgs e)
         {
             Url = tb_Url.Text;
+            this.Text = "XFaceDemo---" + Url;
         }
         private string Pass = "123";
         private void button4_Click(object sender, EventArgs e)
