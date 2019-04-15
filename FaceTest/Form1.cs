@@ -150,8 +150,9 @@ namespace FaceTest
 
                         case @"/HeartBeat.ashx":
                             //心跳包
-                            DoResult_HeartBeat(requestJsonString);
-                            returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            DevicesHeartBeat devicesHeartBeat= DoResult_HeartBeat(requestJsonString);
+                            returnObj = GetReurnString(devicesHeartBeat.time);// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            showMsg(returnObj);
                             ResponseRetrun(returnObj, response);
                             break;
                         case @"/VerifyHandler.ashx":
@@ -352,22 +353,51 @@ namespace FaceTest
         /// 返回结果 
         /// </summary>
         /// <returns></returns>
-        private string GetReurnString()
+        private string GetReurnString(string DevTime)
         {
             VerifyReturn result = new VerifyReturn();
             result.result = 1;
             result.success = true;
             result.msg = "";
             result.msgtype = 0;
-            result.data = GetHeartBeatReturnString();
+            if (!string.IsNullOrEmpty(DevTime))
+            {
+                if (NeedSetTime(DevTime))
+                {
+                    result.data = GetHeartBeatReturnString(DevTime);
+                }
+                else
+                    result.data = "";
+            }
             return JsonConvert.SerializeObject(result);
         }
-        private string GetHeartBeatReturnString()
+        private string GetReurnString()
         {
-            HeartBeatReturn heartBeatReturn = new HeartBeatReturn();
-            //返回服务器时间，用于校对时间
-            heartBeatReturn.Time = DateTime.Now.ToString("yyyyMMdd.HHmmss");
-            return JsonConvert.SerializeObject(heartBeatReturn);
+            return GetReurnString("");
+        }
+        private string GetHeartBeatReturnString(string DevTime)
+        {
+            try
+            {
+                HeartBeatReturn heartBeatReturn = new HeartBeatReturn();
+                //返回服务器时间，用于校对时间
+                heartBeatReturn.time = DateTime.Now.ToString("yyyyMMdd.HHmmss");
+                return JsonConvert.SerializeObject(heartBeatReturn);
+            }catch(Exception)
+            {
+                return "";
+            }
+        }
+        /// <summary>
+        /// 根据设备上的时间和本地时间进行比较，判断 是否需要下达设置时间命令
+        /// </summary>
+        /// <param name="DevTime"></param>
+        /// <returns></returns>
+        private bool NeedSetTime(string DevTime)
+        {
+            DateTime devTIme = Convert.ToDateTime(DevTime);
+            //相差60秒，则同步时间
+            return Math.Abs((devTIme - DateTime.Now).TotalSeconds) > 60;
         }
         /// <summary>
         /// 请求返回
@@ -451,12 +481,12 @@ namespace FaceTest
         /// 处理json串-心跳包
         /// </summary>
         /// <param name="JsonString"></param>
-        private void DoResult_HeartBeat(string JsonString)
+        private DevicesHeartBeat DoResult_HeartBeat(string JsonString)
         {
             //得到JSON字符串
             string dataStr = JsonString.Substring(JsonString.IndexOf("info=") + 5, JsonString.Length - JsonString.IndexOf("info=") - 5);
             showMsg(dataStr);
-            showDevInfo(dataStr);
+            return showDevInfo(dataStr);
             //处理相关流程
 
         }
@@ -2702,7 +2732,7 @@ namespace FaceTest
                 }
             });
         }
-        private void showDevInfo(string s)
+        private DevicesHeartBeat showDevInfo(string s)
         {
             DevicesHeartBeat device = JsonConvert.DeserializeObject<DevicesHeartBeat>(s);
             showMsg(String.Format("解析,机器码[{0}]", device.deviceMachineCode));
@@ -2717,6 +2747,7 @@ namespace FaceTest
             showMsg(String.Format("解析,系统可用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));
             showMsg("");
+            return device;
         }
 
         private void button30_Click(object sender, EventArgs e)

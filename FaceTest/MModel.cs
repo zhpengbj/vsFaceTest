@@ -159,7 +159,7 @@ namespace FaceTest
         /// <summary>
         /// 系统时间，用于设备校对时间
         /// </summary>
-        public string Time { get; set; }
+        public string time { get; set; }
     }
 
     /// <summary>
