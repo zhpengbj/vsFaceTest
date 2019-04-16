@@ -52,7 +52,7 @@ namespace FaceTest
             this.tb_SetPassTime_UserId.Text = settings.tb_SetPassTime_UserId;
             this.tb_SetPassTime_PassTimeName.Text = settings.tb_SetPassTime_PassTimeName;
             this.tb_HeartBeatUrl.Text = settings.tb_HeartBeatUrl;
-            this.tb_devRunLogUrl.Text = settings.tb_devRunLogUrl;
+            this.tb_DevRunLogUrl.Text = settings.tb_devRunLogUrl;
 
             this.tb_DeletePassTimeName.Text = settings.tb_DeletePassTimeName;
 
@@ -98,6 +98,7 @@ namespace FaceTest
             settings.tb_FaceFind_FaceId = this.tb_FaceFind_FaceId.Text.Trim();
             settings.tb_CallBackUrl_His = this.tb_CallBackUrl_His.Text.Trim();
             settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
+            settings.tb_devRunLogUrl = this.tb_DevRunLogUrl.Text.Trim();
             settings.Save();
         }
 
@@ -681,10 +682,14 @@ namespace FaceTest
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             dataGridView1.DataSource = receivePassList;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
+            //重置用户默认参数
+            //Settings.Default.Reset();
+
             LoadData();
             //设置照片路径
             button2_Click(null, null);
@@ -1370,16 +1375,7 @@ namespace FaceTest
             receiveMsg2.Clear();
             receiveMsg3.Clear();
         }
-        /// <summary>  
-        /// 获取时间戳  
-        /// </summary>  
-        /// <returns></returns>  
-        public static string GetTimeStamp()
-        {
-            return "1529743361";
-            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
-            return Convert.ToInt64(ts.TotalSeconds).ToString();
-        }
+
 
         /// <summary>
         /// DateTime时间格式转换为Unix时间戳格式
@@ -2908,7 +2904,7 @@ namespace FaceTest
             {
                 button33.Enabled = false;
                 //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=4", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                string postStr = string.Format("pass={0}&typeId=4", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -2950,8 +2946,8 @@ namespace FaceTest
             try
             {
                 button34.Enabled = false;
-                //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=1", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                //识别URL为type=1
+                string postStr = string.Format("pass={0}&typeId=1", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -2993,8 +2989,8 @@ namespace FaceTest
             try
             {
                 button35.Enabled = false;
-                //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=6", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                //历史回调URL为type=6
+                string postStr = string.Format("pass={0}&typeId=6", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3036,8 +3032,8 @@ namespace FaceTest
             try
             {
                 button36.Enabled = false;
-                //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=2", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                //查看版本号 URL为type=2
+                string postStr = string.Format("pass={0}&typeId=2", Pass );
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3079,8 +3075,8 @@ namespace FaceTest
             try
             {
                 button37.Enabled = false;
-                //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=3", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                //APK下载 URL为type=3
+                string postStr = string.Format("pass={0}&typeId=3", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3122,8 +3118,8 @@ namespace FaceTest
             try
             {
                 button38.Enabled = false;
-                //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=5", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                //心跳包 URL为type=5
+                string postStr = string.Format("pass={0}&typeId=5", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3165,8 +3161,8 @@ namespace FaceTest
             try
             {
                 button40.Enabled = false;
-                //验证URL为type=4
-                string postStr = string.Format("pass={0}&typeId=0", Pass, tb_CallBackVerifyUrl.Text.Trim());
+                //读取所有 URL为type=0，返回json格式
+                string postStr = string.Format("pass={0}&typeId=0", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3224,7 +3220,7 @@ namespace FaceTest
             urlPar.getNewApkVersionUrl = bt_GetApkVersion.Text.Trim();
             urlPar.downNewApkUrl = tb_DownApkUrl.Text.Trim();
             urlPar.heartBeatUrl = tb_HeartBeatUrl.Text.Trim();
-            urlPar.devRunLogUrl = tb_devRunLogUrl.Text.Trim();
+            urlPar.devRunLogUrl = tb_DevRunLogUrl.Text.Trim();
             return JsonConvert.SerializeObject(urlPar);
         }
         private void button39_Click(object sender, EventArgs e)

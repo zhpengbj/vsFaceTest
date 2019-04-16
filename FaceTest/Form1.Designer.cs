@@ -114,37 +114,37 @@
             this.button47 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
-            this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
-            this.tb_devRunLogUrl = new System.Windows.Forms.TextBox();
-            this.tb_SplitChar = new System.Windows.Forms.TextBox();
-            this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
-            this.tb_FaceFind_FaceId = new System.Windows.Forms.TextBox();
-            this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
-            this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
-            this.tb_FaceAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_PersonFind_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_PersonAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
-            this.tb_PersonAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
-            this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
-            this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
-            this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
-            this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
-            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
-            this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
-            this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
-            this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
-            this.tb_Path = new System.Windows.Forms.TextBox();
-            this.tb_Pass = new System.Windows.Forms.TextBox();
-            this.tb_Url = new System.Windows.Forms.TextBox();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
+            this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
+            this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
+            this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
+            this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
+            this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
+            this.tb_PersonAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_PersonAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
+            this.tb_SetPassTime_PassTimeName = new System.Windows.Forms.TextBox();
+            this.tb_SetPassTime_UserId = new System.Windows.Forms.TextBox();
+            this.tb_PersonFind_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_FaceFind_FaceId = new System.Windows.Forms.TextBox();
+            this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
+            this.tb_FaceAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
+            this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
+            this.tb_Path = new System.Windows.Forms.TextBox();
+            this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.lb_CardNo = new System.Windows.Forms.Label();
+            this.tb_Url = new System.Windows.Forms.TextBox();
+            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -366,7 +366,7 @@
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button14.Location = new System.Drawing.Point(10, 12);
+            this.button14.Location = new System.Drawing.Point(11, 6);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(202, 36);
             this.button14.TabIndex = 29;
@@ -619,7 +619,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl1.Location = new System.Drawing.Point(652, 0);
+            this.tabControl1.Location = new System.Drawing.Point(650, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(494, 636);
@@ -652,7 +652,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(747, 791);
+            this.tabPage2.Size = new System.Drawing.Size(486, 607);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "接收识别记录";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -663,7 +663,7 @@
             this.receiveMsg2.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg2.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg2.Name = "receiveMsg2";
-            this.receiveMsg2.Size = new System.Drawing.Size(741, 785);
+            this.receiveMsg2.Size = new System.Drawing.Size(480, 601);
             this.receiveMsg2.TabIndex = 11;
             this.receiveMsg2.Text = "";
             // 
@@ -673,7 +673,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(747, 791);
+            this.tabPage3.Size = new System.Drawing.Size(486, 607);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -685,7 +685,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(741, 785);
+            this.dataGridView1.Size = new System.Drawing.Size(480, 601);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage4
@@ -694,7 +694,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(747, 791);
+            this.tabPage4.Size = new System.Drawing.Size(486, 607);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "设备运行日志";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -705,7 +705,7 @@
             this.receiveMsg3.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg3.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg3.Name = "receiveMsg3";
-            this.receiveMsg3.Size = new System.Drawing.Size(741, 785);
+            this.receiveMsg3.Size = new System.Drawing.Size(480, 601);
             this.receiveMsg3.TabIndex = 12;
             this.receiveMsg3.Text = "";
             // 
@@ -802,7 +802,7 @@
             // button33
             // 
             this.button33.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button33.Location = new System.Drawing.Point(223, 14);
+            this.button33.Location = new System.Drawing.Point(224, 8);
             this.button33.Name = "button33";
             this.button33.Size = new System.Drawing.Size(92, 36);
             this.button33.TabIndex = 80;
@@ -988,222 +988,6 @@
             this.label13.TabIndex = 99;
             this.label13.Text = "卡号";
             // 
-            // tb_PersonAddOrUpdate_CardNo
-            // 
-            this.tb_PersonAddOrUpdate_CardNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_CardNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(235, 218);
-            this.tb_PersonAddOrUpdate_CardNo.Name = "tb_PersonAddOrUpdate_CardNo";
-            this.tb_PersonAddOrUpdate_CardNo.Size = new System.Drawing.Size(137, 25);
-            this.tb_PersonAddOrUpdate_CardNo.TabIndex = 98;
-            this.tb_PersonAddOrUpdate_CardNo.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_CardNo;
-            // 
-            // tb_devRunLogUrl
-            // 
-            this.tb_devRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_devRunLogUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_devRunLogUrl.Location = new System.Drawing.Point(10, 472);
-            this.tb_devRunLogUrl.Name = "tb_devRunLogUrl";
-            this.tb_devRunLogUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_devRunLogUrl.TabIndex = 95;
-            this.tb_devRunLogUrl.Text = global::FaceTest.Properties.Settings.Default.tb_devRunLogUrl;
-            // 
-            // tb_SplitChar
-            // 
-            this.tb_SplitChar.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SplitChar", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SplitChar.Location = new System.Drawing.Point(345, 86);
-            this.tb_SplitChar.Name = "tb_SplitChar";
-            this.tb_SplitChar.Size = new System.Drawing.Size(33, 25);
-            this.tb_SplitChar.TabIndex = 71;
-            this.tb_SplitChar.Text = global::FaceTest.Properties.Settings.Default.tb_SplitChar;
-            // 
-            // tb_CallBackUrl_His
-            // 
-            this.tb_CallBackUrl_His.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl_His", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackUrl_His.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(10, 191);
-            this.tb_CallBackUrl_His.Name = "tb_CallBackUrl_His";
-            this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackUrl_His.TabIndex = 66;
-            this.tb_CallBackUrl_His.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl_His;
-            // 
-            // tb_FaceFind_FaceId
-            // 
-            this.tb_FaceFind_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceFind_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceFind_FaceId.Location = new System.Drawing.Point(237, 514);
-            this.tb_FaceFind_FaceId.Name = "tb_FaceFind_FaceId";
-            this.tb_FaceFind_FaceId.Size = new System.Drawing.Size(137, 25);
-            this.tb_FaceFind_FaceId.TabIndex = 63;
-            this.tb_FaceFind_FaceId.Text = global::FaceTest.Properties.Settings.Default.tb_FaceFind_FaceId;
-            // 
-            // tb_FaceDelete_FaceId
-            // 
-            this.tb_FaceDelete_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceDelete_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceDelete_FaceId.Location = new System.Drawing.Point(235, 471);
-            this.tb_FaceDelete_FaceId.Name = "tb_FaceDelete_FaceId";
-            this.tb_FaceDelete_FaceId.Size = new System.Drawing.Size(137, 25);
-            this.tb_FaceDelete_FaceId.TabIndex = 60;
-            this.tb_FaceDelete_FaceId.Text = global::FaceTest.Properties.Settings.Default.tb_FaceDelete_FaceId;
-            // 
-            // tb_FaceAddOrUpdate_PersonName
-            // 
-            this.tb_FaceAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceAddOrUpdate_PersonName.Location = new System.Drawing.Point(73, 440);
-            this.tb_FaceAddOrUpdate_PersonName.Name = "tb_FaceAddOrUpdate_PersonName";
-            this.tb_FaceAddOrUpdate_PersonName.Size = new System.Drawing.Size(91, 25);
-            this.tb_FaceAddOrUpdate_PersonName.TabIndex = 58;
-            this.tb_FaceAddOrUpdate_PersonName.Text = global::FaceTest.Properties.Settings.Default.tb_FaceAddOrUpdate_PersonName;
-            // 
-            // tb_FaceAddOrUpdate_PersonId
-            // 
-            this.tb_FaceAddOrUpdate_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceAddOrUpdate_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceAddOrUpdate_PersonId.Location = new System.Drawing.Point(73, 409);
-            this.tb_FaceAddOrUpdate_PersonId.Name = "tb_FaceAddOrUpdate_PersonId";
-            this.tb_FaceAddOrUpdate_PersonId.Size = new System.Drawing.Size(91, 25);
-            this.tb_FaceAddOrUpdate_PersonId.TabIndex = 55;
-            this.tb_FaceAddOrUpdate_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_FaceAddOrUpdate_PersonId;
-            this.tb_FaceAddOrUpdate_PersonId.TextChanged += new System.EventHandler(this.tb_FaceAddOrUpdate_PersonId_TextChanged);
-            // 
-            // tb_PersonFind_PersonId
-            // 
-            this.tb_PersonFind_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonFind_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonFind_PersonId.Location = new System.Drawing.Point(235, 324);
-            this.tb_PersonFind_PersonId.Name = "tb_PersonFind_PersonId";
-            this.tb_PersonFind_PersonId.Size = new System.Drawing.Size(137, 25);
-            this.tb_PersonFind_PersonId.TabIndex = 51;
-            this.tb_PersonFind_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_PersonFind_PersonId;
-            // 
-            // tb_PersonAddOrUpdate_PersonName
-            // 
-            this.tb_PersonAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_PersonName.Location = new System.Drawing.Point(235, 253);
-            this.tb_PersonAddOrUpdate_PersonName.Name = "tb_PersonAddOrUpdate_PersonName";
-            this.tb_PersonAddOrUpdate_PersonName.Size = new System.Drawing.Size(137, 25);
-            this.tb_PersonAddOrUpdate_PersonName.TabIndex = 47;
-            this.tb_PersonAddOrUpdate_PersonName.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_PersonName;
-            // 
-            // tb_PersonAddOrUpdate_PersonId
-            // 
-            this.tb_PersonAddOrUpdate_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_PersonId.Location = new System.Drawing.Point(73, 253);
-            this.tb_PersonAddOrUpdate_PersonId.Name = "tb_PersonAddOrUpdate_PersonId";
-            this.tb_PersonAddOrUpdate_PersonId.Size = new System.Drawing.Size(91, 25);
-            this.tb_PersonAddOrUpdate_PersonId.TabIndex = 46;
-            this.tb_PersonAddOrUpdate_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_PersonId;
-            // 
-            // tb_PersonDelete_PersonId
-            // 
-            this.tb_PersonDelete_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonDelete_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonDelete_PersonId.Location = new System.Drawing.Point(235, 289);
-            this.tb_PersonDelete_PersonId.Name = "tb_PersonDelete_PersonId";
-            this.tb_PersonDelete_PersonId.Size = new System.Drawing.Size(137, 25);
-            this.tb_PersonDelete_PersonId.TabIndex = 44;
-            this.tb_PersonDelete_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_PersonDelete_PersonId;
-            // 
-            // tb_DeletePassTimeName
-            // 
-            this.tb_DeletePassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeletePassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_DeletePassTimeName.Location = new System.Drawing.Point(173, 50);
-            this.tb_DeletePassTimeName.Name = "tb_DeletePassTimeName";
-            this.tb_DeletePassTimeName.Size = new System.Drawing.Size(206, 25);
-            this.tb_DeletePassTimeName.TabIndex = 40;
-            this.tb_DeletePassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_DeletePassTimeName;
-            // 
-            // tb_HeartBeatUrl
-            // 
-            this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(10, 396);
-            this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
-            this.tb_HeartBeatUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_HeartBeatUrl.TabIndex = 36;
-            this.tb_HeartBeatUrl.Text = global::FaceTest.Properties.Settings.Default.tb_HeartBeatUrl;
-            // 
-            // tb_SetPassTime_PassTimeName
-            // 
-            this.tb_SetPassTime_PassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_PassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(242, 121);
-            this.tb_SetPassTime_PassTimeName.Name = "tb_SetPassTime_PassTimeName";
-            this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(137, 25);
-            this.tb_SetPassTime_PassTimeName.TabIndex = 34;
-            this.tb_SetPassTime_PassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_PassTimeName;
-            // 
-            // tb_SetPassTime_UserId
-            // 
-            this.tb_SetPassTime_UserId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(75, 121);
-            this.tb_SetPassTime_UserId.Name = "tb_SetPassTime_UserId";
-            this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(91, 25);
-            this.tb_SetPassTime_UserId.TabIndex = 33;
-            this.tb_SetPassTime_UserId.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_UserId;
-            // 
-            // tb_CallBackVerifyUrl
-            // 
-            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackVerifyUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(10, 52);
-            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
-            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackVerifyUrl.TabIndex = 30;
-            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackVerifyUrl;
-            // 
-            // tb_DownApkUrl
-            // 
-            this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_DownApkUrl.Location = new System.Drawing.Point(10, 325);
-            this.tb_DownApkUrl.Name = "tb_DownApkUrl";
-            this.tb_DownApkUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_DownApkUrl.TabIndex = 26;
-            this.tb_DownApkUrl.Text = global::FaceTest.Properties.Settings.Default.tb_DownApkUrl;
-            // 
-            // bt_GetApkVersion
-            // 
-            this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_GetApkVersion.Location = new System.Drawing.Point(10, 257);
-            this.bt_GetApkVersion.Name = "bt_GetApkVersion";
-            this.bt_GetApkVersion.Size = new System.Drawing.Size(338, 25);
-            this.bt_GetApkVersion.TabIndex = 24;
-            this.bt_GetApkVersion.Text = global::FaceTest.Properties.Settings.Default.bt_GetApkVersion;
-            this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // tb_CallBackUrl
-            // 
-            this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl.Location = new System.Drawing.Point(10, 124);
-            this.tb_CallBackUrl.Name = "tb_CallBackUrl";
-            this.tb_CallBackUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackUrl.TabIndex = 15;
-            this.tb_CallBackUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
-            // 
-            // tb_Path
-            // 
-            this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Path.Location = new System.Drawing.Point(172, 28);
-            this.tb_Path.Name = "tb_Path";
-            this.tb_Path.Size = new System.Drawing.Size(206, 25);
-            this.tb_Path.TabIndex = 8;
-            this.tb_Path.Text = global::FaceTest.Properties.Settings.Default.tb_Path;
-            // 
-            // tb_Pass
-            // 
-            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
-            this.tb_Pass.Name = "tb_Pass";
-            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
-            this.tb_Pass.TabIndex = 7;
-            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
-            // 
-            // tb_Url
-            // 
-            this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Url.Location = new System.Drawing.Point(168, 8);
-            this.tb_Url.Name = "tb_Url";
-            this.tb_Url.Size = new System.Drawing.Size(206, 25);
-            this.tb_Url.TabIndex = 6;
-            this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
-            // 
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage5);
@@ -1243,37 +1027,115 @@
             this.tabPage5.Text = "设备管理";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // tb_Pass
+            // 
+            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
+            this.tb_Pass.Name = "tb_Pass";
+            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
+            this.tb_Pass.TabIndex = 7;
+            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.tb_DevRunLogUrl);
             this.tabPage6.Controls.Add(this.label14);
             this.tabPage6.Controls.Add(this.button33);
             this.tabPage6.Controls.Add(this.button8);
-            this.tabPage6.Controls.Add(this.tb_CallBackUrl);
-            this.tabPage6.Controls.Add(this.tb_devRunLogUrl);
             this.tabPage6.Controls.Add(this.button11);
-            this.tabPage6.Controls.Add(this.bt_GetApkVersion);
             this.tabPage6.Controls.Add(this.button40);
             this.tabPage6.Controls.Add(this.button12);
             this.tabPage6.Controls.Add(this.button39);
-            this.tabPage6.Controls.Add(this.tb_DownApkUrl);
             this.tabPage6.Controls.Add(this.button38);
-            this.tabPage6.Controls.Add(this.button14);
             this.tabPage6.Controls.Add(this.button37);
-            this.tabPage6.Controls.Add(this.tb_CallBackVerifyUrl);
+            this.tabPage6.Controls.Add(this.button14);
             this.tabPage6.Controls.Add(this.button36);
             this.tabPage6.Controls.Add(this.button17);
             this.tabPage6.Controls.Add(this.button35);
-            this.tabPage6.Controls.Add(this.tb_HeartBeatUrl);
             this.tabPage6.Controls.Add(this.button34);
             this.tabPage6.Controls.Add(this.button25);
+            this.tabPage6.Controls.Add(this.tb_CallBackVerifyUrl);
+            this.tabPage6.Controls.Add(this.tb_CallBackUrl);
+            this.tabPage6.Controls.Add(this.bt_GetApkVersion);
+            this.tabPage6.Controls.Add(this.tb_DownApkUrl);
+            this.tabPage6.Controls.Add(this.tb_HeartBeatUrl);
             this.tabPage6.Controls.Add(this.tb_CallBackUrl_His);
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(419, 555);
+            this.tabPage6.Size = new System.Drawing.Size(439, 555);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "回调设置";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tb_DevRunLogUrl
+            // 
+            this.tb_DevRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DevRunLogUrl.Location = new System.Drawing.Point(11, 459);
+            this.tb_DevRunLogUrl.Name = "tb_DevRunLogUrl";
+            this.tb_DevRunLogUrl.Size = new System.Drawing.Size(337, 25);
+            this.tb_DevRunLogUrl.TabIndex = 97;
+            this.tb_DevRunLogUrl.Text = global::FaceTest.Properties.Settings.Default.tb_devRunLogUrl;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(8, 441);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(309, 15);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
+            // 
+            // tb_CallBackUrl
+            // 
+            this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl.Location = new System.Drawing.Point(10, 124);
+            this.tb_CallBackUrl.Name = "tb_CallBackUrl";
+            this.tb_CallBackUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackUrl.TabIndex = 15;
+            this.tb_CallBackUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
+            // 
+            // bt_GetApkVersion
+            // 
+            this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_GetApkVersion.Location = new System.Drawing.Point(10, 257);
+            this.bt_GetApkVersion.Name = "bt_GetApkVersion";
+            this.bt_GetApkVersion.Size = new System.Drawing.Size(338, 25);
+            this.bt_GetApkVersion.TabIndex = 24;
+            this.bt_GetApkVersion.Text = global::FaceTest.Properties.Settings.Default.bt_GetApkVersion;
+            this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // tb_DownApkUrl
+            // 
+            this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_DownApkUrl.Location = new System.Drawing.Point(10, 325);
+            this.tb_DownApkUrl.Name = "tb_DownApkUrl";
+            this.tb_DownApkUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_DownApkUrl.TabIndex = 26;
+            this.tb_DownApkUrl.Text = global::FaceTest.Properties.Settings.Default.tb_DownApkUrl;
+            // 
+            // tb_HeartBeatUrl
+            // 
+            this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(10, 396);
+            this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
+            this.tb_HeartBeatUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_HeartBeatUrl.TabIndex = 36;
+            this.tb_HeartBeatUrl.Text = global::FaceTest.Properties.Settings.Default.tb_HeartBeatUrl;
+            // 
+            // tb_CallBackUrl_His
+            // 
+            this.tb_CallBackUrl_His.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl_His", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackUrl_His.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(10, 191);
+            this.tb_CallBackUrl_His.Name = "tb_CallBackUrl_His";
+            this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackUrl_His.TabIndex = 66;
+            this.tb_CallBackUrl_His.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl_His;
             // 
             // tabPage7
             // 
@@ -1286,7 +1148,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(419, 555);
+            this.tabPage7.Size = new System.Drawing.Size(439, 555);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "参数设置";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1296,45 +1158,154 @@
             this.tabPage8.Controls.Add(this.button27);
             this.tabPage8.Controls.Add(this.label13);
             this.tabPage8.Controls.Add(this.button19);
-            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
             this.tabPage8.Controls.Add(this.button20);
-            this.tabPage8.Controls.Add(this.tb_PersonDelete_PersonId);
             this.tabPage8.Controls.Add(this.label4);
-            this.tabPage8.Controls.Add(this.tb_DeletePassTimeName);
-            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonId);
             this.tabPage8.Controls.Add(this.button18);
-            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonName);
             this.tabPage8.Controls.Add(this.label3);
             this.tabPage8.Controls.Add(this.button28);
             this.tabPage8.Controls.Add(this.label2);
             this.tabPage8.Controls.Add(this.label6);
-            this.tabPage8.Controls.Add(this.tb_SetPassTime_PassTimeName);
             this.tabPage8.Controls.Add(this.label5);
-            this.tabPage8.Controls.Add(this.tb_SetPassTime_UserId);
             this.tabPage8.Controls.Add(this.button21);
             this.tabPage8.Controls.Add(this.button16);
             this.tabPage8.Controls.Add(this.label11);
             this.tabPage8.Controls.Add(this.button15);
-            this.tabPage8.Controls.Add(this.tb_PersonFind_PersonId);
-            this.tabPage8.Controls.Add(this.tb_FaceFind_FaceId);
             this.tabPage8.Controls.Add(this.label7);
             this.tabPage8.Controls.Add(this.button24);
             this.tabPage8.Controls.Add(this.button22);
             this.tabPage8.Controls.Add(this.label10);
             this.tabPage8.Controls.Add(this.pictureBox2);
-            this.tabPage8.Controls.Add(this.tb_FaceDelete_FaceId);
-            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonId);
             this.tabPage8.Controls.Add(this.label9);
             this.tabPage8.Controls.Add(this.label8);
-            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonName);
             this.tabPage8.Controls.Add(this.button23);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
+            this.tabPage8.Controls.Add(this.tb_PersonDelete_PersonId);
+            this.tabPage8.Controls.Add(this.tb_DeletePassTimeName);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonId);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonName);
+            this.tabPage8.Controls.Add(this.tb_SetPassTime_PassTimeName);
+            this.tabPage8.Controls.Add(this.tb_SetPassTime_UserId);
+            this.tabPage8.Controls.Add(this.tb_PersonFind_PersonId);
+            this.tabPage8.Controls.Add(this.tb_FaceFind_FaceId);
+            this.tabPage8.Controls.Add(this.tb_FaceDelete_FaceId);
+            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonId);
+            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonName);
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(419, 555);
+            this.tabPage8.Size = new System.Drawing.Size(439, 555);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "同步数据";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tb_PersonAddOrUpdate_CardNo
+            // 
+            this.tb_PersonAddOrUpdate_CardNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_CardNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(235, 218);
+            this.tb_PersonAddOrUpdate_CardNo.Name = "tb_PersonAddOrUpdate_CardNo";
+            this.tb_PersonAddOrUpdate_CardNo.Size = new System.Drawing.Size(137, 25);
+            this.tb_PersonAddOrUpdate_CardNo.TabIndex = 98;
+            this.tb_PersonAddOrUpdate_CardNo.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_CardNo;
+            // 
+            // tb_PersonDelete_PersonId
+            // 
+            this.tb_PersonDelete_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonDelete_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_PersonDelete_PersonId.Location = new System.Drawing.Point(235, 289);
+            this.tb_PersonDelete_PersonId.Name = "tb_PersonDelete_PersonId";
+            this.tb_PersonDelete_PersonId.Size = new System.Drawing.Size(137, 25);
+            this.tb_PersonDelete_PersonId.TabIndex = 44;
+            this.tb_PersonDelete_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_PersonDelete_PersonId;
+            // 
+            // tb_DeletePassTimeName
+            // 
+            this.tb_DeletePassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeletePassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DeletePassTimeName.Location = new System.Drawing.Point(173, 50);
+            this.tb_DeletePassTimeName.Name = "tb_DeletePassTimeName";
+            this.tb_DeletePassTimeName.Size = new System.Drawing.Size(206, 25);
+            this.tb_DeletePassTimeName.TabIndex = 40;
+            this.tb_DeletePassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_DeletePassTimeName;
+            // 
+            // tb_PersonAddOrUpdate_PersonId
+            // 
+            this.tb_PersonAddOrUpdate_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_PersonAddOrUpdate_PersonId.Location = new System.Drawing.Point(73, 253);
+            this.tb_PersonAddOrUpdate_PersonId.Name = "tb_PersonAddOrUpdate_PersonId";
+            this.tb_PersonAddOrUpdate_PersonId.Size = new System.Drawing.Size(91, 25);
+            this.tb_PersonAddOrUpdate_PersonId.TabIndex = 46;
+            this.tb_PersonAddOrUpdate_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_PersonId;
+            // 
+            // tb_PersonAddOrUpdate_PersonName
+            // 
+            this.tb_PersonAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_PersonAddOrUpdate_PersonName.Location = new System.Drawing.Point(235, 253);
+            this.tb_PersonAddOrUpdate_PersonName.Name = "tb_PersonAddOrUpdate_PersonName";
+            this.tb_PersonAddOrUpdate_PersonName.Size = new System.Drawing.Size(137, 25);
+            this.tb_PersonAddOrUpdate_PersonName.TabIndex = 47;
+            this.tb_PersonAddOrUpdate_PersonName.Text = global::FaceTest.Properties.Settings.Default.tb_PersonAddOrUpdate_PersonName;
+            // 
+            // tb_SetPassTime_PassTimeName
+            // 
+            this.tb_SetPassTime_PassTimeName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_PassTimeName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_SetPassTime_PassTimeName.Location = new System.Drawing.Point(242, 121);
+            this.tb_SetPassTime_PassTimeName.Name = "tb_SetPassTime_PassTimeName";
+            this.tb_SetPassTime_PassTimeName.Size = new System.Drawing.Size(137, 25);
+            this.tb_SetPassTime_PassTimeName.TabIndex = 34;
+            this.tb_SetPassTime_PassTimeName.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_PassTimeName;
+            // 
+            // tb_SetPassTime_UserId
+            // 
+            this.tb_SetPassTime_UserId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SetPassTime_UserId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_SetPassTime_UserId.Location = new System.Drawing.Point(75, 121);
+            this.tb_SetPassTime_UserId.Name = "tb_SetPassTime_UserId";
+            this.tb_SetPassTime_UserId.Size = new System.Drawing.Size(91, 25);
+            this.tb_SetPassTime_UserId.TabIndex = 33;
+            this.tb_SetPassTime_UserId.Text = global::FaceTest.Properties.Settings.Default.tb_SetPassTime_UserId;
+            // 
+            // tb_PersonFind_PersonId
+            // 
+            this.tb_PersonFind_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonFind_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_PersonFind_PersonId.Location = new System.Drawing.Point(235, 324);
+            this.tb_PersonFind_PersonId.Name = "tb_PersonFind_PersonId";
+            this.tb_PersonFind_PersonId.Size = new System.Drawing.Size(137, 25);
+            this.tb_PersonFind_PersonId.TabIndex = 51;
+            this.tb_PersonFind_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_PersonFind_PersonId;
+            // 
+            // tb_FaceFind_FaceId
+            // 
+            this.tb_FaceFind_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceFind_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_FaceFind_FaceId.Location = new System.Drawing.Point(237, 514);
+            this.tb_FaceFind_FaceId.Name = "tb_FaceFind_FaceId";
+            this.tb_FaceFind_FaceId.Size = new System.Drawing.Size(137, 25);
+            this.tb_FaceFind_FaceId.TabIndex = 63;
+            this.tb_FaceFind_FaceId.Text = global::FaceTest.Properties.Settings.Default.tb_FaceFind_FaceId;
+            // 
+            // tb_FaceDelete_FaceId
+            // 
+            this.tb_FaceDelete_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceDelete_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_FaceDelete_FaceId.Location = new System.Drawing.Point(235, 471);
+            this.tb_FaceDelete_FaceId.Name = "tb_FaceDelete_FaceId";
+            this.tb_FaceDelete_FaceId.Size = new System.Drawing.Size(137, 25);
+            this.tb_FaceDelete_FaceId.TabIndex = 60;
+            this.tb_FaceDelete_FaceId.Text = global::FaceTest.Properties.Settings.Default.tb_FaceDelete_FaceId;
+            // 
+            // tb_FaceAddOrUpdate_PersonId
+            // 
+            this.tb_FaceAddOrUpdate_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceAddOrUpdate_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_FaceAddOrUpdate_PersonId.Location = new System.Drawing.Point(73, 409);
+            this.tb_FaceAddOrUpdate_PersonId.Name = "tb_FaceAddOrUpdate_PersonId";
+            this.tb_FaceAddOrUpdate_PersonId.Size = new System.Drawing.Size(91, 25);
+            this.tb_FaceAddOrUpdate_PersonId.TabIndex = 55;
+            this.tb_FaceAddOrUpdate_PersonId.Text = global::FaceTest.Properties.Settings.Default.tb_FaceAddOrUpdate_PersonId;
+            this.tb_FaceAddOrUpdate_PersonId.TextChanged += new System.EventHandler(this.tb_FaceAddOrUpdate_PersonId_TextChanged);
+            // 
+            // tb_FaceAddOrUpdate_PersonName
+            // 
+            this.tb_FaceAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_FaceAddOrUpdate_PersonName.Location = new System.Drawing.Point(73, 440);
+            this.tb_FaceAddOrUpdate_PersonName.Name = "tb_FaceAddOrUpdate_PersonName";
+            this.tb_FaceAddOrUpdate_PersonName.Size = new System.Drawing.Size(91, 25);
+            this.tb_FaceAddOrUpdate_PersonName.TabIndex = 58;
+            this.tb_FaceAddOrUpdate_PersonName.Text = global::FaceTest.Properties.Settings.Default.tb_FaceAddOrUpdate_PersonName;
             // 
             // tabPage9
             // 
@@ -1342,26 +1313,35 @@
             this.tabPage9.Controls.Add(this.cb_saveImageKey);
             this.tabPage9.Controls.Add(this.label12);
             this.tabPage9.Controls.Add(this.button6);
-            this.tabPage9.Controls.Add(this.tb_SplitChar);
             this.tabPage9.Controls.Add(this.button5);
             this.tabPage9.Controls.Add(this.label1);
             this.tabPage9.Controls.Add(this.button2);
+            this.tabPage9.Controls.Add(this.tb_SplitChar);
             this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(419, 555);
+            this.tabPage9.Size = new System.Drawing.Size(439, 555);
             this.tabPage9.TabIndex = 4;
             this.tabPage9.Text = "同步数据 -简易";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // label14
+            // tb_Path
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 441);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(309, 15);
-            this.label14.TabIndex = 96;
-            this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
+            this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Path.Location = new System.Drawing.Point(172, 28);
+            this.tb_Path.Name = "tb_Path";
+            this.tb_Path.Size = new System.Drawing.Size(206, 25);
+            this.tb_Path.TabIndex = 8;
+            this.tb_Path.Text = global::FaceTest.Properties.Settings.Default.tb_Path;
+            // 
+            // tb_SplitChar
+            // 
+            this.tb_SplitChar.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_SplitChar", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_SplitChar.Location = new System.Drawing.Point(345, 86);
+            this.tb_SplitChar.Name = "tb_SplitChar";
+            this.tb_SplitChar.Size = new System.Drawing.Size(33, 25);
+            this.tb_SplitChar.TabIndex = 71;
+            this.tb_SplitChar.Text = global::FaceTest.Properties.Settings.Default.tb_SplitChar;
             // 
             // lb_CardNo
             // 
@@ -1372,11 +1352,30 @@
             this.lb_CardNo.TabIndex = 101;
             this.lb_CardNo.Text = "label15";
             // 
+            // tb_Url
+            // 
+            this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Url.Location = new System.Drawing.Point(168, 8);
+            this.tb_Url.Name = "tb_Url";
+            this.tb_Url.Size = new System.Drawing.Size(206, 25);
+            this.tb_Url.TabIndex = 6;
+            this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
+            // 
+            // tb_CallBackVerifyUrl
+            // 
+            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(11, 46);
+            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
+            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackVerifyUrl.TabIndex = 30;
+            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 636);
+            this.ClientSize = new System.Drawing.Size(1144, 636);
             this.Controls.Add(this.lb_CardNo);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.button44);
@@ -1521,7 +1520,6 @@
         private System.Windows.Forms.Button button45;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Button button46;
-        private System.Windows.Forms.TextBox tb_devRunLogUrl;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.RichTextBox receiveMsg3;
         private System.Windows.Forms.Button button47;
@@ -1536,6 +1534,7 @@
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.Label lb_CardNo;
+        private System.Windows.Forms.TextBox tb_DevRunLogUrl;
     }
 }
 
