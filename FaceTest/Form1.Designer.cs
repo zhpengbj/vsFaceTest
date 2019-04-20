@@ -116,10 +116,20 @@
             this.label13 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tb_SetNet_DNS = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tb_SetNet_Gateway = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tb_SetNet_SubnetMask = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tb_SetNet_Ip = new System.Windows.Forms.TextBox();
+            this.btn_SetIp = new System.Windows.Forms.Button();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
             this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
             this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
@@ -144,7 +154,6 @@
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_Url = new System.Windows.Forms.TextBox();
-            this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -163,7 +172,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(478, 8);
+            this.button1.Location = new System.Drawing.Point(475, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 75);
             this.button1.TabIndex = 0;
@@ -232,7 +241,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(478, 580);
+            this.button7.Location = new System.Drawing.Point(475, 412);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(149, 36);
             this.button7.TabIndex = 11;
@@ -265,7 +274,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(478, 457);
+            this.pictureBox1.Location = new System.Drawing.Point(475, 289);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(126, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -275,7 +284,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(475, 346);
+            this.lb_PersonId.Location = new System.Drawing.Point(475, 178);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -284,7 +293,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(475, 375);
+            this.lb_PersonName.Location = new System.Drawing.Point(475, 207);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -292,14 +301,14 @@
             // 
             // tb_MachineCode
             // 
-            this.tb_MachineCode.Location = new System.Drawing.Point(171, 118);
+            this.tb_MachineCode.Location = new System.Drawing.Point(171, 65);
             this.tb_MachineCode.Name = "tb_MachineCode";
             this.tb_MachineCode.Size = new System.Drawing.Size(149, 25);
             this.tb_MachineCode.TabIndex = 20;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(15, 111);
+            this.button9.Location = new System.Drawing.Point(12, 58);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(149, 36);
             this.button9.TabIndex = 19;
@@ -309,14 +318,14 @@
             // 
             // tb_AuthorizeCode
             // 
-            this.tb_AuthorizeCode.Location = new System.Drawing.Point(171, 154);
+            this.tb_AuthorizeCode.Location = new System.Drawing.Point(171, 101);
             this.tb_AuthorizeCode.Name = "tb_AuthorizeCode";
             this.tb_AuthorizeCode.Size = new System.Drawing.Size(149, 25);
             this.tb_AuthorizeCode.TabIndex = 22;
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(15, 148);
+            this.button10.Location = new System.Drawing.Point(12, 95);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(149, 36);
             this.button10.TabIndex = 21;
@@ -348,14 +357,14 @@
             // 
             // tb_time
             // 
-            this.tb_time.Location = new System.Drawing.Point(170, 297);
+            this.tb_time.Location = new System.Drawing.Point(171, 200);
             this.tb_time.Name = "tb_time";
             this.tb_time.Size = new System.Drawing.Size(149, 25);
             this.tb_time.TabIndex = 28;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(15, 291);
+            this.button13.Location = new System.Drawing.Point(12, 194);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(149, 36);
             this.button13.TabIndex = 27;
@@ -436,7 +445,7 @@
             // lb_Path
             // 
             this.lb_Path.AutoSize = true;
-            this.lb_Path.Location = new System.Drawing.Point(475, 406);
+            this.lb_Path.Location = new System.Drawing.Point(475, 238);
             this.lb_Path.Name = "lb_Path";
             this.lb_Path.Size = new System.Drawing.Size(55, 15);
             this.lb_Path.TabIndex = 41;
@@ -603,7 +612,7 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(478, 131);
+            this.button26.Location = new System.Drawing.Point(475, 131);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(149, 36);
             this.button26.TabIndex = 67;
@@ -744,7 +753,7 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(12, 404);
+            this.button29.Location = new System.Drawing.Point(475, 487);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(149, 36);
             this.button29.TabIndex = 74;
@@ -781,7 +790,7 @@
             // 
             // button32
             // 
-            this.button32.Location = new System.Drawing.Point(15, 241);
+            this.button32.Location = new System.Drawing.Point(12, 144);
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(149, 36);
             this.button32.TabIndex = 78;
@@ -792,7 +801,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(171, 246);
+            this.checkBox1.Location = new System.Drawing.Point(171, 149);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(149, 19);
             this.checkBox1.TabIndex = 79;
@@ -916,7 +925,7 @@
             // 
             // button43
             // 
-            this.button43.Location = new System.Drawing.Point(12, 61);
+            this.button43.Location = new System.Drawing.Point(9, 514);
             this.button43.Name = "button43";
             this.button43.Size = new System.Drawing.Size(149, 36);
             this.button43.TabIndex = 91;
@@ -926,7 +935,7 @@
             // 
             // button44
             // 
-            this.button44.Location = new System.Drawing.Point(478, 89);
+            this.button44.Location = new System.Drawing.Point(475, 89);
             this.button44.Name = "button44";
             this.button44.Size = new System.Drawing.Size(149, 36);
             this.button44.TabIndex = 92;
@@ -936,7 +945,7 @@
             // 
             // button45
             // 
-            this.button45.Location = new System.Drawing.Point(15, 448);
+            this.button45.Location = new System.Drawing.Point(11, 284);
             this.button45.Name = "button45";
             this.button45.Size = new System.Drawing.Size(304, 36);
             this.button45.TabIndex = 93;
@@ -951,17 +960,17 @@
             // 
             // button46
             // 
-            this.button46.Location = new System.Drawing.Point(170, 404);
+            this.button46.Location = new System.Drawing.Point(475, 529);
             this.button46.Name = "button46";
             this.button46.Size = new System.Drawing.Size(149, 36);
             this.button46.TabIndex = 94;
-            this.button46.Text = "循环";
+            this.button46.Text = "循环广播";
             this.button46.UseVisualStyleBackColor = true;
             this.button46.Click += new System.EventHandler(this.button46_Click);
             // 
             // button47
             // 
-            this.button47.Location = new System.Drawing.Point(171, 60);
+            this.button47.Location = new System.Drawing.Point(171, 513);
             this.button47.Name = "button47";
             this.button47.Size = new System.Drawing.Size(149, 36);
             this.button47.TabIndex = 96;
@@ -971,7 +980,7 @@
             // 
             // button48
             // 
-            this.button48.Location = new System.Drawing.Point(15, 339);
+            this.button48.Location = new System.Drawing.Point(12, 242);
             this.button48.Name = "button48";
             this.button48.Size = new System.Drawing.Size(149, 36);
             this.button48.TabIndex = 97;
@@ -1003,6 +1012,15 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.label18);
+            this.tabPage5.Controls.Add(this.tb_SetNet_DNS);
+            this.tabPage5.Controls.Add(this.label17);
+            this.tabPage5.Controls.Add(this.tb_SetNet_Gateway);
+            this.tabPage5.Controls.Add(this.label16);
+            this.tabPage5.Controls.Add(this.tb_SetNet_SubnetMask);
+            this.tabPage5.Controls.Add(this.label15);
+            this.tabPage5.Controls.Add(this.tb_SetNet_Ip);
+            this.tabPage5.Controls.Add(this.btn_SetIp);
             this.tabPage5.Controls.Add(this.tb_Pass);
             this.tabPage5.Controls.Add(this.button4);
             this.tabPage5.Controls.Add(this.button47);
@@ -1010,11 +1028,9 @@
             this.tabPage5.Controls.Add(this.button45);
             this.tabPage5.Controls.Add(this.button43);
             this.tabPage5.Controls.Add(this.tb_MachineCode);
-            this.tabPage5.Controls.Add(this.button46);
             this.tabPage5.Controls.Add(this.button9);
             this.tabPage5.Controls.Add(this.button10);
             this.tabPage5.Controls.Add(this.tb_AuthorizeCode);
-            this.tabPage5.Controls.Add(this.button29);
             this.tabPage5.Controls.Add(this.button32);
             this.tabPage5.Controls.Add(this.checkBox1);
             this.tabPage5.Controls.Add(this.button13);
@@ -1026,6 +1042,84 @@
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "设备管理";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(11, 423);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(31, 15);
+            this.label18.TabIndex = 106;
+            this.label18.Text = "DNS";
+            // 
+            // tb_SetNet_DNS
+            // 
+            this.tb_SetNet_DNS.Location = new System.Drawing.Point(171, 423);
+            this.tb_SetNet_DNS.Name = "tb_SetNet_DNS";
+            this.tb_SetNet_DNS.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_DNS.TabIndex = 105;
+            this.tb_SetNet_DNS.Text = "8.8.8.8";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(11, 394);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(37, 15);
+            this.label17.TabIndex = 104;
+            this.label17.Text = "网关";
+            // 
+            // tb_SetNet_Gateway
+            // 
+            this.tb_SetNet_Gateway.Location = new System.Drawing.Point(171, 394);
+            this.tb_SetNet_Gateway.Name = "tb_SetNet_Gateway";
+            this.tb_SetNet_Gateway.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_Gateway.TabIndex = 103;
+            this.tb_SetNet_Gateway.Text = "192.168.8.1";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(11, 363);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 15);
+            this.label16.TabIndex = 102;
+            this.label16.Text = "子网掩码";
+            // 
+            // tb_SetNet_SubnetMask
+            // 
+            this.tb_SetNet_SubnetMask.Location = new System.Drawing.Point(171, 363);
+            this.tb_SetNet_SubnetMask.Name = "tb_SetNet_SubnetMask";
+            this.tb_SetNet_SubnetMask.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_SubnetMask.TabIndex = 101;
+            this.tb_SetNet_SubnetMask.Text = "255.255.255.0";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(11, 332);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 15);
+            this.label15.TabIndex = 100;
+            this.label15.Text = "IP";
+            // 
+            // tb_SetNet_Ip
+            // 
+            this.tb_SetNet_Ip.Location = new System.Drawing.Point(171, 332);
+            this.tb_SetNet_Ip.Name = "tb_SetNet_Ip";
+            this.tb_SetNet_Ip.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_Ip.TabIndex = 99;
+            this.tb_SetNet_Ip.Text = "192.168.8.251";
+            // 
+            // btn_SetIp
+            // 
+            this.btn_SetIp.Location = new System.Drawing.Point(171, 451);
+            this.btn_SetIp.Name = "btn_SetIp";
+            this.btn_SetIp.Size = new System.Drawing.Size(149, 36);
+            this.btn_SetIp.TabIndex = 98;
+            this.btn_SetIp.Text = "设置IP";
+            this.btn_SetIp.UseVisualStyleBackColor = true;
+            this.btn_SetIp.Click += new System.EventHandler(this.btn_SetIp_Click);
             // 
             // tb_Pass
             // 
@@ -1085,6 +1179,16 @@
             this.label14.Size = new System.Drawing.Size(309, 15);
             this.label14.TabIndex = 96;
             this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
+            // 
+            // tb_CallBackVerifyUrl
+            // 
+            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(11, 46);
+            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
+            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackVerifyUrl.TabIndex = 30;
+            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
             // 
             // tb_CallBackUrl
             // 
@@ -1346,7 +1450,7 @@
             // lb_CardNo
             // 
             this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(475, 432);
+            this.lb_CardNo.Location = new System.Drawing.Point(475, 264);
             this.lb_CardNo.Name = "lb_CardNo";
             this.lb_CardNo.Size = new System.Drawing.Size(63, 15);
             this.lb_CardNo.TabIndex = 101;
@@ -1361,16 +1465,6 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
-            // tb_CallBackVerifyUrl
-            // 
-            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(11, 46);
-            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
-            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackVerifyUrl.TabIndex = 30;
-            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1383,10 +1477,12 @@
             this.Controls.Add(this.button26);
             this.Controls.Add(this.lb_Path);
             this.Controls.Add(this.lb_PersonName);
+            this.Controls.Add(this.button46);
             this.Controls.Add(this.lb_PersonId);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.tb_Url);
+            this.Controls.Add(this.button29);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -1535,6 +1631,15 @@
         private System.Windows.Forms.TabPage tabPage9;
         private System.Windows.Forms.Label lb_CardNo;
         private System.Windows.Forms.TextBox tb_DevRunLogUrl;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox tb_SetNet_DNS;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox tb_SetNet_Gateway;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tb_SetNet_SubnetMask;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox tb_SetNet_Ip;
+        private System.Windows.Forms.Button btn_SetIp;
     }
 }
 

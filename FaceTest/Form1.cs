@@ -28,14 +28,16 @@ namespace FaceTest
     public partial class Form1 : Form
     {
 
+       
+
         private Encoding encoding = Encoding.UTF8;
 
 
         public Form1()
         {
             InitializeComponent();
-         }
-        
+        }
+
         private Settings settings = new Settings();
         /// <summary>
         /// 读取设置项
@@ -151,7 +153,7 @@ namespace FaceTest
 
                         case @"/HeartBeat.ashx":
                             //心跳包
-                            DevicesHeartBeat devicesHeartBeat= DoResult_HeartBeat(requestJsonString);
+                            DevicesHeartBeat devicesHeartBeat = DoResult_HeartBeat(requestJsonString);
                             returnObj = GetReurnString(devicesHeartBeat.time);// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
                             showMsg(returnObj);
                             ResponseRetrun(returnObj, response);
@@ -224,7 +226,7 @@ namespace FaceTest
         {
             //得到JSON字符串
             string dataStr = JsonString.Substring(JsonString.IndexOf("info=") + 5, JsonString.Length - JsonString.IndexOf("info=") - 5);
-            MDevicesRunLog devicesRunLog=JsonConvert.DeserializeObject<MDevicesRunLog>(dataStr);
+            MDevicesRunLog devicesRunLog = JsonConvert.DeserializeObject<MDevicesRunLog>(dataStr);
             showMsg3(dataStr);
             showDevicesRunLog(dataStr);
             //处理相关流程
@@ -249,43 +251,45 @@ namespace FaceTest
         /// <param name="apkPath"></param>
         /// <returns></returns>
         private string GetVersionByApkFile(string apkPath)
-    {
-        byte[] manifestData = null;
-        byte[] resourcesData = null;
-
-        using (ICSharpCode.SharpZipLib.Zip.ZipInputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(File.Open(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
         {
+            byte[] manifestData = null;
+            byte[] resourcesData = null;
 
-            using (var filestream = new FileStream(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
-
+            using (ICSharpCode.SharpZipLib.Zip.ZipInputStream zip = new ICSharpCode.SharpZipLib.Zip.ZipInputStream(File.Open(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite)))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
             {
 
-                using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(filestream))
+                using (var filestream = new FileStream(apkPath, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))//这里的后面连哥哥参数很重要哦，不然很有可能出现独占
+
                 {
 
-                    ICSharpCode.SharpZipLib.Zip.ZipEntry item;
-                    string content = string.Empty;
-                    while ((item = zip.GetNextEntry()) != null)
+                    using (ICSharpCode.SharpZipLib.Zip.ZipFile zipfile = new ICSharpCode.SharpZipLib.Zip.ZipFile(filestream))
                     {
-                        if (item.Name.ToLower() == "androidmanifest.xml")
-                        {
-                            manifestData = new byte[50 * 1024];
-                            using (Stream strm = zipfile.GetInputStream(item))
-                            {
-                                strm.Read(manifestData, 0, manifestData.Length);
-                            }
 
-                        }
-                        if (item.Name.ToLower() == "resources.arsc")
+                        ICSharpCode.SharpZipLib.Zip.ZipEntry item;
+                        string content = string.Empty;
+                        while ((item = zip.GetNextEntry()) != null)
                         {
-                            using (Stream strm = zipfile.GetInputStream(item))
+                            if (item.Name.ToLower() == "androidmanifest.xml")
                             {
-                                using (BinaryReader s = new BinaryReader(strm))
+                                manifestData = new byte[50 * 1024];
+                                using (Stream strm = zipfile.GetInputStream(item))
                                 {
-                                    resourcesData = s.ReadBytes((int)item.Size);
+                                    strm.Read(manifestData, 0, manifestData.Length);
+                                }
 
+                            }
+                            if (item.Name.ToLower() == "resources.arsc")
+                            {
+                                using (Stream strm = zipfile.GetInputStream(item))
+                                {
+                                    using (BinaryReader s = new BinaryReader(strm))
+                                    {
+                                        resourcesData = s.ReadBytes((int)item.Size);
+
+                                    }
                                 }
                             }
+
                         }
 
                     }
@@ -293,53 +297,51 @@ namespace FaceTest
                 }
 
             }
-
+            ApkReader apkReader = new ApkReader();
+            ApkInfo info = apkReader.extractInfo(manifestData, resourcesData);
+            //showMsg(JsonConvert.SerializeObject(info));
+            showAPkInfo(info);
+            return info.versionCode;
         }
-        ApkReader apkReader = new ApkReader();
-        ApkInfo info = apkReader.extractInfo(manifestData, resourcesData);
-        //showMsg(JsonConvert.SerializeObject(info));
-        showAPkInfo(info);
-        return info.versionCode;
-    }
-    private void showAPkInfo(ApkInfo info)
-    {
-        showMsg(string.Format("Package Name: {0}", info.packageName));
-        showMsg(string.Format("Version Name: {0}", info.versionName));
-        showMsg(string.Format("Version Code: {0}", info.versionCode));
-
-        showMsg(string.Format("App Has Icon: {0}", info.hasIcon));
-        if (info.iconFileName.Count > 0)
-            showMsg(string.Format("App Icon: {0}", info.iconFileName[0]));
-        showMsg(string.Format("Min SDK Version: {0}", info.minSdkVersion));
-        showMsg(string.Format("Target SDK Version: {0}", info.targetSdkVersion));
-
-        if (info.Permissions != null && info.Permissions.Count > 0)
+        private void showAPkInfo(ApkInfo info)
         {
-            showMsg("Permissions:");
-            info.Permissions.ForEach(f =>
+            showMsg(string.Format("Package Name: {0}", info.packageName));
+            showMsg(string.Format("Version Name: {0}", info.versionName));
+            showMsg(string.Format("Version Code: {0}", info.versionCode));
+
+            showMsg(string.Format("App Has Icon: {0}", info.hasIcon));
+            if (info.iconFileName.Count > 0)
+                showMsg(string.Format("App Icon: {0}", info.iconFileName[0]));
+            showMsg(string.Format("Min SDK Version: {0}", info.minSdkVersion));
+            showMsg(string.Format("Target SDK Version: {0}", info.targetSdkVersion));
+
+            if (info.Permissions != null && info.Permissions.Count > 0)
             {
-                showMsg(string.Format("   {0}", f));
-            });
+                showMsg("Permissions:");
+                info.Permissions.ForEach(f =>
+                {
+                    showMsg(string.Format("   {0}", f));
+                });
+            }
+            else
+                showMsg("No Permissions Found");
+
+            showMsg(string.Format("Supports Any Density: {0}", info.supportAnyDensity));
+            showMsg(string.Format("Supports Large Screens: {0}", info.supportLargeScreens));
+            showMsg(string.Format("Supports Normal Screens: {0}", info.supportNormalScreens));
+            showMsg(string.Format("Supports Small Screens: {0}", info.supportSmallScreens));
         }
-        else
-            showMsg("No Permissions Found");
 
-        showMsg(string.Format("Supports Any Density: {0}", info.supportAnyDensity));
-        showMsg(string.Format("Supports Large Screens: {0}", info.supportLargeScreens));
-        showMsg(string.Format("Supports Normal Screens: {0}", info.supportNormalScreens));
-        showMsg(string.Format("Supports Small Screens: {0}", info.supportSmallScreens));
-    }
-
-        private string  DoResult_GetUpdate()
-    {
-            
-        if (string.IsNullOrEmpty(NewAppCersionCode))
+        private string DoResult_GetUpdate()
         {
-            NewAppCersionCode = GetVersionByApkFile(APKFILENAME);
+
+            if (string.IsNullOrEmpty(NewAppCersionCode))
+            {
+                NewAppCersionCode = GetVersionByApkFile(APKFILENAME);
+            }
+            return NewAppCersionCode;
         }
-        return NewAppCersionCode;
-    }
-    #endregion
+        #endregion
 
         #region API函数声明
         #endregion
@@ -384,7 +386,8 @@ namespace FaceTest
                 //返回服务器时间，用于校对时间
                 heartBeatReturn.time = DateTime.Now.ToString("yyyyMMdd.HHmmss");
                 return JsonConvert.SerializeObject(heartBeatReturn);
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 return "";
             }
@@ -407,7 +410,7 @@ namespace FaceTest
         /// <param name="response"></param>
         private void ResponseRetrun(string str, HttpListenerResponse response)
         {
-            
+
             //返回
             var returnByteArr = Encoding.UTF8.GetBytes(str);//设置客户端返回信息的编码
             try
@@ -463,7 +466,7 @@ namespace FaceTest
                 showMsg(dataStr);
                 Verify v = JsonConvert.DeserializeObject<Verify>(dataStr);
                 ShowInfo(v);
-                
+
                 //保存db
                 //this.Invoke((MethodInvoker)delegate
                 //{
@@ -614,8 +617,8 @@ namespace FaceTest
             showPicByBase64(v.base64);
             return EPersonCheckResult.Ok;
         }
-        
-        private void showPicByBase64 (string base64)
+
+        private void showPicByBase64(string base64)
         {
             if (string.IsNullOrEmpty(base64))
             {
@@ -627,12 +630,12 @@ namespace FaceTest
 
                 using (MemoryStream ms = new MemoryStream(arr, true))
                 {
-                        this.Invoke((MethodInvoker)delegate
-                        {
-                            pictureBox1.Image = Image.FromStream(ms);
-                        });
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        pictureBox1.Image = Image.FromStream(ms);
+                    });
 
-                        
+
                 }
 
 
@@ -647,8 +650,8 @@ namespace FaceTest
             NowCost--;
             Verify v = null;
             EPersonCheckResult personCheckResult = DoResult_VerifyHandlerByString2(JsonString, ref v);
-            showMsg(string.Format("Guid:[{0}]", v != null ? v.guid : "")); 
-            showMsg(string.Format("base64.length:[{0}]", v!=null?v.base64.Length:0));
+            showMsg(string.Format("Guid:[{0}]", v != null ? v.guid : ""));
+            showMsg(string.Format("base64.length:[{0}]", v != null ? v.base64.Length : 0));
             VerifyReturn result = new VerifyReturn();
             result.result = 1;
             result.success = personCheckResult == EPersonCheckResult.Ok;
@@ -682,20 +685,20 @@ namespace FaceTest
         #endregion
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DataSource = receivePassList;
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
             //重置用户默认参数
-            //Settings.Default.Reset();
+            Settings.Default.Reset();
 
             LoadData();
             //设置照片路径
             button2_Click(null, null);
             //设置设备URL
             button3_Click(null, null);
-          
+
         }
         /// <summary>
         /// 显示人员信息
@@ -1027,7 +1030,7 @@ namespace FaceTest
                 button5.Enabled = false;
                 stopwatch.Start();
                 DirectoryInfo di = new DirectoryInfo(FacePicPath);
-              //  FileInfo[] fis = di.GetFiles("*.jpg");
+                //  FileInfo[] fis = di.GetFiles("*.jpg");
                 List<FileInfo> fis = di.GetFiles("*.*", SearchOption.AllDirectories).Where(s => s.Name.ToLower().EndsWith(".png") || s.Name.ToLower().EndsWith(".jpg")).ToList<FileInfo>();
                 userList = new List<User>();
                 userDic = new Dictionary<string, User>();
@@ -1090,7 +1093,7 @@ namespace FaceTest
                     {
                         s = "\r\n";
                     }
-                    if (receiveMsg.Lines.Length>200)
+                    if (receiveMsg.Lines.Length > 200)
                     {
                         receiveMsg.Clear();
                     }
@@ -1619,7 +1622,7 @@ namespace FaceTest
             try
             {
                 button9.Enabled = false;
-                string postStr = string.Format("pass={0}&time='{1}'", Pass, tb_time.Text.Trim());
+                string postStr = string.Format("pass={0}&time={1}", Pass, tb_time.Text.Trim());
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setTime";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3033,7 +3036,7 @@ namespace FaceTest
             {
                 button36.Enabled = false;
                 //查看版本号 URL为type=2
-                string postStr = string.Format("pass={0}&typeId=2", Pass );
+                string postStr = string.Format("pass={0}&typeId=2", Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/getUrl";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3200,7 +3203,7 @@ namespace FaceTest
         }
         private void showUrl(string mes)
         {
-            UrlPar urlPar= JsonConvert.DeserializeObject<UrlPar>(mes);
+            UrlPar urlPar = JsonConvert.DeserializeObject<UrlPar>(mes);
             showMsg(String.Format("解析,downNewApkUrl[{0}]", urlPar.downNewApkUrl));
             showMsg(String.Format("解析,getNewApkVersionUrl[{0}]", urlPar.getNewApkVersionUrl));
             showMsg(String.Format("解析,heartBeatUrl[{0}]", urlPar.heartBeatUrl));
@@ -3431,7 +3434,7 @@ namespace FaceTest
                 if (b)
                 {
                     showMsg(ReturnStr);
-                    
+
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
@@ -3530,170 +3533,95 @@ namespace FaceTest
             tb_time.Text = DateTime.Now.ToString("yyyyMMdd.HHmmss");
             button13_Click(sender, e);
         }
-    }
-    /// <summary>
-    /// 当天识别的记录情况
-    /// </summary>
-    public class TodayRecord
-    {
-        /// <summary>
-        /// 当天所有识别记录数
-        /// </summary>
-        public int All;
-        /// <summary>
-        /// 当天实时推送记录数
-        /// </summary>
-        public int SendNow;
-        /// <summary>
-        /// 当天历史推送记录数
-        /// </summary>
-        public int SendHis;
-        /// <summary>
-        /// 当天未推送记录数
-        /// </summary>
-        public int NotSend;
-        /// <summary>
-        /// 当天识别记录，但因为未设置回调URL，则不用回调
-        /// </summary>
-        public int NoCallUrl;
-
-
-    }
-    /// <summary>
-    /// 时段段对象
-    /// </summary>
-    public class PassTimeOne
-    {
-        /// <summary>
-        /// 开始时间 hh:mi:ss
-        /// </summary>
-        public String Dt1;
-        /// <summary>
-        /// 结果时间 hh:mi:ss
-        /// </summary>
-        public String Dt2;
-    }
-    /// <summary>
-    /// 时段，有星期列表和时间段列表
-    /// </summary>
-    public class PassTime
-    {
-
-        /// <summary>
-        /// 星期列表 值在[1，7]
-        /// </summary>
-        public List<String> WeekList;
-        /// <summary>
-        /// 时间段列表，可以多个
-        /// </summary>
-        public List<PassTimeOne> PassTimeByWeekList;
-    }
-    public class PassTimes
-    {
-        /// <summary>
-        /// 时段名称
-        /// </summary>
-        public string Name { get; set; }
-        /// <summary>
-        /// 时段列表
-        /// </summary>
-        public List<PassTime> passTimeList { get; set; }
-    }
-
-    public class UserSetPassTime
-    {
-        /// <summary>
-        /// 用户ID 
-        /// </summary>
-        public string userId { get; set; }
-        /// <summary>
-        /// 时段的名称
-        /// </summary>
-        public string passTimeName { get; set; }
-    }
-
-    /// <summary>
-    /// 人员对象
-    /// </summary>
-    public class Person
-    {
-        /// <summary>
-        /// ID 
-        /// 如果传入，格式：[A-Za-z0-9]{0,32}
-        /// 可以为空，系统会自动生成ID，并在返回数据中体现
-        /// </summary>
-        public string id { get; set; }
-        /// <summary>
-        /// 姓名
-        /// </summary>
-        public string name { get; set; }
-
-        public override string ToString()
+        private string GetNetInfoString()
         {
-            return string.Format("id:[{0}],name:[{1}],card:[{2}]", id, name,cardNo);
+            NetworkInfo networkInfo = new NetworkInfo();
+            networkInfo.ip = this.tb_SetNet_Ip.Text;
+            networkInfo.subnetMask = this.tb_SetNet_SubnetMask.Text;
+            networkInfo.gateway = this.tb_SetNet_Gateway.Text;
+            networkInfo.DNS1 = this.tb_SetNet_DNS.Text;
+            networkInfo.DNS2 = "";
+           // networkInfo.isDHCPMod = false;
+            return JsonConvert.SerializeObject(networkInfo);
+
+
         }
-        /// <summary>
-        /// 韦根卡号
-        /// </summary>
-        public string cardNo { get; set; }
+        private void btn_SetIp_Click(object sender, EventArgs e)
+        {
+            tb_MachineCode.Text = "";
+            try
+            {
+                btn_SetIp.Enabled = false;
+                string postStr = string.Format("pass={0}&networkinfo={1}", Pass, GetNetInfoString());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setNetInfo";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        tb_MachineCode.Text = res.data;
+                        showMsg("setNetInfo 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                btn_SetIp.Enabled = true;
+
+            }
+        }
+    }
+    #region 对象
+
+    /// <summary>
+    /// IP设置
+    /// </summary>
+    public class NetworkInfo
+    {
+
+        public String ip { get; set; }
+        public String subnetMask { get; set; }
+
+        public String gateway { get; set; }
+
+        //public bool isDHCPMod { get; set; }
+        public String DNS1 { get; set; }
+        public String DNS2 { get; set; }
     }
     /// <summary>
-    /// 人员带照片的对象
+    /// 管理URL类
     /// </summary>
-    public class PersonAndFace
+    public class UrlPar
     {
+        public string downNewApkUrl { get; set; }
+        public string getNewApkVersionUrl { get; set; }
+        public string heartBeatUrl { get; set; }
+        public string identifyCallBack { get; set; }
+        public string identifyCallBack_His { get; set; }
+        public string verifyCallBack { get; set; }
         /// <summary>
-        /// 人员信息
+        /// 设备运行日志
+        /// 包括启动、App重启，设备重启和设备请求授权
         /// </summary>
-        public Person person { get; set; }
-        /// <summary>
-        /// 对应的照片的信息
-        /// </summary>
-        public Face face { get; set; }
-    }
-    public class Face
-    {
-        /// <summary>
-        /// 人员id
-        /// </summary>
-        public string userId { get; set; }
-        /// <summary>
-        /// 人员姓名，不更新人员数据
-        /// 只是根据此数据生成设备注册照片名
-        /// </summary>
-        public string userName { get; set; }
-        //public string faceId { get; set; }
-        /// <summary>
-        /// 人员照片的序号
-        /// </summary>
-        public int direct { get; set; }
-        /// <summary>
-        /// 照片ID，唯一
-        /// </summary>
-        public string imageId { get; set; }
-        /// <summary>
-        /// 照片key,可用照片的md5值
-        /// </summary>
-        //public string faceImageFileName { get; set; }
-        public string imageKey { get; set; }
-        /// <summary>
-        /// 照片base64
-        /// </summary>
-        public string imageBase64 { get; set; }
-    }
-    public class FaceFind
-    {
-        public string faceId { get; set; }
-        public string personId { get; set; }
-        public int direct { get; set; }
-        public string faceImageFaileName { get; set; }
-        public string faceImageKey { get; set; }
-        public override string ToString()
-        {
-            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageFaileName:[{3}],faceImageKey:[{4}]",
-                faceId, personId, direct, faceImageFaileName, faceImageKey);
-        }
-
+        public string devRunLogUrl { get; set; }
     }
     /// <summary>
     /// 心跳包数据
@@ -3765,25 +3693,167 @@ namespace FaceTest
         /// </summary>
         public float disk { get; set; }
     }
-
-
-    /// <summary>
-    /// 管理URL类
-    /// </summary>
-    public class UrlPar
+    public class FaceFind
     {
-        public string downNewApkUrl { get; set; }
-        public string getNewApkVersionUrl { get; set; }
-        public string heartBeatUrl { get; set; }
-        public string identifyCallBack { get; set; }
-        public string identifyCallBack_His { get; set; }
-        public string verifyCallBack { get; set; }
-        /// <summary>
-        /// 设备运行日志
-        /// 包括启动、App重启，设备重启和设备请求授权
-        /// </summary>
-        public string devRunLogUrl { get; set; }
+        public string faceId { get; set; }
+        public string personId { get; set; }
+        public int direct { get; set; }
+        public string faceImageFaileName { get; set; }
+        public string faceImageKey { get; set; }
+        public override string ToString()
+        {
+            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageFaileName:[{3}],faceImageKey:[{4}]",
+                faceId, personId, direct, faceImageFaileName, faceImageKey);
+        }
+
     }
+    public class Face
+    {
+        /// <summary>
+        /// 人员id
+        /// </summary>
+        public string userId { get; set; }
+        /// <summary>
+        /// 人员姓名，不更新人员数据
+        /// 只是根据此数据生成设备注册照片名
+        /// </summary>
+        public string userName { get; set; }
+        //public string faceId { get; set; }
+        /// <summary>
+        /// 人员照片的序号
+        /// </summary>
+        public int direct { get; set; }
+        /// <summary>
+        /// 照片ID，唯一
+        /// </summary>
+        public string imageId { get; set; }
+        /// <summary>
+        /// 照片key,可用照片的md5值
+        /// </summary>
+        //public string faceImageFileName { get; set; }
+        public string imageKey { get; set; }
+        /// <summary>
+        /// 照片base64
+        /// </summary>
+        public string imageBase64 { get; set; }
+    }
+    /// <summary>
+    /// 人员带照片的对象
+    /// </summary>
+    public class PersonAndFace
+    {
+        /// <summary>
+        /// 人员信息
+        /// </summary>
+        public Person person { get; set; }
+        /// <summary>
+        /// 对应的照片的信息
+        /// </summary>
+        public Face face { get; set; }
+    }
+    /// <summary>
+    /// 人员对象
+    /// </summary>
+    public class Person
+    {
+        /// <summary>
+        /// ID 
+        /// 如果传入，格式：[A-Za-z0-9]{0,32}
+        /// 可以为空，系统会自动生成ID，并在返回数据中体现
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string name { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("id:[{0}],name:[{1}],card:[{2}]", id, name, cardNo);
+        }
+        /// <summary>
+        /// 韦根卡号
+        /// </summary>
+        public string cardNo { get; set; }
+    }
+    public class UserSetPassTime
+    {
+        /// <summary>
+        /// 用户ID 
+        /// </summary>
+        public string userId { get; set; }
+        /// <summary>
+        /// 时段的名称
+        /// </summary>
+        public string passTimeName { get; set; }
+    }
+    public class PassTimes
+    {
+        /// <summary>
+        /// 时段名称
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 时段列表
+        /// </summary>
+        public List<PassTime> passTimeList { get; set; }
+    }
+    /// <summary>
+    /// 时段，有星期列表和时间段列表
+    /// </summary>
+    public class PassTime
+    {
+
+        /// <summary>
+        /// 星期列表 值在[1，7]
+        /// </summary>
+        public List<String> WeekList;
+        /// <summary>
+        /// 时间段列表，可以多个
+        /// </summary>
+        public List<PassTimeOne> PassTimeByWeekList;
+    }
+    /// <summary>
+    /// 时段段对象
+    /// </summary>
+    public class PassTimeOne
+    {
+        /// <summary>
+        /// 开始时间 hh:mi:ss
+        /// </summary>
+        public String Dt1;
+        /// <summary>
+        /// 结果时间 hh:mi:ss
+        /// </summary>
+        public String Dt2;
+    }
+    /// <summary>
+    /// 当天识别的记录情况
+    /// </summary>
+    public class TodayRecord
+    {
+        /// <summary>
+        /// 当天所有识别记录数
+        /// </summary>
+        public int All;
+        /// <summary>
+        /// 当天实时推送记录数
+        /// </summary>
+        public int SendNow;
+        /// <summary>
+        /// 当天历史推送记录数
+        /// </summary>
+        public int SendHis;
+        /// <summary>
+        /// 当天未推送记录数
+        /// </summary>
+        public int NotSend;
+        /// <summary>
+        /// 当天识别记录，但因为未设置回调URL，则不用回调
+        /// </summary>
+        public int NoCallUrl;
 
 
+    }
+    #endregion
 }
