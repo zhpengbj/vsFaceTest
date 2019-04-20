@@ -684,7 +684,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(486, 607);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "识别记录";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
