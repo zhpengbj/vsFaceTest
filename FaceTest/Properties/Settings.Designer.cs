@@ -25,7 +25,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("_")]
+        [global::System.Configuration.DefaultSettingValueAttribute("FacePicTest")]
         public string tb_Path {
             get {
                 return ((string)(this["tb_Path"]));

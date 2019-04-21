@@ -691,7 +691,7 @@ namespace FaceTest
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
             //重置用户默认参数
-            Settings.Default.Reset();
+            //Settings.Default.Reset();
 
             LoadData();
             //设置照片路径

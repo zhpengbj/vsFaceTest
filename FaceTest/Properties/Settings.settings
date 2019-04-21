@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="tb_Path" Type="System.String" Scope="User">
-      <Value Profile="(Default)">_</Value>
+      <Value Profile="(Default)">FacePicTest</Value>
     </Setting>
     <Setting Name="tb_Url" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://192.168.8.101:8090</Value>
