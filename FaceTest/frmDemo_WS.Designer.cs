@@ -1,6 +1,6 @@
 ﻿namespace FaceTest
 {
-    partial class Form1
+    partial class frmDemo_Ws
     {
         /// <summary>
         /// 必需的设计器变量。

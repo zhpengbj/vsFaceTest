@@ -258,5 +258,273 @@ namespace FaceTest
         public int sendHisDataInterval { get; set; }
     }
 
+    #region 对象
+
+    /// <summary>
+    /// IP设置
+    /// </summary>
+    public class NetworkInfo
+    {
+
+        public String ip { get; set; }
+        public String subnetMask { get; set; }
+
+        public String gateway { get; set; }
+
+        //public bool isDHCPMod { get; set; }
+        public String DNS1 { get; set; }
+        public String DNS2 { get; set; }
+    }
+    /// <summary>
+    /// 管理URL类
+    /// </summary>
+    public class UrlPar
+    {
+        public string downNewApkUrl { get; set; }
+        public string getNewApkVersionUrl { get; set; }
+        public string heartBeatUrl { get; set; }
+        public string identifyCallBack { get; set; }
+        public string identifyCallBack_His { get; set; }
+        public string verifyCallBack { get; set; }
+        /// <summary>
+        /// 设备运行日志
+        /// 包括启动、App重启，设备重启和设备请求授权
+        /// </summary>
+        public string devRunLogUrl { get; set; }
+    }
+    /// <summary>
+    /// 心跳包数据
+    /// </summary>
+    public class DevicesHeartBeat
+    {
+        /// <summary>
+        /// 设备编号，可用户自定义，如果没有自定义，则返回机器码。
+        /// </summary>
+        public String deviceKey { get; set; }
+        /// <summary>
+        /// 设备类型
+        /// 具体定义可咨询厂家
+        /// </summary>
+        public int deviceType { get; set; }
+        /// <summary>
+        /// 设备的机器码
+        /// </summary>
+        public String deviceMachineCode { get; set; }
+        /// <summary>
+        /// 运行时间
+        /// 格式：天d小时h分钟m
+        /// </summary>
+        public String runtime { get; set; }
+        /// <summary>
+        /// APP启动的时间
+        /// </summary>
+        public String starttime { get; set; }
+        /// <summary>
+        /// 当前系统时间
+        /// </summary>
+        public String time { get; set; }
+        public String ip { get; set; }
+        public int personCount { get; set; }
+        public int faceCount { get; set; }
+        public String version { get; set; }
+        /// <summary>
+        /// APP占用内存
+        /// </summary>
+        public float memory { get; set; }
+        /// <summary>
+        /// 系统可用内存
+        /// </summary>
+        public float availMem { get; set; }
+        /// <summary>
+        /// 系统总内存
+        /// </summary>
+        public float totalMem { get; set; }
+        /// <summary>
+        /// 硬盘大小
+        /// </summary>
+        public float totalDisk { get; set; }
+        /// <summary>
+        /// 设备的机器名
+        /// </summary>
+        public string buildModel { get; set; }
+        /// <summary>
+        /// 是否初始化
+        /// 如果通信密码非空，则认为是初始化完成。
+        /// 如果通信密码为空，则认为未初始化，不能操作设备
+        /// </summary>
+        public int isInited { get; set; }
+        /// <summary>
+        /// 是否授权
+        /// </summary>
+        public int isAuth { get; set; }
+        /// <summary>
+        /// 已使用的硬盘
+        /// </summary>
+        public float disk { get; set; }
+    }
+    public class FaceFind
+    {
+        public string faceId { get; set; }
+        public string personId { get; set; }
+        public int direct { get; set; }
+        public string faceImageFaileName { get; set; }
+        public string faceImageKey { get; set; }
+        public override string ToString()
+        {
+            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageFaileName:[{3}],faceImageKey:[{4}]",
+                faceId, personId, direct, faceImageFaileName, faceImageKey);
+        }
+
+    }
+    public class Face
+    {
+        /// <summary>
+        /// 人员id
+        /// </summary>
+        public string userId { get; set; }
+        /// <summary>
+        /// 人员姓名，不更新人员数据
+        /// 只是根据此数据生成设备注册照片名
+        /// </summary>
+        public string userName { get; set; }
+        //public string faceId { get; set; }
+        /// <summary>
+        /// 人员照片的序号
+        /// </summary>
+        public int direct { get; set; }
+        /// <summary>
+        /// 照片ID，唯一
+        /// </summary>
+        public string imageId { get; set; }
+        /// <summary>
+        /// 照片key,可用照片的md5值
+        /// </summary>
+        //public string faceImageFileName { get; set; }
+        public string imageKey { get; set; }
+        /// <summary>
+        /// 照片base64
+        /// </summary>
+        public string imageBase64 { get; set; }
+    }
+    /// <summary>
+    /// 人员带照片的对象
+    /// </summary>
+    public class PersonAndFace
+    {
+        /// <summary>
+        /// 人员信息
+        /// </summary>
+        public Person person { get; set; }
+        /// <summary>
+        /// 对应的照片的信息
+        /// </summary>
+        public Face face { get; set; }
+    }
+    /// <summary>
+    /// 人员对象
+    /// </summary>
+    public class Person
+    {
+        /// <summary>
+        /// ID 
+        /// 如果传入，格式：[A-Za-z0-9]{0,32}
+        /// 可以为空，系统会自动生成ID，并在返回数据中体现
+        /// </summary>
+        public string id { get; set; }
+        /// <summary>
+        /// 姓名
+        /// </summary>
+        public string name { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("id:[{0}],name:[{1}],card:[{2}]", id, name, cardNo);
+        }
+        /// <summary>
+        /// 韦根卡号
+        /// </summary>
+        public string cardNo { get; set; }
+    }
+    public class UserSetPassTime
+    {
+        /// <summary>
+        /// 用户ID 
+        /// </summary>
+        public string userId { get; set; }
+        /// <summary>
+        /// 时段的名称
+        /// </summary>
+        public string passTimeName { get; set; }
+    }
+    public class PassTimes
+    {
+        /// <summary>
+        /// 时段名称
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// 时段列表
+        /// </summary>
+        public List<PassTime> passTimeList { get; set; }
+    }
+    /// <summary>
+    /// 时段，有星期列表和时间段列表
+    /// </summary>
+    public class PassTime
+    {
+
+        /// <summary>
+        /// 星期列表 值在[1，7]
+        /// </summary>
+        public List<String> WeekList;
+        /// <summary>
+        /// 时间段列表，可以多个
+        /// </summary>
+        public List<PassTimeOne> PassTimeByWeekList;
+    }
+    /// <summary>
+    /// 时段段对象
+    /// </summary>
+    public class PassTimeOne
+    {
+        /// <summary>
+        /// 开始时间 hh:mi:ss
+        /// </summary>
+        public String Dt1;
+        /// <summary>
+        /// 结果时间 hh:mi:ss
+        /// </summary>
+        public String Dt2;
+    }
+    /// <summary>
+    /// 当天识别的记录情况
+    /// </summary>
+    public class TodayRecord
+    {
+        /// <summary>
+        /// 当天所有识别记录数
+        /// </summary>
+        public int All;
+        /// <summary>
+        /// 当天实时推送记录数
+        /// </summary>
+        public int SendNow;
+        /// <summary>
+        /// 当天历史推送记录数
+        /// </summary>
+        public int SendHis;
+        /// <summary>
+        /// 当天未推送记录数
+        /// </summary>
+        public int NotSend;
+        /// <summary>
+        /// 当天识别记录，但因为未设置回调URL，则不用回调
+        /// </summary>
+        public int NoCallUrl;
+
+
+    }
+    #endregion
+
 
 }
