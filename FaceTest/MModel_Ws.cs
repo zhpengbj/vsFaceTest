@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Fleck;
+using Newtonsoft.Json;
 
 namespace FaceTest
 {
@@ -69,7 +70,7 @@ namespace FaceTest
         public class TaskInfo
         {
             
-            public TaskInfo(ETaskType _type, string _name,string _deviceNo, object _obj)
+            public TaskInfo(ETaskType _type, string _name,string _deviceNo, string _obj)
             {
                 Type = _type;
                 Name = _name;
@@ -86,11 +87,11 @@ namespace FaceTest
             /// 设备的编号 
             /// </summary>
             public string DeviceNo { get; set; }
-            public object Obj { get; set; }
+            public string Obj { get; set; }
 
             public string GetString()
             {
-                return "";
+                return JsonConvert.SerializeObject(this);
             }
             /// <summary>
             /// 得到任务的编号，唯一性

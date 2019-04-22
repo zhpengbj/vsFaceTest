@@ -15,7 +15,7 @@ namespace FaceTest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmServer());
+            //Application.Run(new frmDemo_Ws());
             Application.Run(new frmDemo());
         }
     }

@@ -298,5 +298,29 @@ namespace FaceTest.Properties {
                 this["tb_PersonAddOrUpdate_CardNo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("39xlt-d19y7-4wd19-y7543-2x8z5")]
+        public string tb_DeviceNo {
+            get {
+                return ((string)(this["tb_DeviceNo"]));
+            }
+            set {
+                this["tb_DeviceNo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ws://192.168.8.100:8092")]
+        public string tb_wsUrl {
+            get {
+                return ((string)(this["tb_wsUrl"]));
+            }
+            set {
+                this["tb_wsUrl"] = value;
+            }
+        }
     }
 }

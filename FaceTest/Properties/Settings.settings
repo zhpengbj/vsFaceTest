@@ -71,5 +71,11 @@
     <Setting Name="tb_PersonAddOrUpdate_CardNo" Type="System.String" Scope="User">
       <Value Profile="(Default)">12345678</Value>
     </Setting>
+    <Setting Name="tb_DeviceNo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">39xlt-d19y7-4wd19-y7543-2x8z5</Value>
+    </Setting>
+    <Setting Name="tb_wsUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ws://192.168.8.100:8092</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

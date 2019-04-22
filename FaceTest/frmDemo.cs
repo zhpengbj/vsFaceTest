@@ -3588,5 +3588,105 @@ namespace FaceTest
 
             }
         }
+
+        private void button52_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button52.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=8", Pass, tb_wsUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button52.Enabled = true;
+
+            }
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button49.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&typeId=8", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("getUrl 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button49.Enabled = true;
+
+            }
+        }
+
+        private void button53_Click(object sender, EventArgs e)
+        {
+            frmDemo_Ws frm = new frmDemo_Ws();
+            frm.ShowDialog();
+        }
+
+        private void button50_Click(object sender, EventArgs e)
+        {
+            //重置用户默认参数
+            Settings.Default.Reset();
+
+            LoadData();
+        }
     }
 }

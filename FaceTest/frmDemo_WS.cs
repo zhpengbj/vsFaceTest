@@ -12,7 +12,6 @@ using System.IO;
 
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using System.IO.Pipes;
 using System.Threading;
 
 using System.Net;
@@ -20,8 +19,8 @@ using FaceTest.Properties;
 using System.Net.Sockets;
 using System.Diagnostics;
 using System.Web;
-using System.Runtime.InteropServices;
 using Iteedee.ApkReader;
+using static FaceTest.MModel_Ws;
 
 namespace FaceTest
 {
@@ -45,7 +44,7 @@ namespace FaceTest
         private void LoadData()
         {
             this.tb_Path.Text = settings.tb_Path;
-            this.tb_Url.Text = settings.tb_Url;
+            this.tb_DeviceNo.Text = settings.tb_Url;
             this.tb_Pass.Text = settings.tb_Pass;
             this.tb_CallBackVerifyUrl.Text = settings.tb_CallBackVerifyUrl;
             this.tb_CallBackUrl.Text = settings.tb_CallBackUrl;
@@ -71,6 +70,9 @@ namespace FaceTest
             this.tb_CallBackUrl_His.Text = settings.tb_CallBackUrl_His;
             this.tb_SplitChar.Text = settings.tb_SplitChar;
 
+
+            this.tb_DeviceNo.Text = settings.tb_DeviceNo;
+
         }
         /// <summary>
         /// 保存设置项
@@ -78,7 +80,7 @@ namespace FaceTest
         private void SaveData()
         {
             settings.tb_Path = this.tb_Path.Text.Trim();
-            settings.tb_Url = this.tb_Url.Text.Trim();
+            settings.tb_Url = this.tb_DeviceNo.Text.Trim();
             settings.tb_Pass = this.tb_Pass.Text.Trim();
             settings.tb_CallBackVerifyUrl = this.tb_CallBackVerifyUrl.Text.Trim();
             settings.tb_CallBackUrl = this.tb_CallBackUrl.Text.Trim();
@@ -101,18 +103,13 @@ namespace FaceTest
             settings.tb_CallBackUrl_His = this.tb_CallBackUrl_His.Text.Trim();
             settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
             settings.tb_devRunLogUrl = this.tb_DevRunLogUrl.Text.Trim();
+
+
+            settings.tb_DeviceNo = this.tb_DeviceNo.Text.Trim();
             settings.Save();
         }
 
         #region httpWeb
-        private int HttpWebPor = 8091;
-        /// <summary>
-        /// init httpWeb
-        /// </summary>
-        private void InitHttpWeb()
-        {
-            CHttpServiceHandler.InitHttpService(Result_Handler, HttpWebPor, showMsg);
-        }
         private void Result_Handler(HttpListenerContext context)
         {
             var guid = Guid.NewGuid().ToString();
@@ -697,7 +694,7 @@ namespace FaceTest
             //设置照片路径
             button2_Click(null, null);
             //设置设备URL
-            button3_Click(null, null);
+            //button3_Click(null, null);
 
         }
         /// <summary>
@@ -807,7 +804,10 @@ namespace FaceTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            InitHttpWeb();
+            string wsUrl = "ws://0.0.0.0:8092";
+            this.Text = "XFaceDemo[Ws]---" + wsUrl;
+            TaskManage.SetShowInfo(showMsg);
+            TaskManage.Init(wsUrl);
         }
         private String FacePicPath = Application.StartupPath + @"\FacePicTest\";
 
@@ -827,8 +827,10 @@ namespace FaceTest
         private string Url = "";
         private void button3_Click(object sender, EventArgs e)
         {
-            Url = tb_Url.Text;
+            Url = tb_DeviceNo.Text;
             this.Text = "XFaceDemo---" + Url;
+            //增加有效设备
+            WSManage.AddValidDevice(tb_DeviceNo.Text.Trim());
         }
         private string Pass = "123";
         private void button4_Click(object sender, EventArgs e)
@@ -2085,58 +2087,15 @@ namespace FaceTest
 
         private void button19_Click(object sender, EventArgs e)
         {
+            Person person = new Person();
+            person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+            person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+            person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
 
-            Pass = tb_Pass.Text;
-            try
-            {
-                button19.Enabled = false;
-                Person person = new Person();
-                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
-                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
-                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
-                string postStr = string.Format("pass={0}&person={1}", Pass, JsonConvert.SerializeObject(person));
-                string urlOper = @"/person/createOrUpdate";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            string postStr = string.Format("pass={0}&person={1}", tb_Pass.Text, JsonConvert.SerializeObject(person));
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("person createOrUpdate 成功");
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_CreateOrUpdate,Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                        //处理完成后，发消息给设备更新数据
-                        SendDevRefreshData();
-                    }
-                    else
-                    {
-                        //-1:参数异常:person传入为空
-                        //-2:参数异常:传入的person字符串转化成对象出错
-                        //-3:参数异常:传入的ID格式非法，格式：[A-Za-z0-9]{0,32}
-                        //-4:参数异常:系统异常
-
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
-
-            }
-            finally
-            {
-                button19.Enabled = true;
-
-            }
         }
 
         private void button20_Click(object sender, EventArgs e)
@@ -2194,57 +2153,16 @@ namespace FaceTest
         private void button21_Click(object sender, EventArgs e)
         {
 
-            Pass = tb_Pass.Text;
             try
             {
+                Person person = new Person();
+                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
 
-                button21.Enabled = false;
-                //id如果传入-1,则会返回所有人员信息
-                string postStr = string.Format("pass={0}&id={1}", Pass, tb_PersonFind_PersonId.Text.Trim());
-                string urlOper = @"/person/find";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+                string postStr = string.Format("{0}", tb_PersonFind_PersonId.Text.Trim());
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("person find 成功");
-                        List<Person> list = JsonConvert.DeserializeObject<List<Person>>(res.data);
-
-                        if (list != null)
-                        {
-                            int personid = 0;
-                            foreach (Person one in list)
-                            {
-                                personid++;
-                                showMsg(string.Format("person[{0}]:{1}", personid, one.ToString()));
-                            }
-                        }
-                        else
-                        {
-                            showMsg("无数据");
-                        }
-
-                    }
-                    else
-                    {
-                        //-1:参数异常:id传入为空
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
+                TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_Find, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
             }
             finally
@@ -3587,6 +3505,11 @@ namespace FaceTest
                 btn_SetIp.Enabled = true;
 
             }
+        }
+
+        private void frmDemo_Ws_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
     

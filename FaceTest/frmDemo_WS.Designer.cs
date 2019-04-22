@@ -153,7 +153,7 @@
             this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
-            this.tb_Url = new System.Windows.Forms.TextBox();
+            this.tb_DeviceNo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -176,7 +176,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 75);
             this.button1.TabIndex = 0;
-            this.button1.Text = "启动web服务(回调服务)";
+            this.button1.Text = "启动ws服务";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -205,7 +205,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 36);
             this.button3.TabIndex = 3;
-            this.button3.Text = "设置人脸接口Url ";
+            this.button3.Text = "接入设备编号NO";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -1456,16 +1456,16 @@
             this.tb_SplitChar.TabIndex = 71;
             this.tb_SplitChar.Text = global::FaceTest.Properties.Settings.Default.tb_SplitChar;
             // 
-            // tb_Url
+            // tb_DeviceNo
             // 
-            this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Url.Location = new System.Drawing.Point(168, 8);
-            this.tb_Url.Name = "tb_Url";
-            this.tb_Url.Size = new System.Drawing.Size(206, 25);
-            this.tb_Url.TabIndex = 6;
-            this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
+            this.tb_DeviceNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeviceNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DeviceNo.Location = new System.Drawing.Point(168, 8);
+            this.tb_DeviceNo.Name = "tb_DeviceNo";
+            this.tb_DeviceNo.Size = new System.Drawing.Size(206, 25);
+            this.tb_DeviceNo.TabIndex = 6;
+            this.tb_DeviceNo.Text = global::FaceTest.Properties.Settings.Default.tb_DeviceNo;
             // 
-            // Form1
+            // frmDemo_Ws
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1481,14 +1481,15 @@
             this.Controls.Add(this.lb_PersonId);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.tb_Url);
+            this.Controls.Add(this.tb_DeviceNo);
             this.Controls.Add(this.button29);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "frmDemo_Ws";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "xFace";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmDemo_Ws_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1522,7 +1523,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox tb_Url;
+        private System.Windows.Forms.TextBox tb_DeviceNo;
         private System.Windows.Forms.TextBox tb_Path;
         private System.Windows.Forms.TextBox tb_Pass;
         private System.Windows.Forms.Button button6;

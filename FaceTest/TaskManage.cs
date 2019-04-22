@@ -4,19 +4,20 @@ using Fleck;
 using Newtonsoft.Json;
 using static FaceTest.MModel_Ws;
 
-namespace wsTest_Fleck
+namespace FaceTest
 {
     /// <summary>
     /// 任务管理
     /// </summary>
     public class TaskManage
     {
-        public static void Init()
+        public static void Init(string Url)
         {
-            string Url = "";
-            WSManage.Init(Url, CallBack,DoMessage);
+            WSManage.Init(Url, CallBack, DoMessage, doShowInfo);
+            
 
         }
+        #region 显示日志
         private static DoShowInfo doShowInfo;
         public static void SetShowInfo(DoShowInfo _DoShowInfo)
         {
@@ -29,6 +30,8 @@ namespace wsTest_Fleck
                 doShowInfo(str);
             }
         }
+        #endregion
+
         private static Dictionary<string, TaskInfo> taskList = new Dictionary<string, TaskInfo>();
         public static void AddTask(TaskInfo taskInfo)
         {
@@ -36,41 +39,52 @@ namespace wsTest_Fleck
             taskList.Add(taskInfo.GetTaskName(), taskInfo);
             WSManage.sendMsg(taskInfo);
         }
+        /// <summary>
+        /// 发送任务后的回调方法
+        /// </summary>
+        /// <param name="taskInfo"></param>
         public static void CallBack(TaskInfo taskInfo)
         {
+            //显示 
             ShowInfo(string.Format("{0}:Type[{1}],[{2}]", "TaskCallBack", taskInfo.Type, taskInfo.GetString()));
+            //从任务列表中移除
             taskList.Remove(taskInfo.GetTaskName());
 
         }
+        /// <summary>
+        /// 处理请求数据
+        /// </summary>
+        /// <param name="socket"></param>
+        /// <param name="taskInfo"></param>
         private static void DoMessage(IWebSocketConnection socket, TaskInfo taskInfo)
         {
             try
             {
-                switch (taskInfo.Type)
-                {
-                    //请求接入
-                    case ETaskType.U_AskConnect:
-                        string deviceNo = taskInfo.Obj.ToString();
-                        string clientUrl = socket.ConnectionInfo.ClientIpAddress + ":" + socket.ConnectionInfo.ClientPort;
-                        Console.WriteLine(string.Format("{0}|服务器:DeviceNo[{1}]-{2},请求接入", DateTime.Now.ToString(), deviceNo, clientUrl));
-                        //TODO 判断是否可以接入
-                        bool isOk = true;
-                        Console.WriteLine(string.Format("{0}|服务器:请求接入结果[{1}]", DateTime.Now.ToString(), isOk));
-                        if (!isOk)
-                        {
-                            return;
-                        }
-                        WSManage.addDevice(deviceNo, socket);
+                //switch (taskInfo.Type)
+                //{
+                //    //请求接入
+                //    case ETaskType.U_AskConnect:
+                //        string deviceNo = taskInfo.DeviceNo;
+                //        string clientUrl = socket.ConnectionInfo.ClientIpAddress + ":" + socket.ConnectionInfo.ClientPort;
+                //        ShowInfo(string.Format("{0}|服务器:DeviceNo[{1}]-{2},请求接入", DateTime.Now.ToString(), deviceNo, clientUrl));
+                //        //TODO 判断是否可以接入
+                //        bool isOk = true;
+                //        ShowInfo(string.Format("{0}|服务器:请求接入结果[{1}]", DateTime.Now.ToString(), isOk));
+                //        if (!isOk)
+                //        {
+                //            return;
+                //        }
+                //        WSManage.addDevice(deviceNo, socket);
 
-                        ResultInfo resultInfo =  GetSuccess(taskInfo.GetTaskName());
-                        socket.Send(JsonConvert.SerializeObject(resultInfo));
-                        break;
+                //        MModel_Ws.ResultInfo resultInfo =  GetSuccess(taskInfo.GetTaskName());
+                //        socket.Send(JsonConvert.SerializeObject(resultInfo));
+                //        break;
 
-                }
+                //}
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                ShowInfo(ex.ToString());
             }
 
 
