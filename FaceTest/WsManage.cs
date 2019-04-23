@@ -104,28 +104,25 @@ namespace FaceTest
                 };
                 socket.OnMessage = message =>
                 {
-                    ShowInfo(message);
+                    ShowInfo("socket.OnMessage:"+message);
                     try
                     {
 
-                        TaskInfo taskInfo = JsonConvert.DeserializeObject<TaskInfo>(message);
-                        //判断 设备的合法性
-                            if (!CheckDevice(taskInfo.GetDeviceNo()))
-                            {
-                                return;
-                            }
-                        string taskName = taskInfo.GetTaskName();
+                        MModel_Ws.ResultInfo resultInfo = JsonConvert.DeserializeObject<MModel_Ws.ResultInfo>(message);
+          
+                        string taskName = resultInfo.taskname;
                         //得到请求后的返回处理
                         if (MessageList.Keys.Contains(taskName))
                         {
                             DoCallBack callBack = MessageList[taskName];
                             if (callBack != null)
                             {
-                                callBack.Invoke(taskInfo);
+                                callBack.Invoke(resultInfo);
                                 return;
                             }
 
                         }
+                        TaskInfo taskInfo= JsonConvert.DeserializeObject<TaskInfo>(message);
                         //如果在请求回调列表中没有找到，则处理“接收”
                         _DoMessage?.Invoke(socket, taskInfo);
                     }

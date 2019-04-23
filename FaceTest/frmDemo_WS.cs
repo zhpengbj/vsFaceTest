@@ -2155,11 +2155,6 @@ namespace FaceTest
 
             try
             {
-                Person person = new Person();
-                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
-                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
-                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
-
                 string postStr = string.Format("{0}", tb_PersonFind_PersonId.Text.Trim());
 
                 TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_Find, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));

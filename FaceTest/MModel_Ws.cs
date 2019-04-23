@@ -10,7 +10,7 @@ namespace FaceTest
 {
     public class MModel_Ws
     {
-        public delegate void DoCallBack(TaskInfo taskInfo);
+        public delegate void DoCallBack(MModel_Ws.ResultInfo resultInfo);
         public delegate void DoMessage(IWebSocketConnection socket, TaskInfo taskInfo);
         public delegate void DoShowInfo(string str);
 

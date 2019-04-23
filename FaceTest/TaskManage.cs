@@ -43,12 +43,13 @@ namespace FaceTest
         /// 发送任务后的回调方法
         /// </summary>
         /// <param name="taskInfo"></param>
-        public static void CallBack(TaskInfo taskInfo)
+        public static void CallBack(MModel_Ws.ResultInfo resultInfo)
         {
             //显示 
-            ShowInfo(string.Format("{0}:Type[{1}],[{2}]", "TaskCallBack", taskInfo.Type, taskInfo.GetString()));
+            //ShowInfo(string.Format("{0}:TaskName[{1}],"+System.Environment.NewLine+" info:[{2}]", "TaskCallBack", resultInfo.taskname, JsonConvert.SerializeObject(resultInfo)));
+            ShowInfo(string.Format("{0}:TaskName[{1}]", "TaskCallBack", resultInfo.taskname));
             //从任务列表中移除
-            taskList.Remove(taskInfo.GetTaskName());
+            taskList.Remove(resultInfo.taskname);
 
         }
         /// <summary>
