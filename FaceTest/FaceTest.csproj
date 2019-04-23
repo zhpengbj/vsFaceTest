@@ -110,6 +110,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Doc\WebSocket帮助文档.docx" />
     <None Include="Doc\xFace接口文档.docx" />
     <None Include="Doc\xFace接口文档.pdf" />
     <None Include="packages.config">
