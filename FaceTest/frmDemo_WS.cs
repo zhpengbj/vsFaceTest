@@ -1237,45 +1237,8 @@ namespace FaceTest
         }
         private void SendDevRefreshData()
         {
-            tb_MachineCode.Text = "";
-            try
-            {
-                // button9.Enabled = false;
-                string postStr = string.Format("pass={0}", Pass);
-                //string urlOper = @"/person/createOrUpdate";
-                string urlOper = @"/refresh";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Refresh, Guid.NewGuid().ToString(), tb_DeviceNo.Text, ""));
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        tb_MachineCode.Text = res.data;
-                        showMsg("refresh 成功:" + res.msg + "********************************");
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-            }
-            finally
-            {
-                // button9.Enabled = true;
-
-            }
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -1851,151 +1814,39 @@ namespace FaceTest
         }
         private void button15_Click(object sender, EventArgs e)
         {
-            Pass = tb_Pass.Text;
-            try
-            {
-                button15.Enabled = false;
-                PassTimes _PassTimes = GetNewPassTimes1();
-                string postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
-                string urlOper = @"/passtime/createOrUpdate";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            PassTimes _PassTimes = GetNewPassTimes1();
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
+            string postStr = string.Format("{0}", JsonConvert.SerializeObject(_PassTimes));
 
-                //2
-                _PassTimes = GetNewPassTimes2();
-                postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
-                urlOper = @"/passtime/createOrUpdate";
-                url = string.Format(@"{0}{1}", Url, urlOper);
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_PassTime_CreateOrUpdate, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                ReturnStr = "";
-                b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
 
-                //3
-                _PassTimes = GetNewPassTimes4();
-                postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
-                urlOper = @"/passtime/createOrUpdate";
-                url = string.Format(@"{0}{1}", Url, urlOper);
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            _PassTimes = GetNewPassTimes2();
 
-                ReturnStr = "";
-                b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
+            postStr = string.Format("{0}", JsonConvert.SerializeObject(_PassTimes));
 
-            }
-            finally
-            {
-                button15.Enabled = true;
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_PassTime_CreateOrUpdate, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-            }
+
+            _PassTimes = GetNewPassTimes3();
+
+            postStr = string.Format("{0}", JsonConvert.SerializeObject(_PassTimes));
+
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_PassTime_CreateOrUpdate, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
 
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
+            UserSetPassTime _UserSetPassTime = new UserSetPassTime();
+            _UserSetPassTime.userId = tb_SetPassTime_UserId.Text.Trim();
+            _UserSetPassTime.passTimeName = tb_SetPassTime_PassTimeName.Text.Trim();
 
-            Pass = tb_Pass.Text;
-            try
-            {
-                button15.Enabled = false;
-                UserSetPassTime _UserSetPassTime = new UserSetPassTime();
-                _UserSetPassTime.userId = tb_SetPassTime_UserId.Text.Trim();
-                _UserSetPassTime.passTimeName = tb_SetPassTime_PassTimeName.Text.Trim();
-                string postStr = string.Format("pass={0}&usersetpasstime={1}", Pass, JsonConvert.SerializeObject(_UserSetPassTime));
-                string urlOper = @"/user/setpasstime";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            string postStr = string.Format("{0}", JsonConvert.SerializeObject(_UserSetPassTime));
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("set user passtime 成功");
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_PassTime_Delete, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                        //处理完成后，发消息给设备更新数据
-                        SendDevRefreshData();
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
-
-            }
-            finally
-            {
-                button15.Enabled = true;
-
-            }
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -2048,41 +1899,10 @@ namespace FaceTest
 
         private void button18_Click(object sender, EventArgs e)
         {
-            Pass = tb_Pass.Text;
-            try
-            {
-                button18.Enabled = false;
-                string postStr = string.Format("pass={0}&passtimename={1}", Pass, tb_DeletePassTimeName.Text.Trim());
-                string urlOper = @"/passtime/delete";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg(string.Format("passtime delete[{0}] 成功", tb_DeletePassTimeName.Text.Trim()));
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-            }
-            finally
-            {
-                button18.Enabled = true;
+            string postStr = string.Format("{0}", tb_DeletePassTimeName.Text.Trim());
 
-            }
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_PassTime_Delete, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -2092,7 +1912,7 @@ namespace FaceTest
             person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
             person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
 
-            string postStr = string.Format("pass={0}&person={1}", tb_Pass.Text, JsonConvert.SerializeObject(person));
+            string postStr = string.Format("{0}", JsonConvert.SerializeObject(person));
 
             TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_CreateOrUpdate,Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
@@ -2100,131 +1920,36 @@ namespace FaceTest
 
         private void button20_Click(object sender, EventArgs e)
         {
+            string postStr = string.Format("{0}", tb_PersonDelete_PersonId.Text.Trim());
 
-            Pass = tb_Pass.Text;
-            try
-            {
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_Delete, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                button20.Enabled = false;
-                //id如果传入-1,则会把人员和照片全部删除
-                //id可以传入多个，按','分隔，
-                string postStr = string.Format("pass={0}&id={1}", Pass, tb_PersonDelete_PersonId.Text.Trim());
-                string urlOper = @"/person/delete";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
-
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("person delete 成功");
-
-                        //处理完成后，发消息给设备更新数据
-                        SendDevRefreshData();
-                    }
-                    else
-                    {
-                        //-1:参数异常:id传入为空
-                        //-2:参数异常:按','转化成string[]出错
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
-
-            }
-            finally
-            {
-                button20.Enabled = true;
-
-            }
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
+            string postStr = string.Format("{0}", tb_PersonFind_PersonId.Text.Trim());
 
-            try
-            {
-                string postStr = string.Format("{0}", tb_PersonFind_PersonId.Text.Trim());
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_Find, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_Find, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
-
-            }
-            finally
-            {
-                button21.Enabled = true;
-
-            }
         }
+
         private string FaceImageFileName = "";
         private void button22_Click(object sender, EventArgs e)
         {
+            Face face = new Face();
+            face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
+            face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
+            face.direct = 0;
+            face.imageId = string.Format("{0}_{1}_{2}", face.userId, face.userName, face.direct);
+            //face.faceImageFileName = FaceImageFileName;// pictureBox2.ImageLocation;
+            face.imageBase64 = ImgToBase64String(pictureBox2.ImageLocation);
+            face.imageKey = GetFileMd5(pictureBox2.ImageLocation);
 
-            Pass = tb_Pass.Text;
-            try
-            {
-                button22.Enabled = false;
-                Face face = new Face();
-                face.userId = tb_FaceAddOrUpdate_PersonId.Text.Trim();
-                face.userName = tb_FaceAddOrUpdate_PersonName.Text.Trim();
-                face.direct = 0;
-                face.imageId = string.Format("{0}_{1}_{2}", face.userId, face.userName, face.direct);
-                //face.faceImageFileName = FaceImageFileName;// pictureBox2.ImageLocation;
-                face.imageBase64 = ImgToBase64String(pictureBox2.ImageLocation);
-                face.imageKey = GetFileMd5(pictureBox2.ImageLocation);
-                string postStr = string.Format("pass={0}&face={1}", Pass, JsonConvert.SerializeObject(face));
-                string urlOper = @"/face/createOrUpdate";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            string postStr = string.Format("{0}", JsonConvert.SerializeObject(face));
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("face createOrUpdate 成功");
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Face_CreateOrUpdate, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                        //处理完成后，发消息给设备更新数据
-                        SendDevRefreshData();
-                    }
-                    else
-                    {
-                        //-1:参数异常:person传入为空
-                        //-2:参数异常:传入的person字符串转化成对象出错
-                        //-3:参数异常:传入的ID格式非法，格式：[A-Za-z0-9]{0,32}
-                        //-4:参数异常:系统异常
-
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
-
-            }
-            finally
-            {
-                button22.Enabled = true;
-
-            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -2255,54 +1980,10 @@ namespace FaceTest
 
         private void button23_Click(object sender, EventArgs e)
         {
+            string postStr = string.Format("{0}", tb_FaceDelete_FaceId.Text.Trim());
 
-            Pass = tb_Pass.Text;
-            try
-            {
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Face_Delete, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                button23.Enabled = false;
-                //id如果传入-1,则会把人员和照片全部删除
-                //id可以传入多个，按','分隔，
-                string postStr = string.Format("pass={0}&faceId={1}", Pass, tb_FaceDelete_FaceId.Text.Trim());
-                string urlOper = @"/face/delete";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
-
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("face delete 成功");
-
-                        //处理完成后，发消息给设备更新数据
-                        SendDevRefreshData();
-                    }
-                    else
-                    {
-                        //-1:参数异常:id传入为空
-                        //-2:参数异常:按','转化成string[]出错
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
-
-            }
-            finally
-            {
-                button23.Enabled = true;
-
-            }
         }
 
         private void tb_FaceAddOrUpdate_PersonId_TextChanged(object sender, EventArgs e)
@@ -2312,64 +1993,10 @@ namespace FaceTest
 
         private void button24_Click(object sender, EventArgs e)
         {
-            Pass = tb_Pass.Text;
-            try
-            {
+            string postStr = string.Format("{0}", tb_FaceFind_FaceId.Text.Trim());
 
-                button24.Enabled = false;
-                //id如果传入-1,则会返回所有人员信息
-                string postStr = string.Format("pass={0}&id={1}", Pass, tb_FaceFind_FaceId.Text.Trim());
-                string urlOper = @"/face/find";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Face_Find, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        showMsg("face find 成功");
-                        List<FaceFind> list = JsonConvert.DeserializeObject<List<FaceFind>>(res.data);
-
-                        if (list != null)
-                        {
-                            int personid = 0;
-                            foreach (FaceFind one in list)
-                            {
-                                personid++;
-                                showMsg(string.Format("face[{0}]:{1}", personid, one.ToString()));
-                            }
-                        }
-                        else
-                        {
-                            showMsg("无数据");
-                        }
-
-                    }
-                    else
-                    {
-                        //-1:参数异常:id传入为空
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-
-
-            }
-            finally
-            {
-                button24.Enabled = true;
-
-            }
         }
 
         private void button25_Click(object sender, EventArgs e)
@@ -3505,6 +3132,11 @@ namespace FaceTest
         private void frmDemo_Ws_FormClosed(object sender, FormClosedEventArgs e)
         {
 
+        }
+
+        private void button49_Click(object sender, EventArgs e)
+        {
+            SendDevRefreshData();
         }
     }
     

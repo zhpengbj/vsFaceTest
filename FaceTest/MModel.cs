@@ -367,12 +367,12 @@ namespace FaceTest
         public string faceId { get; set; }
         public string personId { get; set; }
         public int direct { get; set; }
-        public string faceImageFaileName { get; set; }
+        //public string faceImageFaileName { get; set; }
         public string faceImageKey { get; set; }
         public override string ToString()
         {
-            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageFaileName:[{3}],faceImageKey:[{4}]",
-                faceId, personId, direct, faceImageFaileName, faceImageKey);
+            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageKey:[{3}]",
+                faceId, personId, direct, faceImageKey);
         }
 
     }

@@ -61,11 +61,13 @@ namespace FaceTest
                     ShowInfo("Open!");
                     //allSockets.Add(socket);
                     string clientUrl = socket.ConnectionInfo.ClientIpAddress + ":" + socket.ConnectionInfo.ClientPort;
-                    string deviceNo = "";
+                    string deviceMachineCode = "";
+                    string deviceKey = "";
                     try
                     {
                         //从headers得到机器码
-                        deviceNo = socket.ConnectionInfo.Headers["deviceno"];
+                        deviceMachineCode = socket.ConnectionInfo.Headers["deviceMachineCode"];
+                        deviceKey = socket.ConnectionInfo.Headers["deviceKey"];
                         }
                     catch
                     {
@@ -73,24 +75,24 @@ namespace FaceTest
                     }
                     ShowInfo(DateTime.Now.ToString() + "|服务器:和客户端:" + clientUrl + " 建立WebSock连接！");
                     //判断是否可以接入
-                    if (!string.IsNullOrEmpty(deviceNo))
+                    if (!string.IsNullOrEmpty(deviceKey))
                     {
-                        bool isOk = ValidDevices.Keys.Contains(deviceNo);
+                        bool isOk = ValidDevices.Keys.Contains(deviceKey);
                         ShowInfo(string.Format("{0}|服务器:请求接入结果[{1}]", DateTime.Now.ToString(), isOk));
                         if (isOk)
                         {
-                            if (dic_Sockets.Keys.Contains(deviceNo)){
-                                dic_Sockets[deviceNo]= socket;
+                            if (dic_Sockets.Keys.Contains(deviceKey)){
+                                dic_Sockets[deviceKey] = socket;
                             }
                             else
                             {
-                                dic_Sockets.Add(deviceNo, socket);
+                                dic_Sockets.Add(deviceKey, socket);
                             }
                             return;
                         }
                     }else
                     {
-                        ShowInfo(string.Format("{0}|服务器:请求接入失败,原因:未传入DeviceNo", DateTime.Now.ToString()));
+                        ShowInfo(string.Format("{0}|服务器:请求接入失败,原因:未传入DeviceKey", DateTime.Now.ToString()));
                     }
                     //如果不是有效的设备，则断开
                     socket.Close();

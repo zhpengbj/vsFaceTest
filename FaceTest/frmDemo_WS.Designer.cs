@@ -125,20 +125,18 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tb_SetNet_Ip = new System.Windows.Forms.TextBox();
             this.btn_SetIp = new System.Windows.Forms.Button();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_Pass = new System.Windows.Forms.TextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
             this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
             this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
             this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
             this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
             this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
@@ -151,9 +149,12 @@
             this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
             this.tb_FaceAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
             this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
+            this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_DeviceNo = new System.Windows.Forms.TextBox();
+            this.button49 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -205,7 +206,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 36);
             this.button3.TabIndex = 3;
-            this.button3.Text = "接入设备编号NO";
+            this.button3.Text = "接入设备编号";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -720,7 +721,7 @@
             // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(15, 168);
+            this.button28.Location = new System.Drawing.Point(17, 150);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(214, 36);
             this.button28.TabIndex = 70;
@@ -743,7 +744,7 @@
             // 
             // button27
             // 
-            this.button27.Location = new System.Drawing.Point(235, 168);
+            this.button27.Location = new System.Drawing.Point(235, 150);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(137, 36);
             this.button27.TabIndex = 73;
@@ -1121,6 +1122,15 @@
             this.btn_SetIp.UseVisualStyleBackColor = true;
             this.btn_SetIp.Click += new System.EventHandler(this.btn_SetIp_Click);
             // 
+            // tb_Pass
+            // 
+            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
+            this.tb_Pass.Name = "tb_Pass";
+            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
+            this.tb_Pass.TabIndex = 7;
+            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.tb_DevRunLogUrl);
@@ -1153,112 +1163,6 @@
             this.tabPage6.Text = "回调设置";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 441);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(309, 15);
-            this.label14.TabIndex = 96;
-            this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.button30);
-            this.tabPage7.Controls.Add(this.button31);
-            this.tabPage7.Controls.Add(this.textBox1);
-            this.tabPage7.Controls.Add(this.button42);
-            this.tabPage7.Controls.Add(this.button41);
-            this.tabPage7.Controls.Add(this.textBox2);
-            this.tabPage7.Location = new System.Drawing.Point(4, 25);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(439, 555);
-            this.tabPage7.TabIndex = 2;
-            this.tabPage7.Text = "参数设置";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.button27);
-            this.tabPage8.Controls.Add(this.label13);
-            this.tabPage8.Controls.Add(this.button19);
-            this.tabPage8.Controls.Add(this.button20);
-            this.tabPage8.Controls.Add(this.label4);
-            this.tabPage8.Controls.Add(this.button18);
-            this.tabPage8.Controls.Add(this.label3);
-            this.tabPage8.Controls.Add(this.button28);
-            this.tabPage8.Controls.Add(this.label2);
-            this.tabPage8.Controls.Add(this.label6);
-            this.tabPage8.Controls.Add(this.label5);
-            this.tabPage8.Controls.Add(this.button21);
-            this.tabPage8.Controls.Add(this.button16);
-            this.tabPage8.Controls.Add(this.label11);
-            this.tabPage8.Controls.Add(this.button15);
-            this.tabPage8.Controls.Add(this.label7);
-            this.tabPage8.Controls.Add(this.button24);
-            this.tabPage8.Controls.Add(this.button22);
-            this.tabPage8.Controls.Add(this.label10);
-            this.tabPage8.Controls.Add(this.pictureBox2);
-            this.tabPage8.Controls.Add(this.label9);
-            this.tabPage8.Controls.Add(this.label8);
-            this.tabPage8.Controls.Add(this.button23);
-            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
-            this.tabPage8.Controls.Add(this.tb_PersonDelete_PersonId);
-            this.tabPage8.Controls.Add(this.tb_DeletePassTimeName);
-            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonId);
-            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonName);
-            this.tabPage8.Controls.Add(this.tb_SetPassTime_PassTimeName);
-            this.tabPage8.Controls.Add(this.tb_SetPassTime_UserId);
-            this.tabPage8.Controls.Add(this.tb_PersonFind_PersonId);
-            this.tabPage8.Controls.Add(this.tb_FaceFind_FaceId);
-            this.tabPage8.Controls.Add(this.tb_FaceDelete_FaceId);
-            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonId);
-            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonName);
-            this.tabPage8.Location = new System.Drawing.Point(4, 25);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(439, 555);
-            this.tabPage8.TabIndex = 3;
-            this.tabPage8.Text = "同步数据";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.tb_Path);
-            this.tabPage9.Controls.Add(this.cb_saveImageKey);
-            this.tabPage9.Controls.Add(this.label12);
-            this.tabPage9.Controls.Add(this.button6);
-            this.tabPage9.Controls.Add(this.button5);
-            this.tabPage9.Controls.Add(this.label1);
-            this.tabPage9.Controls.Add(this.button2);
-            this.tabPage9.Controls.Add(this.tb_SplitChar);
-            this.tabPage9.Location = new System.Drawing.Point(4, 25);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(439, 555);
-            this.tabPage9.TabIndex = 4;
-            this.tabPage9.Text = "同步数据 -简易";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // lb_CardNo
-            // 
-            this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(475, 264);
-            this.lb_CardNo.Name = "lb_CardNo";
-            this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
-            this.lb_CardNo.TabIndex = 101;
-            this.lb_CardNo.Text = "lb_CardNo";
-            // 
-            // tb_Pass
-            // 
-            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
-            this.tb_Pass.Name = "tb_Pass";
-            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
-            this.tb_Pass.TabIndex = 7;
-            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
-            // 
             // tb_DevRunLogUrl
             // 
             this.tb_DevRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1267,6 +1171,15 @@
             this.tb_DevRunLogUrl.Size = new System.Drawing.Size(337, 25);
             this.tb_DevRunLogUrl.TabIndex = 97;
             this.tb_DevRunLogUrl.Text = global::FaceTest.Properties.Settings.Default.tb_devRunLogUrl;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(8, 441);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(309, 15);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
             // 
             // tb_CallBackVerifyUrl
             // 
@@ -1328,6 +1241,68 @@
             this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
             this.tb_CallBackUrl_His.TabIndex = 66;
             this.tb_CallBackUrl_His.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl_His;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.button30);
+            this.tabPage7.Controls.Add(this.button31);
+            this.tabPage7.Controls.Add(this.textBox1);
+            this.tabPage7.Controls.Add(this.button42);
+            this.tabPage7.Controls.Add(this.button41);
+            this.tabPage7.Controls.Add(this.textBox2);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(439, 555);
+            this.tabPage7.TabIndex = 2;
+            this.tabPage7.Text = "参数设置";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.button49);
+            this.tabPage8.Controls.Add(this.button27);
+            this.tabPage8.Controls.Add(this.label13);
+            this.tabPage8.Controls.Add(this.button19);
+            this.tabPage8.Controls.Add(this.button20);
+            this.tabPage8.Controls.Add(this.label4);
+            this.tabPage8.Controls.Add(this.button18);
+            this.tabPage8.Controls.Add(this.label3);
+            this.tabPage8.Controls.Add(this.button28);
+            this.tabPage8.Controls.Add(this.label2);
+            this.tabPage8.Controls.Add(this.label6);
+            this.tabPage8.Controls.Add(this.label5);
+            this.tabPage8.Controls.Add(this.button21);
+            this.tabPage8.Controls.Add(this.button16);
+            this.tabPage8.Controls.Add(this.label11);
+            this.tabPage8.Controls.Add(this.button15);
+            this.tabPage8.Controls.Add(this.label7);
+            this.tabPage8.Controls.Add(this.button24);
+            this.tabPage8.Controls.Add(this.button22);
+            this.tabPage8.Controls.Add(this.label10);
+            this.tabPage8.Controls.Add(this.pictureBox2);
+            this.tabPage8.Controls.Add(this.label9);
+            this.tabPage8.Controls.Add(this.label8);
+            this.tabPage8.Controls.Add(this.button23);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_CardNo);
+            this.tabPage8.Controls.Add(this.tb_PersonDelete_PersonId);
+            this.tabPage8.Controls.Add(this.tb_DeletePassTimeName);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonId);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PersonName);
+            this.tabPage8.Controls.Add(this.tb_SetPassTime_PassTimeName);
+            this.tabPage8.Controls.Add(this.tb_SetPassTime_UserId);
+            this.tabPage8.Controls.Add(this.tb_PersonFind_PersonId);
+            this.tabPage8.Controls.Add(this.tb_FaceFind_FaceId);
+            this.tabPage8.Controls.Add(this.tb_FaceDelete_FaceId);
+            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonId);
+            this.tabPage8.Controls.Add(this.tb_FaceAddOrUpdate_PersonName);
+            this.tabPage8.Location = new System.Drawing.Point(4, 25);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(439, 555);
+            this.tabPage8.TabIndex = 3;
+            this.tabPage8.Text = "同步数据";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
             // tb_PersonAddOrUpdate_CardNo
             // 
@@ -1438,6 +1413,24 @@
             this.tb_FaceAddOrUpdate_PersonName.TabIndex = 58;
             this.tb_FaceAddOrUpdate_PersonName.Text = global::FaceTest.Properties.Settings.Default.tb_FaceAddOrUpdate_PersonName;
             // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.tb_Path);
+            this.tabPage9.Controls.Add(this.cb_saveImageKey);
+            this.tabPage9.Controls.Add(this.label12);
+            this.tabPage9.Controls.Add(this.button6);
+            this.tabPage9.Controls.Add(this.button5);
+            this.tabPage9.Controls.Add(this.label1);
+            this.tabPage9.Controls.Add(this.button2);
+            this.tabPage9.Controls.Add(this.tb_SplitChar);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(439, 555);
+            this.tabPage9.TabIndex = 4;
+            this.tabPage9.Text = "同步数据 -简易";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
             // tb_Path
             // 
             this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1456,6 +1449,15 @@
             this.tb_SplitChar.TabIndex = 71;
             this.tb_SplitChar.Text = global::FaceTest.Properties.Settings.Default.tb_SplitChar;
             // 
+            // lb_CardNo
+            // 
+            this.lb_CardNo.AutoSize = true;
+            this.lb_CardNo.Location = new System.Drawing.Point(475, 264);
+            this.lb_CardNo.Name = "lb_CardNo";
+            this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
+            this.lb_CardNo.TabIndex = 101;
+            this.lb_CardNo.Text = "lb_CardNo";
+            // 
             // tb_DeviceNo
             // 
             this.tb_DeviceNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DeviceNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1464,6 +1466,16 @@
             this.tb_DeviceNo.Size = new System.Drawing.Size(206, 25);
             this.tb_DeviceNo.TabIndex = 6;
             this.tb_DeviceNo.Text = global::FaceTest.Properties.Settings.Default.tb_DeviceNo;
+            // 
+            // button49
+            // 
+            this.button49.Location = new System.Drawing.Point(287, 6);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(149, 36);
+            this.button49.TabIndex = 100;
+            this.button49.Text = "刷新设备数据";
+            this.button49.UseVisualStyleBackColor = true;
+            this.button49.Click += new System.EventHandler(this.button49_Click);
             // 
             // frmDemo_Ws
             // 
@@ -1642,6 +1654,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox tb_SetNet_Ip;
         private System.Windows.Forms.Button btn_SetIp;
+        private System.Windows.Forms.Button button49;
     }
 }
 
