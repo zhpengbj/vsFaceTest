@@ -137,6 +137,7 @@
             this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.button49 = new System.Windows.Forms.Button();
             this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
             this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
             this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
@@ -154,7 +155,6 @@
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_DeviceNo = new System.Windows.Forms.TextBox();
-            this.button49 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -727,6 +727,7 @@
             this.button28.TabIndex = 70;
             this.button28.Text = "同步人员、照片[2]";
             this.button28.UseVisualStyleBackColor = true;
+            this.button28.Visible = false;
             this.button28.Click += new System.EventHandler(this.button28_Click);
             // 
             // label12
@@ -750,6 +751,7 @@
             this.button27.TabIndex = 73;
             this.button27.Text = "循环";
             this.button27.UseVisualStyleBackColor = true;
+            this.button27.Visible = false;
             this.button27.Click += new System.EventHandler(this.button27_Click_1);
             // 
             // button29
@@ -1304,6 +1306,16 @@
             this.tabPage8.Text = "同步数据";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // button49
+            // 
+            this.button49.Location = new System.Drawing.Point(287, 6);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(149, 36);
+            this.button49.TabIndex = 100;
+            this.button49.Text = "刷新设备数据";
+            this.button49.UseVisualStyleBackColor = true;
+            this.button49.Click += new System.EventHandler(this.button49_Click);
+            // 
             // tb_PersonAddOrUpdate_CardNo
             // 
             this.tb_PersonAddOrUpdate_CardNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_CardNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1466,16 +1478,6 @@
             this.tb_DeviceNo.Size = new System.Drawing.Size(206, 25);
             this.tb_DeviceNo.TabIndex = 6;
             this.tb_DeviceNo.Text = global::FaceTest.Properties.Settings.Default.tb_DeviceNo;
-            // 
-            // button49
-            // 
-            this.button49.Location = new System.Drawing.Point(287, 6);
-            this.button49.Name = "button49";
-            this.button49.Size = new System.Drawing.Size(149, 36);
-            this.button49.TabIndex = 100;
-            this.button49.Text = "刷新设备数据";
-            this.button49.UseVisualStyleBackColor = true;
-            this.button49.Click += new System.EventHandler(this.button49_Click);
             // 
             // frmDemo_Ws
             // 
