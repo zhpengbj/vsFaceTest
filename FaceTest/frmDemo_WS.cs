@@ -1845,7 +1845,7 @@ namespace FaceTest
 
             string postStr = string.Format("{0}", JsonConvert.SerializeObject(_UserSetPassTime));
 
-            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_PassTime_Delete, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_User_SetPassTime, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 
         }
 
