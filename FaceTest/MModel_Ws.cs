@@ -63,17 +63,17 @@ namespace FaceTest
             [Description("查找人员")]
             D_Person_Find = 203,
             /// <summary>
-            /// 新增或更新人员 204
+            /// 新增或更新照片 204
             /// </summary>
             [Description("新增或更新照片")]
             D_Face_CreateOrUpdate = 204,
             /// <summary>
-            /// 删除人员 205
+            /// 删除照片 205
             /// </summary>
             [Description("删除照片")]
             D_Face_Delete = 205,
             /// <summary>
-            /// 查找人员 206
+            /// 查找照片 206
             /// </summary>
             [Description("查找照片")]
             D_Face_Find = 206,

@@ -31,7 +31,9 @@ namespace FaceTest
             }
         }
         #endregion
-
+        /// <summary>
+        /// 任务的回调方法
+        /// </summary>
         private static Dictionary<string, TaskInfo> taskList = new Dictionary<string, TaskInfo>();
         public static void AddTask(TaskInfo taskInfo)
         {
