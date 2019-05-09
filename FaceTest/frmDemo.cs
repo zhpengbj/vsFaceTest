@@ -658,7 +658,7 @@ namespace FaceTest
             result.msg = string.Format("你好,{0}" + Environment.NewLine + "验证{1}【{2}】",
                 v != null ? v.userName : "未知用户",
                 result.success ? "成功" : "失败",
-                result.success ? personCheckResult.GetDescription() : ""
+                result.success ? "":personCheckResult.GetDescription() 
                 );
             result.msgtype = (int)personCheckResult;
             return JsonConvert.SerializeObject(result);
@@ -691,7 +691,7 @@ namespace FaceTest
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
             //重置用户默认参数
-            //Settings.Default.Reset();
+            Settings.Default.Reset();
 
             LoadData();
             //设置照片路径
@@ -1794,7 +1794,7 @@ namespace FaceTest
         {
             PassTimes res = new PassTimes();
 
-            res.Name = "上下班(学)";
+            res.Name = "Test";
             res.passTimeList = new List<PassTime>();
             PassTime _PassTime = new PassTime();
             _PassTime.WeekList = new List<string>();
@@ -1808,16 +1808,16 @@ namespace FaceTest
             //时段
             PassTimeOne _PassTimeOne = new PassTimeOne();
             _PassTimeOne.Dt1 = "07:00:00";
-            _PassTimeOne.Dt2 = "08:00:00";
-            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
-            _PassTimeOne = new PassTimeOne();
-            _PassTimeOne.Dt1 = "11:00:00";
-            _PassTimeOne.Dt2 = "13:00:00";
-            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
-            _PassTimeOne = new PassTimeOne();
-            _PassTimeOne.Dt1 = "16:00:00";
             _PassTimeOne.Dt2 = "18:00:00";
             _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //_PassTimeOne = new PassTimeOne();
+            //_PassTimeOne.Dt1 = "11:00:00";
+            //_PassTimeOne.Dt2 = "13:00:00";
+            //_PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //_PassTimeOne = new PassTimeOne();
+            //_PassTimeOne.Dt1 = "16:00:00";
+            //_PassTimeOne.Dt2 = "18:00:00";
+            //_PassTime.PassTimeByWeekList.Add(_PassTimeOne);
             //加入
             res.passTimeList.Add(_PassTime);
             return res;
@@ -1909,7 +1909,7 @@ namespace FaceTest
                 }
 
                 //3
-                _PassTimes = GetNewPassTimes4();
+                _PassTimes = GetNewPassTimes3();
                 postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
                 urlOper = @"/passtime/createOrUpdate";
                 url = string.Format(@"{0}{1}", Url, urlOper);

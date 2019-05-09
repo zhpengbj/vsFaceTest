@@ -37,7 +37,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.101:8090")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8090")]
         public string tb_Url {
             get {
                 return ((string)(this["tb_Url"]));
@@ -61,7 +61,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/VerifyHandler.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/VerifyHandler.ashx")]
         public string tb_CallBackVerifyUrl {
             get {
                 return ((string)(this["tb_CallBackVerifyUrl"]));
@@ -73,7 +73,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/Handler.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/Handler.ashx")]
         public string tb_CallBackUrl {
             get {
                 return ((string)(this["tb_CallBackUrl"]));
@@ -85,7 +85,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/GetUpdate.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/GetUpdate.ashx")]
         public string bt_GetApkVersion {
             get {
                 return ((string)(this["bt_GetApkVersion"]));
@@ -97,7 +97,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/GetApkFile.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/GetApkFile.ashx")]
         public string tb_DownApkUrl {
             get {
                 return ((string)(this["tb_DownApkUrl"]));
@@ -133,7 +133,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/HeartBeat.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/HeartBeat.ashx")]
         public string tb_HeartBeatUrl {
             get {
                 return ((string)(this["tb_HeartBeatUrl"]));
@@ -253,7 +253,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/Handler_His.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/Handler_His.ashx")]
         public string tb_CallBackUrl_His {
             get {
                 return ((string)(this["tb_CallBackUrl_His"]));
@@ -277,7 +277,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.8.100:8091/DevRunLog.ashx")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/DevRunLog.ashx")]
         public string tb_devRunLogUrl {
             get {
                 return ((string)(this["tb_devRunLogUrl"]));
@@ -313,7 +313,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ws://192.168.8.100:8092")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ws://192.168.0.101:8092")]
         public string tb_wsUrl {
             get {
                 return ((string)(this["tb_wsUrl"]));

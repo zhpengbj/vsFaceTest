@@ -125,18 +125,25 @@
             this.label15 = new System.Windows.Forms.Label();
             this.tb_SetNet_Ip = new System.Windows.Forms.TextBox();
             this.btn_SetIp = new System.Windows.Forms.Button();
-            this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.button53 = new System.Windows.Forms.Button();
+            this.button52 = new System.Windows.Forms.Button();
+            this.button49 = new System.Windows.Forms.Button();
+            this.lb_CardNo = new System.Windows.Forms.Label();
+            this.button50 = new System.Windows.Forms.Button();
+            this.tb_Pass = new System.Windows.Forms.TextBox();
+            this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackUrl = new System.Windows.Forms.TextBox();
             this.bt_GetApkVersion = new System.Windows.Forms.TextBox();
             this.tb_DownApkUrl = new System.Windows.Forms.TextBox();
             this.tb_HeartBeatUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackUrl_His = new System.Windows.Forms.TextBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
             this.tb_PersonDelete_PersonId = new System.Windows.Forms.TextBox();
             this.tb_DeletePassTimeName = new System.Windows.Forms.TextBox();
@@ -149,17 +156,10 @@
             this.tb_FaceDelete_FaceId = new System.Windows.Forms.TextBox();
             this.tb_FaceAddOrUpdate_PersonId = new System.Windows.Forms.TextBox();
             this.tb_FaceAddOrUpdate_PersonName = new System.Windows.Forms.TextBox();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.button53 = new System.Windows.Forms.Button();
-            this.button52 = new System.Windows.Forms.Button();
-            this.button49 = new System.Windows.Forms.Button();
             this.tb_wsUrl = new System.Windows.Forms.TextBox();
-            this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_Url = new System.Windows.Forms.TextBox();
-            this.button50 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1129,15 +1129,6 @@
             this.btn_SetIp.UseVisualStyleBackColor = true;
             this.btn_SetIp.Click += new System.EventHandler(this.btn_SetIp_Click);
             // 
-            // tb_Pass
-            // 
-            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
-            this.tb_Pass.Name = "tb_Pass";
-            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
-            this.tb_Pass.TabIndex = 7;
-            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
-            // 
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.tb_DevRunLogUrl);
@@ -1170,15 +1161,6 @@
             this.tabPage6.Text = "回调设置";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // tb_DevRunLogUrl
-            // 
-            this.tb_DevRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_DevRunLogUrl.Location = new System.Drawing.Point(11, 459);
-            this.tb_DevRunLogUrl.Name = "tb_DevRunLogUrl";
-            this.tb_DevRunLogUrl.Size = new System.Drawing.Size(337, 25);
-            this.tb_DevRunLogUrl.TabIndex = 97;
-            this.tb_DevRunLogUrl.Text = global::FaceTest.Properties.Settings.Default.tb_devRunLogUrl;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1187,67 +1169,6 @@
             this.label14.Size = new System.Drawing.Size(309, 15);
             this.label14.TabIndex = 96;
             this.label14.Text = "设置运行日志回调-APP启动、重启，设备重启";
-            // 
-            // tb_CallBackVerifyUrl
-            // 
-            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(11, 46);
-            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
-            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackVerifyUrl.TabIndex = 30;
-            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
-            // 
-            // tb_CallBackUrl
-            // 
-            this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl.Location = new System.Drawing.Point(10, 124);
-            this.tb_CallBackUrl.Name = "tb_CallBackUrl";
-            this.tb_CallBackUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackUrl.TabIndex = 15;
-            this.tb_CallBackUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
-            // 
-            // bt_GetApkVersion
-            // 
-            this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.bt_GetApkVersion.Location = new System.Drawing.Point(10, 257);
-            this.bt_GetApkVersion.Name = "bt_GetApkVersion";
-            this.bt_GetApkVersion.Size = new System.Drawing.Size(338, 25);
-            this.bt_GetApkVersion.TabIndex = 24;
-            this.bt_GetApkVersion.Text = global::FaceTest.Properties.Settings.Default.bt_GetApkVersion;
-            this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // tb_DownApkUrl
-            // 
-            this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_DownApkUrl.Location = new System.Drawing.Point(10, 325);
-            this.tb_DownApkUrl.Name = "tb_DownApkUrl";
-            this.tb_DownApkUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_DownApkUrl.TabIndex = 26;
-            this.tb_DownApkUrl.Text = global::FaceTest.Properties.Settings.Default.tb_DownApkUrl;
-            // 
-            // tb_HeartBeatUrl
-            // 
-            this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(10, 396);
-            this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
-            this.tb_HeartBeatUrl.Size = new System.Drawing.Size(338, 25);
-            this.tb_HeartBeatUrl.TabIndex = 36;
-            this.tb_HeartBeatUrl.Text = global::FaceTest.Properties.Settings.Default.tb_HeartBeatUrl;
-            // 
-            // tb_CallBackUrl_His
-            // 
-            this.tb_CallBackUrl_His.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl_His", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_CallBackUrl_His.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(10, 191);
-            this.tb_CallBackUrl_His.Name = "tb_CallBackUrl_His";
-            this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
-            this.tb_CallBackUrl_His.TabIndex = 66;
-            this.tb_CallBackUrl_His.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl_His;
             // 
             // tabPage7
             // 
@@ -1309,6 +1230,169 @@
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "同步数据";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.tb_Path);
+            this.tabPage9.Controls.Add(this.cb_saveImageKey);
+            this.tabPage9.Controls.Add(this.label12);
+            this.tabPage9.Controls.Add(this.button6);
+            this.tabPage9.Controls.Add(this.button5);
+            this.tabPage9.Controls.Add(this.label1);
+            this.tabPage9.Controls.Add(this.button2);
+            this.tabPage9.Controls.Add(this.tb_SplitChar);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(485, 555);
+            this.tabPage9.TabIndex = 4;
+            this.tabPage9.Text = "同步数据 -简易";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.button53);
+            this.tabPage10.Controls.Add(this.button52);
+            this.tabPage10.Controls.Add(this.button49);
+            this.tabPage10.Controls.Add(this.tb_wsUrl);
+            this.tabPage10.Location = new System.Drawing.Point(4, 25);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(485, 555);
+            this.tabPage10.TabIndex = 5;
+            this.tabPage10.Text = "Ws设置";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // button53
+            // 
+            this.button53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button53.Location = new System.Drawing.Point(42, 99);
+            this.button53.Name = "button53";
+            this.button53.Size = new System.Drawing.Size(233, 36);
+            this.button53.TabIndex = 93;
+            this.button53.Text = "打开WsDemo";
+            this.button53.UseVisualStyleBackColor = true;
+            this.button53.Click += new System.EventHandler(this.button53_Click);
+            // 
+            // button52
+            // 
+            this.button52.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button52.Location = new System.Drawing.Point(42, 6);
+            this.button52.Name = "button52";
+            this.button52.Size = new System.Drawing.Size(233, 36);
+            this.button52.TabIndex = 92;
+            this.button52.Text = "设置wsUrl，要重启APP才生效";
+            this.button52.UseVisualStyleBackColor = true;
+            this.button52.Click += new System.EventHandler(this.button52_Click);
+            // 
+            // button49
+            // 
+            this.button49.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button49.Location = new System.Drawing.Point(285, 6);
+            this.button49.Name = "button49";
+            this.button49.Size = new System.Drawing.Size(92, 36);
+            this.button49.TabIndex = 89;
+            this.button49.Text = "读取";
+            this.button49.UseVisualStyleBackColor = true;
+            this.button49.Click += new System.EventHandler(this.button49_Click);
+            // 
+            // lb_CardNo
+            // 
+            this.lb_CardNo.AutoSize = true;
+            this.lb_CardNo.Location = new System.Drawing.Point(511, 259);
+            this.lb_CardNo.Name = "lb_CardNo";
+            this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
+            this.lb_CardNo.TabIndex = 101;
+            this.lb_CardNo.Text = "lb_CardNo";
+            // 
+            // button50
+            // 
+            this.button50.Location = new System.Drawing.Point(511, 586);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(133, 36);
+            this.button50.TabIndex = 102;
+            this.button50.Text = "参数重置";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
+            // 
+            // tb_Pass
+            // 
+            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Pass.Location = new System.Drawing.Point(171, 22);
+            this.tb_Pass.Name = "tb_Pass";
+            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
+            this.tb_Pass.TabIndex = 7;
+            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            // 
+            // tb_DevRunLogUrl
+            // 
+            this.tb_DevRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DevRunLogUrl.Location = new System.Drawing.Point(11, 459);
+            this.tb_DevRunLogUrl.Name = "tb_DevRunLogUrl";
+            this.tb_DevRunLogUrl.Size = new System.Drawing.Size(337, 25);
+            this.tb_DevRunLogUrl.TabIndex = 97;
+            this.tb_DevRunLogUrl.Text = global::FaceTest.Properties.Settings.Default.tb_devRunLogUrl;
+            // 
+            // tb_CallBackVerifyUrl
+            // 
+            this.tb_CallBackVerifyUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackVerifyUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackVerifyUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackVerifyUrl.Location = new System.Drawing.Point(11, 46);
+            this.tb_CallBackVerifyUrl.Name = "tb_CallBackVerifyUrl";
+            this.tb_CallBackVerifyUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackVerifyUrl.TabIndex = 30;
+            this.tb_CallBackVerifyUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackVerifyUrl;
+            // 
+            // tb_CallBackUrl
+            // 
+            this.tb_CallBackUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl.Location = new System.Drawing.Point(10, 124);
+            this.tb_CallBackUrl.Name = "tb_CallBackUrl";
+            this.tb_CallBackUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackUrl.TabIndex = 15;
+            this.tb_CallBackUrl.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl;
+            // 
+            // bt_GetApkVersion
+            // 
+            this.bt_GetApkVersion.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "bt_GetApkVersion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.bt_GetApkVersion.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bt_GetApkVersion.Location = new System.Drawing.Point(10, 257);
+            this.bt_GetApkVersion.Name = "bt_GetApkVersion";
+            this.bt_GetApkVersion.Size = new System.Drawing.Size(338, 25);
+            this.bt_GetApkVersion.TabIndex = 24;
+            this.bt_GetApkVersion.Text = global::FaceTest.Properties.Settings.Default.bt_GetApkVersion;
+            this.bt_GetApkVersion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // tb_DownApkUrl
+            // 
+            this.tb_DownApkUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_DownApkUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_DownApkUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_DownApkUrl.Location = new System.Drawing.Point(10, 325);
+            this.tb_DownApkUrl.Name = "tb_DownApkUrl";
+            this.tb_DownApkUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_DownApkUrl.TabIndex = 26;
+            this.tb_DownApkUrl.Text = global::FaceTest.Properties.Settings.Default.tb_DownApkUrl;
+            // 
+            // tb_HeartBeatUrl
+            // 
+            this.tb_HeartBeatUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_HeartBeatUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_HeartBeatUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_HeartBeatUrl.Location = new System.Drawing.Point(10, 396);
+            this.tb_HeartBeatUrl.Name = "tb_HeartBeatUrl";
+            this.tb_HeartBeatUrl.Size = new System.Drawing.Size(338, 25);
+            this.tb_HeartBeatUrl.TabIndex = 36;
+            this.tb_HeartBeatUrl.Text = global::FaceTest.Properties.Settings.Default.tb_HeartBeatUrl;
+            // 
+            // tb_CallBackUrl_His
+            // 
+            this.tb_CallBackUrl_His.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_CallBackUrl_His", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_CallBackUrl_His.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_CallBackUrl_His.Location = new System.Drawing.Point(10, 191);
+            this.tb_CallBackUrl_His.Name = "tb_CallBackUrl_His";
+            this.tb_CallBackUrl_His.Size = new System.Drawing.Size(338, 25);
+            this.tb_CallBackUrl_His.TabIndex = 66;
+            this.tb_CallBackUrl_His.Text = global::FaceTest.Properties.Settings.Default.tb_CallBackUrl_His;
             // 
             // tb_PersonAddOrUpdate_CardNo
             // 
@@ -1419,24 +1503,6 @@
             this.tb_FaceAddOrUpdate_PersonName.TabIndex = 58;
             this.tb_FaceAddOrUpdate_PersonName.Text = global::FaceTest.Properties.Settings.Default.tb_FaceAddOrUpdate_PersonName;
             // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.tb_Path);
-            this.tabPage9.Controls.Add(this.cb_saveImageKey);
-            this.tabPage9.Controls.Add(this.label12);
-            this.tabPage9.Controls.Add(this.button6);
-            this.tabPage9.Controls.Add(this.button5);
-            this.tabPage9.Controls.Add(this.label1);
-            this.tabPage9.Controls.Add(this.button2);
-            this.tabPage9.Controls.Add(this.tb_SplitChar);
-            this.tabPage9.Location = new System.Drawing.Point(4, 25);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(485, 555);
-            this.tabPage9.TabIndex = 4;
-            this.tabPage9.Text = "同步数据 -简易";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
             // tb_Path
             // 
             this.tb_Path.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Path", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1455,53 +1521,6 @@
             this.tb_SplitChar.TabIndex = 71;
             this.tb_SplitChar.Text = global::FaceTest.Properties.Settings.Default.tb_SplitChar;
             // 
-            // tabPage10
-            // 
-            this.tabPage10.Controls.Add(this.button53);
-            this.tabPage10.Controls.Add(this.button52);
-            this.tabPage10.Controls.Add(this.button49);
-            this.tabPage10.Controls.Add(this.tb_wsUrl);
-            this.tabPage10.Location = new System.Drawing.Point(4, 25);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(485, 555);
-            this.tabPage10.TabIndex = 5;
-            this.tabPage10.Text = "Ws设置";
-            this.tabPage10.UseVisualStyleBackColor = true;
-            // 
-            // button53
-            // 
-            this.button53.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button53.Location = new System.Drawing.Point(42, 99);
-            this.button53.Name = "button53";
-            this.button53.Size = new System.Drawing.Size(233, 36);
-            this.button53.TabIndex = 93;
-            this.button53.Text = "打开WsDemo";
-            this.button53.UseVisualStyleBackColor = true;
-            this.button53.Click += new System.EventHandler(this.button53_Click);
-            // 
-            // button52
-            // 
-            this.button52.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button52.Location = new System.Drawing.Point(42, 6);
-            this.button52.Name = "button52";
-            this.button52.Size = new System.Drawing.Size(233, 36);
-            this.button52.TabIndex = 92;
-            this.button52.Text = "设置wsUrl，要重启APP才生效";
-            this.button52.UseVisualStyleBackColor = true;
-            this.button52.Click += new System.EventHandler(this.button52_Click);
-            // 
-            // button49
-            // 
-            this.button49.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button49.Location = new System.Drawing.Point(285, 6);
-            this.button49.Name = "button49";
-            this.button49.Size = new System.Drawing.Size(92, 36);
-            this.button49.TabIndex = 89;
-            this.button49.Text = "读取";
-            this.button49.UseVisualStyleBackColor = true;
-            this.button49.Click += new System.EventHandler(this.button49_Click);
-            // 
             // tb_wsUrl
             // 
             this.tb_wsUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_wsUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1512,15 +1531,6 @@
             this.tb_wsUrl.TabIndex = 88;
             this.tb_wsUrl.Text = global::FaceTest.Properties.Settings.Default.tb_wsUrl;
             // 
-            // lb_CardNo
-            // 
-            this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(511, 259);
-            this.lb_CardNo.Name = "lb_CardNo";
-            this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
-            this.lb_CardNo.TabIndex = 101;
-            this.lb_CardNo.Text = "lb_CardNo";
-            // 
             // tb_Url
             // 
             this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1529,16 +1539,6 @@
             this.tb_Url.Size = new System.Drawing.Size(206, 25);
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
-            // 
-            // button50
-            // 
-            this.button50.Location = new System.Drawing.Point(511, 586);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(133, 36);
-            this.button50.TabIndex = 102;
-            this.button50.Text = "参数重置";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.button50_Click);
             // 
             // frmDemo
             // 

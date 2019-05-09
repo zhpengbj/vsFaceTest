@@ -6,22 +6,22 @@
       <Value Profile="(Default)">FacePicTest</Value>
     </Setting>
     <Setting Name="tb_Url" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.101:8090</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8090</Value>
     </Setting>
     <Setting Name="tb_Pass" Type="System.String" Scope="User">
       <Value Profile="(Default)">123</Value>
     </Setting>
     <Setting Name="tb_CallBackVerifyUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/VerifyHandler.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/VerifyHandler.ashx</Value>
     </Setting>
     <Setting Name="tb_CallBackUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/Handler.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/Handler.ashx</Value>
     </Setting>
     <Setting Name="bt_GetApkVersion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/GetUpdate.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/GetUpdate.ashx</Value>
     </Setting>
     <Setting Name="tb_DownApkUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/GetApkFile.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/GetApkFile.ashx</Value>
     </Setting>
     <Setting Name="tb_SetPassTime_UserId" Type="System.String" Scope="User">
       <Value Profile="(Default)">zhp</Value>
@@ -30,7 +30,7 @@
       <Value Profile="(Default)">住宿生</Value>
     </Setting>
     <Setting Name="tb_HeartBeatUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/HeartBeat.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/HeartBeat.ashx</Value>
     </Setting>
     <Setting Name="tb_DeletePassTimeName" Type="System.String" Scope="User">
       <Value Profile="(Default)">住宿生</Value>
@@ -60,13 +60,13 @@
       <Value Profile="(Default)">1_1_0</Value>
     </Setting>
     <Setting Name="tb_CallBackUrl_His" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/Handler_His.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/Handler_His.ashx</Value>
     </Setting>
     <Setting Name="tb_SplitChar" Type="System.String" Scope="User">
       <Value Profile="(Default)">_</Value>
     </Setting>
     <Setting Name="tb_devRunLogUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://192.168.8.100:8091/DevRunLog.ashx</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/DevRunLog.ashx</Value>
     </Setting>
     <Setting Name="tb_PersonAddOrUpdate_CardNo" Type="System.String" Scope="User">
       <Value Profile="(Default)">12345678</Value>
@@ -75,7 +75,7 @@
       <Value Profile="(Default)">39xlt-d19y7-4wd19-y7543-2x8z5</Value>
     </Setting>
     <Setting Name="tb_wsUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ws://192.168.8.100:8092</Value>
+      <Value Profile="(Default)">ws://192.168.0.101:8092</Value>
     </Setting>
   </Settings>
 </SettingsFile>
