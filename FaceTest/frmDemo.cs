@@ -651,6 +651,10 @@ namespace FaceTest
             Verify v = null;
             EPersonCheckResult personCheckResult = DoResult_VerifyHandlerByString2(JsonString, ref v);
             showMsg(string.Format("Guid:[{0}]", v != null ? v.guid : ""));
+            showMsg(string.Format("Type:[{0}]", v != null ? v.type : 0));
+            showMsg(string.Format("UserId:[{0}]", v != null ? v.userId : ""));
+            showMsg(string.Format("UserName:[{0}]", v != null ? v.userName : ""));
+            showMsg(string.Format("Score:[{0}]", v != null ? v.score : 0));
             showMsg(string.Format("base64.length:[{0}]", v != null ? v.base64.Length : 0));
             VerifyReturn result = new VerifyReturn();
             result.result = 1;
@@ -691,7 +695,7 @@ namespace FaceTest
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
             //重置用户默认参数
-            Settings.Default.Reset();
+            //Settings.Default.Reset();
 
             LoadData();
             //设置照片路径
