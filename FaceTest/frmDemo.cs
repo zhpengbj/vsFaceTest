@@ -615,7 +615,8 @@ namespace FaceTest
             string dataStr = JsonString.Substring(JsonString.IndexOf("verify=") + 7, JsonString.Length - JsonString.IndexOf("verify=") - 7);
             v = JsonConvert.DeserializeObject<Verify>(dataStr);
             showPicByBase64(v.base64);
-            return EPersonCheckResult.Ok;
+            Thread.Sleep(Convert.ToInt32(textBox3.Text));
+            return checkBox2.Checked? EPersonCheckResult.Ok: EPersonCheckResult.Other;
         }
 
         private void showPicByBase64(string base64)
@@ -1091,7 +1092,7 @@ namespace FaceTest
                     string s = msg;
                     if (!string.IsNullOrEmpty(msg))
                     {
-                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("mm:ss"), msg);
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("hh:mm:ss"), msg);
                     }
                     else
                     {
@@ -1122,7 +1123,7 @@ namespace FaceTest
                     string s = msg;
                     if (!string.IsNullOrEmpty(msg))
                     {
-                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("mm:ss"), msg);
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("hh:mm:ss"), msg);
                     }
                     else
                     {
@@ -1149,7 +1150,7 @@ namespace FaceTest
                     string s = msg;
                     if (!string.IsNullOrEmpty(msg))
                     {
-                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("mm:ss"), msg);
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("hh:mm:ss"), msg);
                     }
                     else
                     {
