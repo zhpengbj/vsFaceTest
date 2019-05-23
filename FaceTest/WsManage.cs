@@ -73,12 +73,13 @@ namespace FaceTest
                     {
 
                     }
-                    ShowInfo(DateTime.Now.ToString() + "|服务器:和客户端:" + clientUrl + " 建立WebSock连接！");
+                    ShowInfo("与客户端:" + clientUrl + " 建立WebSock连接！");
+                    ShowInfo("请求deviceKey:"+ deviceKey);
                     //判断是否可以接入
                     if (!string.IsNullOrEmpty(deviceKey))
                     {
                         bool isOk = ValidDevices.Keys.Contains(deviceKey);
-                        ShowInfo(string.Format("{0}|服务器:请求接入结果[{1}]", DateTime.Now.ToString(), isOk));
+                        ShowInfo(string.Format("设备[{0}]请求接入,结果[{1}]", deviceKey, isOk));
                         if (isOk)
                         {
                             if (dic_Sockets.Keys.Contains(deviceKey)){
@@ -98,6 +99,11 @@ namespace FaceTest
                     socket.Close();
 
 
+                };
+                socket.OnError = (Exception ex) =>
+                {
+                    ShowInfo("OnError!" + ex.Message);
+                    //allSockets.Remove(socket);
                 };
                 socket.OnClose = () =>
                 {

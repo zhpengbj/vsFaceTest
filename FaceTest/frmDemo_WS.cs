@@ -107,6 +107,10 @@ namespace FaceTest
 
             settings.tb_DeviceNo = this.tb_DeviceNo.Text.Trim();
             settings.Save();
+            //if (string.IsNullOrEmpty(this.tb_CallBackVerifyUrl.Text))
+            //{
+            //    MessageBox.Show("tb_CallBackVerifyUrl is null");
+            //}
         }
 
         #region httpWeb
@@ -1235,6 +1239,13 @@ namespace FaceTest
             return res;
 
         }
+        private void SendData_GetDeviceInfo(bool isGetDeviceInfo)
+        {
+            string postStr = isGetDeviceInfo ? "GetDeviceInfo" : "";
+            //checkBox3.Checked?string.Format("{0}", DateTime.Now.ToString("yyyyMMdd.HHmmss")) :"";
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_GetDeviceInfo, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
+
+        }
         private void SendDevRefreshData()
         {
             TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Refresh, Guid.NewGuid().ToString(), tb_DeviceNo.Text, ""));
@@ -1583,45 +1594,8 @@ namespace FaceTest
 
         private void button13_Click(object sender, EventArgs e)
         {
-            tb_MachineCode.Text = "";
-            try
-            {
-                button9.Enabled = false;
-                string postStr = string.Format("pass={0}&time={1}", Pass, tb_time.Text.Trim());
-                //string urlOper = @"/person/createOrUpdate";
-                string urlOper = @"/setTime";
-                string url = string.Format(@"{0}{1}", Url, urlOper);
-                ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
-
-                string ReturnStr = "";
-                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
-                if (b)
-                {
-                    showMsg(ReturnStr);
-                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
-                    if (res.success)
-                    {
-                        tb_MachineCode.Text = res.data;
-                        showMsg("setTime 成功");
-                    }
-                    else
-                    {
-                        showMsg("有返回，但出错了：" + res.msg);
-                    }
-                }
-                else
-                {
-                    showMsg("通讯失败");
-                }
-
-            }
-            finally
-            {
-                button9.Enabled = true;
-
-            }
+            string postStr = string.Format("{0}", tb_time.Text.Trim());
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_SetTime, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
         }
 
         private void button14_Click(object sender, EventArgs e)
@@ -3071,7 +3045,8 @@ namespace FaceTest
         private void button48_Click(object sender, EventArgs e)
         {
             tb_time.Text = DateTime.Now.ToString("yyyyMMdd.HHmmss");
-            button13_Click(sender, e);
+            string postStr=string.Format("{0}", DateTime.Now.ToString("yyyyMMdd.HHmmss"));
+            TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_SetTime, Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
         }
         private string GetNetInfoString()
         {
@@ -3137,6 +3112,11 @@ namespace FaceTest
         private void button49_Click(object sender, EventArgs e)
         {
             SendDevRefreshData();
+        }
+
+        private void button50_Click(object sender, EventArgs e)
+        {
+            SendData_GetDeviceInfo(checkBox3.Checked);
         }
     }
     

@@ -102,6 +102,11 @@ namespace FaceTest
             settings.tb_SplitChar = this.tb_SplitChar.Text.Trim();
             settings.tb_devRunLogUrl = this.tb_DevRunLogUrl.Text.Trim();
             settings.Save();
+
+            if (string.IsNullOrEmpty(this.tb_CallBackVerifyUrl.Text))
+            {
+                MessageBox.Show("tb_CallBackVerifyUrl is null");
+            }
         }
 
         #region httpWeb

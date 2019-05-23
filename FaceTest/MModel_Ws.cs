@@ -97,7 +97,18 @@ namespace FaceTest
             /// 数据更新 210
             /// </summary>
             [Description("数据更新")]
-            D_Refresh = 210
+            D_Refresh = 210,
+            /// <summary>
+            /// 询问设备 211
+            /// </summary>
+            [Description("询问设备")]
+            D_GetDeviceInfo = 211,
+            /// <summary>
+            /// 设置时间 212
+            /// </summary>
+            [Description("询问设备")]
+            D_SetTime = 212
+
         }
         /// <summary>
         /// 离线消息
