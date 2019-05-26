@@ -127,6 +127,9 @@
             this.btn_SetIp = new System.Windows.Forms.Button();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
@@ -160,9 +163,6 @@
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.button50 = new System.Windows.Forms.Button();
             this.tb_Url = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -221,7 +221,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(14, 16);
+            this.button4.Location = new System.Drawing.Point(14, 15);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(149, 36);
             this.button4.TabIndex = 4;
@@ -1176,6 +1176,35 @@
             this.tabPage6.Text = "回调设置";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(365, 49);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(37, 15);
+            this.label19.TabIndex = 101;
+            this.label19.Text = "延时";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(414, 46);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(43, 25);
+            this.textBox3.TabIndex = 99;
+            this.textBox3.Text = "5000";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Checked = true;
+            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox2.Location = new System.Drawing.Point(368, 18);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(89, 19);
+            this.checkBox2.TabIndex = 98;
+            this.checkBox2.Text = "返回成功";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
             // tb_DevRunLogUrl
             // 
             this.tb_DevRunLogUrl.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_devRunLogUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -1540,40 +1569,11 @@
             // tb_Url
             // 
             this.tb_Url.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Url", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Url.Location = new System.Drawing.Point(168, 8);
+            this.tb_Url.Location = new System.Drawing.Point(168, -69);
             this.tb_Url.Name = "tb_Url";
             this.tb_Url.Size = new System.Drawing.Size(206, 25);
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(368, 18);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(89, 19);
-            this.checkBox2.TabIndex = 98;
-            this.checkBox2.Text = "返回成功";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(414, 46);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(43, 25);
-            this.textBox3.TabIndex = 99;
-            this.textBox3.Text = "5000";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(365, 49);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(37, 15);
-            this.label19.TabIndex = 101;
-            this.label19.Text = "延时";
             // 
             // frmDemo
             // 

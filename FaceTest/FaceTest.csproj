@@ -84,6 +84,12 @@
     <Compile Include="frmDemo.Designer.cs">
       <DependentUpon>frmDemo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDeviceTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeviceTest.Designer.cs">
+      <DependentUpon>frmDeviceTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="MModel.cs" />
     <Compile Include="MModel_Ws.cs" />
     <Compile Include="Program.cs" />
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDemo.resx">
       <DependentUpon>frmDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeviceTest.resx">
+      <DependentUpon>frmDeviceTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
