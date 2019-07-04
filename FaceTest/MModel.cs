@@ -154,6 +154,13 @@ namespace FaceTest
 
         public object data { get; set; }
     }
+    public class VerifyReturnTest
+    {
+        public int result { get; set; }
+        public bool success { get; set; }
+
+        public string msg { get; set; }
+    }
     public class HeartBeatReturn
     {
         /// <summary>

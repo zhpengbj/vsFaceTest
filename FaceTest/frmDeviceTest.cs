@@ -42,7 +42,7 @@ namespace FaceTest
         /// <summary>
         /// 设备类型ID =6
         /// </summary>
-        private readonly int DeviceType = 0;
+        private readonly int DeviceType = 6;
         private readonly string PASS = "123";
         /// <summary>
         /// 出错文件 
@@ -53,6 +53,7 @@ namespace FaceTest
         /// </summary>
         private readonly string FacePicDataPath = Application.StartupPath + @"\FacePicKey\";
         private readonly string FacePicPath = Application.StartupPath + @"\FacePicTest\";
+        private readonly string DeviceTestResultPath = Application.StartupPath + @"\DeviceTestResult\";
         #endregion
 
         #region 变量
@@ -498,7 +499,7 @@ namespace FaceTest
                             {
                                 string msg = Encoding.UTF8.GetString(receData);
                                 showMsg2(String.Format("设备[{0}]:[{1}]", endpointR.Address, msg));
-                                DevicesHeartBeat d = showDevInfo(msg);
+                                DevicesHeartBeat d = showDevInfo(msg, endpointR.Address.ToString());
                                 if (d.deviceType != DeviceType)
                                 {
                                     showMsg(String.Format("!!!!!!设备类型不匹配，仅支持类型[{0}]", DeviceType));
@@ -554,11 +555,12 @@ namespace FaceTest
             return result;
         }
 
-        private DevicesHeartBeat showDevInfo(string s)
+        private DevicesHeartBeat showDevInfo(string s,string Ip)
         {
             DevicesHeartBeat device = JsonConvert.DeserializeObject<DevicesHeartBeat>(s);
             showMsg2(String.Format("解析,机器码[{0}]", device.deviceMachineCode));
             showMsg2(String.Format("解析,机器编号[{0}]", device.deviceKey));
+            device.ip = string.IsNullOrEmpty(device.ip) ? Ip : device.ip;
             showMsg2(String.Format("解析,Ip[{0}]", device.ip));
             showMsg2(String.Format("解析,系统时间[{0}]", device.time));
             showMsg2(String.Format("解析,人员数[{0}]", device.personCount));
@@ -575,7 +577,23 @@ namespace FaceTest
             showMsg(String.Format("IP:[{0}]", device.ip));
             showMsg(String.Format("设备类型[{0}]", device.deviceType));
 
+            this.Text = device.deviceMachineCode;
+            ButtonListInit();
             return device;
+        }
+        private void ButtonListInit()
+        {
+            button2.ForeColor = Color.Black;
+            button3.ForeColor = Color.Black;
+            button4.ForeColor = Color.Black;
+            button5.ForeColor = Color.Black;
+            button6.ForeColor = Color.Black;
+            button7.ForeColor = Color.Black;
+            button8.ForeColor = Color.Black;
+            button9.ForeColor = Color.Black;
+            button10.ForeColor = Color.Black;
+            button11.ForeColor = Color.Black;
+            button12.ForeColor = Color.Black;
         }
 
         private void changeColor(object sender, EventArgs e)
@@ -588,6 +606,10 @@ namespace FaceTest
             }
             button.ForeColor = Color.Green;
             doTask(button.Tag.ToString(), button.ForeColor == Color.Green);
+
+        }
+        private void initColor()
+        {
 
         }
         private void doTask(string taskName,bool result)
@@ -655,13 +677,26 @@ namespace FaceTest
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (DevicList.Count==0)
+            try
             {
-                MessageBox.Show("无设备");
-                return;
+                DirectoryInfo di = new DirectoryInfo(DeviceTestResultPath);
+                if (!di.Exists)
+                {
+                    di.Create();
+                }
+
+                if (DevicList.Count == 0)
+                {
+                    MessageBox.Show("无设备");
+                    return;
+                }
+                string strTest = JsonConvert.SerializeObject(DevicList[0]) + "|" + JsonConvert.SerializeObject(TaskList);
+                System.IO.File.WriteAllText(DeviceTestResultPath + DevicList[0].deviceMachineCode, strTest, Encoding.UTF8);
+                MessageBox.Show("保存文件成功");
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
-            string strTest = JsonConvert.SerializeObject(DevicList[0]) + "|" + JsonConvert.SerializeObject(TaskList);
-            System.IO.File.WriteAllText(DevicList[0].deviceMachineCode, strTest, Encoding.UTF8);
         }
     }
 

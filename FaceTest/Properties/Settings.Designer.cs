@@ -301,7 +301,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("39xlt-d19y7-4wd19-y7543-2x8z5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1013000013")]
         public string tb_DeviceNo {
             get {
                 return ((string)(this["tb_DeviceNo"]));

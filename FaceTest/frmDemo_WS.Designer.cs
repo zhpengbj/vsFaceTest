@@ -85,6 +85,22 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.receiveMsg3 = new System.Windows.Forms.RichTextBox();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.button32 = new System.Windows.Forms.Button();
+            this.tb_SetNet_DNS = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.tb_SetNet_Gateway = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tb_SetNet_SubnetMask = new System.Windows.Forms.TextBox();
+            this.tb_Pass = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button45 = new System.Windows.Forms.Button();
+            this.tb_SetNet_Ip = new System.Windows.Forms.TextBox();
+            this.button43 = new System.Windows.Forms.Button();
+            this.btn_SetIp = new System.Windows.Forms.Button();
+            this.button47 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -93,8 +109,6 @@
             this.button30 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button32 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
@@ -106,26 +120,15 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
-            this.button43 = new System.Windows.Forms.Button();
             this.button44 = new System.Windows.Forms.Button();
-            this.button45 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.button46 = new System.Windows.Forms.Button();
-            this.button47 = new System.Windows.Forms.Button();
             this.button48 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tb_SetNet_DNS = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.tb_SetNet_Gateway = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tb_SetNet_SubnetMask = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tb_SetNet_Ip = new System.Windows.Forms.TextBox();
-            this.btn_SetIp = new System.Windows.Forms.Button();
-            this.tb_Pass = new System.Windows.Forms.TextBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button50 = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -155,9 +158,6 @@
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_DeviceNo = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.button50 = new System.Windows.Forms.Button();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -166,13 +166,13 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage4.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
-            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -724,6 +724,173 @@
             this.receiveMsg3.TabIndex = 12;
             this.receiveMsg3.Text = "";
             // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.button4);
+            this.tabPage10.Controls.Add(this.checkBox1);
+            this.tabPage10.Controls.Add(this.label18);
+            this.tabPage10.Controls.Add(this.button32);
+            this.tabPage10.Controls.Add(this.tb_SetNet_DNS);
+            this.tabPage10.Controls.Add(this.tb_AuthorizeCode);
+            this.tabPage10.Controls.Add(this.label17);
+            this.tabPage10.Controls.Add(this.button10);
+            this.tabPage10.Controls.Add(this.tb_SetNet_Gateway);
+            this.tabPage10.Controls.Add(this.button9);
+            this.tabPage10.Controls.Add(this.label16);
+            this.tabPage10.Controls.Add(this.tb_MachineCode);
+            this.tabPage10.Controls.Add(this.tb_SetNet_SubnetMask);
+            this.tabPage10.Controls.Add(this.tb_Pass);
+            this.tabPage10.Controls.Add(this.label15);
+            this.tabPage10.Controls.Add(this.button45);
+            this.tabPage10.Controls.Add(this.tb_SetNet_Ip);
+            this.tabPage10.Controls.Add(this.button43);
+            this.tabPage10.Controls.Add(this.btn_SetIp);
+            this.tabPage10.Controls.Add(this.button47);
+            this.tabPage10.Location = new System.Drawing.Point(4, 25);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(486, 607);
+            this.tabPage10.TabIndex = 4;
+            this.tabPage10.Text = "未实现";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(214, 188);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(149, 19);
+            this.checkBox1.TabIndex = 79;
+            this.checkBox1.Text = "初始化时清空参数";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(55, 457);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(31, 15);
+            this.label18.TabIndex = 106;
+            this.label18.Text = "DNS";
+            // 
+            // button32
+            // 
+            this.button32.Location = new System.Drawing.Point(55, 183);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(149, 36);
+            this.button32.TabIndex = 78;
+            this.button32.Text = "初始化设备";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
+            // 
+            // tb_SetNet_DNS
+            // 
+            this.tb_SetNet_DNS.Location = new System.Drawing.Point(215, 457);
+            this.tb_SetNet_DNS.Name = "tb_SetNet_DNS";
+            this.tb_SetNet_DNS.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_DNS.TabIndex = 105;
+            this.tb_SetNet_DNS.Text = "8.8.8.8";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(55, 428);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(37, 15);
+            this.label17.TabIndex = 104;
+            this.label17.Text = "网关";
+            // 
+            // tb_SetNet_Gateway
+            // 
+            this.tb_SetNet_Gateway.Location = new System.Drawing.Point(215, 428);
+            this.tb_SetNet_Gateway.Name = "tb_SetNet_Gateway";
+            this.tb_SetNet_Gateway.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_Gateway.TabIndex = 103;
+            this.tb_SetNet_Gateway.Text = "192.168.8.1";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(55, 397);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 15);
+            this.label16.TabIndex = 102;
+            this.label16.Text = "子网掩码";
+            // 
+            // tb_SetNet_SubnetMask
+            // 
+            this.tb_SetNet_SubnetMask.Location = new System.Drawing.Point(215, 397);
+            this.tb_SetNet_SubnetMask.Name = "tb_SetNet_SubnetMask";
+            this.tb_SetNet_SubnetMask.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_SubnetMask.TabIndex = 101;
+            this.tb_SetNet_SubnetMask.Text = "255.255.255.0";
+            // 
+            // tb_Pass
+            // 
+            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.tb_Pass.Location = new System.Drawing.Point(214, 61);
+            this.tb_Pass.Name = "tb_Pass";
+            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
+            this.tb_Pass.TabIndex = 7;
+            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(55, 366);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(23, 15);
+            this.label15.TabIndex = 100;
+            this.label15.Text = "IP";
+            // 
+            // button45
+            // 
+            this.button45.Location = new System.Drawing.Point(55, 318);
+            this.button45.Name = "button45";
+            this.button45.Size = new System.Drawing.Size(304, 36);
+            this.button45.TabIndex = 93;
+            this.button45.Text = "得到当天的识别情况";
+            this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
+            // 
+            // tb_SetNet_Ip
+            // 
+            this.tb_SetNet_Ip.Location = new System.Drawing.Point(215, 366);
+            this.tb_SetNet_Ip.Name = "tb_SetNet_Ip";
+            this.tb_SetNet_Ip.Size = new System.Drawing.Size(149, 25);
+            this.tb_SetNet_Ip.TabIndex = 99;
+            this.tb_SetNet_Ip.Text = "192.168.8.251";
+            // 
+            // button43
+            // 
+            this.button43.Location = new System.Drawing.Point(53, 548);
+            this.button43.Name = "button43";
+            this.button43.Size = new System.Drawing.Size(149, 36);
+            this.button43.TabIndex = 91;
+            this.button43.Text = "重启App";
+            this.button43.UseVisualStyleBackColor = true;
+            this.button43.Click += new System.EventHandler(this.button43_Click);
+            // 
+            // btn_SetIp
+            // 
+            this.btn_SetIp.Location = new System.Drawing.Point(215, 485);
+            this.btn_SetIp.Name = "btn_SetIp";
+            this.btn_SetIp.Size = new System.Drawing.Size(149, 36);
+            this.btn_SetIp.TabIndex = 98;
+            this.btn_SetIp.Text = "设置IP";
+            this.btn_SetIp.UseVisualStyleBackColor = true;
+            this.btn_SetIp.Click += new System.EventHandler(this.btn_SetIp_Click);
+            // 
+            // button47
+            // 
+            this.button47.Location = new System.Drawing.Point(215, 547);
+            this.button47.Name = "button47";
+            this.button47.Size = new System.Drawing.Size(149, 36);
+            this.button47.TabIndex = 96;
+            this.button47.Text = "重启设备";
+            this.button47.UseVisualStyleBackColor = true;
+            this.button47.Click += new System.EventHandler(this.button47_Click);
+            // 
             // button28
             // 
             this.button28.Location = new System.Drawing.Point(7, 150);
@@ -795,26 +962,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(394, 25);
             this.textBox1.TabIndex = 77;
-            // 
-            // button32
-            // 
-            this.button32.Location = new System.Drawing.Point(55, 183);
-            this.button32.Name = "button32";
-            this.button32.Size = new System.Drawing.Size(149, 36);
-            this.button32.TabIndex = 78;
-            this.button32.Text = "初始化设备";
-            this.button32.UseVisualStyleBackColor = true;
-            this.button32.Click += new System.EventHandler(this.button32_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(214, 188);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(149, 19);
-            this.checkBox1.TabIndex = 79;
-            this.checkBox1.Text = "初始化时清空参数";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // button33
             // 
@@ -931,16 +1078,6 @@
             this.button42.UseVisualStyleBackColor = true;
             this.button42.Click += new System.EventHandler(this.button42_Click);
             // 
-            // button43
-            // 
-            this.button43.Location = new System.Drawing.Point(53, 548);
-            this.button43.Name = "button43";
-            this.button43.Size = new System.Drawing.Size(149, 36);
-            this.button43.TabIndex = 91;
-            this.button43.Text = "重启App";
-            this.button43.UseVisualStyleBackColor = true;
-            this.button43.Click += new System.EventHandler(this.button43_Click);
-            // 
             // button44
             // 
             this.button44.Location = new System.Drawing.Point(475, 89);
@@ -950,16 +1087,6 @@
             this.button44.Text = "打开web";
             this.button44.UseVisualStyleBackColor = true;
             this.button44.Click += new System.EventHandler(this.button44_Click);
-            // 
-            // button45
-            // 
-            this.button45.Location = new System.Drawing.Point(55, 318);
-            this.button45.Name = "button45";
-            this.button45.Size = new System.Drawing.Size(304, 36);
-            this.button45.TabIndex = 93;
-            this.button45.Text = "得到当天的识别情况";
-            this.button45.UseVisualStyleBackColor = true;
-            this.button45.Click += new System.EventHandler(this.button45_Click);
             // 
             // timer2
             // 
@@ -975,16 +1102,6 @@
             this.button46.Text = "循环广播";
             this.button46.UseVisualStyleBackColor = true;
             this.button46.Click += new System.EventHandler(this.button46_Click);
-            // 
-            // button47
-            // 
-            this.button47.Location = new System.Drawing.Point(215, 547);
-            this.button47.Name = "button47";
-            this.button47.Size = new System.Drawing.Size(149, 36);
-            this.button47.TabIndex = 96;
-            this.button47.Text = "重启设备";
-            this.button47.UseVisualStyleBackColor = true;
-            this.button47.Click += new System.EventHandler(this.button47_Click);
             // 
             // button48
             // 
@@ -1033,92 +1150,25 @@
             this.tabPage5.Text = "设备管理";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label18
+            // checkBox3
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(55, 457);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(31, 15);
-            this.label18.TabIndex = 106;
-            this.label18.Text = "DNS";
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(193, 18);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(119, 19);
+            this.checkBox3.TabIndex = 112;
+            this.checkBox3.Text = "返回设备信息";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // tb_SetNet_DNS
+            // button50
             // 
-            this.tb_SetNet_DNS.Location = new System.Drawing.Point(215, 457);
-            this.tb_SetNet_DNS.Name = "tb_SetNet_DNS";
-            this.tb_SetNet_DNS.Size = new System.Drawing.Size(149, 25);
-            this.tb_SetNet_DNS.TabIndex = 105;
-            this.tb_SetNet_DNS.Text = "8.8.8.8";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(55, 428);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 15);
-            this.label17.TabIndex = 104;
-            this.label17.Text = "网关";
-            // 
-            // tb_SetNet_Gateway
-            // 
-            this.tb_SetNet_Gateway.Location = new System.Drawing.Point(215, 428);
-            this.tb_SetNet_Gateway.Name = "tb_SetNet_Gateway";
-            this.tb_SetNet_Gateway.Size = new System.Drawing.Size(149, 25);
-            this.tb_SetNet_Gateway.TabIndex = 103;
-            this.tb_SetNet_Gateway.Text = "192.168.8.1";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(55, 397);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 15);
-            this.label16.TabIndex = 102;
-            this.label16.Text = "子网掩码";
-            // 
-            // tb_SetNet_SubnetMask
-            // 
-            this.tb_SetNet_SubnetMask.Location = new System.Drawing.Point(215, 397);
-            this.tb_SetNet_SubnetMask.Name = "tb_SetNet_SubnetMask";
-            this.tb_SetNet_SubnetMask.Size = new System.Drawing.Size(149, 25);
-            this.tb_SetNet_SubnetMask.TabIndex = 101;
-            this.tb_SetNet_SubnetMask.Text = "255.255.255.0";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(55, 366);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(23, 15);
-            this.label15.TabIndex = 100;
-            this.label15.Text = "IP";
-            // 
-            // tb_SetNet_Ip
-            // 
-            this.tb_SetNet_Ip.Location = new System.Drawing.Point(215, 366);
-            this.tb_SetNet_Ip.Name = "tb_SetNet_Ip";
-            this.tb_SetNet_Ip.Size = new System.Drawing.Size(149, 25);
-            this.tb_SetNet_Ip.TabIndex = 99;
-            this.tb_SetNet_Ip.Text = "192.168.8.251";
-            // 
-            // btn_SetIp
-            // 
-            this.btn_SetIp.Location = new System.Drawing.Point(215, 485);
-            this.btn_SetIp.Name = "btn_SetIp";
-            this.btn_SetIp.Size = new System.Drawing.Size(149, 36);
-            this.btn_SetIp.TabIndex = 98;
-            this.btn_SetIp.Text = "设置IP";
-            this.btn_SetIp.UseVisualStyleBackColor = true;
-            this.btn_SetIp.Click += new System.EventHandler(this.btn_SetIp_Click);
-            // 
-            // tb_Pass
-            // 
-            this.tb_Pass.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_Pass", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_Pass.Location = new System.Drawing.Point(214, 61);
-            this.tb_Pass.Name = "tb_Pass";
-            this.tb_Pass.Size = new System.Drawing.Size(149, 25);
-            this.tb_Pass.TabIndex = 7;
-            this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            this.button50.Location = new System.Drawing.Point(3, 6);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(149, 36);
+            this.button50.TabIndex = 111;
+            this.button50.Text = "询问设备";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
             // 
             // tabPage6
             // 
@@ -1466,56 +1516,6 @@
             this.tb_DeviceNo.TabIndex = 6;
             this.tb_DeviceNo.Text = global::FaceTest.Properties.Settings.Default.tb_DeviceNo;
             // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(193, 18);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(119, 19);
-            this.checkBox3.TabIndex = 112;
-            this.checkBox3.Text = "返回设备信息";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // button50
-            // 
-            this.button50.Location = new System.Drawing.Point(3, 6);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(149, 36);
-            this.button50.TabIndex = 111;
-            this.button50.Text = "询问设备";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.button50_Click);
-            // 
-            // tabPage10
-            // 
-            this.tabPage10.Controls.Add(this.button4);
-            this.tabPage10.Controls.Add(this.checkBox1);
-            this.tabPage10.Controls.Add(this.label18);
-            this.tabPage10.Controls.Add(this.button32);
-            this.tabPage10.Controls.Add(this.tb_SetNet_DNS);
-            this.tabPage10.Controls.Add(this.tb_AuthorizeCode);
-            this.tabPage10.Controls.Add(this.label17);
-            this.tabPage10.Controls.Add(this.button10);
-            this.tabPage10.Controls.Add(this.tb_SetNet_Gateway);
-            this.tabPage10.Controls.Add(this.button9);
-            this.tabPage10.Controls.Add(this.label16);
-            this.tabPage10.Controls.Add(this.tb_MachineCode);
-            this.tabPage10.Controls.Add(this.tb_SetNet_SubnetMask);
-            this.tabPage10.Controls.Add(this.tb_Pass);
-            this.tabPage10.Controls.Add(this.label15);
-            this.tabPage10.Controls.Add(this.button45);
-            this.tabPage10.Controls.Add(this.tb_SetNet_Ip);
-            this.tabPage10.Controls.Add(this.button43);
-            this.tabPage10.Controls.Add(this.btn_SetIp);
-            this.tabPage10.Controls.Add(this.button47);
-            this.tabPage10.Location = new System.Drawing.Point(4, 25);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(486, 607);
-            this.tabPage10.TabIndex = 4;
-            this.tabPage10.Text = "未实现";
-            this.tabPage10.UseVisualStyleBackColor = true;
-            // 
             // frmDemo_Ws
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -1550,6 +1550,8 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage4.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage10.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
@@ -1561,8 +1563,6 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
-            this.tabPage10.ResumeLayout(false);
-            this.tabPage10.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

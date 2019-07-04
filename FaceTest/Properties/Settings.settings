@@ -72,7 +72,7 @@
       <Value Profile="(Default)">12345678</Value>
     </Setting>
     <Setting Name="tb_DeviceNo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">39xlt-d19y7-4wd19-y7543-2x8z5</Value>
+      <Value Profile="(Default)">1013000013</Value>
     </Setting>
     <Setting Name="tb_wsUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">ws://192.168.0.101:8092</Value>

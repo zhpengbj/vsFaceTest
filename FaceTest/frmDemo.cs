@@ -132,15 +132,16 @@ namespace FaceTest
             context.Response.ContentType = "text/plain;charset=UTF-8";//告诉客户端返回的ContentType类型为纯文本格式，编码为UTF-8
             context.Response.AddHeader("Content-type", "text/plain");//添加响应头信息
             context.Response.ContentEncoding = Encoding.UTF8;
-            if (request.InputStream == null)
-            {
-                returnObj = "传过来的数据为空";
-                showMsg(returnObj);
-                ResponseRetrun(returnObj, response);
-                return;
-            }
+
             if (request.HttpMethod == "POST")
             {
+                if (request.InputStream == null)
+                {
+                    returnObj = "传过来的数据为空";
+                    showMsg(returnObj);
+                    ResponseRetrun(returnObj, response);
+                    return;
+                }
                 string requestJsonString = GetRequestJsonString(request);
                 showMsg(string.Format("接到请求,guid:[{0}],Ip:[{1}],Url:[{2}],JsonStringLen[{3}]",
                     guid, request.RemoteEndPoint.Address, request.RawUrl, requestJsonString.Length));
@@ -152,7 +153,7 @@ namespace FaceTest
                         case @"/Handler_His.ashx":
                             //识别记录
                             DoResult_Record(requestJsonString);
-                            returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            returnObj = GetReurnTestString();// GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
                             ResponseRetrun(returnObj, response);
                             break;
 
@@ -377,6 +378,14 @@ namespace FaceTest
                 else
                     result.data = "";
             }
+            return JsonConvert.SerializeObject(result);
+        }
+        private string GetReurnTestString()
+        {
+            VerifyReturnTest result = new VerifyReturnTest();
+            result.result = 1;
+            result.success = true;
+            result.msg = "";
             return JsonConvert.SerializeObject(result);
         }
         private string GetReurnString()
@@ -701,7 +710,7 @@ namespace FaceTest
             dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.Columns[0].SortMode = DataGridViewColumnSortMode.Automatic;
             //重置用户默认参数
-            //Settings.Default.Reset();
+            Settings.Default.Reset();
 
             LoadData();
             //设置照片路径
@@ -847,7 +856,7 @@ namespace FaceTest
             try
             {
                 button4.Enabled = false;
-                string postStr = string.Format("oldPass={0}&newPass={1}", Pass, Pass);
+                string postStr = string.Format("oldPass={0}&newPass={1}", string.IsNullOrEmpty(tb_PassOld.Text.Trim())? Pass: tb_PassOld.Text.Trim(), Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setPassWord";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3697,6 +3706,58 @@ namespace FaceTest
             Settings.Default.Reset();
 
             LoadData();
+        }
+
+        private void button51_Click(object sender, EventArgs e)
+        {
+            SendDevRefreshData();
+        }
+
+        private void button54_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (DialogResult.Cancel == MessageBox.Show("是否关闭设备?", "请确认", MessageBoxButtons.OKCancel))
+                {
+                    return;
+                }
+                button54.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/device/poweroff";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("poweroff 成功");
+                        showMsg(res.data);
+                        //SendDevRefreshData();
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button54.Enabled = true;
+
+            }
         }
     }
 }

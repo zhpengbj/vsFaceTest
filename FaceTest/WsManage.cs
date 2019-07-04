@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Text;
 using Fleck;
 using Newtonsoft.Json;
 using static FaceTest.MModel_Ws;
@@ -102,7 +102,7 @@ namespace FaceTest
                 };
                 socket.OnError = (Exception ex) =>
                 {
-                    ShowInfo("OnError!" + ex.Message);
+                    ShowInfo("OnError!" + ex.ToString());
                     //allSockets.Remove(socket);
                 };
                 socket.OnClose = () =>
@@ -139,6 +139,12 @@ namespace FaceTest
                         ShowInfo(ex.Message);
                     }
                 };
+                socket.OnPing = (byte[] ex) =>
+                 {
+                     ShowInfo("OnPing!" + System.Text.Encoding.Default.GetString(ex));
+                     socket.SendPong(ex);
+                 };
+                
             });
 
 
@@ -159,6 +165,17 @@ namespace FaceTest
             {
                 _DoShowInfo(str);
             }
+        }
+        private static string BytesToHexString(byte[] bytes)
+        {
+            if (bytes == null || bytes.Length == 0)
+                return "";
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in bytes)
+            {
+                sb.Append(b.ToString("X2"));
+            }
+            return sb.ToString();
         }
 
         /// <summary>
@@ -197,6 +214,10 @@ namespace FaceTest
             if (dic_Sockets[DeviceNo] != null)
             {
                 dic_Sockets[DeviceNo].Send(taskInfo.GetString());
+            }
+            else
+            {
+                ShowInfo("不存在此连接");
             }
         }
 
