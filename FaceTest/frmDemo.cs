@@ -23,12 +23,13 @@ using System.Web;
 using System.Runtime.InteropServices;
 using Iteedee.ApkReader;
 
+
 namespace FaceTest
 {
     public partial class frmDemo : Form
     {
 
-       
+
 
         private Encoding encoding = Encoding.UTF8;
 
@@ -630,7 +631,7 @@ namespace FaceTest
             v = JsonConvert.DeserializeObject<Verify>(dataStr);
             showPicByBase64(v.base64);
             Thread.Sleep(Convert.ToInt32(textBox3.Text));
-            return checkBox2.Checked? EPersonCheckResult.Ok: EPersonCheckResult.Other;
+            return checkBox2.Checked ? EPersonCheckResult.Ok : EPersonCheckResult.Other;
         }
 
         private void showPicByBase64(string base64)
@@ -677,7 +678,7 @@ namespace FaceTest
             result.msg = string.Format("你好,{0}" + Environment.NewLine + "验证{1}【{2}】",
                 v != null ? v.userName : "未知用户",
                 result.success ? "成功" : "失败",
-                result.success ? "":personCheckResult.GetDescription() 
+                result.success ? "" : personCheckResult.GetDescription()
                 );
             result.msgtype = (int)personCheckResult;
             return JsonConvert.SerializeObject(result);
@@ -849,6 +850,9 @@ namespace FaceTest
             Url = tb_Url.Text;
             this.Text = "XFaceDemo---" + Url;
         }
+        /// <summary>
+        /// 管理机器密码
+        /// </summary>
         private string Pass = "123";
         private void button4_Click(object sender, EventArgs e)
         {
@@ -856,7 +860,7 @@ namespace FaceTest
             try
             {
                 button4.Enabled = false;
-                string postStr = string.Format("oldPass={0}&newPass={1}", string.IsNullOrEmpty(tb_PassOld.Text.Trim())? Pass: tb_PassOld.Text.Trim(), Pass);
+                string postStr = string.Format("oldPass={0}&newPass={1}", string.IsNullOrEmpty(tb_PassOld.Text.Trim()) ? Pass : tb_PassOld.Text.Trim(), Pass);
                 //string urlOper = @"/person/createOrUpdate";
                 string urlOper = @"/setPassWord";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
@@ -3560,7 +3564,7 @@ namespace FaceTest
             networkInfo.gateway = this.tb_SetNet_Gateway.Text;
             networkInfo.DNS1 = this.tb_SetNet_DNS.Text;
             networkInfo.DNS2 = "";
-           // networkInfo.isDHCPMod = false;
+            // networkInfo.isDHCPMod = false;
             return JsonConvert.SerializeObject(networkInfo);
 
 
@@ -3758,6 +3762,11 @@ namespace FaceTest
                 button54.Enabled = true;
 
             }
+        }
+
+        private void tb_Pass_KeyUp(object sender, KeyEventArgs e)
+        {
+            Pass = tb_Pass.Text;
         }
     }
 }

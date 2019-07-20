@@ -1173,6 +1173,7 @@
             this.tb_Pass.Size = new System.Drawing.Size(43, 25);
             this.tb_Pass.TabIndex = 7;
             this.tb_Pass.Text = global::FaceTest.Properties.Settings.Default.tb_Pass;
+            this.tb_Pass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_Pass_KeyUp);
             // 
             // tabPage6
             // 
