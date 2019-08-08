@@ -3348,10 +3348,10 @@ namespace FaceTest
         {
             try
             {
-                if (DialogResult.Cancel == MessageBox.Show("是否重启App?", "请确认", MessageBoxButtons.OKCancel))
-                {
-                    return;
-                }
+                //if (DialogResult.Cancel == MessageBox.Show("是否重启App?", "请确认", MessageBoxButtons.OKCancel))
+                //{
+                //    return;
+                //}
                 button43.Enabled = false;
                 string postStr = string.Format("pass={0}", Pass);
                 //string urlOper = @"/person/createOrUpdate";

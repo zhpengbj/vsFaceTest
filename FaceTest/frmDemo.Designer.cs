@@ -186,7 +186,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(511, 3);
+            this.button1.Location = new System.Drawing.Point(570, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 75);
             this.button1.TabIndex = 0;
@@ -255,7 +255,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(511, 407);
+            this.button7.Location = new System.Drawing.Point(570, 407);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(133, 36);
             this.button7.TabIndex = 11;
@@ -288,7 +288,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(511, 284);
+            this.pictureBox1.Location = new System.Drawing.Point(570, 284);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -298,7 +298,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(511, 173);
+            this.lb_PersonId.Location = new System.Drawing.Point(570, 173);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -307,7 +307,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(511, 202);
+            this.lb_PersonName.Location = new System.Drawing.Point(570, 202);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -459,7 +459,7 @@
             // lb_Path
             // 
             this.lb_Path.AutoSize = true;
-            this.lb_Path.Location = new System.Drawing.Point(511, 233);
+            this.lb_Path.Location = new System.Drawing.Point(570, 232);
             this.lb_Path.Name = "lb_Path";
             this.lb_Path.Size = new System.Drawing.Size(63, 15);
             this.lb_Path.TabIndex = 41;
@@ -626,7 +626,7 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(511, 126);
+            this.button26.Location = new System.Drawing.Point(570, 126);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(133, 36);
             this.button26.TabIndex = 67;
@@ -642,7 +642,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl1.Location = new System.Drawing.Point(650, 0);
+            this.tabControl1.Location = new System.Drawing.Point(716, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(494, 636);
@@ -767,7 +767,7 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(511, 482);
+            this.button29.Location = new System.Drawing.Point(570, 482);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(133, 36);
             this.button29.TabIndex = 74;
@@ -949,7 +949,7 @@
             // 
             // button44
             // 
-            this.button44.Location = new System.Drawing.Point(511, 84);
+            this.button44.Location = new System.Drawing.Point(570, 84);
             this.button44.Name = "button44";
             this.button44.Size = new System.Drawing.Size(133, 36);
             this.button44.TabIndex = 92;
@@ -974,7 +974,7 @@
             // 
             // button46
             // 
-            this.button46.Location = new System.Drawing.Point(511, 524);
+            this.button46.Location = new System.Drawing.Point(570, 524);
             this.button46.Name = "button46";
             this.button46.Size = new System.Drawing.Size(133, 36);
             this.button46.TabIndex = 94;
@@ -1022,7 +1022,7 @@
             this.tabControl2.Location = new System.Drawing.Point(12, 42);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(493, 584);
+            this.tabControl2.Size = new System.Drawing.Size(538, 584);
             this.tabControl2.TabIndex = 100;
             // 
             // tabPage5
@@ -1056,7 +1056,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(485, 555);
+            this.tabPage5.Size = new System.Drawing.Size(530, 555);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "设备管理";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1595,7 +1595,7 @@
             // lb_CardNo
             // 
             this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(511, 259);
+            this.lb_CardNo.Location = new System.Drawing.Point(570, 259);
             this.lb_CardNo.Name = "lb_CardNo";
             this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
             this.lb_CardNo.TabIndex = 101;
@@ -1603,7 +1603,7 @@
             // 
             // button50
             // 
-            this.button50.Location = new System.Drawing.Point(511, 586);
+            this.button50.Location = new System.Drawing.Point(570, 586);
             this.button50.Name = "button50";
             this.button50.Size = new System.Drawing.Size(133, 36);
             this.button50.TabIndex = 102;
@@ -1624,7 +1624,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 636);
+            this.ClientSize = new System.Drawing.Size(1210, 636);
             this.Controls.Add(this.button50);
             this.Controls.Add(this.lb_CardNo);
             this.Controls.Add(this.tabControl2);
