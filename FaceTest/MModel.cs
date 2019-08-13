@@ -368,6 +368,7 @@ namespace FaceTest
         /// 已使用的硬盘
         /// </summary>
         public float disk { get; set; }
+        public bool isRoot { get; set; }
     }
     public class FaceFind
     {

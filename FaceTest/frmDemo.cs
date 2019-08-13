@@ -2769,6 +2769,7 @@ namespace FaceTest
             showMsg(String.Format("解析,App占用内存[{0}mb]-[{1:F}%]", device.memory, device.memory / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统可用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));
+            showMsg(String.Format("解析,isRoot[{0}]", device.isRoot));
             showMsg("");
             return device;
         }
