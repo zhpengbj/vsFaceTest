@@ -496,6 +496,10 @@ namespace FaceTest
     public class PassTimeOne
     {
         /// <summary>
+        /// 名称
+        /// </summary>
+        public string Name;
+        /// <summary>
         /// 开始时间 hh:mi:ss
         /// </summary>
         public String Dt1;

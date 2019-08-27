@@ -1724,7 +1724,51 @@ namespace FaceTest
 
             }
         }
+        private PassTimes GetNewPassTimes_default()
+        {
+            PassTimes res = new PassTimes();
 
+            res.Name = "默认时段";
+            res.passTimeList = new List<PassTime>();
+            PassTime _PassTime = new PassTime();
+            _PassTime.WeekList = new List<string>();
+            _PassTime.PassTimeByWeekList = new List<PassTimeOne>();
+            _PassTime.WeekList.Add("1");
+            _PassTime.WeekList.Add("2");
+            _PassTime.WeekList.Add("3");
+            _PassTime.WeekList.Add("4");
+            _PassTime.WeekList.Add("5");
+            _PassTime.WeekList.Add("6");
+            _PassTime.WeekList.Add("7");
+
+            //时段
+            PassTimeOne _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Name = "早餐";
+            _PassTimeOne.Dt1 = "06:00:00";
+            _PassTimeOne.Dt2 = "10:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Name = "中餐";
+            _PassTimeOne.Dt1 = "10:00:00";
+            _PassTimeOne.Dt2 = "14:00:00";
+
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Name = "晚餐";
+            _PassTimeOne.Dt1 = "14:00:00";
+            _PassTimeOne.Dt2 = "18:00:00";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+
+            _PassTimeOne = new PassTimeOne();
+            _PassTimeOne.Name = "夜餐";
+            _PassTimeOne.Dt1 = "18:00:00";
+            _PassTimeOne.Dt2 = "23:59:59";
+            _PassTime.PassTimeByWeekList.Add(_PassTimeOne);
+            //加入
+            res.passTimeList.Add(_PassTime);
+            return res;
+        }
         /// <summary>
         /// 住宿生的时段数据
         /// 有2组
@@ -3768,6 +3812,91 @@ namespace FaceTest
         private void tb_Pass_KeyUp(object sender, KeyEventArgs e)
         {
             Pass = tb_Pass.Text;
+        }
+
+        private void button56_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button56.Enabled = false;
+                PassTimes _PassTimes = GetNewPassTimes_default();
+                string postStr = string.Format("pass={0}&passtimes={1}", Pass, JsonConvert.SerializeObject(_PassTimes));
+                string urlOper = @"/passtime/createOrUpdate";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg(string.Format("Set passtime[{0}] 成功", _PassTimes.Name));
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+                
+
+            }
+            finally
+            {
+                button56.Enabled = true;
+
+            }
+
+
+        }
+
+        private void button55_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button55.Enabled = false;
+                string postStr = string.Format("pass={0}&devicType={1}", Pass, tb_devicType.Text.Trim());
+                string urlOper = @"/setDeviceType";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setDeviceType 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button55.Enabled = true;
+
+            }
         }
     }
 }
