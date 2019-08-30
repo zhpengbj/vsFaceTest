@@ -75,7 +75,7 @@
       <Value Profile="(Default)">1013000013</Value>
     </Setting>
     <Setting Name="tb_wsUrl" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ws://192.168.0.101:8092</Value>
+      <Value Profile="(Default)">http://192.168.0.101:8091/updateData</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -183,6 +183,22 @@ namespace FaceTest
                             //returnObj = GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
                             //ResponseRetrun(returnObj, response);
                             break;
+                        case @"/updateData":
+                            showMsg(requestJsonString);
+                            //查询数据
+                            MUpdateDataResponse updateDataResponse = GetUpdateDataResponse();
+                            returnObj = JsonConvert.SerializeObject(updateDataResponse);
+                            showMsg("updateData.returnObj:"+ returnObj);
+                            ResponseRetrun(returnObj, response);
+                            break;
+                        case @"/updateDataCallback":
+                            string dataStr = requestJsonString.Substring(requestJsonString.IndexOf("JsonStr=") + 8, requestJsonString.Length - requestJsonString.IndexOf("JsonStr=") - 8);
+                            showMsg(dataStr);
+                            //更新数据后回调
+                            MUpdateDataCallbackRequest updateDataCallbackRequest = GetUpdateDataCallbackRequest(dataStr);
+                            DoUpdateDataCallback(updateDataCallbackRequest);
+                            //查询数据
+                            break;
                     }
                     return;
                 }
@@ -201,7 +217,7 @@ namespace FaceTest
                     showMsg(string.Format("GetApkFile:[{0}]", request.RemoteEndPoint.ToString()));
                     response.AddHeader("Content-Disposition", "attachment;FileName=" + fileName);
 
-                    FileStream stream = new FileInfo(APKFILENAME).OpenRead();
+                    FileStream stream = new FileInfo(fileName).OpenRead();
 
                     byte[] data = new Byte[stream.Length];
                     //从流中读取字节块并将该数据写入给定缓冲区buffer中
@@ -213,7 +229,28 @@ namespace FaceTest
 
                     return;
                 }
+                if (request.RawUrl.IndexOf(@"/GetImage.ashx")>=0)
+                {
+                    string id = request.RawUrl.Split('_')[1];
 
+                    response.ContentType = "application/octet-stream";
+
+                    string fileName = string.Format("{0}.jpg",id);
+                    showMsg(string.Format("GetImage:id[{0}],[{0}]",id, request.RemoteEndPoint.ToString()));
+                    response.AddHeader("Content-Disposition", "attachment;FileName=" + fileName);
+
+                    FileStream stream = new FileInfo(fileName).OpenRead();
+
+                    byte[] data = new Byte[stream.Length];
+                    //从流中读取字节块并将该数据写入给定缓冲区buffer中
+                    stream.Read(data, 0, Convert.ToInt32(stream.Length));
+                    response.ContentLength64 = data.Length;
+                    System.IO.Stream output = response.OutputStream;
+                    output.Write(data, 0, data.Length);
+                    output.Close();
+
+                    return;
+                }
             }
 
             returnObj = "不是post请求或者传过来的数据为空";
@@ -221,6 +258,30 @@ namespace FaceTest
             ResponseRetrun(returnObj, response);
             return;
         }
+        MUpdateDataResponse GetUpdateDataResponse()
+        {
+            MUpdateDataResponse updateResponse = new MUpdateDataResponse();
+            updateResponse.code = 0;
+            updateResponse.msg = "";
+            updateResponse.data = UpdateData_User_List;
+            return updateResponse;
+        }
+        void DoUpdateDataCallback(MUpdateDataCallbackRequest updateDataCallbackRequest)
+        {
+            foreach(MUpdateDataResult updateDataResult in updateDataCallbackRequest.dataList)
+            {
+                for (int i = 0; i < UpdateData_User_List.Count; i++)
+                {
+                    if (UpdateData_User_List[i].updateId.Equals(updateDataResult.updateId))
+                        UpdateData_User_List.Remove(UpdateData_User_List[i]);
+                }
+            }
+        }
+        MUpdateDataCallbackRequest GetUpdateDataCallbackRequest (string JsonString)
+        {
+            return JsonConvert.DeserializeObject<MUpdateDataCallbackRequest>(JsonString);
+        }
+        private List<MUpdateData_User> UpdateData_User_List = new List<MUpdateData_User>();
         private String NewAppCersionCode = string.Empty;
         private string APKFILENAME = "update.apk";
 
@@ -1110,7 +1171,7 @@ namespace FaceTest
                     string s = msg;
                     if (!string.IsNullOrEmpty(msg))
                     {
-                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("hh:mm:ss"), msg);
+                        s = string.Format("[{0}],{1}\r\n", DateTime.Now.ToString("HH:mm:ss"), msg);
                     }
                     else
                     {
@@ -3897,6 +3958,196 @@ namespace FaceTest
                 button55.Enabled = true;
 
             }
+        }
+
+        private void button57_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button57.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=11", Pass, tb_updateDataUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl typeId=11 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button57.Enabled = true;
+
+            }
+        }
+
+        private void button59_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button59.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=12", Pass, tb_updateDataCallback.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl typeId=12 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button59.Enabled = true;
+
+            }
+        }
+
+        private void button61_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button58_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button49.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&typeId=11", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("getUrl typeId=11 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button49.Enabled = true;
+
+            }
+        }
+
+        private void button60_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button49.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&typeId=12", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("getUrl typeId=12 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button49.Enabled = true;
+
+            }
+        }
+
+        private void button63_Click(object sender, EventArgs e)
+        {
+            UpdateData_User_List = new List<MUpdateData_User>();
+            MUpdateData_User updateData_User = new MUpdateData_User();
+            updateData_User.updateId = Guid.NewGuid().ToString();
+            updateData_User.operateFlag = Convert.ToInt32(cb_operateFlag.Text);
+            updateData_User.userId = "Id001";
+            updateData_User.userName = "Name001";
+            updateData_User.userFacePic = String.Format("http://192.168.0.103:8091/GetImage.ashx_" + updateData_User.userId);
+            updateData_User.userRemarks = "remark001";
+            UpdateData_User_List.Add(updateData_User);            
         }
     }
 }

@@ -443,10 +443,11 @@ namespace FaceTest
         /// 姓名
         /// </summary>
         public string name { get; set; }
+        public string remark { get; set; }
 
         public override string ToString()
         {
-            return string.Format("id:[{0}],name:[{1}],card:[{2}]", id, name, cardNo);
+            return string.Format("id:[{0}],name:[{1}],card:[{2}],remark:[{3}]", id, name, cardNo, remark);
         }
         /// <summary>
         /// 韦根卡号
@@ -538,5 +539,57 @@ namespace FaceTest
     }
     #endregion
 
+
+    #region updateData 
+    public class MUpdateDataResponse
+    {
+        public int code;
+        public List<MUpdateData_User> data;
+        public String msg;
+    }
+    public class MUpdateData_User
+    {
+        /***
+         * 更新唯一标志
+         */
+        public String updateId;
+        /***
+         * 操作类型
+         * 1: 增加数据
+         * 2: 删除数据
+         * 3: 修改数据
+         */
+        public int operateFlag;
+        /***
+         * 人员Id
+         */
+        public String userId;
+        /***
+         * 人员姓名
+         */
+        public String userName;
+        /***
+         * 照片的url
+         */
+        public String userFacePic;
+        /***
+         * 人员备注
+         * 主要用于显示
+         */
+        public String userRemarks;
+    }
+
+    public class MUpdateDataCallbackRequest
+    {
+        public string machineNo { get; set; }
+        public List<MUpdateDataResult> dataList;
+    }
+    public class MUpdateDataResult
+    {
+        public String updateId;
+        public int code;
+        public String msg;
+    }
+    #endregion
 
 }

@@ -313,7 +313,7 @@ namespace FaceTest.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ws://192.168.0.101:8092")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://192.168.0.101:8091/updateData")]
         public string tb_wsUrl {
             get {
                 return ((string)(this["tb_wsUrl"]));

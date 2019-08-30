@@ -139,14 +139,25 @@
             this.button51 = new System.Windows.Forms.Button();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.button61 = new System.Windows.Forms.Button();
+            this.button62 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.button59 = new System.Windows.Forms.Button();
+            this.button60 = new System.Windows.Forms.Button();
+            this.tb_updateDataCallback = new System.Windows.Forms.TextBox();
+            this.button57 = new System.Windows.Forms.Button();
+            this.button58 = new System.Windows.Forms.Button();
+            this.tb_updateDataUrl = new System.Windows.Forms.TextBox();
             this.button53 = new System.Windows.Forms.Button();
             this.button52 = new System.Windows.Forms.Button();
             this.button49 = new System.Windows.Forms.Button();
-            this.lb_CardNo = new System.Windows.Forms.Label();
-            this.button50 = new System.Windows.Forms.Button();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.button55 = new System.Windows.Forms.Button();
             this.tb_devicType = new System.Windows.Forms.TextBox();
+            this.lb_CardNo = new System.Windows.Forms.Label();
+            this.button50 = new System.Windows.Forms.Button();
+            this.button63 = new System.Windows.Forms.Button();
+            this.cb_operateFlag = new System.Windows.Forms.ComboBox();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tb_DevRunLogUrl = new System.Windows.Forms.TextBox();
             this.tb_CallBackVerifyUrl = new System.Windows.Forms.TextBox();
@@ -1347,6 +1358,17 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.cb_operateFlag);
+            this.tabPage10.Controls.Add(this.button63);
+            this.tabPage10.Controls.Add(this.button61);
+            this.tabPage10.Controls.Add(this.button62);
+            this.tabPage10.Controls.Add(this.textBox6);
+            this.tabPage10.Controls.Add(this.button59);
+            this.tabPage10.Controls.Add(this.button60);
+            this.tabPage10.Controls.Add(this.tb_updateDataCallback);
+            this.tabPage10.Controls.Add(this.button57);
+            this.tabPage10.Controls.Add(this.button58);
+            this.tabPage10.Controls.Add(this.tb_updateDataUrl);
             this.tabPage10.Controls.Add(this.button53);
             this.tabPage10.Controls.Add(this.button52);
             this.tabPage10.Controls.Add(this.button49);
@@ -1356,8 +1378,103 @@
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage10.Size = new System.Drawing.Size(530, 555);
             this.tabPage10.TabIndex = 5;
-            this.tabPage10.Text = "Ws设置";
+            this.tabPage10.Text = "云平台设置";
             this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // button61
+            // 
+            this.button61.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button61.Location = new System.Drawing.Point(30, 440);
+            this.button61.Name = "button61";
+            this.button61.Size = new System.Drawing.Size(233, 36);
+            this.button61.TabIndex = 102;
+            this.button61.Text = "上传识别记录url";
+            this.button61.UseVisualStyleBackColor = true;
+            this.button61.Visible = false;
+            this.button61.Click += new System.EventHandler(this.button61_Click);
+            // 
+            // button62
+            // 
+            this.button62.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button62.Location = new System.Drawing.Point(273, 440);
+            this.button62.Name = "button62";
+            this.button62.Size = new System.Drawing.Size(92, 36);
+            this.button62.TabIndex = 101;
+            this.button62.Text = "读取";
+            this.button62.UseVisualStyleBackColor = true;
+            this.button62.Visible = false;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox6.Location = new System.Drawing.Point(30, 489);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(413, 25);
+            this.textBox6.TabIndex = 100;
+            this.textBox6.Text = "http://192.168.0.101:8091/updateData";
+            this.textBox6.Visible = false;
+            // 
+            // button59
+            // 
+            this.button59.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button59.Location = new System.Drawing.Point(39, 287);
+            this.button59.Name = "button59";
+            this.button59.Size = new System.Drawing.Size(233, 36);
+            this.button59.TabIndex = 99;
+            this.button59.Text = "更新数据结果回调url";
+            this.button59.UseVisualStyleBackColor = true;
+            this.button59.Click += new System.EventHandler(this.button59_Click);
+            // 
+            // button60
+            // 
+            this.button60.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button60.Location = new System.Drawing.Point(282, 287);
+            this.button60.Name = "button60";
+            this.button60.Size = new System.Drawing.Size(92, 36);
+            this.button60.TabIndex = 98;
+            this.button60.Text = "读取";
+            this.button60.UseVisualStyleBackColor = true;
+            this.button60.Click += new System.EventHandler(this.button60_Click);
+            // 
+            // tb_updateDataCallback
+            // 
+            this.tb_updateDataCallback.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_updateDataCallback.Location = new System.Drawing.Point(39, 336);
+            this.tb_updateDataCallback.Name = "tb_updateDataCallback";
+            this.tb_updateDataCallback.Size = new System.Drawing.Size(413, 25);
+            this.tb_updateDataCallback.TabIndex = 97;
+            this.tb_updateDataCallback.Text = "http://192.168.0.103:8091/updateDataCallback";
+            // 
+            // button57
+            // 
+            this.button57.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button57.Location = new System.Drawing.Point(39, 192);
+            this.button57.Name = "button57";
+            this.button57.Size = new System.Drawing.Size(233, 36);
+            this.button57.TabIndex = 96;
+            this.button57.Text = "数据更新url";
+            this.button57.UseVisualStyleBackColor = true;
+            this.button57.Click += new System.EventHandler(this.button57_Click);
+            // 
+            // button58
+            // 
+            this.button58.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button58.Location = new System.Drawing.Point(282, 192);
+            this.button58.Name = "button58";
+            this.button58.Size = new System.Drawing.Size(92, 36);
+            this.button58.TabIndex = 95;
+            this.button58.Text = "读取";
+            this.button58.UseVisualStyleBackColor = true;
+            this.button58.Click += new System.EventHandler(this.button58_Click);
+            // 
+            // tb_updateDataUrl
+            // 
+            this.tb_updateDataUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_updateDataUrl.Location = new System.Drawing.Point(39, 241);
+            this.tb_updateDataUrl.Name = "tb_updateDataUrl";
+            this.tb_updateDataUrl.Size = new System.Drawing.Size(413, 25);
+            this.tb_updateDataUrl.TabIndex = 94;
+            this.tb_updateDataUrl.Text = "http://192.168.0.103:8091/updateData";
             // 
             // button53
             // 
@@ -1392,25 +1509,6 @@
             this.button49.UseVisualStyleBackColor = true;
             this.button49.Click += new System.EventHandler(this.button49_Click);
             // 
-            // lb_CardNo
-            // 
-            this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(570, 259);
-            this.lb_CardNo.Name = "lb_CardNo";
-            this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
-            this.lb_CardNo.TabIndex = 101;
-            this.lb_CardNo.Text = "lb_CardNo";
-            // 
-            // button50
-            // 
-            this.button50.Location = new System.Drawing.Point(570, 586);
-            this.button50.Name = "button50";
-            this.button50.Size = new System.Drawing.Size(133, 36);
-            this.button50.TabIndex = 102;
-            this.button50.Text = "参数重置";
-            this.button50.UseVisualStyleBackColor = true;
-            this.button50.Click += new System.EventHandler(this.button50_Click);
-            // 
             // tabPage11
             // 
             this.tabPage11.Controls.Add(this.button55);
@@ -1420,7 +1518,7 @@
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.Size = new System.Drawing.Size(530, 555);
             this.tabPage11.TabIndex = 6;
-            this.tabPage11.Text = "特殊开发";
+            this.tabPage11.Text = "系统 ";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
             // button55
@@ -1440,6 +1538,49 @@
             this.tb_devicType.Size = new System.Drawing.Size(149, 25);
             this.tb_devicType.TabIndex = 24;
             this.tb_devicType.Text = "F_LT_005";
+            // 
+            // lb_CardNo
+            // 
+            this.lb_CardNo.AutoSize = true;
+            this.lb_CardNo.Location = new System.Drawing.Point(570, 259);
+            this.lb_CardNo.Name = "lb_CardNo";
+            this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
+            this.lb_CardNo.TabIndex = 101;
+            this.lb_CardNo.Text = "lb_CardNo";
+            // 
+            // button50
+            // 
+            this.button50.Location = new System.Drawing.Point(570, 586);
+            this.button50.Name = "button50";
+            this.button50.Size = new System.Drawing.Size(133, 36);
+            this.button50.TabIndex = 102;
+            this.button50.Text = "参数重置";
+            this.button50.UseVisualStyleBackColor = true;
+            this.button50.Click += new System.EventHandler(this.button50_Click);
+            // 
+            // button63
+            // 
+            this.button63.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button63.Location = new System.Drawing.Point(39, 379);
+            this.button63.Name = "button63";
+            this.button63.Size = new System.Drawing.Size(338, 36);
+            this.button63.TabIndex = 103;
+            this.button63.Text = "生成数据";
+            this.button63.UseVisualStyleBackColor = true;
+            this.button63.Click += new System.EventHandler(this.button63_Click);
+            // 
+            // cb_operateFlag
+            // 
+            this.cb_operateFlag.FormattingEnabled = true;
+            this.cb_operateFlag.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cb_operateFlag.Location = new System.Drawing.Point(383, 387);
+            this.cb_operateFlag.Name = "cb_operateFlag";
+            this.cb_operateFlag.Size = new System.Drawing.Size(96, 23);
+            this.cb_operateFlag.TabIndex = 104;
+            this.cb_operateFlag.Text = "1";
             // 
             // tb_Pass
             // 
@@ -1865,6 +2006,17 @@
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.Button button55;
         private System.Windows.Forms.TextBox tb_devicType;
+        private System.Windows.Forms.Button button57;
+        private System.Windows.Forms.Button button58;
+        private System.Windows.Forms.TextBox tb_updateDataUrl;
+        private System.Windows.Forms.Button button59;
+        private System.Windows.Forms.Button button60;
+        private System.Windows.Forms.TextBox tb_updateDataCallback;
+        private System.Windows.Forms.Button button61;
+        private System.Windows.Forms.Button button62;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Button button63;
+        private System.Windows.Forms.ComboBox cb_operateFlag;
     }
 }
 
