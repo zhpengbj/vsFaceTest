@@ -148,10 +148,13 @@ namespace FaceTest
             {
                 // init
                 req = HttpWebRequest.Create(sUrl) as HttpWebRequest;
+                req.Proxy = null;
+                req.Timeout = 1000;
                 req.Method = "POST";
                 req.Accept = "*/*";
                 req.KeepAlive = false;
                 req.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.NoCacheNoStore);
+                
                 byte[] bufPost = myEncoding.GetBytes(sPostData);
                 req.ContentType = sContentType;
                 req.ContentLength = bufPost.Length;
@@ -193,7 +196,14 @@ namespace FaceTest
                 }
                 finally
                 {
-                    res.Close();
+                    if (res != null)
+                    {
+                        res.Close();
+                    }
+                    if (req != null)
+                    {
+                        req.Abort();
+                    }
                 }
             }
             catch (Exception ex)

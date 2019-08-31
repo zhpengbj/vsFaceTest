@@ -273,14 +273,14 @@ namespace FaceTest
     public class NetworkInfo
     {
 
-        public String ip { get; set; }
-        public String subnetMask { get; set; }
+        public string ip { get; set; }
+        public string subnetMask { get; set; }
 
-        public String gateway { get; set; }
+        public string gateway { get; set; }
 
         //public bool isDHCPMod { get; set; }
-        public String DNS1 { get; set; }
-        public String DNS2 { get; set; }
+        public string DNS1 { get; set; }
+        public string DNS2 { get; set; }
     }
     /// <summary>
     /// 管理URL类
@@ -307,7 +307,7 @@ namespace FaceTest
         /// <summary>
         /// 设备编号，可用户自定义，如果没有自定义，则返回机器码。
         /// </summary>
-        public String deviceKey { get; set; }
+        public string deviceKey { get; set; }
         /// <summary>
         /// 设备类型
         /// 具体定义可咨询厂家
@@ -316,24 +316,24 @@ namespace FaceTest
         /// <summary>
         /// 设备的机器码
         /// </summary>
-        public String deviceMachineCode { get; set; }
+        public string deviceMachineCode { get; set; }
         /// <summary>
         /// 运行时间
         /// 格式：天d小时h分钟m
         /// </summary>
-        public String runtime { get; set; }
+        public string runtime { get; set; }
         /// <summary>
         /// APP启动的时间
         /// </summary>
-        public String starttime { get; set; }
+        public string starttime { get; set; }
         /// <summary>
         /// 当前系统时间
         /// </summary>
-        public String time { get; set; }
-        public String ip { get; set; }
+        public string time { get; set; }
+        public string ip { get; set; }
         public int personCount { get; set; }
         public int faceCount { get; set; }
-        public String version { get; set; }
+        public string version { get; set; }
         /// <summary>
         /// APP占用内存
         /// </summary>
@@ -379,7 +379,7 @@ namespace FaceTest
         public string faceImageKey { get; set; }
         public override string ToString()
         {
-            return string.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageKey:[{3}]",
+            return String.Format("faceId:[{0}],personId:[{1}],direct:[{2}],faceImageKey:[{3}]",
                 faceId, personId, direct, faceImageKey);
         }
 
@@ -447,7 +447,7 @@ namespace FaceTest
 
         public override string ToString()
         {
-            return string.Format("id:[{0}],name:[{1}],card:[{2}],remark:[{3}]", id, name, cardNo, remark);
+            return String.Format("id:[{0}],name:[{1}],card:[{2}],remark:[{3}]", id, name, cardNo, remark);
         }
         /// <summary>
         /// 韦根卡号
@@ -485,7 +485,7 @@ namespace FaceTest
         /// <summary>
         /// 星期列表 值在[1，7]
         /// </summary>
-        public List<String> WeekList;
+        public List<string> WeekList;
         /// <summary>
         /// 时间段列表，可以多个
         /// </summary>
@@ -503,11 +503,11 @@ namespace FaceTest
         /// <summary>
         /// 开始时间 hh:mi:ss
         /// </summary>
-        public String Dt1;
+        public string Dt1;
         /// <summary>
         /// 结果时间 hh:mi:ss
         /// </summary>
-        public String Dt2;
+        public string Dt2;
     }
     /// <summary>
     /// 当天识别的记录情况
@@ -545,14 +545,14 @@ namespace FaceTest
     {
         public int code;
         public List<MUpdateData_User> data;
-        public String msg;
+        public string msg;
     }
     public class MUpdateData_User
     {
         /***
          * 更新唯一标志
          */
-        public String updateId;
+        public string updateId;
         /***
          * 操作类型
          * 1: 增加数据
@@ -563,20 +563,20 @@ namespace FaceTest
         /***
          * 人员Id
          */
-        public String userId;
+        public string userId;
         /***
          * 人员姓名
          */
-        public String userName;
+        public string userName;
         /***
          * 照片的url
          */
-        public String userFacePic;
+        public string userFacePic;
         /***
          * 人员备注
          * 主要用于显示
          */
-        public String userRemarks;
+        public string userRemarks;
     }
 
     public class MUpdateDataCallbackRequest
@@ -586,9 +586,43 @@ namespace FaceTest
     }
     public class MUpdateDataResult
     {
-        public String updateId;
+        public string updateId;
         public int code;
-        public String msg;
+        public string msg;
+    }
+    #endregion
+
+    #region 上传回调_002 冠宇
+    /// <summary>
+    /// 不包括照片
+    /// </summary>
+    public class MRecogRecord_002_Main
+    {
+
+        public int id;
+        public string guid;
+        public string machineCode;
+        public string machineNo;
+        public int recogType;
+        public string userId;
+        public string userName;
+        public int ioDirection;
+        public string ioTime;
+        public float recogScore;
+        public int sendPassType;
+
+    }
+    public class MRecogRecord_002:MRecogRecord_002_Main
+    {
+
+        public string base64;
+
+    }
+    public class MRecogRecordRuturn
+    {
+        public int code { get; set; }
+
+        public string msg { get; set; }
     }
     #endregion
 

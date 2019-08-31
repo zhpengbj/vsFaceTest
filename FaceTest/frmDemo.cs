@@ -157,6 +157,12 @@ namespace FaceTest
                             returnObj = GetReurnTestString();// GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
                             ResponseRetrun(returnObj, response);
                             break;
+                        case @"/Handler_002.ashx":
+                            //识别记录
+                            DoResult_Record_002(requestJsonString);
+                            returnObj = GetReurnTestString_002();// GetReurnString();// "{\"result\":\"1\",\"success\":\"true\",\"msg\":\"1\",\"Result\": 0,\"msgtype\": \"\"}";
+                            ResponseRetrun(returnObj, response);
+                            break;
 
                         case @"/HeartBeat.ashx":
                             //心跳包
@@ -450,6 +456,13 @@ namespace FaceTest
             result.msg = "";
             return JsonConvert.SerializeObject(result);
         }
+        private string GetReurnTestString_002()
+        {
+            MRecogRecordRuturn result = new MRecogRecordRuturn();
+            result.code = 0;
+            result.msg = "";
+            return JsonConvert.SerializeObject(result);
+        }
         private string GetReurnString()
         {
             return GetReurnString("");
@@ -552,6 +565,23 @@ namespace FaceTest
             }
             catch (Exception ex)
             {
+            }
+        }
+
+        private void DoResult_Record_002(string JsonString)
+        {
+            //得到JSON字符串
+            string dataStr = JsonString.Substring(JsonString.IndexOf("JsonStr=") + 8, JsonString.Length - JsonString.IndexOf("JsonStr=") - 8);
+            try
+            {
+                showMsg(dataStr);
+                MRecogRecord_002 record = JsonConvert.DeserializeObject<MRecogRecord_002>(dataStr);
+                ShowInfo_002(record);
+
+            }
+            catch (Exception ex)
+            {
+                showMsg(ex.ToString());
             }
         }
         #endregion
@@ -831,6 +861,7 @@ namespace FaceTest
 
 
         }
+        
         private void ShowInfo(Verify v)
         {
             try
@@ -883,6 +914,51 @@ namespace FaceTest
 
 
         }
+        private void ShowInfo_002(MRecogRecord_002 record_)
+        {
+            try
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    if (record_ != null)
+                    {
+                        lb_PersonId.Text = "用户ID:" + record_.userId;
+                        lb_PersonName.Text = "用户姓名:" + record_.userName;
+                        //lb_Path.Text = "照片路径:" + record_.path;
+                        if (!string.IsNullOrEmpty(record_.base64))
+                        {
+                            //判断是否传入base64
+                            byte[] arr = Convert.FromBase64String(record_.base64);
+
+                            using (MemoryStream ms = new MemoryStream(arr, true))
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    pictureBox1.Image = Image.FromStream(ms);
+                                });
+
+
+                            }
+                        }
+
+                        showMsg2(((MRecogRecord_002_Main)record_).ToString());
+
+                    }
+                    else
+                    {
+                        lb_PersonId.Text = "";
+                        lb_PersonName.Text = "";
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                showMsg(ex.ToString());
+            }
+
+
+        }
+
         private List<Verify> receivePassList = new List<Verify>();
 
 
