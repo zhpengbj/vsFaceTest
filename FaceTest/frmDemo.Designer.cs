@@ -182,6 +182,8 @@
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.button50 = new System.Windows.Forms.Button();
             this.tb_Url = new System.Windows.Forms.TextBox();
+            this.tb_ImageUrl = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1565,6 +1567,8 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.label21);
+            this.tabPage10.Controls.Add(this.tb_ImageUrl);
             this.tabPage10.Controls.Add(this.cb_operateFlag);
             this.tabPage10.Controls.Add(this.button63);
             this.tabPage10.Controls.Add(this.button61);
@@ -1595,7 +1599,7 @@
             "1",
             "2",
             "3"});
-            this.cb_operateFlag.Location = new System.Drawing.Point(383, 387);
+            this.cb_operateFlag.Location = new System.Drawing.Point(380, 413);
             this.cb_operateFlag.Name = "cb_operateFlag";
             this.cb_operateFlag.Size = new System.Drawing.Size(96, 23);
             this.cb_operateFlag.TabIndex = 104;
@@ -1604,7 +1608,7 @@
             // button63
             // 
             this.button63.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button63.Location = new System.Drawing.Point(39, 379);
+            this.button63.Location = new System.Drawing.Point(36, 405);
             this.button63.Name = "button63";
             this.button63.Size = new System.Drawing.Size(338, 36);
             this.button63.TabIndex = 103;
@@ -1807,6 +1811,24 @@
             this.tb_Url.Size = new System.Drawing.Size(206, 25);
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
+            // 
+            // tb_ImageUrl
+            // 
+            this.tb_ImageUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_ImageUrl.Location = new System.Drawing.Point(110, 374);
+            this.tb_ImageUrl.Name = "tb_ImageUrl";
+            this.tb_ImageUrl.Size = new System.Drawing.Size(372, 25);
+            this.tb_ImageUrl.TabIndex = 105;
+            this.tb_ImageUrl.Text = "http://192.168.0.103:8091/GetImage.ashx_Id001";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(33, 377);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 15);
+            this.label21.TabIndex = 106;
+            this.label21.Text = "imageUrl";
             // 
             // frmDemo
             // 
@@ -2017,6 +2039,8 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Button button63;
         private System.Windows.Forms.ComboBox cb_operateFlag;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox tb_ImageUrl;
     }
 }
 

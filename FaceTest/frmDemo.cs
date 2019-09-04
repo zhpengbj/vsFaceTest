@@ -237,25 +237,31 @@ namespace FaceTest
                 }
                 if (request.RawUrl.IndexOf(@"/GetImage.ashx")>=0)
                 {
-                    string id = request.RawUrl.Split('_')[1];
+                    try
+                    {
+                        string id = request.RawUrl.Split('_')[1];
 
-                    response.ContentType = "application/octet-stream";
+                        response.ContentType = "application/octet-stream";
 
-                    string fileName = string.Format("{0}.jpg",id);
-                    showMsg(string.Format("GetImage:id[{0}],[{0}]",id, request.RemoteEndPoint.ToString()));
-                    response.AddHeader("Content-Disposition", "attachment;FileName=" + fileName);
+                        string fileName = string.Format("{0}.jpg", id);
+                        showMsg(string.Format("GetImage:id[{0}],[{0}]", id, request.RemoteEndPoint.ToString()));
+                        response.AddHeader("Content-Disposition", "attachment;FileName=" + fileName);
 
-                    FileStream stream = new FileInfo(fileName).OpenRead();
+                        FileStream stream = new FileInfo(fileName).OpenRead();
 
-                    byte[] data = new Byte[stream.Length];
-                    //从流中读取字节块并将该数据写入给定缓冲区buffer中
-                    stream.Read(data, 0, Convert.ToInt32(stream.Length));
-                    response.ContentLength64 = data.Length;
-                    System.IO.Stream output = response.OutputStream;
-                    output.Write(data, 0, data.Length);
-                    output.Close();
+                        byte[] data = new Byte[stream.Length];
+                        //从流中读取字节块并将该数据写入给定缓冲区buffer中
+                        stream.Read(data, 0, Convert.ToInt32(stream.Length));
+                        response.ContentLength64 = data.Length;
+                        System.IO.Stream output = response.OutputStream;
+                        output.Write(data, 0, data.Length);
+                        output.Close();
 
-                    return;
+                        return;
+                    }catch(Exception ex)
+                    {
+                        showMsg(ex.ToString());
+                    }
                 }
             }
 
@@ -4221,7 +4227,7 @@ namespace FaceTest
             updateData_User.operateFlag = Convert.ToInt32(cb_operateFlag.Text);
             updateData_User.userId = "Id001";
             updateData_User.userName = "Name001";
-            updateData_User.userFacePic = String.Format("http://192.168.0.103:8091/GetImage.ashx_" + updateData_User.userId);
+            updateData_User.userFacePic = tb_ImageUrl.Text;// String.Format("http://192.168.0.103:8091/GetImage.ashx_" + updateData_User.userId);
             updateData_User.userRemarks = "remark001";
             UpdateData_User_List.Add(updateData_User);            
         }
