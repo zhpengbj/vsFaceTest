@@ -161,6 +161,8 @@
             this.tb_Path = new System.Windows.Forms.TextBox();
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tb_ImageUrl = new System.Windows.Forms.TextBox();
             this.cb_operateFlag = new System.Windows.Forms.ComboBox();
             this.button63 = new System.Windows.Forms.Button();
             this.button61 = new System.Windows.Forms.Button();
@@ -177,13 +179,16 @@
             this.button49 = new System.Windows.Forms.Button();
             this.tb_wsUrl = new System.Windows.Forms.TextBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.cb_UseType = new System.Windows.Forms.ComboBox();
+            this.button64 = new System.Windows.Forms.Button();
             this.button55 = new System.Windows.Forms.Button();
             this.tb_devicType = new System.Windows.Forms.TextBox();
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.button50 = new System.Windows.Forms.Button();
             this.tb_Url = new System.Windows.Forms.TextBox();
-            this.tb_ImageUrl = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
+            this.button65 = new System.Windows.Forms.Button();
+            this.button66 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -204,7 +209,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(570, 3);
+            this.button1.Location = new System.Drawing.Point(594, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 75);
             this.button1.TabIndex = 0;
@@ -273,7 +278,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(570, 407);
+            this.button7.Location = new System.Drawing.Point(594, 407);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(133, 36);
             this.button7.TabIndex = 11;
@@ -306,7 +311,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(570, 284);
+            this.pictureBox1.Location = new System.Drawing.Point(594, 284);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(133, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -316,7 +321,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(570, 173);
+            this.lb_PersonId.Location = new System.Drawing.Point(594, 173);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -325,7 +330,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(570, 202);
+            this.lb_PersonName.Location = new System.Drawing.Point(594, 202);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -477,7 +482,7 @@
             // lb_Path
             // 
             this.lb_Path.AutoSize = true;
-            this.lb_Path.Location = new System.Drawing.Point(570, 232);
+            this.lb_Path.Location = new System.Drawing.Point(594, 232);
             this.lb_Path.Name = "lb_Path";
             this.lb_Path.Size = new System.Drawing.Size(63, 15);
             this.lb_Path.TabIndex = 41;
@@ -644,7 +649,7 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(570, 126);
+            this.button26.Location = new System.Drawing.Point(594, 126);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(133, 36);
             this.button26.TabIndex = 67;
@@ -660,10 +665,10 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl1.Location = new System.Drawing.Point(716, 0);
+            this.tabControl1.Location = new System.Drawing.Point(737, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(494, 636);
+            this.tabControl1.Size = new System.Drawing.Size(452, 636);
             this.tabControl1.TabIndex = 68;
             // 
             // tabPage1
@@ -672,7 +677,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(486, 607);
+            this.tabPage1.Size = new System.Drawing.Size(444, 607);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "详细信息";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -683,7 +688,7 @@
             this.receiveMsg.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg.Name = "receiveMsg";
-            this.receiveMsg.Size = new System.Drawing.Size(480, 601);
+            this.receiveMsg.Size = new System.Drawing.Size(438, 601);
             this.receiveMsg.TabIndex = 10;
             this.receiveMsg.Text = "";
             // 
@@ -693,7 +698,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(486, 607);
+            this.tabPage2.Size = new System.Drawing.Size(444, 607);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "接收识别记录";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -704,7 +709,7 @@
             this.receiveMsg2.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg2.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg2.Name = "receiveMsg2";
-            this.receiveMsg2.Size = new System.Drawing.Size(480, 601);
+            this.receiveMsg2.Size = new System.Drawing.Size(438, 601);
             this.receiveMsg2.TabIndex = 11;
             this.receiveMsg2.Text = "";
             // 
@@ -714,7 +719,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(486, 607);
+            this.tabPage3.Size = new System.Drawing.Size(444, 607);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "识别记录";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -726,7 +731,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 601);
+            this.dataGridView1.Size = new System.Drawing.Size(438, 601);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage4
@@ -735,7 +740,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(486, 607);
+            this.tabPage4.Size = new System.Drawing.Size(444, 607);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "设备运行日志";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -746,7 +751,7 @@
             this.receiveMsg3.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg3.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg3.Name = "receiveMsg3";
-            this.receiveMsg3.Size = new System.Drawing.Size(480, 601);
+            this.receiveMsg3.Size = new System.Drawing.Size(438, 601);
             this.receiveMsg3.TabIndex = 12;
             this.receiveMsg3.Text = "";
             // 
@@ -785,7 +790,7 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(570, 482);
+            this.button29.Location = new System.Drawing.Point(594, 482);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(133, 36);
             this.button29.TabIndex = 74;
@@ -967,7 +972,7 @@
             // 
             // button44
             // 
-            this.button44.Location = new System.Drawing.Point(570, 84);
+            this.button44.Location = new System.Drawing.Point(594, 84);
             this.button44.Name = "button44";
             this.button44.Size = new System.Drawing.Size(133, 36);
             this.button44.TabIndex = 92;
@@ -992,7 +997,7 @@
             // 
             // button46
             // 
-            this.button46.Location = new System.Drawing.Point(570, 524);
+            this.button46.Location = new System.Drawing.Point(594, 524);
             this.button46.Name = "button46";
             this.button46.Size = new System.Drawing.Size(133, 36);
             this.button46.TabIndex = 94;
@@ -1041,7 +1046,7 @@
             this.tabControl2.Location = new System.Drawing.Point(12, 42);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(538, 584);
+            this.tabControl2.Size = new System.Drawing.Size(576, 584);
             this.tabControl2.TabIndex = 100;
             // 
             // tabPage5
@@ -1075,7 +1080,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(530, 555);
+            this.tabPage5.Size = new System.Drawing.Size(568, 555);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "设备管理";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1224,7 +1229,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 25);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(530, 555);
+            this.tabPage6.Size = new System.Drawing.Size(568, 555);
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "回调设置";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -1339,6 +1344,9 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.button65);
+            this.tabPage7.Controls.Add(this.button66);
+            this.tabPage7.Controls.Add(this.textBox4);
             this.tabPage7.Controls.Add(this.button30);
             this.tabPage7.Controls.Add(this.button31);
             this.tabPage7.Controls.Add(this.textBox1);
@@ -1348,7 +1356,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(530, 555);
+            this.tabPage7.Size = new System.Drawing.Size(568, 555);
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "参数设置";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -1395,7 +1403,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(530, 555);
+            this.tabPage8.Size = new System.Drawing.Size(568, 555);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "同步数据";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1542,7 +1550,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(530, 555);
+            this.tabPage9.Size = new System.Drawing.Size(568, 555);
             this.tabPage9.TabIndex = 4;
             this.tabPage9.Text = "同步数据 -简易";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -1587,10 +1595,28 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 25);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(530, 555);
+            this.tabPage10.Size = new System.Drawing.Size(568, 555);
             this.tabPage10.TabIndex = 5;
             this.tabPage10.Text = "云平台设置";
             this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(33, 377);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 15);
+            this.label21.TabIndex = 106;
+            this.label21.Text = "imageUrl";
+            // 
+            // tb_ImageUrl
+            // 
+            this.tb_ImageUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_ImageUrl.Location = new System.Drawing.Point(110, 374);
+            this.tb_ImageUrl.Name = "tb_ImageUrl";
+            this.tb_ImageUrl.Size = new System.Drawing.Size(372, 25);
+            this.tb_ImageUrl.TabIndex = 105;
+            this.tb_ImageUrl.Text = "http://192.168.0.200:8091/GetImage.ashx_Id001";
             // 
             // cb_operateFlag
             // 
@@ -1678,7 +1704,7 @@
             this.tb_updateDataCallback.Name = "tb_updateDataCallback";
             this.tb_updateDataCallback.Size = new System.Drawing.Size(413, 25);
             this.tb_updateDataCallback.TabIndex = 97;
-            this.tb_updateDataCallback.Text = "http://192.168.0.103:8091/updateDataCallback";
+            this.tb_updateDataCallback.Text = "http://192.168.0.200:8091/updateDataCallback";
             // 
             // button57
             // 
@@ -1709,7 +1735,7 @@
             this.tb_updateDataUrl.Name = "tb_updateDataUrl";
             this.tb_updateDataUrl.Size = new System.Drawing.Size(413, 25);
             this.tb_updateDataUrl.TabIndex = 94;
-            this.tb_updateDataUrl.Text = "http://192.168.0.103:8091/updateData";
+            this.tb_updateDataUrl.Text = "http://192.168.0.200:8091/updateData";
             // 
             // button53
             // 
@@ -1756,15 +1782,40 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.cb_UseType);
+            this.tabPage11.Controls.Add(this.button64);
             this.tabPage11.Controls.Add(this.button55);
             this.tabPage11.Controls.Add(this.tb_devicType);
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(530, 555);
+            this.tabPage11.Size = new System.Drawing.Size(568, 555);
             this.tabPage11.TabIndex = 6;
             this.tabPage11.Text = "系统 ";
             this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // cb_UseType
+            // 
+            this.cb_UseType.FormattingEnabled = true;
+            this.cb_UseType.Items.AddRange(new object[] {
+            "Default",
+            "ConsumeCount",
+            "ConsumeMoney"});
+            this.cb_UseType.Location = new System.Drawing.Point(188, 93);
+            this.cb_UseType.Name = "cb_UseType";
+            this.cb_UseType.Size = new System.Drawing.Size(149, 23);
+            this.cb_UseType.TabIndex = 27;
+            this.cb_UseType.Text = "Default";
+            // 
+            // button64
+            // 
+            this.button64.Location = new System.Drawing.Point(29, 85);
+            this.button64.Name = "button64";
+            this.button64.Size = new System.Drawing.Size(149, 36);
+            this.button64.TabIndex = 25;
+            this.button64.Text = "设置使用方式";
+            this.button64.UseVisualStyleBackColor = true;
+            this.button64.Click += new System.EventHandler(this.button64_Click);
             // 
             // button55
             // 
@@ -1787,7 +1838,7 @@
             // lb_CardNo
             // 
             this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(570, 259);
+            this.lb_CardNo.Location = new System.Drawing.Point(594, 259);
             this.lb_CardNo.Name = "lb_CardNo";
             this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
             this.lb_CardNo.TabIndex = 101;
@@ -1795,7 +1846,7 @@
             // 
             // button50
             // 
-            this.button50.Location = new System.Drawing.Point(570, 586);
+            this.button50.Location = new System.Drawing.Point(594, 586);
             this.button50.Name = "button50";
             this.button50.Size = new System.Drawing.Size(133, 36);
             this.button50.TabIndex = 102;
@@ -1812,29 +1863,38 @@
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
             // 
-            // tb_ImageUrl
+            // button65
             // 
-            this.tb_ImageUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tb_ImageUrl.Location = new System.Drawing.Point(110, 374);
-            this.tb_ImageUrl.Name = "tb_ImageUrl";
-            this.tb_ImageUrl.Size = new System.Drawing.Size(372, 25);
-            this.tb_ImageUrl.TabIndex = 105;
-            this.tb_ImageUrl.Text = "http://192.168.0.103:8091/GetImage.ashx_Id001";
+            this.button65.Location = new System.Drawing.Point(19, 325);
+            this.button65.Name = "button65";
+            this.button65.Size = new System.Drawing.Size(149, 36);
+            this.button65.TabIndex = 91;
+            this.button65.Text = "读取数据更新参数";
+            this.button65.UseVisualStyleBackColor = true;
+            this.button65.Click += new System.EventHandler(this.button65_Click);
             // 
-            // label21
+            // button66
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(33, 377);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 15);
-            this.label21.TabIndex = 106;
-            this.label21.Text = "imageUrl";
+            this.button66.Location = new System.Drawing.Point(19, 407);
+            this.button66.Name = "button66";
+            this.button66.Size = new System.Drawing.Size(149, 36);
+            this.button66.TabIndex = 92;
+            this.button66.Text = "设置数据更新参数";
+            this.button66.UseVisualStyleBackColor = true;
+            this.button66.Click += new System.EventHandler(this.button66_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(19, 367);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(394, 25);
+            this.textBox4.TabIndex = 93;
             // 
             // frmDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1210, 636);
+            this.ClientSize = new System.Drawing.Size(1189, 636);
             this.Controls.Add(this.button50);
             this.Controls.Add(this.lb_CardNo);
             this.Controls.Add(this.tabControl2);
@@ -2041,6 +2101,11 @@
         private System.Windows.Forms.ComboBox cb_operateFlag;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox tb_ImageUrl;
+        private System.Windows.Forms.ComboBox cb_UseType;
+        private System.Windows.Forms.Button button64;
+        private System.Windows.Forms.Button button65;
+        private System.Windows.Forms.Button button66;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }
 

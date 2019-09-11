@@ -198,7 +198,7 @@ namespace FaceTest
                             ResponseRetrun(returnObj, response);
                             break;
                         case @"/updateDataCallback":
-                            string dataStr = requestJsonString.Substring(requestJsonString.IndexOf("JsonStr=") + 8, requestJsonString.Length - requestJsonString.IndexOf("JsonStr=") - 8);
+                            string dataStr = requestJsonString;// requestJsonString.Substring(requestJsonString.IndexOf("JsonStr=") + 8, requestJsonString.Length - requestJsonString.IndexOf("JsonStr=") - 8);
                             showMsg(dataStr);
                             //更新数据后回调
                             MUpdateDataCallbackRequest updateDataCallbackRequest = GetUpdateDataCallbackRequest(dataStr);
@@ -577,7 +577,7 @@ namespace FaceTest
         private void DoResult_Record_002(string JsonString)
         {
             //得到JSON字符串
-            string dataStr = JsonString.Substring(JsonString.IndexOf("JsonStr=") + 8, JsonString.Length - JsonString.IndexOf("JsonStr=") - 8);
+            string dataStr = JsonString;// JsonString.Substring(JsonString.IndexOf("JsonStr=") + 8, JsonString.Length - JsonString.IndexOf("JsonStr=") - 8);
             try
             {
                 showMsg(dataStr);
@@ -3532,6 +3532,13 @@ namespace FaceTest
             showMsg(String.Format("解析,历史记录推送时间间隙[{0}]", config.sendHisDataInterval));
             showMsg("");
         }
+        private void showAppUpdateDataConfig(string mes)
+        {
+            AppUpdaeDataConfig config = JsonConvert.DeserializeObject<AppUpdaeDataConfig>(mes);
+            showMsg(String.Format("解析,类型[{0}]", config.UpdateDataType));
+            showMsg(String.Format("解析,时间间隙[{0}]", config.UpdateDataInterval));
+            showMsg("");
+        }
         private void button43_Click(object sender, EventArgs e)
         {
             try
@@ -3696,10 +3703,10 @@ namespace FaceTest
         {
             try
             {
-                if (DialogResult.Cancel == MessageBox.Show("是否重启设备?", "请确认", MessageBoxButtons.OKCancel))
-                {
-                    return;
-                }
+                //if (DialogResult.Cancel == MessageBox.Show("是否重启设备?", "请确认", MessageBoxButtons.OKCancel))
+                //{
+                //    return;
+                //}
                 button43.Enabled = false;
                 string postStr = string.Format("pass={0}", Pass);
                 //string urlOper = @"/person/createOrUpdate";
@@ -3752,7 +3759,7 @@ namespace FaceTest
             networkInfo.gateway = this.tb_SetNet_Gateway.Text;
             networkInfo.DNS1 = this.tb_SetNet_DNS.Text;
             networkInfo.DNS2 = "";
-            // networkInfo.isDHCPMod = false;
+            networkInfo.isDHCPMod = false;
             return JsonConvert.SerializeObject(networkInfo);
 
 
@@ -4230,6 +4237,132 @@ namespace FaceTest
             updateData_User.userFacePic = tb_ImageUrl.Text;// String.Format("http://192.168.0.103:8091/GetImage.ashx_" + updateData_User.userId);
             updateData_User.userRemarks = "remark001";
             UpdateData_User_List.Add(updateData_User);            
+        }
+
+        private void button64_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button64.Enabled = false;
+                string postStr = string.Format("pass={0}&useType={1}", Pass, cb_UseType.Text.Trim());
+                string urlOper = @"/setUseType";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUseType 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button64.Enabled = true;
+
+            }
+        }
+
+        private void button65_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            try
+            {
+                button65.Enabled = false;
+                string postStr = string.Format("pass={0}", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getUpdateDataConfig";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        textBox4.Text = res.data;
+                        showMsg("getUpdateDataConfig 成功");
+                        showMsg(res.data);
+                        showAppUpdateDataConfig(res.data);
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button65.Enabled = true;
+
+            }
+        }
+
+        private void button66_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button66.Enabled = false;
+                string postStr = string.Format("pass={0}&updatedataconfig={1}", Pass, textBox4.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUpdateDataConfig";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUpdateDataConfig 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button66.Enabled = true;
+
+            }
         }
     }
 }

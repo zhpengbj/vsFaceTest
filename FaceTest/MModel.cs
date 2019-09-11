@@ -264,6 +264,14 @@ namespace FaceTest
         /// </summary>
         public int sendHisDataInterval { get; set; }
     }
+    /// <summary>
+    /// 更新参数
+    /// </summary>
+    public class AppUpdaeDataConfig
+    {
+        public string UpdateDataType { get; set; }
+        public int UpdateDataInterval { get; set; }
+    }
 
     #region 对象
 
@@ -278,7 +286,7 @@ namespace FaceTest
 
         public string gateway { get; set; }
 
-        //public bool isDHCPMod { get; set; }
+        public bool isDHCPMod { get; set; }
         public string DNS1 { get; set; }
         public string DNS2 { get; set; }
     }
