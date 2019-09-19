@@ -4364,5 +4364,17 @@ namespace FaceTest
 
             }
         }
+
+        private void button67_Click(object sender, EventArgs e)
+        {
+            timer3.Interval = 60 * 1000;
+            timer3.Enabled = !timer3.Enabled;
+            button67.Text = timer3.Enabled ? "启动中" : "停止";
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            button47_Click(sender, e);
+        }
     }
 }

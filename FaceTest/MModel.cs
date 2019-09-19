@@ -452,10 +452,13 @@ namespace FaceTest
         /// </summary>
         public string name { get; set; }
         public string remark { get; set; }
-
+        /// <summary>
+        /// 时段名称
+        /// </summary>
+        public string passTimeTypeName { get; set; }
         public override string ToString()
         {
-            return String.Format("id:[{0}],name:[{1}],card:[{2}],remark:[{3}]", id, name, cardNo, remark);
+            return String.Format("id:[{0}],name:[{1}],card:[{2}],remark:[{3}],passTimeTypeName:[{4}]", id, name, cardNo, remark, passTimeTypeName);
         }
         /// <summary>
         /// 韦根卡号
