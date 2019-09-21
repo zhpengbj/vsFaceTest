@@ -2300,11 +2300,26 @@ namespace FaceTest
             try
             {
                 button19.Enabled = false;
-                Person person = new Person();
-                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
-                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
-                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
-                string postStr = string.Format("pass={0}&person={1}", Pass, JsonConvert.SerializeObject(person));
+                string personJson = "";
+                if (cb_PersonAddOrUpdate_HaveTime.Checked)
+                {
+                    PersonHaveTime person = new PersonHaveTime();
+                    person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                    person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                    person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
+                    person.passTimeTypeName = tb_PersonAddOrUpdate_PassTimeName.Text.Trim();
+                    person.remark = "Test";
+                    personJson = JsonConvert.SerializeObject(person);
+                }
+                else
+                {
+                    Person person = new Person();
+                    person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                    person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                    person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
+                    personJson = JsonConvert.SerializeObject(person);
+                }
+                string postStr = string.Format("pass={0}&person={1}", Pass, personJson);
                 string urlOper = @"/person/createOrUpdate";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
                 ///person/createOrUpdate
@@ -2426,12 +2441,12 @@ namespace FaceTest
                     if (res.success)
                     {
                         showMsg("person find 成功");
-                        List<Person> list = JsonConvert.DeserializeObject<List<Person>>(res.data);
+                        List<PersonHaveTime> list = JsonConvert.DeserializeObject<List<PersonHaveTime>>(res.data);
 
                         if (list != null)
                         {
                             int personid = 0;
-                            foreach (Person one in list)
+                            foreach (PersonHaveTime one in list)
                             {
                                 personid++;
                                 showMsg(string.Format("person[{0}]:{1}", personid, one.ToString()));
@@ -4375,6 +4390,12 @@ namespace FaceTest
         private void timer3_Tick(object sender, EventArgs e)
         {
             button47_Click(sender, e);
+        }
+
+        private void tb_Url_KeyUp(object sender, KeyEventArgs e)
+        {
+            Url = tb_Url.Text;
+            this.Text = "XFaceDemo---" + Url;
         }
     }
 }

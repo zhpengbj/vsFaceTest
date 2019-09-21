@@ -158,6 +158,9 @@
             this.tb_SplitChar = new System.Windows.Forms.TextBox();
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.tb_DeviceNo = new System.Windows.Forms.TextBox();
+            this.cb_PersonAddOrUpdate_HaveTime = new System.Windows.Forms.CheckBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tb_PersonAddOrUpdate_PassTimeName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -177,9 +180,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(475, 8);
+            this.button1.Location = new System.Drawing.Point(552, 8);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 75);
+            this.button1.Size = new System.Drawing.Size(134, 75);
             this.button1.TabIndex = 0;
             this.button1.Text = "启动ws服务";
             this.button1.UseVisualStyleBackColor = true;
@@ -246,9 +249,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(475, 412);
+            this.button7.Location = new System.Drawing.Point(552, 412);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(149, 36);
+            this.button7.Size = new System.Drawing.Size(134, 36);
             this.button7.TabIndex = 11;
             this.button7.Text = "清空日志";
             this.button7.UseVisualStyleBackColor = true;
@@ -279,9 +282,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(475, 289);
+            this.pictureBox1.Location = new System.Drawing.Point(552, 289);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(126, 116);
+            this.pictureBox1.Size = new System.Drawing.Size(111, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
@@ -289,7 +292,7 @@
             // lb_PersonId
             // 
             this.lb_PersonId.AutoSize = true;
-            this.lb_PersonId.Location = new System.Drawing.Point(475, 178);
+            this.lb_PersonId.Location = new System.Drawing.Point(552, 178);
             this.lb_PersonId.Name = "lb_PersonId";
             this.lb_PersonId.Size = new System.Drawing.Size(95, 15);
             this.lb_PersonId.TabIndex = 17;
@@ -298,7 +301,7 @@
             // lb_PersonName
             // 
             this.lb_PersonName.AutoSize = true;
-            this.lb_PersonName.Location = new System.Drawing.Point(475, 207);
+            this.lb_PersonName.Location = new System.Drawing.Point(552, 207);
             this.lb_PersonName.Name = "lb_PersonName";
             this.lb_PersonName.Size = new System.Drawing.Size(111, 15);
             this.lb_PersonName.TabIndex = 18;
@@ -450,7 +453,7 @@
             // lb_Path
             // 
             this.lb_Path.AutoSize = true;
-            this.lb_Path.Location = new System.Drawing.Point(475, 238);
+            this.lb_Path.Location = new System.Drawing.Point(552, 238);
             this.lb_Path.Name = "lb_Path";
             this.lb_Path.Size = new System.Drawing.Size(63, 15);
             this.lb_Path.TabIndex = 41;
@@ -479,7 +482,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(156, 294);
+            this.label4.Location = new System.Drawing.Point(148, 293);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 15);
             this.label4.TabIndex = 45;
@@ -488,7 +491,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(180, 258);
+            this.label5.Location = new System.Drawing.Point(172, 257);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 15);
             this.label5.TabIndex = 49;
@@ -506,7 +509,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(164, 329);
+            this.label7.Location = new System.Drawing.Point(156, 328);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 15);
             this.label7.TabIndex = 52;
@@ -544,7 +547,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(225, 367);
+            this.pictureBox2.Location = new System.Drawing.Point(217, 366);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(105, 98);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -579,7 +582,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(166, 476);
+            this.label10.Location = new System.Drawing.Point(158, 475);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(53, 15);
             this.label10.TabIndex = 61;
@@ -588,7 +591,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(166, 519);
+            this.label11.Location = new System.Drawing.Point(158, 518);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 15);
             this.label11.TabIndex = 64;
@@ -617,9 +620,9 @@
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(475, 131);
+            this.button26.Location = new System.Drawing.Point(552, 131);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(149, 36);
+            this.button26.Size = new System.Drawing.Size(134, 36);
             this.button26.TabIndex = 67;
             this.button26.Text = "停止web服务";
             this.button26.UseVisualStyleBackColor = true;
@@ -634,7 +637,7 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage10);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl1.Location = new System.Drawing.Point(650, 0);
+            this.tabControl1.Location = new System.Drawing.Point(692, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(494, 636);
@@ -928,9 +931,9 @@
             // 
             // button29
             // 
-            this.button29.Location = new System.Drawing.Point(475, 487);
+            this.button29.Location = new System.Drawing.Point(552, 487);
             this.button29.Name = "button29";
-            this.button29.Size = new System.Drawing.Size(149, 36);
+            this.button29.Size = new System.Drawing.Size(134, 36);
             this.button29.TabIndex = 74;
             this.button29.Text = "广播";
             this.button29.UseVisualStyleBackColor = true;
@@ -1080,9 +1083,9 @@
             // 
             // button44
             // 
-            this.button44.Location = new System.Drawing.Point(475, 89);
+            this.button44.Location = new System.Drawing.Point(552, 89);
             this.button44.Name = "button44";
-            this.button44.Size = new System.Drawing.Size(149, 36);
+            this.button44.Size = new System.Drawing.Size(134, 36);
             this.button44.TabIndex = 92;
             this.button44.Text = "打开web";
             this.button44.UseVisualStyleBackColor = true;
@@ -1095,9 +1098,9 @@
             // 
             // button46
             // 
-            this.button46.Location = new System.Drawing.Point(475, 529);
+            this.button46.Location = new System.Drawing.Point(552, 529);
             this.button46.Name = "button46";
-            this.button46.Size = new System.Drawing.Size(149, 36);
+            this.button46.Size = new System.Drawing.Size(134, 36);
             this.button46.TabIndex = 94;
             this.button46.Text = "循环广播";
             this.button46.UseVisualStyleBackColor = true;
@@ -1116,7 +1119,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(180, 223);
+            this.label13.Location = new System.Drawing.Point(172, 222);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(37, 15);
             this.label13.TabIndex = 99;
@@ -1132,7 +1135,7 @@
             this.tabControl2.Location = new System.Drawing.Point(12, 42);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(447, 584);
+            this.tabControl2.Size = new System.Drawing.Size(524, 584);
             this.tabControl2.TabIndex = 100;
             // 
             // tabPage5
@@ -1299,6 +1302,9 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.cb_PersonAddOrUpdate_HaveTime);
+            this.tabPage8.Controls.Add(this.label22);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PassTimeName);
             this.tabPage8.Controls.Add(this.button49);
             this.tabPage8.Controls.Add(this.button27);
             this.tabPage8.Controls.Add(this.label13);
@@ -1338,7 +1344,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 25);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(439, 555);
+            this.tabPage8.Size = new System.Drawing.Size(516, 555);
             this.tabPage8.TabIndex = 3;
             this.tabPage8.Text = "同步数据";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -1356,7 +1362,7 @@
             // tb_PersonAddOrUpdate_CardNo
             // 
             this.tb_PersonAddOrUpdate_CardNo.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_CardNo", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(225, 218);
+            this.tb_PersonAddOrUpdate_CardNo.Location = new System.Drawing.Point(217, 217);
             this.tb_PersonAddOrUpdate_CardNo.Name = "tb_PersonAddOrUpdate_CardNo";
             this.tb_PersonAddOrUpdate_CardNo.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonAddOrUpdate_CardNo.TabIndex = 98;
@@ -1365,7 +1371,7 @@
             // tb_PersonDelete_PersonId
             // 
             this.tb_PersonDelete_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonDelete_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonDelete_PersonId.Location = new System.Drawing.Point(225, 289);
+            this.tb_PersonDelete_PersonId.Location = new System.Drawing.Point(217, 288);
             this.tb_PersonDelete_PersonId.Name = "tb_PersonDelete_PersonId";
             this.tb_PersonDelete_PersonId.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonDelete_PersonId.TabIndex = 44;
@@ -1392,7 +1398,7 @@
             // tb_PersonAddOrUpdate_PersonName
             // 
             this.tb_PersonAddOrUpdate_PersonName.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonAddOrUpdate_PersonName", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonAddOrUpdate_PersonName.Location = new System.Drawing.Point(225, 253);
+            this.tb_PersonAddOrUpdate_PersonName.Location = new System.Drawing.Point(217, 252);
             this.tb_PersonAddOrUpdate_PersonName.Name = "tb_PersonAddOrUpdate_PersonName";
             this.tb_PersonAddOrUpdate_PersonName.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonAddOrUpdate_PersonName.TabIndex = 47;
@@ -1419,7 +1425,7 @@
             // tb_PersonFind_PersonId
             // 
             this.tb_PersonFind_PersonId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_PersonFind_PersonId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_PersonFind_PersonId.Location = new System.Drawing.Point(225, 324);
+            this.tb_PersonFind_PersonId.Location = new System.Drawing.Point(217, 323);
             this.tb_PersonFind_PersonId.Name = "tb_PersonFind_PersonId";
             this.tb_PersonFind_PersonId.Size = new System.Drawing.Size(137, 25);
             this.tb_PersonFind_PersonId.TabIndex = 51;
@@ -1428,7 +1434,7 @@
             // tb_FaceFind_FaceId
             // 
             this.tb_FaceFind_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceFind_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceFind_FaceId.Location = new System.Drawing.Point(227, 514);
+            this.tb_FaceFind_FaceId.Location = new System.Drawing.Point(219, 513);
             this.tb_FaceFind_FaceId.Name = "tb_FaceFind_FaceId";
             this.tb_FaceFind_FaceId.Size = new System.Drawing.Size(137, 25);
             this.tb_FaceFind_FaceId.TabIndex = 63;
@@ -1437,7 +1443,7 @@
             // tb_FaceDelete_FaceId
             // 
             this.tb_FaceDelete_FaceId.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::FaceTest.Properties.Settings.Default, "tb_FaceDelete_FaceId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.tb_FaceDelete_FaceId.Location = new System.Drawing.Point(225, 471);
+            this.tb_FaceDelete_FaceId.Location = new System.Drawing.Point(217, 470);
             this.tb_FaceDelete_FaceId.Name = "tb_FaceDelete_FaceId";
             this.tb_FaceDelete_FaceId.Size = new System.Drawing.Size(137, 25);
             this.tb_FaceDelete_FaceId.TabIndex = 60;
@@ -1501,7 +1507,7 @@
             // lb_CardNo
             // 
             this.lb_CardNo.AutoSize = true;
-            this.lb_CardNo.Location = new System.Drawing.Point(475, 264);
+            this.lb_CardNo.Location = new System.Drawing.Point(552, 264);
             this.lb_CardNo.Name = "lb_CardNo";
             this.lb_CardNo.Size = new System.Drawing.Size(79, 15);
             this.lb_CardNo.TabIndex = 101;
@@ -1516,11 +1522,40 @@
             this.tb_DeviceNo.TabIndex = 6;
             this.tb_DeviceNo.Text = global::FaceTest.Properties.Settings.Default.tb_DeviceNo;
             // 
+            // cb_PersonAddOrUpdate_HaveTime
+            // 
+            this.cb_PersonAddOrUpdate_HaveTime.AutoSize = true;
+            this.cb_PersonAddOrUpdate_HaveTime.Checked = true;
+            this.cb_PersonAddOrUpdate_HaveTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_PersonAddOrUpdate_HaveTime.Location = new System.Drawing.Point(370, 254);
+            this.cb_PersonAddOrUpdate_HaveTime.Name = "cb_PersonAddOrUpdate_HaveTime";
+            this.cb_PersonAddOrUpdate_HaveTime.Size = new System.Drawing.Size(74, 19);
+            this.cb_PersonAddOrUpdate_HaveTime.TabIndex = 109;
+            this.cb_PersonAddOrUpdate_HaveTime.Text = "带时段";
+            this.cb_PersonAddOrUpdate_HaveTime.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(367, 224);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(67, 15);
+            this.label22.TabIndex = 108;
+            this.label22.Text = "时段名称";
+            // 
+            // tb_PersonAddOrUpdate_PassTimeName
+            // 
+            this.tb_PersonAddOrUpdate_PassTimeName.Location = new System.Drawing.Point(440, 218);
+            this.tb_PersonAddOrUpdate_PassTimeName.Name = "tb_PersonAddOrUpdate_PassTimeName";
+            this.tb_PersonAddOrUpdate_PassTimeName.Size = new System.Drawing.Size(70, 25);
+            this.tb_PersonAddOrUpdate_PassTimeName.TabIndex = 107;
+            this.tb_PersonAddOrUpdate_PassTimeName.Text = "住宿生";
+            // 
             // frmDemo_Ws
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1144, 636);
+            this.ClientSize = new System.Drawing.Size(1186, 636);
             this.Controls.Add(this.lb_CardNo);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.button44);
@@ -1699,6 +1734,9 @@
         private System.Windows.Forms.TabPage tabPage10;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button50;
+        private System.Windows.Forms.CheckBox cb_PersonAddOrUpdate_HaveTime;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tb_PersonAddOrUpdate_PassTimeName;
     }
 }
 

@@ -1881,12 +1881,27 @@ namespace FaceTest
 
         private void button19_Click(object sender, EventArgs e)
         {
-            Person person = new Person();
-            person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
-            person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
-            person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
+            string personJson = "";
+            if (cb_PersonAddOrUpdate_HaveTime.Checked)
+            {
+                PersonHaveTime person = new PersonHaveTime();
+                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
+                person.passTimeTypeName = tb_PersonAddOrUpdate_PassTimeName.Text.Trim();
+                person.remark = "Test";
+                personJson = JsonConvert.SerializeObject(person);
+            }
+            else
+            {
+                Person person = new Person();
+                person.id = tb_PersonAddOrUpdate_PersonId.Text.Trim();
+                person.name = tb_PersonAddOrUpdate_PersonName.Text.Trim();
+                person.cardNo = tb_PersonAddOrUpdate_CardNo.Text.Trim();
+                personJson = JsonConvert.SerializeObject(person);
+            }
 
-            string postStr = string.Format("{0}", JsonConvert.SerializeObject(person));
+            string postStr = personJson;// string.Format("{0}", JsonConvert.SerializeObject(person));
 
             TaskManage.AddTask(new MModel_Ws.TaskInfo(ETaskType.D_Person_CreateOrUpdate,Guid.NewGuid().ToString(), tb_DeviceNo.Text, postStr));
 

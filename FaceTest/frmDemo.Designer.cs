@@ -192,6 +192,9 @@
             this.tb_Url = new System.Windows.Forms.TextBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tb_PersonAddOrUpdate_PassTimeName = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cb_PersonAddOrUpdate_HaveTime = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -702,7 +705,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(444, 628);
+            this.tabPage2.Size = new System.Drawing.Size(486, 628);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "接收识别记录";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -713,7 +716,7 @@
             this.receiveMsg2.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg2.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg2.Name = "receiveMsg2";
-            this.receiveMsg2.Size = new System.Drawing.Size(438, 622);
+            this.receiveMsg2.Size = new System.Drawing.Size(480, 622);
             this.receiveMsg2.TabIndex = 11;
             this.receiveMsg2.Text = "";
             // 
@@ -723,7 +726,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(444, 628);
+            this.tabPage3.Size = new System.Drawing.Size(486, 628);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "识别记录";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -735,7 +738,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(438, 622);
+            this.dataGridView1.Size = new System.Drawing.Size(480, 622);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage4
@@ -744,7 +747,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(444, 628);
+            this.tabPage4.Size = new System.Drawing.Size(486, 628);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "设备运行日志";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -755,7 +758,7 @@
             this.receiveMsg3.Location = new System.Drawing.Point(3, 3);
             this.receiveMsg3.Margin = new System.Windows.Forms.Padding(4);
             this.receiveMsg3.Name = "receiveMsg3";
-            this.receiveMsg3.Size = new System.Drawing.Size(438, 622);
+            this.receiveMsg3.Size = new System.Drawing.Size(480, 622);
             this.receiveMsg3.TabIndex = 12;
             this.receiveMsg3.Text = "";
             // 
@@ -1405,6 +1408,9 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.cb_PersonAddOrUpdate_HaveTime);
+            this.tabPage8.Controls.Add(this.label22);
+            this.tabPage8.Controls.Add(this.tb_PersonAddOrUpdate_PassTimeName);
             this.tabPage8.Controls.Add(this.button56);
             this.tabPage8.Controls.Add(this.button51);
             this.tabPage8.Controls.Add(this.button27);
@@ -1904,6 +1910,7 @@
             this.tb_Url.Size = new System.Drawing.Size(206, 25);
             this.tb_Url.TabIndex = 6;
             this.tb_Url.Text = global::FaceTest.Properties.Settings.Default.tb_Url;
+            this.tb_Url.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tb_Url_KeyUp);
             // 
             // timer3
             // 
@@ -1932,6 +1939,35 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(740, 657);
             this.panel1.TabIndex = 103;
+            // 
+            // tb_PersonAddOrUpdate_PassTimeName
+            // 
+            this.tb_PersonAddOrUpdate_PassTimeName.Location = new System.Drawing.Point(454, 217);
+            this.tb_PersonAddOrUpdate_PassTimeName.Name = "tb_PersonAddOrUpdate_PassTimeName";
+            this.tb_PersonAddOrUpdate_PassTimeName.Size = new System.Drawing.Size(70, 25);
+            this.tb_PersonAddOrUpdate_PassTimeName.TabIndex = 104;
+            this.tb_PersonAddOrUpdate_PassTimeName.Text = "住宿生";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(381, 223);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(67, 15);
+            this.label22.TabIndex = 105;
+            this.label22.Text = "时段名称";
+            // 
+            // cb_PersonAddOrUpdate_HaveTime
+            // 
+            this.cb_PersonAddOrUpdate_HaveTime.AutoSize = true;
+            this.cb_PersonAddOrUpdate_HaveTime.Checked = true;
+            this.cb_PersonAddOrUpdate_HaveTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_PersonAddOrUpdate_HaveTime.Location = new System.Drawing.Point(384, 253);
+            this.cb_PersonAddOrUpdate_HaveTime.Name = "cb_PersonAddOrUpdate_HaveTime";
+            this.cb_PersonAddOrUpdate_HaveTime.Size = new System.Drawing.Size(74, 19);
+            this.cb_PersonAddOrUpdate_HaveTime.TabIndex = 106;
+            this.cb_PersonAddOrUpdate_HaveTime.Text = "带时段";
+            this.cb_PersonAddOrUpdate_HaveTime.UseVisualStyleBackColor = true;
             // 
             // frmDemo
             // 
@@ -2139,6 +2175,9 @@
         private System.Windows.Forms.Button button67;
         private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.CheckBox cb_PersonAddOrUpdate_HaveTime;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tb_PersonAddOrUpdate_PassTimeName;
     }
 }
 

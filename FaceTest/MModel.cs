@@ -451,6 +451,18 @@ namespace FaceTest
         /// 姓名
         /// </summary>
         public string name { get; set; }
+        /// <summary>
+        /// 韦根卡号
+        /// </summary>
+        public string cardNo { get; set; }
+        public override string ToString()
+        {
+            return String.Format("id:[{0}],name:[{1}],card:[{2}]", id, name, cardNo);
+        }
+       
+    }
+    public class PersonHaveTime:Person
+    {
         public string remark { get; set; }
         /// <summary>
         /// 时段名称
@@ -460,10 +472,6 @@ namespace FaceTest
         {
             return String.Format("id:[{0}],name:[{1}],card:[{2}],remark:[{3}],passTimeTypeName:[{4}]", id, name, cardNo, remark, passTimeTypeName);
         }
-        /// <summary>
-        /// 韦根卡号
-        /// </summary>
-        public string cardNo { get; set; }
     }
     public class UserSetPassTime
     {
