@@ -149,7 +149,7 @@ namespace FaceTest
                 // init
                 req = HttpWebRequest.Create(sUrl) as HttpWebRequest;
                 req.Proxy = null;
-                req.Timeout = 1000;
+                req.Timeout = 5000;
                 req.Method = "POST";
                 req.Accept = "*/*";
                 req.KeepAlive = false;
