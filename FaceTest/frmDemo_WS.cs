@@ -1099,7 +1099,7 @@ namespace FaceTest
                     {
                         s = "\r\n";
                     }
-                    if (receiveMsg.Lines.Length > 200)
+                    if (receiveMsg.Lines.Length > 1000)
                     {
                         receiveMsg.Clear();
                     }

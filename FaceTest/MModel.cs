@@ -146,10 +146,22 @@ namespace FaceTest
     /// </summary>
     public class VerifyReturn
     {
+        /// <summary>
+        /// 结果 ，设置成1就行
+        /// </summary>
         public int result { get; set; }
+        /// <summary>
+        /// 是否成功，影响设备后续的操作，比如开闸，韦根输出，文字，语音提示等
+        /// </summary>
         public bool success { get; set; }
 
+        /// <summary>
+        /// 提示类型，影响语音提示
+        /// </summary>
         public int msgtype { get; set; }
+        /// <summary>
+        /// 提示文字，影响文字提示
+        /// </summary>
         public string msg { get; set; }
 
         public object data { get; set; }

@@ -147,6 +147,9 @@
             this.button66 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.cb_PersonAddOrUpdate_HaveTime = new System.Windows.Forms.CheckBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tb_PersonAddOrUpdate_PassTimeName = new System.Windows.Forms.TextBox();
             this.button56 = new System.Windows.Forms.Button();
             this.button51 = new System.Windows.Forms.Button();
             this.tb_PersonAddOrUpdate_CardNo = new System.Windows.Forms.TextBox();
@@ -192,9 +195,6 @@
             this.tb_Url = new System.Windows.Forms.TextBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tb_PersonAddOrUpdate_PassTimeName = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.cb_PersonAddOrUpdate_HaveTime = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -403,7 +403,7 @@
             // 
             this.tb_time.Location = new System.Drawing.Point(171, 192);
             this.tb_time.Name = "tb_time";
-            this.tb_time.Size = new System.Drawing.Size(149, 25);
+            this.tb_time.Size = new System.Drawing.Size(261, 25);
             this.tb_time.TabIndex = 28;
             // 
             // button13
@@ -1456,6 +1456,35 @@
             this.tabPage8.Text = "同步数据";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // cb_PersonAddOrUpdate_HaveTime
+            // 
+            this.cb_PersonAddOrUpdate_HaveTime.AutoSize = true;
+            this.cb_PersonAddOrUpdate_HaveTime.Checked = true;
+            this.cb_PersonAddOrUpdate_HaveTime.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_PersonAddOrUpdate_HaveTime.Location = new System.Drawing.Point(384, 253);
+            this.cb_PersonAddOrUpdate_HaveTime.Name = "cb_PersonAddOrUpdate_HaveTime";
+            this.cb_PersonAddOrUpdate_HaveTime.Size = new System.Drawing.Size(74, 19);
+            this.cb_PersonAddOrUpdate_HaveTime.TabIndex = 106;
+            this.cb_PersonAddOrUpdate_HaveTime.Text = "带时段";
+            this.cb_PersonAddOrUpdate_HaveTime.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(381, 223);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(67, 15);
+            this.label22.TabIndex = 105;
+            this.label22.Text = "时段名称";
+            // 
+            // tb_PersonAddOrUpdate_PassTimeName
+            // 
+            this.tb_PersonAddOrUpdate_PassTimeName.Location = new System.Drawing.Point(454, 217);
+            this.tb_PersonAddOrUpdate_PassTimeName.Name = "tb_PersonAddOrUpdate_PassTimeName";
+            this.tb_PersonAddOrUpdate_PassTimeName.Size = new System.Drawing.Size(70, 25);
+            this.tb_PersonAddOrUpdate_PassTimeName.TabIndex = 104;
+            this.tb_PersonAddOrUpdate_PassTimeName.Text = "住宿生";
+            // 
             // button56
             // 
             this.button56.Location = new System.Drawing.Point(172, 6);
@@ -1939,35 +1968,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(740, 657);
             this.panel1.TabIndex = 103;
-            // 
-            // tb_PersonAddOrUpdate_PassTimeName
-            // 
-            this.tb_PersonAddOrUpdate_PassTimeName.Location = new System.Drawing.Point(454, 217);
-            this.tb_PersonAddOrUpdate_PassTimeName.Name = "tb_PersonAddOrUpdate_PassTimeName";
-            this.tb_PersonAddOrUpdate_PassTimeName.Size = new System.Drawing.Size(70, 25);
-            this.tb_PersonAddOrUpdate_PassTimeName.TabIndex = 104;
-            this.tb_PersonAddOrUpdate_PassTimeName.Text = "住宿生";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(381, 223);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(67, 15);
-            this.label22.TabIndex = 105;
-            this.label22.Text = "时段名称";
-            // 
-            // cb_PersonAddOrUpdate_HaveTime
-            // 
-            this.cb_PersonAddOrUpdate_HaveTime.AutoSize = true;
-            this.cb_PersonAddOrUpdate_HaveTime.Checked = true;
-            this.cb_PersonAddOrUpdate_HaveTime.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_PersonAddOrUpdate_HaveTime.Location = new System.Drawing.Point(384, 253);
-            this.cb_PersonAddOrUpdate_HaveTime.Name = "cb_PersonAddOrUpdate_HaveTime";
-            this.cb_PersonAddOrUpdate_HaveTime.Size = new System.Drawing.Size(74, 19);
-            this.cb_PersonAddOrUpdate_HaveTime.TabIndex = 106;
-            this.cb_PersonAddOrUpdate_HaveTime.Text = "带时段";
-            this.cb_PersonAddOrUpdate_HaveTime.UseVisualStyleBackColor = true;
             // 
             // frmDemo
             // 

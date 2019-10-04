@@ -479,7 +479,9 @@ namespace FaceTest
             {
                 HeartBeatReturn heartBeatReturn = new HeartBeatReturn();
                 //返回服务器时间，用于校对时间
-                heartBeatReturn.time = DateTime.Now.ToString("yyyyMMdd.HHmmss");
+                //heartBeatReturn.time = DateTime.Now.ToString("yyyyMMdd.HHmmss");
+                heartBeatReturn.time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                
                 return JsonConvert.SerializeObject(heartBeatReturn);
             }
             catch (Exception)
@@ -1259,7 +1261,7 @@ namespace FaceTest
                     {
                         s = "\r\n";
                     }
-                    if (receiveMsg.Lines.Length > 200)
+                    if (receiveMsg.Lines.Length > 2000)
                     {
                         receiveMsg.Clear();
                     }
@@ -1518,7 +1520,7 @@ namespace FaceTest
 
                         }
                         //处理完成后，发消息给设备更新数据
-                        SendDevRefreshData();
+                        //SendDevRefreshData();
                     }
                     else
                     {
@@ -2972,6 +2974,7 @@ namespace FaceTest
             showMsg(String.Format("解析,系统可用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));
             showMsg(String.Format("解析,isRoot[{0}]", device.isRoot));
+            showMsg(String.Format("解析,isAuth[{0}]", device.isAuth));
             showMsg("");
             return device;
         }
@@ -3082,10 +3085,10 @@ namespace FaceTest
             textBox1.Text = "";
             try
             {
-                if (DialogResult.Cancel == MessageBox.Show("是否进行初始化设备?", "请确认", MessageBoxButtons.OKCancel))
-                {
-                    return;
-                }
+                //if (DialogResult.Cancel == MessageBox.Show("是否进行初始化设备?", "请确认", MessageBoxButtons.OKCancel))
+                //{
+                //    return;
+                //}
                 button32.Enabled = false;
                 string postStr = string.Format("pass={0}&delete={1}", Pass, checkBox1.Checked.ToString());
                 //string urlOper = @"/person/createOrUpdate";
@@ -3763,7 +3766,7 @@ namespace FaceTest
 
         private void button48_Click(object sender, EventArgs e)
         {
-            tb_time.Text = DateTime.Now.ToString("yyyyMMdd.HHmmss");
+            tb_time.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             button13_Click(sender, e);
         }
         private string GetNetInfoString()
