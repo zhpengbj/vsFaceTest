@@ -179,7 +179,7 @@ namespace FaceTest
                             break;
                         case @"/GetUpdate.ashx":
                             //得到更新版本号
-                            returnObj = DoResult_GetUpdate();
+                            returnObj = DoResult_GetUpdate(requestJsonString);
                             showMsg(returnObj);
                             ResponseRetrun(returnObj, response);
                             break;
@@ -332,6 +332,10 @@ namespace FaceTest
         /// <returns></returns>
         private string GetVersionByApkFile(string apkPath)
         {
+            if (!string.IsNullOrEmpty(textBox5.Text))
+            {
+                return textBox5.Text;
+            }
             byte[] manifestData = null;
             byte[] resourcesData = null;
 
@@ -414,7 +418,7 @@ namespace FaceTest
 
         private string DoResult_GetUpdate()
         {
-
+            
             if (string.IsNullOrEmpty(NewAppCersionCode))
             {
                 NewAppCersionCode = GetVersionByApkFile(APKFILENAME);
@@ -610,7 +614,55 @@ namespace FaceTest
         }
 
         #endregion
+        /// <summary>
+        /// 得到查找版本号的对象
+        /// </summary>
+        /// <param name="JsonString"></param>
+        /// <returns></returns>
+        private string DoResult_GetUpdate(string JsonString)
+        {
+            //处理相关流程
+            if (string.IsNullOrEmpty(NewAppCersionCode))
+            {
+                NewAppCersionCode = GetVersionByApkFile(APKFILENAME);
+            }
+            if (!string.IsNullOrEmpty(JsonString))
+            {
+                //得到JSON字符串
+                string dataStr = JsonString.Substring(JsonString.IndexOf("info=") + 5, JsonString.Length - JsonString.IndexOf("info=") - 5);
+                showMsg(dataStr);
+                DevicesInfo_GetUpdate devicesInfo_GetUpdate = showDevInfo_GetUpdate(dataStr);
+            }
+            
+            ////处理相关流程
+            //if (string.IsNullOrEmpty(NewAppCersionCode))
+            //{
+            //    NewAppCersionCode = GetVersionByApkFile(APKFILENAME);
+            //}
+            return GetReturn_ForGetUpdate();
 
+        }
+        private string GetReturn_ForGetUpdate()
+        {
+            if (!checkBox3.Checked)
+            {
+                return NewAppCersionCode;
+            }
+            else
+            {
+                return NewAppCersionCode + "," + tb_DownApkUrl.Text;
+            }
+        }
+        private DevicesInfo_GetUpdate showDevInfo_GetUpdate(string s)
+        {
+            DevicesInfo_GetUpdate info_GetUpdate = JsonConvert.DeserializeObject<DevicesInfo_GetUpdate>(s);
+            showMsg(String.Format("解析,机器码[{0}]", info_GetUpdate.deviceMachineCode));
+            showMsg(String.Format("解析,机器编号[{0}]", info_GetUpdate.deviceKey));
+            showMsg(String.Format("解析,版本名称[{0}]", info_GetUpdate.version));
+            showMsg(String.Format("解析,版本号[{0}]", info_GetUpdate.versionCode));
+            showMsg("");
+            return info_GetUpdate;
+        }
         #region 处理-后台验证
         private static int COSTCOUNT = 100;
         private static int NowCost = COSTCOUNT;
@@ -2968,8 +3020,11 @@ namespace FaceTest
             showMsg(String.Format("解析,系统时间[{0}]", device.time));
             showMsg(String.Format("解析,人员数[{0}]", device.personCount));
             showMsg(String.Format("解析,照片数[{0}]", device.faceCount));
+            showMsg(String.Format("解析,时段数[{0}]", device.PassTimeCount));
             showMsg(String.Format("解析,运行时间[{0}]", device.runtime));
+
             showMsg(String.Format("解析,版本号[{0}]", device.version));
+            //showMsg(String.Format("解析,版本号[{0}]", device.version));
             showMsg(String.Format("解析,App占用内存[{0}mb]-[{1:F}%]", device.memory, device.memory / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统可用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));

@@ -131,6 +131,8 @@
             this.btn_SetIp = new System.Windows.Forms.Button();
             this.tb_Pass = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -1219,6 +1221,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.textBox5);
+            this.tabPage6.Controls.Add(this.checkBox3);
             this.tabPage6.Controls.Add(this.label19);
             this.tabPage6.Controls.Add(this.textBox3);
             this.tabPage6.Controls.Add(this.checkBox2);
@@ -1251,6 +1255,23 @@
             this.tabPage6.TabIndex = 1;
             this.tabPage6.Text = "回调设置";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(399, 257);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(43, 25);
+            this.textBox5.TabIndex = 103;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(399, 293);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(89, 19);
+            this.checkBox3.TabIndex = 102;
+            this.checkBox3.Text = "动态返回";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // label19
             // 
@@ -2178,6 +2199,8 @@
         private System.Windows.Forms.CheckBox cb_PersonAddOrUpdate_HaveTime;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox tb_PersonAddOrUpdate_PassTimeName;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
 

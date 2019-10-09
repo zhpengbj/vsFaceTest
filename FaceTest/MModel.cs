@@ -353,6 +353,7 @@ namespace FaceTest
         public string ip { get; set; }
         public int personCount { get; set; }
         public int faceCount { get; set; }
+        public int PassTimeCount { get; set; }
         public string version { get; set; }
         /// <summary>
         /// APP占用内存
@@ -389,6 +390,25 @@ namespace FaceTest
         /// </summary>
         public float disk { get; set; }
         public bool isRoot { get; set; }
+    }
+    public class DevicesInfo_GetUpdate
+    {
+        /// <summary>
+        /// 设备编号，可用户自定义，如果没有自定义，则返回机器码。
+        /// </summary>
+        public string deviceKey { get; set; }
+        /// <summary>
+        /// 设备的机器码
+        /// </summary>
+        public string deviceMachineCode { get; set; }
+        /// <summary>
+        /// 版本号名称
+        /// </summary>
+        public string version { get; set; }
+        /// <summary>
+        /// 版本号
+        /// </summary>
+        public int versionCode { get; set; }
     }
     public class FaceFind
     {
