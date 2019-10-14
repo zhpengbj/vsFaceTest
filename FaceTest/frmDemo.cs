@@ -205,6 +205,18 @@ namespace FaceTest
                             DoUpdateDataCallback(updateDataCallbackRequest);
                             //查询数据
                             break;
+                        case @"/showInfoCallback":
+                            //处理显示信息确定请求
+                            showMsg(requestJsonString);
+                            VerifyReturn result = new VerifyReturn();
+                            result.result = 1;
+                            result.success = true;
+                            result.msg = "";
+                            result.msgtype = 0;
+                            returnObj= JsonConvert.SerializeObject(result);
+                            showMsg("showInfoCallback.returnObj:" + returnObj);
+                            ResponseRetrun(returnObj, response);
+                            break;
                     }
                     return;
                 }
@@ -612,6 +624,29 @@ namespace FaceTest
             //处理相关流程
 
         }
+        //private string getUpdateInfo(string key)
+        //{
+        //    string newVersion = "xxx";
+        //    string newApkUrl = "xxxxxx";
+
+        //    if (string.IsNullOrEmpty(key))
+        //    {
+        //        return newVersion;
+        //    }
+        //    else
+        //    {
+        //        switch(key)
+        //        {
+        //            case "001":
+        //            case "002":
+        //                //都返回通用,如果以后按学校区分，在增加逻辑
+        //                return newVersion;
+        //            default:
+        //                //如果不在学校
+        //                return "0";
+        //        }
+        //    }
+        //}
 
         #endregion
         /// <summary>
@@ -1151,7 +1186,7 @@ namespace FaceTest
             }
             catch (Exception ex)
             {
-                return null;
+                return "";
             }
         }
         //图片转为base64编码的字符串
@@ -3028,8 +3063,8 @@ namespace FaceTest
             showMsg(String.Format("解析,App占用内存[{0}mb]-[{1:F}%]", device.memory, device.memory / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统可用内存[{0}mb]-[{1:F}%]", device.availMem, device.availMem / device.totalMem * 100.00));
             showMsg(String.Format("解析,系统总内存[{0}mb]", device.totalMem));
-            showMsg(String.Format("解析,isRoot[{0}]", device.isRoot));
-            showMsg(String.Format("解析,isAuth[{0}]", device.isAuth));
+            showMsg(String.Format("解析,是否root[{0}]", device.isRoot));
+            showMsg(String.Format("解析,是否授权[{0}]", device.isAuth));
             showMsg("");
             return device;
         }
@@ -4087,7 +4122,7 @@ namespace FaceTest
             try
             {
                 button55.Enabled = false;
-                string postStr = string.Format("pass={0}&devicType={1}", Pass, tb_devicType.Text.Trim());
+                string postStr = string.Format("pass={0}&deviceType={1}", Pass, tb_deviceType.Text.Trim());
                 string urlOper = @"/setDeviceType";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
                 ///person/createOrUpdate
@@ -4454,6 +4489,182 @@ namespace FaceTest
         {
             Url = tb_Url.Text;
             this.Text = "XFaceDemo---" + Url;
+        }
+
+        private void button68_Click(object sender, EventArgs e)
+        {
+            tb_MachineCode.Text = "";
+            try
+            {
+                // button9.Enabled = false;
+                string info = GetShowInfoDisplay();
+                string postStr = string.Format("pass={0}&info={1}", Pass, info);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/showInfoHandler";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        tb_MachineCode.Text = res.data;
+                        showMsg("showInfoHandler 成功:" + res.msg + "********************************");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                // button9.Enabled = true;
+
+            }
+        }
+        private string GetShowInfoDisplay()
+        {
+            MShowInfoDisplay showInfoDisplay = new MShowInfoDisplay();
+            showInfoDisplay.logic = 123123;
+            showInfoDisplay.optype =Convert.ToInt32( cb_optype.Text);
+            showInfoDisplay.accountInfo = tb_accountInfo.Text;
+            showInfoDisplay.name =tb_name.Text;
+            showInfoDisplay.registerImg = showInfoDisplay.optype == 1 ? "" : ImgToBase64String(pictureBox3.ImageLocation);
+            showInfoDisplay.showOK = cb_showOk.Checked;
+            showInfoDisplay.showCancel = cb_showCancel.Checked;
+            showInfoDisplay.defaultResult = cb_defaultResult.Checked;
+            showInfoDisplay.balance = 10000;
+            showInfoDisplay.monetary = 100;
+            showInfoDisplay.displayText = tb_displayText.Text;
+            showInfoDisplay.displayTextColor = Color.Red.ToArgb();
+            showInfoDisplay.displayTextSize = Convert.ToInt32(tb_displayTextSize.Text);
+            showInfoDisplay.displayVoice = tb_displayVoice.Text;
+            showInfoDisplay.displayTime =Convert.ToInt32( tb_displayTime.Text);
+            return JsonConvert.SerializeObject(showInfoDisplay);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fdlg = new OpenFileDialog();
+            fdlg.Title = "C# Corner Open File Dialog";
+            //fdlg.InitialDirectory = @"c:\";   //@是取消转义字符的意思
+            fdlg.Filter = "图片文件(*.jpg)|*.jpg|*.gif|*.bmp";
+            //fdlg.Filter = "All files（*.*）|*.*|All files(**)|*.* ";
+            /*
+             * FilterIndex 属性用于选择了何种文件类型,缺省设置为0,系统取Filter属性设置第一项
+             * ,相当于FilterIndex 属性设置为1.如果你编了3个文件类型，当FilterIndex ＝2时是指第2个.
+             */
+            fdlg.FilterIndex = 1;
+            /*
+             *如果值为false，那么下一次选择文件的初始目录是上一次你选择的那个目录，
+             *不固定；如果值为true，每次打开这个对话框初始目录不随你的选择而改变，是固定的  
+             */
+            fdlg.RestoreDirectory = true;
+            if (fdlg.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox3.ImageLocation = fdlg.FileName;
+                //FaceImageFileName = fdlg.SafeFileName;
+                //textBox1.Text = System.IO.Path.GetFileNameWithoutExtension(fdlg.FileName);
+
+            }
+        }
+
+        private void button69_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button59.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=13", Pass, tb_showInfoCallbackUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl typeId=13 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button59.Enabled = true;
+
+            }
+        }
+
+        private void button70_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button49.Enabled = false;
+                //验证URL为type=4
+                string postStr = string.Format("pass={0}&typeId=13", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("getUrl typeId=13 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button49.Enabled = true;
+
+            }
         }
     }
 }

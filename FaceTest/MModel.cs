@@ -677,4 +677,43 @@ namespace FaceTest
     }
     #endregion
 
+    public class MShowInfoDisplay
+    {
+        public int logic;
+        /// <summary>
+        /// 操作类型:1:人脸,2:卡片,3:二维码
+        /// </summary>
+        public int optype;
+        public string accountInfo;
+        public string name;
+        public string registerImg;
+        public bool showOK;
+        public bool showCancel;
+        public bool defaultResult;
+        /// <summary>
+        /// 余额, 单位：分
+        /// </summary>
+        public int balance;
+        /// <summary>
+        /// 消费金额,单位：分
+        /// </summary>
+        public int monetary;
+        /// <summary>
+        /// 显示内容
+        /// </string>
+        public string displayText;
+        public int displayTextColor;
+        public int displayTextSize;
+
+        /// <summary>
+        /// 语音播放内容
+        /// </summary>
+        public string displayVoice;
+        /// <summary>
+        /// 页面等待时间
+        /// 单位：秒,如果不传，默认5秒
+        /// </summary>
+        public int displayTime = 5;
+    }
+
 }

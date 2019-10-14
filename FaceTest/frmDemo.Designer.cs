@@ -191,7 +191,31 @@
             this.cb_UseType = new System.Windows.Forms.ComboBox();
             this.button64 = new System.Windows.Forms.Button();
             this.button55 = new System.Windows.Forms.Button();
-            this.tb_devicType = new System.Windows.Forms.TextBox();
+            this.tb_deviceType = new System.Windows.Forms.TextBox();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
+            this.button69 = new System.Windows.Forms.Button();
+            this.button70 = new System.Windows.Forms.Button();
+            this.tb_showInfoCallbackUrl = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.tb_accountInfo = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.cb_optype = new System.Windows.Forms.ComboBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.tb_displayVoice = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.tb_displayText = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.tb_displayTextSize = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tb_displayTime = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cb_defaultResult = new System.Windows.Forms.CheckBox();
+            this.cb_showCancel = new System.Windows.Forms.CheckBox();
+            this.cb_showOk = new System.Windows.Forms.CheckBox();
+            this.button68 = new System.Windows.Forms.Button();
             this.lb_CardNo = new System.Windows.Forms.Label();
             this.button50 = new System.Windows.Forms.Button();
             this.tb_Url = new System.Windows.Forms.TextBox();
@@ -213,6 +237,8 @@
             this.tabPage9.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1052,6 +1078,7 @@
             this.tabControl2.Controls.Add(this.tabPage9);
             this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Controls.Add(this.tabPage11);
+            this.tabControl2.Controls.Add(this.tabPage12);
             this.tabControl2.Location = new System.Drawing.Point(15, 42);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -1883,7 +1910,7 @@
             this.tabPage11.Controls.Add(this.cb_UseType);
             this.tabPage11.Controls.Add(this.button64);
             this.tabPage11.Controls.Add(this.button55);
-            this.tabPage11.Controls.Add(this.tb_devicType);
+            this.tabPage11.Controls.Add(this.tb_deviceType);
             this.tabPage11.Location = new System.Drawing.Point(4, 25);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
@@ -1898,7 +1925,8 @@
             this.cb_UseType.Items.AddRange(new object[] {
             "Default",
             "ConsumeCount",
-            "ConsumeMoney"});
+            "ConsumeMoney",
+            "ConsumeMoney1"});
             this.cb_UseType.Location = new System.Drawing.Point(188, 93);
             this.cb_UseType.Name = "cb_UseType";
             this.cb_UseType.Size = new System.Drawing.Size(149, 23);
@@ -1925,13 +1953,268 @@
             this.button55.UseVisualStyleBackColor = true;
             this.button55.Click += new System.EventHandler(this.button55_Click);
             // 
-            // tb_devicType
+            // tb_deviceType
             // 
-            this.tb_devicType.Location = new System.Drawing.Point(188, 33);
-            this.tb_devicType.Name = "tb_devicType";
-            this.tb_devicType.Size = new System.Drawing.Size(149, 25);
-            this.tb_devicType.TabIndex = 24;
-            this.tb_devicType.Text = "F_LT_005";
+            this.tb_deviceType.Location = new System.Drawing.Point(188, 33);
+            this.tb_deviceType.Name = "tb_deviceType";
+            this.tb_deviceType.Size = new System.Drawing.Size(149, 25);
+            this.tb_deviceType.TabIndex = 24;
+            this.tb_deviceType.Text = "F_LT_005";
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.Controls.Add(this.button69);
+            this.tabPage12.Controls.Add(this.button70);
+            this.tabPage12.Controls.Add(this.tb_showInfoCallbackUrl);
+            this.tabPage12.Controls.Add(this.tb_name);
+            this.tabPage12.Controls.Add(this.label30);
+            this.tabPage12.Controls.Add(this.tb_accountInfo);
+            this.tabPage12.Controls.Add(this.label29);
+            this.tabPage12.Controls.Add(this.label28);
+            this.tabPage12.Controls.Add(this.cb_optype);
+            this.tabPage12.Controls.Add(this.label27);
+            this.tabPage12.Controls.Add(this.pictureBox3);
+            this.tabPage12.Controls.Add(this.tb_displayVoice);
+            this.tabPage12.Controls.Add(this.label26);
+            this.tabPage12.Controls.Add(this.tb_displayText);
+            this.tabPage12.Controls.Add(this.label25);
+            this.tabPage12.Controls.Add(this.tb_displayTextSize);
+            this.tabPage12.Controls.Add(this.label24);
+            this.tabPage12.Controls.Add(this.tb_displayTime);
+            this.tabPage12.Controls.Add(this.label23);
+            this.tabPage12.Controls.Add(this.cb_defaultResult);
+            this.tabPage12.Controls.Add(this.cb_showCancel);
+            this.tabPage12.Controls.Add(this.cb_showOk);
+            this.tabPage12.Controls.Add(this.button68);
+            this.tabPage12.Location = new System.Drawing.Point(4, 25);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(568, 579);
+            this.tabPage12.TabIndex = 7;
+            this.tabPage12.Text = "显示提示";
+            this.tabPage12.UseVisualStyleBackColor = true;
+            // 
+            // button69
+            // 
+            this.button69.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button69.Location = new System.Drawing.Point(31, 457);
+            this.button69.Name = "button69";
+            this.button69.Size = new System.Drawing.Size(233, 36);
+            this.button69.TabIndex = 99;
+            this.button69.Text = "消费确认url";
+            this.button69.UseVisualStyleBackColor = true;
+            this.button69.Click += new System.EventHandler(this.button69_Click);
+            // 
+            // button70
+            // 
+            this.button70.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button70.Location = new System.Drawing.Point(274, 457);
+            this.button70.Name = "button70";
+            this.button70.Size = new System.Drawing.Size(92, 36);
+            this.button70.TabIndex = 98;
+            this.button70.Text = "读取";
+            this.button70.UseVisualStyleBackColor = true;
+            this.button70.Click += new System.EventHandler(this.button70_Click);
+            // 
+            // tb_showInfoCallbackUrl
+            // 
+            this.tb_showInfoCallbackUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_showInfoCallbackUrl.Location = new System.Drawing.Point(31, 506);
+            this.tb_showInfoCallbackUrl.Name = "tb_showInfoCallbackUrl";
+            this.tb_showInfoCallbackUrl.Size = new System.Drawing.Size(424, 25);
+            this.tb_showInfoCallbackUrl.TabIndex = 97;
+            this.tb_showInfoCallbackUrl.Text = "http://192.168.0.200:8091/showInfoCallback";
+            // 
+            // tb_name
+            // 
+            this.tb_name.Location = new System.Drawing.Point(102, 235);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(100, 25);
+            this.tb_name.TabIndex = 63;
+            this.tb_name.Text = "测试人员";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(25, 238);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(67, 15);
+            this.label30.TabIndex = 62;
+            this.label30.Text = "人员姓名";
+            // 
+            // tb_accountInfo
+            // 
+            this.tb_accountInfo.Location = new System.Drawing.Point(102, 192);
+            this.tb_accountInfo.Name = "tb_accountInfo";
+            this.tb_accountInfo.Size = new System.Drawing.Size(100, 25);
+            this.tb_accountInfo.TabIndex = 61;
+            this.tb_accountInfo.Text = "001";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(17, 195);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(75, 15);
+            this.label29.TabIndex = 60;
+            this.label29.Text = "人员标识 ";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(347, 15);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(37, 15);
+            this.label28.TabIndex = 58;
+            this.label28.Text = "类型";
+            // 
+            // cb_optype
+            // 
+            this.cb_optype.FormattingEnabled = true;
+            this.cb_optype.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cb_optype.Location = new System.Drawing.Point(394, 13);
+            this.cb_optype.Name = "cb_optype";
+            this.cb_optype.Size = new System.Drawing.Size(60, 23);
+            this.cb_optype.TabIndex = 57;
+            this.cb_optype.Tag = "";
+            this.cb_optype.Text = "1";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(281, 195);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(52, 15);
+            this.label27.TabIndex = 56;
+            this.label27.Text = "大头照";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox3.Location = new System.Drawing.Point(339, 192);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(105, 130);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 55;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // tb_displayVoice
+            // 
+            this.tb_displayVoice.Location = new System.Drawing.Point(102, 150);
+            this.tb_displayVoice.Name = "tb_displayVoice";
+            this.tb_displayVoice.Size = new System.Drawing.Size(352, 25);
+            this.tb_displayVoice.TabIndex = 11;
+            this.tb_displayVoice.Text = "你好，你的账户余额不足";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(25, 159);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(67, 15);
+            this.label26.TabIndex = 10;
+            this.label26.Text = "语音提示";
+            // 
+            // tb_displayText
+            // 
+            this.tb_displayText.Location = new System.Drawing.Point(102, 96);
+            this.tb_displayText.Name = "tb_displayText";
+            this.tb_displayText.Size = new System.Drawing.Size(353, 25);
+            this.tb_displayText.TabIndex = 9;
+            this.tb_displayText.Text = "你好，你的账户余额不足";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(25, 105);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(67, 15);
+            this.label25.TabIndex = 8;
+            this.label25.Text = "显示文字";
+            // 
+            // tb_displayTextSize
+            // 
+            this.tb_displayTextSize.Location = new System.Drawing.Point(377, 50);
+            this.tb_displayTextSize.Name = "tb_displayTextSize";
+            this.tb_displayTextSize.Size = new System.Drawing.Size(78, 25);
+            this.tb_displayTextSize.TabIndex = 7;
+            this.tb_displayTextSize.Text = "40";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(262, 54);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(97, 15);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "显示文字字体";
+            // 
+            // tb_displayTime
+            // 
+            this.tb_displayTime.Location = new System.Drawing.Point(102, 50);
+            this.tb_displayTime.Name = "tb_displayTime";
+            this.tb_displayTime.Size = new System.Drawing.Size(100, 25);
+            this.tb_displayTime.TabIndex = 5;
+            this.tb_displayTime.Text = "5";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(25, 60);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(67, 15);
+            this.label23.TabIndex = 4;
+            this.label23.Text = "等待时间";
+            // 
+            // cb_defaultResult
+            // 
+            this.cb_defaultResult.AutoSize = true;
+            this.cb_defaultResult.Checked = true;
+            this.cb_defaultResult.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_defaultResult.Location = new System.Drawing.Point(237, 15);
+            this.cb_defaultResult.Name = "cb_defaultResult";
+            this.cb_defaultResult.Size = new System.Drawing.Size(89, 19);
+            this.cb_defaultResult.TabIndex = 3;
+            this.cb_defaultResult.Text = "默认确认";
+            this.cb_defaultResult.UseVisualStyleBackColor = true;
+            // 
+            // cb_showCancel
+            // 
+            this.cb_showCancel.AutoSize = true;
+            this.cb_showCancel.Checked = true;
+            this.cb_showCancel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_showCancel.Location = new System.Drawing.Point(131, 15);
+            this.cb_showCancel.Name = "cb_showCancel";
+            this.cb_showCancel.Size = new System.Drawing.Size(89, 19);
+            this.cb_showCancel.TabIndex = 2;
+            this.cb_showCancel.Text = "显示取消";
+            this.cb_showCancel.UseVisualStyleBackColor = true;
+            // 
+            // cb_showOk
+            // 
+            this.cb_showOk.AutoSize = true;
+            this.cb_showOk.Checked = true;
+            this.cb_showOk.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_showOk.Location = new System.Drawing.Point(36, 15);
+            this.cb_showOk.Name = "cb_showOk";
+            this.cb_showOk.Size = new System.Drawing.Size(89, 19);
+            this.cb_showOk.TabIndex = 1;
+            this.cb_showOk.Text = "显示确定";
+            this.cb_showOk.UseVisualStyleBackColor = true;
+            // 
+            // button68
+            // 
+            this.button68.Location = new System.Drawing.Point(28, 279);
+            this.button68.Name = "button68";
+            this.button68.Size = new System.Drawing.Size(236, 43);
+            this.button68.TabIndex = 0;
+            this.button68.Text = "显示信息";
+            this.button68.UseVisualStyleBackColor = true;
+            this.button68.Click += new System.EventHandler(this.button68_Click);
             // 
             // lb_CardNo
             // 
@@ -2025,6 +2308,9 @@
             this.tabPage10.PerformLayout();
             this.tabPage11.ResumeLayout(false);
             this.tabPage11.PerformLayout();
+            this.tabPage12.ResumeLayout(false);
+            this.tabPage12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -2174,7 +2460,7 @@
         private System.Windows.Forms.Button button56;
         private System.Windows.Forms.TabPage tabPage11;
         private System.Windows.Forms.Button button55;
-        private System.Windows.Forms.TextBox tb_devicType;
+        private System.Windows.Forms.TextBox tb_deviceType;
         private System.Windows.Forms.Button button57;
         private System.Windows.Forms.Button button58;
         private System.Windows.Forms.TextBox tb_updateDataUrl;
@@ -2201,6 +2487,30 @@
         private System.Windows.Forms.TextBox tb_PersonAddOrUpdate_PassTimeName;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TabPage tabPage12;
+        private System.Windows.Forms.Button button68;
+        private System.Windows.Forms.CheckBox cb_showCancel;
+        private System.Windows.Forms.CheckBox cb_showOk;
+        private System.Windows.Forms.CheckBox cb_defaultResult;
+        private System.Windows.Forms.TextBox tb_displayTime;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox tb_displayText;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox tb_displayTextSize;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox tb_displayVoice;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ComboBox cb_optype;
+        private System.Windows.Forms.TextBox tb_accountInfo;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox tb_name;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Button button69;
+        private System.Windows.Forms.Button button70;
+        private System.Windows.Forms.TextBox tb_showInfoCallbackUrl;
     }
 }
 
