@@ -3057,6 +3057,7 @@ namespace FaceTest
             showMsg(String.Format("解析,照片数[{0}]", device.faceCount));
             showMsg(String.Format("解析,时段数[{0}]", device.PassTimeCount));
             showMsg(String.Format("解析,运行时间[{0}]", device.runtime));
+            showMsg(String.Format("解析,系统运行时间[{0}]", device.systemruntime));
 
             showMsg(String.Format("解析,版本号[{0}]", device.version));
             //showMsg(String.Format("解析,版本号[{0}]", device.version));

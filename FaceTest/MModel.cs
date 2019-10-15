@@ -343,6 +343,10 @@ namespace FaceTest
         /// </summary>
         public string runtime { get; set; }
         /// <summary>
+        /// 系统运行时间
+        /// </summary>
+        public string systemruntime { get; set; }
+        /// <summary>
         /// APP启动的时间
         /// </summary>
         public string starttime { get; set; }
