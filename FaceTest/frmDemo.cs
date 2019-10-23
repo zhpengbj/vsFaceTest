@@ -4546,8 +4546,8 @@ namespace FaceTest
             showInfoDisplay.showOK = cb_showOk.Checked;
             showInfoDisplay.showCancel = cb_showCancel.Checked;
             showInfoDisplay.defaultResult = cb_defaultResult.Checked;
-            showInfoDisplay.balance = 10000;
-            showInfoDisplay.monetary = 100;
+            showInfoDisplay.balance = "123.00元";
+            showInfoDisplay.monetary = "";
             showInfoDisplay.displayText = tb_displayText.Text;
             showInfoDisplay.displayTextColor = Color.Red.ToArgb();
             showInfoDisplay.displayTextSize = Convert.ToInt32(tb_displayTextSize.Text);

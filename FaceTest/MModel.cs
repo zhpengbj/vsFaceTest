@@ -695,13 +695,13 @@ namespace FaceTest
         public bool showCancel;
         public bool defaultResult;
         /// <summary>
-        /// 余额, 单位：分
+        /// 余额
         /// </summary>
-        public int balance;
+        public string balance;
         /// <summary>
-        /// 消费金额,单位：分
+        /// 消费金额
         /// </summary>
-        public int monetary;
+        public string monetary;
         /// <summary>
         /// 显示内容
         /// </string>
