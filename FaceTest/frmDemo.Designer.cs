@@ -2321,7 +2321,7 @@
             this.tb_platformUrl.Name = "tb_platformUrl";
             this.tb_platformUrl.Size = new System.Drawing.Size(413, 25);
             this.tb_platformUrl.TabIndex = 97;
-            this.tb_platformUrl.Text = "http://192.168.0.200:8091/updateData";
+            this.tb_platformUrl.Text = "http://192.168.0.200:22742";
             // 
             // frmDemo
             // 
