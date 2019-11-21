@@ -4748,7 +4748,7 @@ namespace FaceTest
             }
             finally
             {
-                button49.Enabled = true;
+                button72.Enabled = true;
 
             }
         }
