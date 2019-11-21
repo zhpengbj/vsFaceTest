@@ -4504,14 +4504,14 @@ namespace FaceTest
                 string urlOper = @"/showInfoHandler";
                 string url = string.Format(@"{0}{1}", Url, urlOper);
                 ///person/createOrUpdate
-                showMsg("url:" + url);
-                showMsg("postStr:" + postStr);
+                //showMsg("url:" + url);
+                //showMsg("postStr:" + postStr);
 
                 string ReturnStr = "";
                 bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
                 if (b)
                 {
-                    showMsg(ReturnStr);
+                    //showMsg(ReturnStr);
                     ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
                     if (res.success)
                     {
@@ -4520,7 +4520,7 @@ namespace FaceTest
                     }
                     else
                     {
-                        showMsg("有返回，但出错了：" + res.msg);
+                        showMsg("showInfoHandler 有返回，但出错了：" + res.msg);
                     }
                 }
                 else
@@ -4649,6 +4649,91 @@ namespace FaceTest
                     if (res.success)
                     {
                         showMsg("getUrl typeId=13 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button49.Enabled = true;
+
+            }
+        }
+
+        private void button71_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button71.Enabled = false;
+                //xFace平台为type=14
+                string postStr = string.Format("pass={0}&callbackUrl={1}&typeId=14", Pass, tb_platformUrl.Text.Trim());
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/setUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("setUrl typeId=14 成功");
+                    }
+                    else
+                    {
+                        showMsg("有返回，但出错了：" + res.msg);
+                    }
+                }
+                else
+                {
+                    showMsg("通讯失败");
+                }
+
+            }
+            finally
+            {
+                button71.Enabled = true;
+
+            }
+        }
+
+        private void button72_Click(object sender, EventArgs e)
+        {
+            Pass = tb_Pass.Text;
+            try
+            {
+                button72.Enabled = false;
+                string postStr = string.Format("pass={0}&typeId=14", Pass);
+                //string urlOper = @"/person/createOrUpdate";
+                string urlOper = @"/getUrl";
+                string url = string.Format(@"{0}{1}", Url, urlOper);
+                ///person/createOrUpdate
+                showMsg("url:" + url);
+                showMsg("postStr:" + postStr);
+
+                string ReturnStr = "";
+                bool b = CHttpPost.Post(url, postStr, ref ReturnStr);
+                if (b)
+                {
+                    showMsg(ReturnStr);
+                    ResultInfo res = JsonConvert.DeserializeObject<ResultInfo>(ReturnStr);
+                    if (res.success)
+                    {
+                        showMsg("getUrl typeId=14 成功");
                     }
                     else
                     {

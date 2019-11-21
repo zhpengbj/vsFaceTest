@@ -221,6 +221,10 @@
             this.tb_Url = new System.Windows.Forms.TextBox();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.xFace平台 = new System.Windows.Forms.TabPage();
+            this.button71 = new System.Windows.Forms.Button();
+            this.button72 = new System.Windows.Forms.Button();
+            this.tb_platformUrl = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -240,6 +244,7 @@
             this.tabPage12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
+            this.xFace平台.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -1079,6 +1084,7 @@
             this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Controls.Add(this.tabPage11);
             this.tabControl2.Controls.Add(this.tabPage12);
+            this.tabControl2.Controls.Add(this.xFace平台);
             this.tabControl2.Location = new System.Drawing.Point(15, 42);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -2273,6 +2279,50 @@
             this.panel1.Size = new System.Drawing.Size(740, 657);
             this.panel1.TabIndex = 103;
             // 
+            // xFace平台
+            // 
+            this.xFace平台.Controls.Add(this.button71);
+            this.xFace平台.Controls.Add(this.button72);
+            this.xFace平台.Controls.Add(this.tb_platformUrl);
+            this.xFace平台.Location = new System.Drawing.Point(4, 25);
+            this.xFace平台.Name = "xFace平台";
+            this.xFace平台.Padding = new System.Windows.Forms.Padding(3);
+            this.xFace平台.Size = new System.Drawing.Size(568, 579);
+            this.xFace平台.TabIndex = 8;
+            this.xFace平台.Text = "xFace平台";
+            this.xFace平台.UseVisualStyleBackColor = true;
+            // 
+            // button71
+            // 
+            this.button71.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button71.Location = new System.Drawing.Point(39, 59);
+            this.button71.Name = "button71";
+            this.button71.Size = new System.Drawing.Size(233, 36);
+            this.button71.TabIndex = 99;
+            this.button71.Text = "数据更新url";
+            this.button71.UseVisualStyleBackColor = true;
+            this.button71.Click += new System.EventHandler(this.button71_Click);
+            // 
+            // button72
+            // 
+            this.button72.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button72.Location = new System.Drawing.Point(282, 59);
+            this.button72.Name = "button72";
+            this.button72.Size = new System.Drawing.Size(92, 36);
+            this.button72.TabIndex = 98;
+            this.button72.Text = "读取";
+            this.button72.UseVisualStyleBackColor = true;
+            this.button72.Click += new System.EventHandler(this.button72_Click);
+            // 
+            // tb_platformUrl
+            // 
+            this.tb_platformUrl.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_platformUrl.Location = new System.Drawing.Point(39, 108);
+            this.tb_platformUrl.Name = "tb_platformUrl";
+            this.tb_platformUrl.Size = new System.Drawing.Size(413, 25);
+            this.tb_platformUrl.TabIndex = 97;
+            this.tb_platformUrl.Text = "http://192.168.0.200:8091/updateData";
+            // 
             // frmDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -2313,6 +2363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.xFace平台.ResumeLayout(false);
+            this.xFace平台.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2511,6 +2563,10 @@
         private System.Windows.Forms.Button button69;
         private System.Windows.Forms.Button button70;
         private System.Windows.Forms.TextBox tb_showInfoCallbackUrl;
+        private System.Windows.Forms.TabPage xFace平台;
+        private System.Windows.Forms.Button button71;
+        private System.Windows.Forms.Button button72;
+        private System.Windows.Forms.TextBox tb_platformUrl;
     }
 }
 
